@@ -4,51 +4,24 @@
 	<title>Christopher's Restaurant</title>
 	
 	<!--Room for stylesheets and PHP -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?php echo urlfor('/private/styles/styles.css'); ?>">
 
-	<!--Temporary Styling until sheets are made -->
-<style> 
-html {
-background-color:black;
-}
+	<!-- Sticky script -->
+	<script>
+	window.onscroll = function() {myFunction()};
 
-.navBar a{
-  float: left;
-  display: block;
-  color: white;
-  text-align: center;
-  margin: 3% 8%;
-  width:9%;
-  text-decoration: none;
-  font-size: 30px;
-  }
-  
-#menu {
-margin-right:12%;
-margin-left:4%;
-}
-#order {
-margin-right:4%;
-margin-left:12%;
-}
+	var navbar = document.getElementById("navBar");
+	var sticky = navbar.offsetTop;
 
-.navLogo {
-position:absolute;
-width:20%;
-margin:0% 40%;
-overflow:hidden;
-}
-img.navImg { 
-	width:100%;
-	height: 100%;
+	function myFunction() {
+  		if (window.pageYOffset >= sticky) {
+    		navbar.classList.add("sticky")
+  		} else {
+    		navbar.classList.remove("sticky");
+  		}
 	}
-
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width:100%;
-}
-</style>
+	</script>
 </head>
 <body>
 	<header>
@@ -64,18 +37,4 @@ img.navImg {
 				<img class="navImg" src="chrisLogo.png">
 			</div>
 		</div>
-	
-		<script>
-window.onscroll = function() {myFunction()};
-
-var navbar = document.getElementById("navBar");
-var sticky = navbar.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
-</script>
+	</header>
