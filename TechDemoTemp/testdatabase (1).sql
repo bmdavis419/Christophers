@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+USE testdatabase;
 --
 -- Table structure for table `menuitems`
 --

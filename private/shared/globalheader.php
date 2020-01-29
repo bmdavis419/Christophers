@@ -4,10 +4,14 @@
 	<title>Christopher's Restaurant</title>
 	<!--Room for stylesheets and PHP -->
 		<!--Room for stylesheets and PHP -->
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo urlfor('/private/styles/styles.css'); ?>">
+	<link rel="stylesheet" href="<?php echo urlfor('/private/scripts/jquery-ui-1.11.1/jquery-ui.css'); ?>">
 
-	
+	<!-- Scripts -->
+	<script src="<?php echo urlfor('private/scripts/jquery-1.11.1.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo urlfor('/private/scripts/jquery-ui-1.11.1/external/jquery/jquery.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo urlfor('/private/scripts/jquery-ui-1.11.1/jquery-ui.js'); ?>"></script>
 </head>
 <body>
 	<header>
@@ -41,3 +45,4 @@
   }
 }
 </script>
+<br><br><br><br><br><br><br><br><br><br><br><br>
