@@ -27,7 +27,7 @@ $("document").ready(function() {
 
     // function to delete item from list
     $("input[type='button']").click(function(){
-        
+        alert("clicked");
     });
 });
 
@@ -75,7 +75,7 @@ function display() {
         $("#displaytemp").multilineText("Items in: " + propertyName + "\n");      
         // display out all of the staged items and their cost as well as a delete button
         for (var i = 0; i < itemNames.length; i++) {
-            $("#displaytemp").multilineAppend("Item: " + itemNames[i] + " || Price: $" + itemCosts[i] + "   <button id='remove' type='button'>Remove</button>\n");
+            $("#displaytemp").multilineAppend("Item: " + itemNames[i] + " || Price: $" + itemCosts[i] + '<button id="remove" type="button">Remove</button>\n');
         }
 
         // create string to put in database
