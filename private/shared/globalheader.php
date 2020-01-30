@@ -17,12 +17,12 @@
 	<header>
 		<!--Nav bar is at the top of every page -->
 		<div class="navWrapper"> <!--Includes entire nav system-->
-			<div class="navBar" id="navBar"> <!--Just Includes the navbar which will float with the page-->
+			<nav class="navBar" id="navBar"> <!--Just Includes the navbar which will float with the page-->
 					<a id="home" href="HomePagePlaceholder">Home</a> <!--Waiting for dynamic php statements -->
 					<a id="menu" href=MenuPagePlaceholder>Menu</a> <!--Waiting for dynamic php statements -->
 					<a id="order"href=OrdersPagePlaceholder>Order</a> <!--Waiting for dynamic php statements -->
 					<a id="bag"href=BagPagePlaceholder>Bag</a> <!--Waiting for dynamic php statements -->
-			</div>
+			</nav>
 			<div class="navLogo"><!--Includes Christopher's Icon logo -->
 				<img class="navImg" src="<?php echo urlfor('/private/images/chrisLogo.png');?>">
  <!--Waiting for dynamic php statements -->
@@ -45,4 +45,3 @@
   }
 }
 </script>
-<br><br><br><br><br><br><br><br><br><br><br><br>
