@@ -1,12 +1,20 @@
 /*Global Styles */
 html {
 background-color:black;
+margin:0;
 color: white;
 max-width: 100%;
 overflow-x: hidden; /*Disables horizontal scrolling*/
 }
-
+body {
+	margin:0;
+}
 /*Global Header Styles*/
+.navWrapper{
+	width:100%;
+	padding-bottom:10%;
+	background-color:#35281dff;
+}
 .navBar a{
   float: left;
   display: block;
@@ -17,7 +25,8 @@ overflow-x: hidden; /*Disables horizontal scrolling*/
   text-decoration: none;
   font-size: 30px;
   transition:0.25s;
-  }
+
+}
 #menu {
 padding-right:12%;
 padding-left:4%;
@@ -41,12 +50,12 @@ img.navImg {
 /*Creates sticky navBar in conjunction with javascript*/
 .sticky {
   position: fixed;
-  background-color:black;
   top: 0;
   width:100%;
   z-index: 1;
-/*Potentially add a border for sticky menu here */
+  background-color:#35281dff;
 }
+/*Potentially add a border for sticky menu here */
 .sticky a{
     transition:0.5s;
 	padding-top:1%;
@@ -71,7 +80,10 @@ img.navImg {
 footer {
 	margin-left:auto;
 	margin-right:auto;
-	color: black;
+	clear:both;
+	background-color:#35281dff;
+	height:400px;
+	padding-top:50px;
 }
 .socials {
 text-align:center;
@@ -80,8 +92,8 @@ font-size:1.75em;
 .fa {
 	height: 40px;
 	width: 40px;
-	border-radius: 50%;
-	padding:20px;
+	border-radius: 25%;
+	padding:10px;
 	font-size:2em;
 	display: inline-block;
 	text-align:center;
@@ -107,16 +119,20 @@ color:white;
 	max-height:350px;
 	height:350px;
 	float:left;
-	border-color:darkgrey;
-	border-style:solid;
-	border-width:3px;
 	width:60%;
 	font-size:1.5em;
 	text-align:center;
-	background-color:white;
 	line-height:2em;
 	margin-left:5%;
 	}
+.footerContent a{
+ text-decoration:none;
+ color:white;
+}
+.footerContent a:hover{
+	color:blue;
+   }
+
 .footerContent h2{
 	margin:1%;
 	}
@@ -143,6 +159,25 @@ margin:0.25%
 	border-color:darkgrey;
 	border-style:solid;
 	border-width:3px;
+}
+/*Index Styling */
+.indexArticle {
+margin:0 auto;
+float:left;
+max-width:40%;
+margin-left:20%;
+}
+.indexAside {
+margin:0 auto;
+float:right;
+max-widtH:15%;
+min-width:200px;
+margin-right:20%;
+}
+.indexImg {
+	height:700px;
+	width:100%;
+	background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
 }
 
 /* menu styling */

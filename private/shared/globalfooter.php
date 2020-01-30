@@ -7,7 +7,7 @@
 		</div>
 	</div>
 </div>
-<div class="footerContent">
+<div class="footerContent" style="background-image:url("<?php echo urlfor('/private/images/chrisLogo.png');?>") no-repeat center center #ffffff">
 	<h2>Christopher's Restaurant</h2>
 	<address>
 		<p>2318 DOROTHY LANE, KETTERING, OH, 45420<p>
