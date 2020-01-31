@@ -4,21 +4,25 @@
 	<title>Christopher's Restaurant</title>
 	<!--Room for stylesheets and PHP -->
 		<!--Room for stylesheets and PHP -->
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo urlfor('/private/styles/styles.css'); ?>">
+	<link rel="stylesheet" href="<?php echo urlfor('/private/scripts/jquery-ui-1.11.1/jquery-ui.css'); ?>">
 
-	
+	<!-- Scripts -->
+	<script src="<?php echo urlfor('private/scripts/jquery-1.11.1.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo urlfor('/private/scripts/jquery-ui-1.11.1/external/jquery/jquery.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo urlfor('/private/scripts/jquery-ui-1.11.1/jquery-ui.js'); ?>"></script>
 </head>
 <body>
 	<header>
 		<!--Nav bar is at the top of every page -->
 		<div class="navWrapper"> <!--Includes entire nav system-->
-			<div class="navBar" id="navBar"> <!--Just Includes the navbar which will float with the page-->
+			<nav class="navBar" id="navBar"> <!--Just Includes the navbar which will float with the page-->
 					<a id="home" href="HomePagePlaceholder">Home</a> <!--Waiting for dynamic php statements -->
 					<a id="menu" href=MenuPagePlaceholder>Menu</a> <!--Waiting for dynamic php statements -->
 					<a id="order"href=OrdersPagePlaceholder>Order</a> <!--Waiting for dynamic php statements -->
 					<a id="bag"href=BagPagePlaceholder>Bag</a> <!--Waiting for dynamic php statements -->
-			</div>
+			</nav>
 			<div class="navLogo"><!--Includes Christopher's Icon logo -->
 				<img class="navImg" src="<?php echo urlfor('/private/images/chrisLogo.png');?>">
  <!--Waiting for dynamic php statements -->
