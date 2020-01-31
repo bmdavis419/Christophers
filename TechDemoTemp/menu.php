@@ -91,18 +91,6 @@ function makePropCookie() {
     setCookie("SelectedProperties", cookieString, 1);
 }
 
-// function for creating multiline
-$.fn.multilineAppend = function(text) {
-    this.append(text);
-    this.html(this.html().replace(/\n/g, "<br>"));
-    return this;
-}
-$.fn.multilineText = function(text) {
-    this.text(text);
-    this.html(this.html().replace(/\n/g, "<br>"));
-    return this;
-}
-
 // function to create a cookie
 function setCookie(name, value, days) {
     var d = new Date();
@@ -122,7 +110,6 @@ function displayProperties() {
     $("#properties").append("<legend>Properties</legend>");
     // loop through the properties
     for (var i = 0; i < allProperties.length; i++) {
-        //$("#properties").multilineAppend("<label for='checkbox-" + i "'>" + allProperties[i]["name"] + "</label>" + "<input type='checkbox' name='checkbox-" + i +"' id='checkbox-" + i + "'>");
         $("#properties").append('<label for="checkbox-' + (i) + '">' + allProperties[i]["name"] + '</label>' + '<input type="checkbox" name="checkbox-' + (i) + '" id="checkbox-' + (i) + '">');
         properties.push(allProperties[i]["name"]);
     }

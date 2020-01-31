@@ -228,7 +228,7 @@ h3 {
 /* orders page styles */
 a.hero-image {
 	display:block;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("breakfast.jpg");
+	background-image: /* linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("breakfast.jpg") */linear-gradient(tan, tan);
 	width:27.5%;
 	height:450px;
 	margin:2%;

@@ -23,13 +23,45 @@ $("document").ready(function() {
     $("#stage").click(function(){
         addItems();
         display();
-    });
+        displayItemsForDelete();
+        $("input[type='checkbox']").checkboxradio();
+        $("input[type='checkbox']").click(function(){
+            // get the index from the id
+            var boxId = $(this).attr("id");
+            var boxIdParts = boxId.split("-");
+            var index = boxIdParts[1];
 
-    // function to delete item from list
-    $("input[type='button']").click(function(){
-        alert("clicked");
+            // add or remove based off checked
+            if (this.checked) {
+                addToChecked(index);
+            } else {
+                removeFromChecked(index);
+            }
+        }); 
     });
+    // function to delete item from list
+    displayItemsForDelete(); 
 });
+
+// function to delete the selected items
+function deleteSelectedProperties() {
+    // break down the current items
+}
+
+var selectedItems = [];
+
+// functions for staging the items to delete
+function addToChecked(index) {
+    selectedItems.push(itemsDelete[index]);
+}
+
+function removeFromChecked(index) {
+    for (var i = 0; i < selectedItems.length; i++) {
+        if (selectedItems[i] === itemsDelete[index]) {
+            selectedItems.splice(i, 1);
+        }
+    }
+}
 
 // function to move the items
 function addItems() {
@@ -44,20 +76,6 @@ function addItems() {
     } else {
         alert("Please enter a value into all three fields");
     }
-    
-}
-
-// function for creating multiline
-$.fn.multilineAppend = function(text) {
-    this.append(text);
-    this.html(this.html().replace(/\n/g, "<br>"));
-    return this;
-}
-
-$.fn.multilineText = function(text) {
-    this.text(text);
-    this.html(this.html().replace(/\n/g, "<br>"));
-    return this;
 }
 
 // function to create a cookie
@@ -68,14 +86,16 @@ function setCookie(name, value, days) {
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
 
+// function to display the added items
 function display() {
     if (itemNames[0] != null) {
         // enable the send button
+        $("#displaytemp").empty();
         $("#submit").removeAttr("disabled");
-        $("#displaytemp").multilineText("Items in: " + propertyName + "\n");      
+        $("#displaytemp").append("Items in: " + propertyName + "<br>");      
         // display out all of the staged items and their cost as well as a delete button
         for (var i = 0; i < itemNames.length; i++) {
-            $("#displaytemp").multilineAppend("Item: " + itemNames[i] + " || Price: $" + itemCosts[i] + '<button id="remove" type="button">Remove</button>\n');
+            $("#displaytemp").append("Item: " + itemNames[i] + " || Price: $" + itemCosts[i] + "<br>");
         }
 
         // create string to put in database
@@ -88,11 +108,27 @@ function display() {
         setCookie("items", itemString, 1);
     }
 }
+
+var itemsDelete = []
+
+// function to delete the added items
+function displayItemsForDelete() {
+    $("#items").empty();
+    $("#items").append("<legend>Select item(s) to delete:</legend>");
+    itemsDelete = [];
+    for (var i = 0; i < itemNames.length; i++) {
+        $("#items").append('<label for="checkbox-' + (i) + '">' + itemNames[i] + '</label>' + '<input type="checkbox" name="checkbox-' + (i) + '" id="checkbox-' + (i) + '">');
+        itemsDelete.push(itemNames[i]);
+    }
+}
 </script>
 </head>
 <body>
 <form id="testForm" action="submit.php" method="POST">
     <div id = "displaytemp"></div><br>
+    <fieldset id="items"></fieldset>
+    <button id="delete" type="button">Delete</button><br><br>
+
     <label for="name">Property Name:</label>
     <input type="text" id="name"></input>
     <label for="item">Item name:</label>
