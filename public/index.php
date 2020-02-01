@@ -3,9 +3,9 @@
 include("../private/shared/globalheader.php"); ?>
 <!--Homepage Image, potential gallery -->
 <main>
- 
+ <div class="indexImgContainer">
     <img class="indexImg" src="<?php echo urlfor('/private/images/index.jpg');?>">
-
+</div>
 <article class="indexArticle">
 <h1>Hidden in Woodman Plaza, Christopher's has been a Dayton gem for over 28 years.</h1>
 <h2>PHOTOS BY BROOKE MEDLIN</h3>

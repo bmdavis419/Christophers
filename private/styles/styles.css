@@ -1,8 +1,9 @@
 /*Global Styles */
 html {
-background-color:black;
+	font-family: 'Merriweather', serif;
+background-color:cornsilk;
 margin:0;
-color: white;
+color: black;
 max-width: 100%;
 overflow-x: hidden; /*Disables horizontal scrolling*/
 }
@@ -13,7 +14,8 @@ body {
 .navWrapper{
 	width:100%;
 	padding-bottom:10%;
-	background-color:#35281dff;
+	background-color:#4bae37;
+	border-bottom: 3px solid #7adfff;
 }
 .navBar a{
   float: left;
@@ -53,14 +55,23 @@ img.navImg {
   top: 0;
   width:100%;
   z-index: 1;
-  background-color:#35281dff;
+  background-color:#4bae37;
+  border-bottom: 3px solid #7adfff;
+  font-size: 30px;
+  text-align: center;
 }
 /*Potentially add a border for sticky menu here */
-}
 .sticky a{
     transition:0.5s;
-	padding-top:1%;
 	z-index: 1;
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 1.5% 8% 1% 8%;
+	width:9%;
+	text-decoration: none;
+	
 }
 .sticky #home {
     padding-left:20%;
@@ -82,9 +93,11 @@ footer {
 	margin-left:auto;
 	margin-right:auto;
 	clear:both;
-	background-color:#35281dff;
+	background-color:#4bae37;
 	height:400px;
 	padding-top:50px;
+	color:white;
+	border-top:3px solid #7adfff;
 }
 .socials {
 text-align:center;
@@ -131,7 +144,7 @@ color:white;
  color:white;
 }
 .footerContent a:hover{
-	color:blue;
+	color:#7adfff;
    }
 
 .footerContent h2{
@@ -157,16 +170,31 @@ margin:0.25%
 	margin-right:5%;
 	max-width:600px;
 	max-height:350px;
-	border-color:darkgrey;
+	border-color:#7adfff;
 	border-style:solid;
 	border-width:3px;
 }
 /*Index Styling */
+h1 {
+	font-size:1.75em;
+	line-height:1em;
+}
+h2 {
+	font-size:1.25em;
+}
 .indexArticle {
 margin:0 auto;
 float:left;
 max-width:40%;
-margin-left:20%;
+margin-left:17.5%;
+padding-left:2.5%;
+padding-right:2.5%;
+line-height:1.5em;
+padding-bottom:2%;
+padding-top:1%;
+border-left: 3px solid #7adfff;
+border-right: 3px solid #7adfff;
+background-color:rgb(255, 243, 194);
 }
 .indexAside {
 margin:0 auto;
@@ -174,14 +202,26 @@ float:right;
 max-widtH:15%;
 min-width:200px;
 margin-right:20%;
+line-height:1.5em;
+margin-top:1%;
+}
+.indexImgContainer {
+	overflow:hidden;
+	width:100%;
+	height:400px;
 }
 .indexImg {
-	height:700px;
+	height:auto;
 	width:100%;
 	background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
 }
 
 /* menu styling */
+.menuPage {
+	margin-top:2%;
+	width:90%;
+	margin-left:5%;
+}
 h3 {
 	position:relative;
 	font-size:40px;
@@ -222,7 +262,7 @@ h3 {
 	}
 	hr {
 	margin:1%;
-	border-top: 5px solid brown;
+	border-top: 5px solid #7adfff;
 	
 	}
 
