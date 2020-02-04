@@ -41,11 +41,46 @@ $("document").ready(function() {
     });
     // function to delete item from list
     displayItemsForDelete(); 
+    $("#delete").click(function() {
+        deleteSelectedProperties();
+    });
 });
 
+removeIndexes = [];
 // function to delete the selected items
 function deleteSelectedProperties() {
     // break down the current items
+    for (var i = 0; i < selectedItems.length; i++) {
+        for (var n = 0; n < itemNames.length; n++) {
+            if (selectedItems[i] == itemNames[n]) {
+                removeIndexes.push(n);
+            }
+        }
+    }
+
+    // delete the items from the cost and name list
+    for (var i = 0; i < removeIndexes.length; i++) {
+        itemNames.splice(removeIndexes[i], 1);
+        itemCosts.splice(removeIndexes[i], 1);
+        currentItemIndex -= 1;
+    }
+
+    // refresh the preview
+    display();
+    displayItemsForDelete();
+    $("input[type='checkbox']").click(function(){
+        // get the index from the id
+        var boxId = $(this).attr("id");
+        var boxIdParts = boxId.split("-");
+        var index = boxIdParts[1];
+
+        // add or remove based off checked
+        if (this.checked) {
+            addToChecked(index);
+        } else {
+            removeFromChecked(index);
+        }
+    }); 
 }
 
 var selectedItems = [];
@@ -137,10 +172,8 @@ function displayItemsForDelete() {
     <input type="text" id="cost"></input>
     <button id="stage" type="button">Stage</button><br>
 
-    <label for="minimum">Minimum Selection</label>
-    <input type="number" name="minimum" min="0" max="30" value="0"></input>
-    <label for="maximum">Maximum Selection</label>
-    <input type="number" name="maximum" min="0" max="30" value="4"></input><br>
+    <label for="selectOne">Select Only One:</label>
+    <input type="checkbox" name="selectOne" value="1"></input><br>
 
     <input type="submit" name="add" value="Send" id="submit">
 </form>
