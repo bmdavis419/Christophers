@@ -42,6 +42,7 @@ if (mysqli_num_rows($result) > 0) {
 $("document").ready(function () {
     // make the selection
     $("#type").selectmenu();
+    $("#subcatagory").selectmenu();
     displayProperties();
     $("input[type='checkbox']").checkboxradio();
 
@@ -62,9 +63,26 @@ $("document").ready(function () {
         }
     }); 
 
+    // change the subcatagory
+    $("#type").on("selectmenuchange", function() {
+        displaySubCatagory();
+    });
+
     // display the menu items
     displayMenuItems();
 });
+
+// function for setting the subcatagory
+function displaySubCatagory() {
+    // get what is currently selected
+    var currentCatSelection = $("#type").val();
+    // NEED TO GET ACTUAL VALUES ASFDSDAFSDFASDAFSDAF
+    if (currentCatSelection == "Breakfast") {
+        $("#subcatagory").empty().append("<option>Classic Breakfasts</option><option>Omlettes</option><option>Frittatas</option><option>Cereal</option><option>From The Griddle</option>");
+    } else if (currentCatSelection == "Lunch") {
+        $("#subcatagory").empty().append("<option>Sandwiches</option><option>Salads</option><option>Soups</option><option>Grilled Naan Sandwiches</option><option>From The Grill</option><option>All Day Meals</option>");
+    }
+}
 
 // function for adding a check box to the list of checked
 function addToChecked(index) {
@@ -159,14 +177,20 @@ function displayMenuItems() {
     <input type="file" name="image">
     
     <label for="type">Select the item type</label>
+    <div id="typecombo" data-role="fieldcontain">
     <select name="type" id="type">
+        <option></option>
         <option>Breakfast</option>
         <option>Lunch</option>
-        <option>Dinner</option>
+        <option>After 5</option>
         <option>Deserts</option>
+        <option>All Day</option>
         <option>Sides</option>
-        <option>Drinks</option>
     </select>
+    </div>
+
+    <label for="subcatagory">Select the subcatagory type</label>
+    <select name="subcatagory" id="subcatagory"></select>
 
     <fieldset id="properties"></fieldset>
 

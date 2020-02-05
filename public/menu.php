@@ -1,5 +1,49 @@
 <?php require_once("../private/functions/initialize.php");
 include("../private/shared/globalheader.php"); ?>
+<?php
+// pull down all of the menu items and sort them into the correct arrays
+// call database
+require("../private/functions/databaseconfig.php");
+
+$sql = "SELECT * FROM menuitems";
+$result = mysqli_query($conn, $sql);
+$allMenuItems = array();
+
+// fill data into the array
+if (mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+        $allMenuItems[] = $row;
+    }
+}
+
+// sort into each section
+
+// initialize the arrays
+$breakfast = array();
+$lunch = array();
+$deserts = array();
+$afterfive = array();
+$allday = array();
+$sides = array();
+
+// loop through all menu items and sort them into the right array
+for ($i = 0; $i < count($allMenuItems); $i++) {
+	if ($allMenuItems[$i]["catagory"] == "Breakfast") {
+		array_push($breakfast, $allMenuItems[$i]);
+	} elseif ($allMenuItems[$i]["catagory"] == "Lunch") {
+		array_push($lunch, $allMenuItems[$i]);
+	} elseif ($allMenuItems[$i]["catagory"] == "After 5") {
+		array_push($afterfive, $allMenuItems[$i]);
+	} elseif ($allMenuItems[$i]["catagory"] == "Deserts") {
+		array_push($deserts, $allMenuItems[$i]);
+	} elseif ($allMenuItems[$i]["catagory"] == "All Day") {
+		array_push($allday, $allMenuItems[$i]);
+	} elseif ($allMenuItems[$i]["catagory"] == "Sides") {
+		array_push($sides, $allMenuItems[$i]);
+	}
+}
+?>
+
 
 <script type="text/javascript">
 $("document").ready(function() {
@@ -51,6 +95,7 @@ $(".innerAccordion").accordion({
 		</div> <!--Closes outer content -->
 			<!--To add outer content copy <h3>-</div>(directly above)-->
     </div><!--Closes outer accordion -->
+
 		<hr> <!-- line between accordions -->
 	<div id="accordionCtrl" class="outerAccordion"><!--Opens Outer accordion -->
         <h3>Breakfast</h3> <!--Outer Header -->
