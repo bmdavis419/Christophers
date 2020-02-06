@@ -23,8 +23,8 @@ $breakfast = array();
 $lunch = array();
 $deserts = array();
 $afterfive = array();
-$allday = array();
-$sides = array();
+$dinner = array();
+$features = array();
 
 // loop through all menu items and sort them into the right array
 for ($i = 0; $i < count($allMenuItems); $i++) {
@@ -36,10 +36,10 @@ for ($i = 0; $i < count($allMenuItems); $i++) {
 		array_push($afterfive, $allMenuItems[$i]);
 	} elseif ($allMenuItems[$i]["catagory"] == "Deserts") {
 		array_push($deserts, $allMenuItems[$i]);
-	} elseif ($allMenuItems[$i]["catagory"] == "All Day") {
-		array_push($allday, $allMenuItems[$i]);
-	} elseif ($allMenuItems[$i]["catagory"] == "Sides") {
-		array_push($sides, $allMenuItems[$i]);
+	} elseif ($allMenuItems[$i]["catagory"] == "Dinner") {
+		array_push($dinner, $allMenuItems[$i]);
+	} elseif ($allMenuItems[$i]["catagory"] == "Features") {
+		array_push($features, $allMenuItems[$i]);
 	}
 }
 ?>
