@@ -518,7 +518,7 @@ a.hero-image {
 	  width:60%;
 	  float:right;
 	  margin-right:5%;
-	  margin-top:3%;
+	  margin-top:1%;
 	  font-size:2em;
   }
   h5.checkout {
@@ -541,14 +541,26 @@ a.hero-image {
 	  font-weight:normal;
   }
 .option {
-	  width: 200px;
-	  height:200px;
+	  width: 12.5%; /*Adjust these two values to be greater as you get smaller */
+	  padding-top:12.5%;
 	  background-color:blue;
+	  opacity:0.8;
+	  margin:2%;
+	  display:inline-block;
+	  position:relative;
+	  
   }
-  .selected {
-	width: 400px;
-	height:400px;
-	background-color:blue;
+.optionText {
+	text-align: center;
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size:2em;
+}
+.clickedOption {
+	opacity:1.5;
 }
 
-  
+/* Bag */
