@@ -10,6 +10,7 @@ overflow-x: hidden; /*Disables horizontal scrolling*/
 body {
 	margin:0;
 }
+
 /*Global Header Styles*/
 .navWrapper{
 	width:100%;
@@ -22,7 +23,7 @@ body {
   display: block;
   color: white;
   text-align: center;
-  padding: 3% 8% 1% 8%;
+  padding: 3% 8% 3% 8%;
   width:9%;
   text-decoration: none;
   font-size: 30px;
@@ -316,11 +317,26 @@ img {vertical-align: middle;}
 }
 
 /* menu styling */
-.menuPage {
-	margin-top:2%;
-	width:90%;
-	margin-left:5%;
+h4 {
+	color:green;
+	font-size:1.5em;
 }
+.menuPage{
+	margin:0 auto;
+	text-align:center;
+	max-width:90%;
+	margin-left:2.5%;
+	padding-left:2.5%;
+	padding-right:2.5%;
+	line-height:1.5em;
+	font-size:1.5em;
+	padding-bottom:50px;
+	padding-top:1%;
+	border: 3px solid #7adfff;
+	position:relative;
+	top:-37.5px;
+	background-color:rgb(255, 243, 194);
+	}
 h3 {
 	position:relative;
 	font-size:40px;
@@ -393,3 +409,146 @@ a.hero-image {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("breakfast.jpg");
 	transform:scale(1.1);
   }
+
+  /* Meals Page Styles */
+  
+.hero-image {
+	display:block;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("breakfast.jpg");
+	width:27.5%;
+	min-width:400px;
+	height:450px;
+	margin:2%;
+	margin-left:3.25%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	float:left;
+	overflow:hidden;
+  }
+  .hero-text{
+   text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size:50px;
+	width:80%;
+	}
+	a.hero-image:hover{
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("breakfast.jpg");
+	transform:scale(1.1);
+  }
+  h3 {
+  position:relative;
+  font-size:40px;
+  }
+  
+  .ui-accordion {
+  text-align:center;
+  }
+  .outerAccordion .ui-icon {
+   display: none; 
+   }
+  .outerAccordion .ui-accordion-header a {
+   padding-left: 0; 
+  }
+  .outerAccordion .ui-accordion-header  {
+  line-height: 400%;   
+	  font-size: 0%;  
+  }
+  .innerAccordion .ui-accordion-header  {
+  line-height: 200%;   
+	  font-size: 0%;  
+  }
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	  color:green;
+  }
+  h5 {
+  text-align:left;
+  margin:0;
+  margin-top:2%;
+  }
+  p.desc {
+  float:left;
+  width:80%;
+  text-align:left;
+  }
+  p.price {
+  float:right;
+  text-align:right;
+  width:20%;
+  }
+  hr {
+  margin:1%;
+  border-top: 5px solid brown;
+  }
+  .hero-desc{
+	color: white;
+	font-size:20px;
+	width:90%;
+	position:absolute;
+	top: 88%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	}
+  /*Checkout*/
+  .checkoutImgWrapper {
+	  width: 30%;
+	  height:auto;
+	  padding:20px;
+	  margin:auto;
+	  display:inline-block;
+  }
+  a.checkout {
+	display:block;
+	background-image: /* linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("breakfast.jpg") */linear-gradient(tan, tan);
+	width:100%;
+	height:450px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	float:left;
+	overflow:hidden;
+  }
+  .checkoutDesc {
+	  width:60%;
+	  float:right;
+	  margin-right:5%;
+	  margin-top:3%;
+	  font-size:2em;
+  }
+  h5.checkout {
+	  font-size:1.5em;
+  }
+  .optionHeader {
+	  height:60px;
+	  width:100%;
+	  background-color:#4bae37;
+	  border-bottom: 3px solid #7adfff;
+	  border-top: 3px solid #7adfff;
+  }
+  h6{
+	  color:white;
+	  font-size:2em;
+	  margin:auto;
+	  text-align:center;
+	  top:10px;
+	  position:relative;
+	  font-weight:normal;
+  }
+.option {
+	  width: 200px;
+	  height:200px;
+	  background-color:blue;
+  }
+  .selected {
+	width: 400px;
+	height:400px;
+	background-color:blue;
+}
+
+  

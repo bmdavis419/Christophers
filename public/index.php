@@ -7,15 +7,15 @@ include("../private/shared/globalheader.php"); ?>
 <div class="indexImgContainer">
 <!--Add another mySlides fade image to increase slides-->
 <div class="mySlides fade">
-  <img class="indexImg" src="<?php echo urlfor('/private/images/index.jpg');?>" style="width:100%">
+  <img class="indexImg" onclick="plusSlides(1)" src="<?php echo urlfor('/private/images/index.jpg');?>" style="width:100%">
 </div>
 
 <div class="mySlides fade">
-  <img class="indexImg" src="<?php echo urlfor('/private/images/index.jpg');?>" style="width:100%">
+  <img class="indexImg"  onclick="plusSlides(1)"src="<?php echo urlfor('/private/images/index.jpg');?>" style="width:100%">
 </div>
 
 <div class="mySlides fade">
-  <img class="indexImg" src="<?php echo urlfor('/private/images/index.jpg');?>" style="width:100%">
+  <img class="indexImg"  onclick="plusSlides(-2)" src="<?php echo urlfor('/private/images/index.jpg');?>" style="width:100%">
 </div>
 
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>

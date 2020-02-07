@@ -182,10 +182,9 @@ function displayMenuItems() {
         <option></option>
         <option>Breakfast</option>
         <option>Lunch</option>
+        <option>Dinner</option>
         <option>After 5</option>
         <option>Deserts</option>
-        <option>All Day</option>
-        <option>Sides</option>
     </select>
     </div>
 
