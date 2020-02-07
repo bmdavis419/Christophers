@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script src="jquery-1.11.1.js"></script>
-<link rel="stylesheet" href="style.css"/>
-<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css"/>
-<script type="text/javascript" src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
-<script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+<?php require_once("../../private/functions/initialize.php");
+// includes the initialize function as well as the global header
+include("../../private/shared/globalheader.php");
+// ini_set('display_errors', 'Off');
+session_start();
+if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
+?>
+<!-- Sections for adding everything in -->
+<!-- MENU -->
 <?php
 // pull down the properties
 // create array
 $allProperties = array();
 
 // database
-include("databaseconfig.php");
+include("../../private/functions/databaseconfig.php");
 $sql = "SELECT * FROM properties";
 $result = mysqli_query($conn, $sql);
 
@@ -27,7 +28,7 @@ if (mysqli_num_rows($result) > 0) {
 $allMenuItems = array();
 
 // database
-include("databaseconfig.php");
+include("../../private/functions/databaseconfig.php");
 $sql = "SELECT * FROM menuitems";
 $result = mysqli_query($conn, $sql);
 
@@ -161,7 +162,7 @@ function displayMenuItems() {
 </script>
 </head>
 <body>
-<form action="submitMenu.php" method="POST" enctype="multipart/form-data">
+<form action="submit.php" method="POST" enctype="multipart/form-data">
     <h1>Menu Item Creator!</h1>
     <label for="name">Menu Item Name:</label>
     <input type="text" name="name" id="name"></input>
@@ -182,9 +183,10 @@ function displayMenuItems() {
         <option></option>
         <option>Breakfast</option>
         <option>Lunch</option>
-        <option>Dinner</option>
         <option>After 5</option>
         <option>Deserts</option>
+        <option>All Day</option>
+        <option>Sides</option>
     </select>
     </div>
 
@@ -198,5 +200,12 @@ function displayMenuItems() {
 
 <!-- Section to display all of the added menu items -->
 <div id="MenuDisplay"></div>
-</body>
-</html>
+<?php
+} else {
+	echo 'Access denied';
+}
+if (time() > $_SESSION['timeout'] + 1800){ // implement session regeneration functionality 
+	session_regenerate_id(true);
+}
+include("../../private/shared/globalfooter.php"); 
+?>

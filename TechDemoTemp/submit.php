@@ -18,6 +18,7 @@ if (isset($_COOKIE["property"])) {
     // get vars for the data
     $propertyname = "'" . $_COOKIE["property"] . "'";
     $propertyitems = "'" . $_COOKIE["items"] . "'";
+    $propertyimage = $image;
     if (isset($_POST["selectOne"])) {
         $selectOne = 1;
     }
