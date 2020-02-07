@@ -1,7 +1,7 @@
 <?php 
 //Database Settings
 $DB_HOST = "localhost";
-$DB_NAME = "testdatabase";
+$DB_NAME = "christophersdb";
 $DB_USER = "root";
 $DB_PASSWORD = "";
 
