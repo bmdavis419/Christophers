@@ -1,7 +1,7 @@
 <?php
 // MENU
 // read everything from the previous page and add it to the database
-if (isset($_COOKIE["SelectedProperties"])) {
+if (isset($_POST["add"])) {
     // upload the image
     // set vars with the file name and properties
     $file = $_FILES['image'];

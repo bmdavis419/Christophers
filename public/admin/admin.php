@@ -115,7 +115,7 @@ function setCookie(name, value, days) {
     var d = new Date();
     d.setTime(d.getTime() + (days*24*60*60*1000));
     var expires = "expires=" + d.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    document.cookie = name + "=" + value + ";" + expires + ";SameSite=None Secure; path=/";
 }
 
 var allProperties = <?php echo json_encode($allProperties) ?>;
@@ -144,7 +144,7 @@ function displayMenuItems() {
     for (var i = 0; i < allMenuItems.length; i++) {
         // echo the name
         $("#MenuDisplay").append("<h3>" + allMenuItems[i]["name"] + "</h3>");
-        $("#MenuDisplay").append("<img src='images/" + allMenuItems[i]["image"] + "' style='max-height: 200px; max-width: 350px;'></img><ul>");
+        $("#MenuDisplay").append("<img src='../../private/images/menu/" + allMenuItems[i]["image"] + "' style='max-height: 200px; max-width: 350px;'></img><ul>");
         $("#MenuDisplay").append("<li>Price: $" + allMenuItems[i]["cost"] + "</li>");
         $("#MenuDisplay").append("<li>Description: " + allMenuItems[i]["description"] + "</li>");
         $("#MenuDisplay").append("<li>Catagory: " + allMenuItems[i]["catagory"] + "</li>");
@@ -162,20 +162,20 @@ function displayMenuItems() {
 </script>
 </head>
 <body>
-<form action="submit.php" method="POST" enctype="multipart/form-data">
+<form action="submitmenu.php" method="POST" enctype="multipart/form-data">
     <h1>Menu Item Creator!</h1>
     <label for="name">Menu Item Name:</label>
-    <input type="text" name="name" id="name"></input>
+    <input type="text" name="name" id="name"></input><br>
 
-    <label for="description">Menu Item Description:</label>
-    <textarea rows="5" cols="60" name="description" id="description">Enter desc. here...</textarea>
+    <label for="description">Menu Item Description:</label><br>
+    <textarea rows="5" cols="60" name="description" id="description">Enter desc. here...</textarea><br>
 
     <label for="cost">Menu Item Price:</label>
-    <input type="number" value="0.00" min="0.00" max="2500" step="0.01" name="cost"></input>
+    <input type="number" value="0.00" min="0.00" max="2500" step="0.01" name="cost"></input><br>
 
     <!-- input an image -->
     <label for="image">Add Image:</image>
-    <input type="file" name="image">
+    <input type="file" name="image"><br>
     
     <label for="type">Select the item type</label>
     <div id="typecombo" data-role="fieldcontain">
@@ -190,7 +190,7 @@ function displayMenuItems() {
     </select>
     </div>
 
-    <label for="subcatagory">Select the subcatagory type</label>
+    <label for="subcatagory">Select the subcatagory type</label><br>
     <select name="subcatagory" id="subcatagory"></select>
 
     <fieldset id="properties"></fieldset>
