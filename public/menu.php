@@ -61,10 +61,16 @@ $(".innerAccordion").accordion({
 	collapsible:true,
 	active:false,
 });
+$("#weeklyFeatures").accordion({
+	clearStyle:true,
+	heightStyle:"panel",
+	collapsible:false,
+	active:false,
+});
 });
 </script>
 <div class="menuPage">
-	<div id="weeklyFeatures" class="outerAccordion"><!--Opens Outer accordion -->
+	<div id="weeklyFeatures" class="outerAccordion" id="weeklyFeatures"><!--Opens Outer accordion -->
         <h3>Weekly Features - 2/3-2/10</h3> <!--The weekly features header needs to be concatenated with the date-->
         <div><!--Identifies the content associated with outer header -->
 						<h4>Breakfast</h4>
@@ -82,7 +88,7 @@ $(".innerAccordion").accordion({
 								<p class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
 								<p id="price">$PRICE</p>
 							<br>
-						<h4>Cabage Roll Monday</h4>
+						<h4>Cabbage Roll Monday</h4>
 							<h5>Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
 								<p class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
 								<p id="price">$PRICE</p>
