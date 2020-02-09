@@ -49,7 +49,10 @@ img.navImg {
 	width:100%;
 	height: 100%;
 	}
-
+/*Mobile menu hidden */
+	.mobileMenu {
+		display:none;
+	}
 /*Creates sticky navBar in conjunction with javascript*/
 .sticky {
   position: fixed;
@@ -144,10 +147,19 @@ color:white;
  text-decoration:none;
  color:white;
 }
-.footerContent a:hover{
-	color:#7adfff;
-   }
 
+.fa-facebook:hover {
+	color:#3B5998;
+	background-color:white;
+	}
+.fa-twitter:hover {
+	color:#55ACEE;
+	background-color:white;
+	}
+.fa-instagram:hover {
+	color: linear-gradient(135deg,#515BD4,#8134AF,#DD2A7B,#FFCA77,#F58529);
+	background-color:white;
+	}
 .footerContent h2{
 	margin:1%;
 	}
@@ -323,6 +335,7 @@ h4 {
 }
 .menuPage{
 	margin:0 auto;
+	margin-top:4%;
 	text-align:center;
 	max-width:90%;
 	margin-left:2.5%;
@@ -563,4 +576,58 @@ a.hero-image {
 	opacity:1.5;
 }
 
-/* Bag */
+/*Bag */
+
+
+/*IPad styles */
+@media (max-width:1025px) {
+
+	.indexAside {
+		font-size:1.5em;
+	}
+	.indexArticle {
+		margin-left:0%;
+		max-width:62.5%;
+	}
+}
+/*Phone Styles*/ 
+@media (max-width:1000px) {
+	.navBar {
+		display:none;
+	}
+	.navLogo {
+		float:right;
+		width:50%;
+		margin:2% 40% 2% 40%;
+		top:-10px;
+	}
+	.mobileMenuImgWrapper {
+		width:10%;
+		margin-left:10%;
+		height:auto;
+		display:block;
+	}
+	.mobileMenuImg {
+		float:left;
+		width:100%;
+	}
+	.mobileMenuImg:active .mobileNavMenu, .mobileMenuImgWrapper:active .mobileNavMenu
+	{
+		display:block;
+	}
+	.mobileNavMenu {
+		display:none;
+		width:70%;
+		padding-top:70%;
+		background-color:black;
+		z-index:1;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+	.navWrapper {
+	width:100%;
+	padding-bottom:20%;
+	background-color:#4bae37;
+	border-bottom: 3px solid #7adfff;
+	}
