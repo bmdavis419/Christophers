@@ -22,7 +22,7 @@ if (mysqli_num_rows($result) > 0) {
 $breakfast = array();
 $lunch = array();
 $deserts = array();
-$afterfive = array();
+$drinks = array();
 $dinner = array();
 $features = array();
 
@@ -32,12 +32,12 @@ for ($i = 0; $i < count($allMenuItems); $i++) {
 		array_push($breakfast, $allMenuItems[$i]);
 	} elseif ($allMenuItems[$i]["catagory"] == "Lunch") {
 		array_push($lunch, $allMenuItems[$i]);
-	} elseif ($allMenuItems[$i]["catagory"] == "After 5") {
-		array_push($afterfive, $allMenuItems[$i]);
-	} elseif ($allMenuItems[$i]["catagory"] == "Deserts") {
-		array_push($deserts, $allMenuItems[$i]);
 	} elseif ($allMenuItems[$i]["catagory"] == "Dinner") {
 		array_push($dinner, $allMenuItems[$i]);
+	} elseif ($allMenuItems[$i]["catagory"] == "Desert") {
+		array_push($deserts, $allMenuItems[$i]);
+	} elseif ($allMenuItems[$i]["catagory"] == "Drinks") {
+		array_push($drinks, $allMenuItems[$i]);
 	} elseif ($allMenuItems[$i]["catagory"] == "Features") {
 		array_push($features, $allMenuItems[$i]);
 	}
@@ -46,6 +46,13 @@ for ($i = 0; $i < count($allMenuItems); $i++) {
 
 
 <script type="text/javascript">
+// fill arrays from php data
+var breakfast = <?php echo json_encode($breakfast); ?>;
+var lunch = <?php echo json_encode($lunch); ?>;
+var dinner = <?php echo json_encode($dinner); ?>;
+var drinks = <?php echo json_encode($drinks); ?>;
+var desert = <?php echo json_encode($deserts); ?>;
+var features = <?php echo json_encode($features); ?>;
 $("document").ready(function() {
 $(".outerAccordion").accordion({
 	clearStyle:true,

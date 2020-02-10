@@ -48,9 +48,10 @@ if (isset($_POST["add"])) {
     $cost = "'" . $_POST["cost"] . "'";
     $properties = "'" . $_COOKIE["SelectedProperties"] . "'";
     $catagory = "'" . $_POST["type"] . "'";
+    $subcatagory = "'" . $_POST["subcatagory"] . "'";
 
     // create query and run
-    $sql = "INSERT INTO menuitems (name, description, catagory, properties, cost, image) VALUES ($name, $description, $catagory, $properties, $cost, $image);";
+    $sql = "INSERT INTO menuitems (name, description, catagory, properties, cost, image, subcatagory) VALUES ($name, $description, $catagory, $properties, $cost, $image, $subcatagory);";
     mysqli_query($conn, $sql);
 
     // send back to previous page
