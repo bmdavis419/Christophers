@@ -54,27 +54,38 @@ var drinks = <?php echo json_encode($drinks); ?>;
 var desert = <?php echo json_encode($deserts); ?>;
 var features = <?php echo json_encode($features); ?>;
 $("document").ready(function() {
-$(".outerAccordion").accordion({
-	clearStyle:true,
-	heightStyle:"panel",
-	collapsible:true,
-	active:false,
-	
+	$(".outerAccordion").accordion({
+		clearStyle:true,
+		heightStyle:"panel",
+		collapsible:true,
+		active:false,	
+	});
+	$(".innerAccordion").accordion({
+		clearStyle:true,
+		heightStyle:"panel",
+		collapsible:true,
+		active:false,
+	});
+	$("#weeklyFeatures").accordion({
+		clearStyle:true,
+		heightStyle:"panel",
+		collapsible:false,
+		active:false,
+	});
 });
 
-$(".innerAccordion").accordion({
-	clearStyle:true,
-	heightStyle:"panel",
-	collapsible:true,
-	active:false,
-});
-$("#weeklyFeatures").accordion({
-	clearStyle:true,
-	heightStyle:"panel",
-	collapsible:false,
-	active:false,
-});
-});
+// function to fill in the weekly features
+function displayFeatures() {
+	$("#weeklyFeatures1").append("<h3>Weekly Features</h3><div><h4>Breakfast</h4>");
+	// loop out breakfast dishes
+	for (var i = 0; i < breakfast.length; i++) {
+		if (breakfast[i]["subcatagory"] == "Omlettes") {
+			$("#weeklyFeatures").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p id='price'>$" + breakfast[i]["cost"] + "</p><br>")
+		}
+	}
+	$("#weeklyFeatures1").append("</div>");
+
+}
 </script>
 <div class="menuPage">
 	<div id="weeklyFeatures" class="outerAccordion" id="weeklyFeatures"><!--Opens Outer accordion -->
@@ -154,6 +165,5 @@ $("#weeklyFeatures").accordion({
     </div><!--Closes outer accordion -->
 		<hr> <!-- line between accordions -->
 		<!--To add a copy of an outer accordion copy <div id="accordionCtrl">-<hr> -->
-
         </div>
 <?php include("../private/shared/globalfooter.php"); ?>
