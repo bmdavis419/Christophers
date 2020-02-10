@@ -15,6 +15,9 @@ body {
 .mobileMenuImgWrapper {
 	display:none;
 }
+.mobileNavMenu a {
+display:none;
+}
 .navWrapper{
 	width:100%;
 	padding-bottom:10%;
@@ -579,7 +582,9 @@ a.hero-image {
 }
 
 /*Bag */
-
+#price {
+	float:right;
+}
 
 /*IPad styles */
 @media (max-width:1025px) {
@@ -644,22 +649,41 @@ a.hero-image {
 		padding:0;
 	}
 
-	#home {
+	#homeM {
 		top:75px;
 		margin-left:20%;
 	}
-	#menu {
+	#menuM {
 		padding:0;
 		top:225px;
 		margin-left:20%;
 	}
-	#order {
+	#orderM {
 		padding:0;
 		top:375px;
 		margin-left:20%;
 	}
-	#bag {
+	#bagM {
 		padding:0;
 		top:525px;
 		margin-left:20%;
+	}
+
+	p.desc {
+		width:70%;
+	}
+	a.hero-image {
+		margin-left:5%;
+	}
+	p.optionText {
+		font-size:1.5em;
+	}
+	.checkoutImgWrapper {
+		width:45%;
+	}
+	.checkoutDesc {
+		width:40%;
+	}
+	p#checkout {
+		width:100%;
 	}

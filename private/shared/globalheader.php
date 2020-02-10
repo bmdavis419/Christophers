@@ -34,10 +34,10 @@
 		</div>
 			<div class="mobileNavMenu">
 				<nav class="mobilenavBar">
-				<a id="home" href="HomePagePlaceholder">Home</a> <!--Waiting for dynamic php statements -->
-					<a id="menu" href=MenuPagePlaceholder>Menu</a> <!--Waiting for dynamic php statements -->
-					<a id="order"href=OrdersPagePlaceholder>Order</a> <!--Waiting for dynamic php statements -->
-					<a id="bag"href=BagPagePlaceholder>Bag</a> <!--Waiting for dynamic php statements -->
+				<a id="homeM" href="HomePagePlaceholder">Home</a> <!--Waiting for dynamic php statements -->
+					<a id="menuM" href=MenuPagePlaceholder>Menu</a> <!--Waiting for dynamic php statements -->
+					<a id="orderM"href=OrdersPagePlaceholder>Order</a> <!--Waiting for dynamic php statements -->
+					<a id="bagM"href=BagPagePlaceholder>Bag</a> <!--Waiting for dynamic php statements -->
 			</nav>
 					</div>
 	
