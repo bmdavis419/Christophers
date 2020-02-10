@@ -8,7 +8,7 @@
     </div>
     <div class="checkoutDesc">
                 <h5 class="checkout">Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
-								<p class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
+								<p id="checkout"class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
                                 <p id="price">$PRICE</p>
 </div>
 <hr>
