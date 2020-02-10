@@ -76,13 +76,21 @@ $("document").ready(function () {
 // function for setting the subcatagory
 function displaySubCatagory() {
     // get what is currently selected
+
     var currentCatSelection = $("#type").val();
-    // NEED TO GET ACTUAL VALUES ASFDSDAFSDFASDAFSDAF
+    $("#subcatagory").prop("disabled", false);
     if (currentCatSelection == "Breakfast") {
         $("#subcatagory").empty().append("<option>Classic Breakfasts</option><option>Omlettes</option><option>Frittatas</option><option>Cereal</option><option>From The Griddle</option>");
     } else if (currentCatSelection == "Lunch") {
         $("#subcatagory").empty().append("<option>Sandwiches</option><option>Salads</option><option>Soups</option><option>Grilled Naan Sandwiches</option><option>From The Grill</option><option>All Day Meals</option>");
+    } else if (currentCatSelection == "Dinner") {
+        $("#subcatagory").empty().append("<option>After 5 Menu</option><option>Seafood</option><option>Appetizers</option><option>Salads</option><option>All Days Meals</option><option>Sandwiches</option>");
+    } else if (currentCatSelection == "Drinks") {
+        $("#subcatagory").empty().append("<option>Craft Beer</option><option>Wine</option>");
+    } else if (currentCatSelection == "Features") {
+        $("#subcatagory").empty().append("<option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Cabbage Roll Monday</option><option>Vegan Wednesday</option><option>Feature Four Thrusday</option><option>Fresh Catch</option><option>Other</option>");
     }
+    
 }
 
 // function for adding a check box to the list of checked
@@ -183,15 +191,17 @@ function displayMenuItems() {
         <option></option>
         <option>Breakfast</option>
         <option>Lunch</option>
-        <option>After 5</option>
-        <option>Deserts</option>
-        <option>All Day</option>
-        <option>Sides</option>
+        <option>Dinner</option>
+        <option>Dessert</option>
+        <option>Drinks</option>
+        <option>Features</option>
     </select>
     </div>
 
     <label for="subcatagory">Select the subcatagory type</label><br>
-    <select name="subcatagory" id="subcatagory"></select>
+    <select name="subcatagory" id="subcatagory">
+        <option></option>
+    </select>
 
     <fieldset id="properties"></fieldset>
 
