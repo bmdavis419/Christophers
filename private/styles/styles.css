@@ -12,6 +12,9 @@ body {
 }
 
 /*Global Header Styles*/
+.mobileMenuImgWrapper {
+	display:none;
+}
 .navWrapper{
 	width:100%;
 	padding-bottom:10%;
@@ -28,7 +31,6 @@ body {
   text-decoration: none;
   font-size: 30px;
   transition:0.25s;
-
 }
 #menu {
 padding-right:12%;
@@ -604,22 +606,20 @@ a.hero-image {
 	.mobileMenuImgWrapper {
 		width:10%;
 		margin-left:10%;
-		height:auto;
 		display:block;
 	}
 	.mobileMenuImg {
 		float:left;
 		width:100%;
 	}
-	.mobileMenuImg:active .mobileNavMenu, .mobileMenuImgWrapper:active .mobileNavMenu
-	{
-		display:block;
+	.navWrapper:active + .mobileNavMenu, .navWrapper:hover + .mobileNavMenu, .mobileNavMenu:active + .mobileNavMenu,.mobileNavMenu:hover + .mobileNavMenu {
+		display: block;
 	}
 	.mobileNavMenu {
 		display:none;
-		width:70%;
+		width:50%;
 		padding-top:70%;
-		background-color:black;
+		background-color:green;
 		z-index:1;
 		position:absolute;
 		top:0;
@@ -630,4 +630,36 @@ a.hero-image {
 	padding-bottom:20%;
 	background-color:#4bae37;
 	border-bottom: 3px solid #7adfff;
+	}
+	.mobileNavMenu a {
+		position:absolute;
+		float: left;
+		display: block;
+		color: white;
+		text-align: center;
+		width:9%;
+		text-decoration: none;
+		font-size: 80px;
+		transition:0.25s;
+		padding:0;
+	}
+
+	#home {
+		top:75px;
+		margin-left:20%;
+	}
+	#menu {
+		padding:0;
+		top:225px;
+		margin-left:20%;
+	}
+	#order {
+		padding:0;
+		top:375px;
+		margin-left:20%;
+	}
+	#bag {
+		padding:0;
+		top:525px;
+		margin-left:20%;
 	}

@@ -33,7 +33,13 @@
 			</div>
 		</div>
 			<div class="mobileNavMenu">
-			</div>
+				<nav class="mobilenavBar">
+				<a id="home" href="HomePagePlaceholder">Home</a> <!--Waiting for dynamic php statements -->
+					<a id="menu" href=MenuPagePlaceholder>Menu</a> <!--Waiting for dynamic php statements -->
+					<a id="order"href=OrdersPagePlaceholder>Order</a> <!--Waiting for dynamic php statements -->
+					<a id="bag"href=BagPagePlaceholder>Bag</a> <!--Waiting for dynamic php statements -->
+			</nav>
+					</div>
 	
 		<script>
 			//If the page scrolls down the navbar transitions to sticky version
