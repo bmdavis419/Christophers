@@ -1,7 +1,7 @@
 <?php
 // MENU
 // read everything from the previous page and add it to the database
-if (isset($_COOKIE["SelectedProperties"])) {
+if (isset($_POST["add"])) {
     // upload the image
     // set vars with the file name and properties
     $file = $_FILES['image'];
@@ -30,13 +30,13 @@ if (isset($_COOKIE["SelectedProperties"])) {
                 $image = "'" . $fileNameNew . "'";
                 move_uploaded_file($fileTmpName, $fileDestination);
             } else {
-                header("Location: admin.php?fileistoobig");
+                header("Location: menuadd.php?fileistoobig");
             }
         } else {
-            header("Location: admin.php?imageerror");
+            header("Location: menuadd.php?imageerror");
         }
     } else {
-        header("Location: admin.php?Unsupportedimagetype");
+        header("Location: menuadd.php?Unsupportedimagetype");
     }
 
     // call database config
@@ -54,8 +54,8 @@ if (isset($_COOKIE["SelectedProperties"])) {
     mysqli_query($conn, $sql);
 
     // send back to previous page
-    header("Location: admin.php?additionsuccess");
+    header("Location: menuadd.php?additionsuccess");
 } else {
-    header("Location: admin.php?additionfailure");
+    header("Location: menuadd.php?additionfailure");
 }
 ?>
