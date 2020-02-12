@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script src="jquery-1.11.1.js"></script>
-<link rel="stylesheet" href="style.css"/>
-<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css"/>
-<script type="text/javascript" src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
-<script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+<?php require_once("../../private/functions/initialize.php");
+// includes the initialize function as well as the global header
+include("../../private/shared/globalheader.php");
+// ini_set('display_errors', 'Off');
+session_start();
+if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
+?>
 <script>
 // add the items to the lists of temp values
 var propertyName;
@@ -157,9 +156,68 @@ function displayItemsForDelete() {
     }
 }
 </script>
+
+<?php
+// pull from database to fill arrays to pass to javascript
+// create array
+$allProperties = array();
+
+// database
+include("../../private/functions/databaseconfig.php");
+$sql = "SELECT * FROM properties";
+$result = mysqli_query($conn, $sql);
+
+// fill data into the array
+if (mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+        $allProperties[] = $row;
+    }
+}
+?>
+<script>
+// function for creating multiline
+$.fn.multilineAppend = function(text) {
+    this.append(text);
+    this.html(this.html().replace(/\n/g, "<br>"));
+    return this;
+}
+$.fn.multilineText = function(text) {
+    this.text(text);
+    this.html(this.html().replace(/\n/g, "<br>"));
+    return this;
+}
+
+var allProperties = <?php echo json_encode($allProperties) ?>;
+
+// vars for display and data
+$("document").ready(function () {
+    displayItems();
+});
+
+// function to display data
+function displayItems() {
+    // echo the display
+    $("#DisplayProp").multilineText("All Properties in database:\n");
+    for (var i = 0; i < allProperties.length; i++) {
+        // break up the string (looks like this: "item|cost,item|cost")
+        var tempName = allProperties[i]["name"];
+        var tempItems = allProperties[i]["descriptions"].split(",");
+        $("#DisplayProp").multilineAppend("<h1>" + tempName + "</h1><ul>");
+
+        // echo out each item
+        for (var n = 0; n < tempItems.length - 1; n++) {
+            $("#DisplayProp").multilineAppend("<li>" + tempItems[n] + "</li>");
+        }
+
+        // close ul and newline
+        $("#DisplayProp").multilineAppend("</ul>");
+    }
+}
+
+</script>
 </head>
 <body>
-<form id="testForm" action="submit.php" method="POST">
+<form id="testForm" action="submitproperty.php" method="POST">
     <div id = "displaytemp"></div><br>
     <fieldset id="items"></fieldset>
     <button id="delete" type="button">Delete</button><br><br>
@@ -177,5 +235,15 @@ function displayItemsForDelete() {
 
     <input type="submit" name="add" value="Send" id="submit">
 </form>
-</body>
-</html>
+
+<div id="DisplayProp"></div>
+
+<?php
+} else {
+	echo 'Access denied';
+}
+if (time() > $_SESSION['timeout'] + 1800){ // implement session regeneration functionality 
+	session_regenerate_id(true);
+}
+include("../../private/shared/globalfooter.php"); 
+?>

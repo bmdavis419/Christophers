@@ -24,11 +24,22 @@
 					<a id="order"href=OrdersPagePlaceholder>Order</a> <!--Waiting for dynamic php statements -->
 					<a id="bag"href=BagPagePlaceholder>Bag</a> <!--Waiting for dynamic php statements -->
 			</nav>
+			<div class="mobileMenuImgWrapper">
+				<img class="mobileMenuImg" src="<?php echo urlfor('/private/images/menuLogoTrans.png');?>">
+				</img>
+			</div>
 			<div class="navLogo"><!--Includes Christopher's Icon logo -->
 				<img class="navImg" src="<?php echo urlfor('/private/images/chrisLogo.png');?>">
- <!--Waiting for dynamic php statements -->
 			</div>
 		</div>
+			<div class="mobileNavMenu">
+				<nav class="mobilenavBar">
+				<a id="homeM" href="HomePagePlaceholder">Home</a> <!--Waiting for dynamic php statements -->
+					<a id="menuM" href=MenuPagePlaceholder>Menu</a> <!--Waiting for dynamic php statements -->
+					<a id="orderM"href=OrdersPagePlaceholder>Order</a> <!--Waiting for dynamic php statements -->
+					<a id="bagM"href=BagPagePlaceholder>Bag</a> <!--Waiting for dynamic php statements -->
+			</nav>
+					</div>
 	
 		<script>
 			//If the page scrolls down the navbar transitions to sticky version

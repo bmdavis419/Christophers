@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script src="jquery-1.11.1.js"></script>
-<link rel="stylesheet" href="style.css"/>
-<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css"/>
-<script type="text/javascript" src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
-<script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+<?php require_once("../../private/functions/initialize.php");
+// includes the initialize function as well as the global header
+include("../../private/shared/globalheader.php");
+// ini_set('display_errors', 'Off');
+session_start();
+if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
+?>
+<!-- Sections for adding everything in -->
+<!-- MENU -->
 <?php
 // pull down the properties
 // create array
 $allProperties = array();
 
 // database
-include("databaseconfig.php");
+include("../../private/functions/databaseconfig.php");
 $sql = "SELECT * FROM properties";
 $result = mysqli_query($conn, $sql);
 
@@ -27,7 +28,7 @@ if (mysqli_num_rows($result) > 0) {
 $allMenuItems = array();
 
 // database
-include("databaseconfig.php");
+include("../../private/functions/databaseconfig.php");
 $sql = "SELECT * FROM menuitems";
 $result = mysqli_query($conn, $sql);
 
@@ -75,13 +76,21 @@ $("document").ready(function () {
 // function for setting the subcatagory
 function displaySubCatagory() {
     // get what is currently selected
+
     var currentCatSelection = $("#type").val();
-    // NEED TO GET ACTUAL VALUES ASFDSDAFSDFASDAFSDAF
+    $("#subcatagory").prop("disabled", false);
     if (currentCatSelection == "Breakfast") {
         $("#subcatagory").empty().append("<option>Classic Breakfasts</option><option>Omlettes</option><option>Frittatas</option><option>Cereal</option><option>From The Griddle</option>");
     } else if (currentCatSelection == "Lunch") {
         $("#subcatagory").empty().append("<option>Sandwiches</option><option>Salads</option><option>Soups</option><option>Grilled Naan Sandwiches</option><option>From The Grill</option><option>All Day Meals</option>");
+    } else if (currentCatSelection == "Dinner") {
+        $("#subcatagory").empty().append("<option>After 5 Menu</option><option>Seafood</option><option>Appetizers</option><option>Salads</option><option>All Days Meals</option><option>Sandwiches</option>");
+    } else if (currentCatSelection == "Drinks") {
+        $("#subcatagory").empty().append("<option>Craft Beer</option><option>Wine</option>");
+    } else if (currentCatSelection == "Features") {
+        $("#subcatagory").empty().append("<option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Cabbage Roll Monday</option><option>Vegan Wednesday</option><option>Feature Four Thrusday</option><option>Fresh Catch</option><option>Other</option>");
     }
+    
 }
 
 // function for adding a check box to the list of checked
@@ -114,7 +123,7 @@ function setCookie(name, value, days) {
     var d = new Date();
     d.setTime(d.getTime() + (days*24*60*60*1000));
     var expires = "expires=" + d.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    document.cookie = name + "=" + value + ";" + expires + ";SameSite=None Secure; path=/";
 }
 
 var allProperties = <?php echo json_encode($allProperties) ?>;
@@ -143,7 +152,7 @@ function displayMenuItems() {
     for (var i = 0; i < allMenuItems.length; i++) {
         // echo the name
         $("#MenuDisplay").append("<h3>" + allMenuItems[i]["name"] + "</h3>");
-        $("#MenuDisplay").append("<img src='images/" + allMenuItems[i]["image"] + "' style='max-height: 200px; max-width: 350px;'></img><ul>");
+        $("#MenuDisplay").append("<img src='../../private/images/menu/" + allMenuItems[i]["image"] + "' style='max-height: 200px; max-width: 350px;'></img><ul>");
         $("#MenuDisplay").append("<li>Price: $" + allMenuItems[i]["cost"] + "</li>");
         $("#MenuDisplay").append("<li>Description: " + allMenuItems[i]["description"] + "</li>");
         $("#MenuDisplay").append("<li>Catagory: " + allMenuItems[i]["catagory"] + "</li>");
@@ -161,20 +170,20 @@ function displayMenuItems() {
 </script>
 </head>
 <body>
-<form action="submitMenu.php" method="POST" enctype="multipart/form-data">
+<form action="submitmenu.php" method="POST" enctype="multipart/form-data">
     <h1>Menu Item Creator!</h1>
     <label for="name">Menu Item Name:</label>
-    <input type="text" name="name" id="name"></input>
+    <input type="text" name="name" id="name"></input><br>
 
-    <label for="description">Menu Item Description:</label>
-    <textarea rows="5" cols="60" name="description" id="description">Enter desc. here...</textarea>
+    <label for="description">Menu Item Description:</label><br>
+    <textarea rows="5" cols="60" name="description" id="description">Enter desc. here...</textarea><br>
 
     <label for="cost">Menu Item Price:</label>
-    <input type="number" value="0.00" min="0.00" max="2500" step="0.01" name="cost"></input>
+    <input type="number" value="0.00" min="0.00" max="2500" step="0.01" name="cost"></input><br>
 
     <!-- input an image -->
     <label for="image">Add Image:</image>
-    <input type="file" name="image">
+    <input type="file" name="image"><br>
     
     <label for="type">Select the item type</label>
     <div id="typecombo" data-role="fieldcontain">
@@ -183,13 +192,16 @@ function displayMenuItems() {
         <option>Breakfast</option>
         <option>Lunch</option>
         <option>Dinner</option>
-        <option>After 5</option>
-        <option>Deserts</option>
+        <option>Dessert</option>
+        <option>Drinks</option>
+        <option>Features</option>
     </select>
     </div>
 
-    <label for="subcatagory">Select the subcatagory type</label>
-    <select name="subcatagory" id="subcatagory"></select>
+    <label for="subcatagory">Select the subcatagory type</label><br>
+    <select name="subcatagory" id="subcatagory">
+        <option></option>
+    </select>
 
     <fieldset id="properties"></fieldset>
 
@@ -198,5 +210,12 @@ function displayMenuItems() {
 
 <!-- Section to display all of the added menu items -->
 <div id="MenuDisplay"></div>
-</body>
-</html>
+<?php
+} else {
+	echo 'Access denied';
+}
+if (time() > $_SESSION['timeout'] + 1800){ // implement session regeneration functionality 
+	session_regenerate_id(true);
+}
+include("../../private/shared/globalfooter.php"); 
+?>
