@@ -1,8 +1,9 @@
-<?php require_once("../../private/functions/initialize.php");
+<?php 
+session_start();
+require_once("../../private/functions/initialize.php");
 // includes the initialize function as well as the global header
 include("../../private/shared/globalheader.php");
 // ini_set('display_errors', 'Off');
-session_start();
 if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
 ?>
 <!-- LINKS TO MENU AND PROPERTY ADDITIONS -->

@@ -1,10 +1,10 @@
-<?php require_once("../private/functions/initialize.php");
+<?php 
+require_once("../private/functions/initialize.php");
 include("../private/shared/globalheader.php"); ?>
 <?php
 // pull down all of the menu items and sort them into the correct arrays
 // call database
 require("../private/functions/databaseconfig.php");
-
 $sql = "SELECT * FROM menuitems";
 $result = mysqli_query($conn, $sql);
 $allMenuItems = array();
@@ -72,65 +72,31 @@ $("document").ready(function() {
 		collapsible:false,
 		active:false,
 	});
+	displayFeatures();
 });
 
 // function to fill in the weekly features
 function displayFeatures() {
-	$("#weeklyFeatures1").append("<h3>Weekly Features</h3><div><h4>Breakfast</h4>");
 	// loop out breakfast dishes
-	for (var i = 0; i < breakfast.length; i++) {
-		if (breakfast[i]["subcatagory"] == "Omlettes") {
-			$("#weeklyFeatures").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p id='price'>$" + breakfast[i]["cost"] + "</p><br>")
+	for (var i = 0; i < features.length; i++) {
+		if (features[i]["subcatagory"] == "Breakfast") {
+			$("#featuresbreakfast").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>")
 		}
 	}
-	$("#weeklyFeatures1").append("</div>");
-
 }
 </script>
 <div class="menuPage">
-	<div id="weeklyFeatures" class="outerAccordion" id="weeklyFeatures"><!--Opens Outer accordion -->
-        <h3>Weekly Features - 2/3-2/10</h3> <!--The weekly features header needs to be concatenated with the date-->
-        <div><!--Identifies the content associated with outer header -->
-						<h4>Breakfast</h4>
-							<h5>Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
-								<p class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
-								<p id="price">$PRICE</p>
-							<br> <!--Above h5-br are all dynamic content within inner content -->
-						<h4>Lunch</h4>
-							<h5>Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
-								<p class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
-								<p id="price">$PRICE</p>
-							<br>
-						<h4>Dinner</h4>
-							<h5>Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
-								<p class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
-								<p id="price">$PRICE</p>
-							<br>
-						<h4>Cabbage Roll Monday</h4>
-							<h5>Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
-								<p class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
-								<p id="price">$PRICE</p>
-							<br>
-						<h4>Vegan Wednesday</h4>
-							<h5>Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
-								<p class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
-								<p id="price">$PRICE</p>
-							<br>
-						<h4>Feature Four Thursday</h4>
-							<h5>Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
-								<p class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
-								<p id="price">$PRICE</p>
-							<br>
-						<h4>Fresh Catch</h4>
-							<h5>Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
-								<p class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
-								<p id="price">$PRICE</p>
-							<br>
-				</div><!--Closes inner accordion -->
-		</div> <!--Closes outer content -->
-			<!--To add outer content copy <h3>-</div>(directly above)-->
-    <!--Closes outer accordion -->
+	<div id="weeklyFeatures1" class="outerAccordion">
+		<h3>Weekly Features</h3>
+		<div>
+			<h4>Breakfast</h4><div id="featuresbreakfast"></div>
+			<br>
+		</div>
+	</div>
 
+	
+			<!--To add outer content copy <h3>-</div>(directly above)-->
+    <!--Closes outer accordion --> 
 		<hr> <!-- line between accordions -->
 	<div id="accordionCtrl" class="outerAccordion"><!--Opens Outer accordion -->
         <h3>Breakfast</h3> <!--Outer Header -->
