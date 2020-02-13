@@ -151,16 +151,16 @@ function displayMenuItems() {
     $("#MenuDisplay").append("<h1>Menu items currently added:</h1>");
     for (var i = 0; i < allMenuItems.length; i++) {
         // echo the name
-        $("#MenuDisplay").append("<h3>" + allMenuItems[i]["name"] + "</h3>");
-        $("#MenuDisplay").append("<img src='../../private/images/menu/" + allMenuItems[i]["image"] + "' style='max-height: 200px; max-width: 350px;'></img><ul>");
-        $("#MenuDisplay").append("<li>Price: $" + allMenuItems[i]["cost"] + "</li>");
-        $("#MenuDisplay").append("<li>Description: " + allMenuItems[i]["description"] + "</li>");
-        $("#MenuDisplay").append("<li>Catagory: " + allMenuItems[i]["catagory"] + "</li>");
+        $("#MenuDisplay").append("<div class='addedMenuItem' id='addedMenuItem"+i+"'><h3>" + allMenuItems[i]["name"] + "</h3>");
+        $("#MenuDisplay div#addedMenuItem"+i).append("<img src='../../private/images/menu/" + allMenuItems[i]["image"] + "' style='max-height: 450px; max-width: 450px;'></img><ul class=" + i + ">");
+        $("#MenuDisplay ul."+i).append("<li>Price: $" + allMenuItems[i]["cost"] + "</li>");
+        $("#MenuDisplay ul."+i).append("<li>Description: " + allMenuItems[i]["description"] + "</li>");
+        $("#MenuDisplay ul."+i).append("<li>Catagory: " + allMenuItems[i]["catagory"] + "</li>");
 
         // properties
         var propertyString = allMenuItems[i]["properties"];
         var allMenuItemProperties = propertyString.split(",");
-        $("#MenuDisplay").append("<li>Attached Properties:");
+        $("#MenuDisplay ul."+i).append("<li>Attached Properties:");
         for (var n = 0; n < allMenuItemProperties.length - 1; n++) {
             $("#MenuDisplay").append("<li>" + allMenuItemProperties[n] + "</li>");
         }
@@ -173,20 +173,22 @@ function displayMenuItems() {
 <form action="submitmenu.php" method="POST" enctype="multipart/form-data">
     <h1 class="addHeader">Menu Item Creator</h1>
     <div class="editable">
+    <div class="inputs">
     <label for="name">Menu Item Name:</label>
     <input type="text" name="name" id="name"></input><br>
 
     <label for="description">Menu Item Description:</label><br>
-    <textarea rows="5" cols="60" name="description" id="description">Enter desc. here...</textarea><br>
+    <textarea rows="5" cols="60" name="description" id="description" spellcheck="true" placeholder="Enter desc here..."></textarea><br>
 
     <label for="cost">Menu Item Price:</label>
     <input type="number" value="0.00" min="0.00" max="2500" step="0.01" name="cost"></input><br>
-
+    </div>
     <!-- input an image -->
+    <div class="imageSelector">
     <label for="image">Add Image:</image>
     <input type="file" name="image"><br>
-    
-    <label for="type">Select the item type</label>
+    </div>
+    <label class="type" for="type">Select the item type:</label>
     <div id="typecombo" data-role="fieldcontain">
     <select name="type" id="type">
         <option></option>
@@ -199,14 +201,14 @@ function displayMenuItems() {
     </select>
     </div>
 
-    <label for="subcatagory">Select the subcatagory type</label><br>
+    <label class="type"for="subcatagory">Select the subcatagory type:</label><br>
     <select name="subcatagory" id="subcatagory">
         <option></option>
     </select>
 
     <fieldset id="properties"></fieldset>
 
-    <input type="submit" name="add" value="Send" id="submit">
+    <button type="submit" name="add" value="Send" id="submit">Send</button>
 </div>
 </form>
 

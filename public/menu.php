@@ -80,7 +80,7 @@ function displayFeatures() {
 	// loop out breakfast dishes
 	for (var i = 0; i < features.length; i++) {
 		if (features[i]["subcatagory"] == "Breakfast") {
-			$("#featuresbreakfast").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>")
+			$("#featuresbreakfast").append("<h8>" + features[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + features[i]["description"] + "</p>")
 		}
 	}
 }
@@ -105,6 +105,7 @@ function displayFeatures() {
 					<h5>Inner Accordion Header</h5>   <!--Outer Header -->
 					<div> <!--Identifies the content associated with inner header -->
 						<h5>Name of Dish</h5>
+						<p id="price">$PRICE</p>
 							<p class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
 							<p id="price">$PRICE</p>
 							<br> <!--Above h5-br are all dynamic content within inner content -->
