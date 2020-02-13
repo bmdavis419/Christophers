@@ -19,10 +19,10 @@
 		<!--Nav bar is at the top of every page -->
 		<div class="navWrapper"> <!--Includes entire nav system-->
 			<nav class="navBar" id="navBar"> <!--Just Includes the navbar which will float with the page-->
-					<a id="home" href="HomePagePlaceholder">Home</a> <!--Waiting for dynamic php statements -->
-					<a id="menu" href=MenuPagePlaceholder>Menu</a> <!--Waiting for dynamic php statements -->
-					<a id="order"href=OrdersPagePlaceholder>Order</a> <!--Waiting for dynamic php statements -->
-					<a id="bag"href=BagPagePlaceholder>Bag</a> <!--Waiting for dynamic php statements -->
+					<a id="home" href="<?php echo urlfor("public/index.php"); ?>">Home</a> <!--Waiting for dynamic php statements -->
+					<a id="menu" href="<?php echo urlfor("public/menu.php"); ?>">Menu</a> <!--Waiting for dynamic php statements -->
+					<a id="order"href="<?php echo urlfor("public/order.php"); ?>">Order</a> <!--Waiting for dynamic php statements -->
+					<a id="bag"href="<?php echo urlfor("public/bag.php"); ?>">Bag</a> <!--Waiting for dynamic php statements -->
 			</nav>
 			<div class="mobileMenuImgWrapper">
 				<img class="mobileMenuImg" src="<?php echo urlfor('/private/images/menuLogoTrans.png');?>">
@@ -34,10 +34,10 @@
 		</div>
 			<div class="mobileNavMenu">
 				<nav class="mobilenavBar">
-				<a id="homeM" href="HomePagePlaceholder">Home</a> <!--Waiting for dynamic php statements -->
-					<a id="menuM" href=MenuPagePlaceholder>Menu</a> <!--Waiting for dynamic php statements -->
-					<a id="orderM"href=OrdersPagePlaceholder>Order</a> <!--Waiting for dynamic php statements -->
-					<a id="bagM"href=BagPagePlaceholder>Bag</a> <!--Waiting for dynamic php statements -->
+				<a id="homeM" href="<?php echo urlfor("public/index.php"); ?>">Home</a> <!--Waiting for dynamic php statements -->
+					<a id="menuM" href="<?php echo urlfor("public/menu.php"); ?>">Menu</a> <!--Waiting for dynamic php statements -->
+					<a id="orderM"href="<?php echo urlfor("public/order.php"); ?>">Order</a> <!--Waiting for dynamic php statements -->
+					<a id="bagM"href="<?php echo urlfor("public/bag.php"); ?>">Bag</a> <!--Waiting for dynamic php statements -->
 			</nav>
 					</div>
 	
