@@ -171,7 +171,8 @@ function displayMenuItems() {
 </head>
 <body>
 <form action="submitmenu.php" method="POST" enctype="multipart/form-data">
-    <h1>Menu Item Creator!</h1>
+    <h1 class="addHeader">Menu Item Creator</h1>
+    <div class="editable">
     <label for="name">Menu Item Name:</label>
     <input type="text" name="name" id="name"></input><br>
 
@@ -206,6 +207,7 @@ function displayMenuItems() {
     <fieldset id="properties"></fieldset>
 
     <input type="submit" name="add" value="Send" id="submit">
+</div>
 </form>
 
 <!-- Section to display all of the added menu items -->

@@ -7,8 +7,10 @@ include("../../private/shared/globalheader.php");
 if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
 ?>
 <!-- LINKS TO MENU AND PROPERTY ADDITIONS -->
-<a href="<?php echo urlfor('public/admin/menuadd.php'); ?>">Menu</a>
-<a href="<?php echo urlfor('public/admin/propertyadd.php'); ?>">Properties</a>
+<div class="adminDirectoryContainer">
+<a class="adminDirectory" href="<?php echo urlfor('public/admin/menuadd.php'); ?>">Menu  </a>
+<a class="adminDirectory" href="<?php echo urlfor('public/admin/propertyadd.php'); ?>">Properties</a>
+</div>
 <?php
 } else {
 	echo 'Access denied';

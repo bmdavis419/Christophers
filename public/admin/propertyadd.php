@@ -16,6 +16,7 @@ var currentItemIndex = 0;
 
 // function to add items to arrays and display them in the stage
 $("document").ready(function() {
+    
     // by default set the send button to disabled
     $("#submit").attr("disabled", "disabled");
 
@@ -197,20 +198,18 @@ $("document").ready(function () {
 // function to display data
 function displayItems() {
     // echo the display
-    $("#DisplayProp").multilineText("All Properties in database:\n");
+    $("#DisplayProp").append("<h7 class='addedProperties'>All Properties in database:</h7><br><br><br>");
     for (var i = 0; i < allProperties.length; i++) {
         // break up the string (looks like this: "item|cost,item|cost")
         var tempName = allProperties[i]["name"];
         var tempItems = allProperties[i]["descriptions"].split(",");
-        $("#DisplayProp").multilineAppend("<h1>" + tempName + "</h1><ul>");
-
+        $("#DisplayProp").append("<label for="+i+" class='addedProperty'><h1 class='addedPropertyHeader'>" + tempName + "</h1><input class='deleteProperty' type='radio' id="+i+" name="+i+" value='1'></input><br><ul class=" + i + "></ul>");
         // echo out each item
         for (var n = 0; n < tempItems.length - 1; n++) {
-            $("#DisplayProp").multilineAppend("<li>" + tempItems[n] + "</li>");
+            $("#DisplayProp ul."+i).append("<div class='propertyItem'>" + tempItems[n] + "</div>");
         }
-
+     
         // close ul and newline
-        $("#DisplayProp").multilineAppend("</ul>");
     }
 }
 
@@ -218,26 +217,32 @@ function displayItems() {
 </head>
 <body>
 <form id="testForm" action="submitproperty.php" method="POST">
-    <div id = "displaytemp"></div><br>
+    <h1 class="addHeader">Property Item Creator</h1>
+    <div class="editable">
+    <div id = "displaytemp"></div>
     <fieldset id="items"></fieldset>
-    <button id="delete" type="button">Delete</button><br><br>
+    <button class="deleteButton" id="delete" type="button">Delete</button>
+    <button class="stageButton"id="stage" type="button">Stage</button>
+    <button class="sendButton" type="submit" name="add" value="Send" id="submit">Send</button>
 
+    <div class="inputs">
     <label for="name">Property Name:</label>
     <input type="text" id="name"></input>
+    
     <label for="item">Item name:</label>
     <input type="text" id="item"></input>
+    
     <label for="cost">Cost:</label>
     <input type="text" id="cost"></input>
-    <button id="stage" type="button">Stage</button><br>
-
+    <br>
     <label for="selectOne">Select Only One:</label>
-    <input type="checkbox" name="selectOne" value="1"></input><br>
-
-    <input type="submit" name="add" value="Send" id="submit">
+    <input type="checkbox" id="selectOne" name="selectOne" value="1"></input><br>
+</div>
+</div>
 </form>
 
 <div id="DisplayProp"></div>
-
+<button class="DeleteButton" type="Delete" name="add" value="Send" id="submit">Delete</button>
 <?php
 } else {
 	echo 'Access denied';
