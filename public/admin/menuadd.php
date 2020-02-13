@@ -43,7 +43,7 @@ if (mysqli_num_rows($result) > 0) {
 $("document").ready(function () {
     // make the selection
     $("#type").selectmenu();
-    $("#subcatagory").selectmenu();
+    $("#subcategory").selectmenu();
     displayProperties();
     $("input[type='checkbox']").checkboxradio();
 
@@ -64,31 +64,31 @@ $("document").ready(function () {
         }
     }); 
 
-    // change the subcatagory
+    // change the subcategory
     $("#type").on("selectmenuchange", function() {
-        displaySubCatagory();
+        displaySubCategory();
     });
 
     // display the menu items
     displayMenuItems();
 });
 
-// function for setting the subcatagory
-function displaySubCatagory() {
+// function for setting the subcategory
+function displaySubCategory() {
     // get what is currently selected
 
     var currentCatSelection = $("#type").val();
-    $("#subcatagory").prop("disabled", false);
+    $("#subcategory").prop("disabled", false);
     if (currentCatSelection == "Breakfast") {
-        $("#subcatagory").empty().append("<option>Classic Breakfasts</option><option>Omlettes</option><option>Frittatas</option><option>Cereal</option><option>From The Griddle</option>");
+        $("#subcategory").empty().append("<option>Classic Breakfasts</option><option>Omlettes</option><option>Frittatas</option><option>Cereal</option><option>From The Griddle</option>");
     } else if (currentCatSelection == "Lunch") {
-        $("#subcatagory").empty().append("<option>Sandwiches</option><option>Salads</option><option>Soups</option><option>Grilled Naan Sandwiches</option><option>From The Grill</option><option>All Day Meals</option>");
+        $("#subcategory").empty().append("<option>Sandwiches</option><option>Salads</option><option>Soups</option><option>Grilled Naan Sandwiches</option><option>From The Grill</option><option>All Day Meals</option>");
     } else if (currentCatSelection == "Dinner") {
-        $("#subcatagory").empty().append("<option>After 5 Menu</option><option>Seafood</option><option>Appetizers</option><option>Salads</option><option>All Day Meals</option><option>Sandwiches</option>");
+        $("#subcategory").empty().append("<option>After 5 Menu</option><option>Seafood</option><option>Appetizers</option><option>Salads</option><option>All Day Meals</option><option>Sandwiches</option>");
     } else if (currentCatSelection == "Drinks") {
-        $("#subcatagory").empty().append("<option>Craft Beer</option><option>Wine</option>");
+        $("#subcategory").empty().append("<option>Craft Beer</option><option>Wine</option>");
     } else if (currentCatSelection == "Features") {
-        $("#subcatagory").empty().append("<option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Cabbage Roll Monday</option><option>Vegan Wednesday</option><option>Feature Four Thrusday</option><option>Fresh Catch</option><option>Other</option>");
+        $("#subcategory").empty().append("<option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Cabbage Roll Monday</option><option>Vegan Wednesday</option><option>Feature Four Thrusday</option><option>Fresh Catch</option><option>Other</option>");
     }
     
 }
@@ -155,7 +155,7 @@ function displayMenuItems() {
         $("#MenuDisplay").append("<img src='../../private/images/menu/" + allMenuItems[i]["image"] + "' style='max-height: 200px; max-width: 350px;'></img><ul>");
         $("#MenuDisplay").append("<li>Price: $" + allMenuItems[i]["cost"] + "</li>");
         $("#MenuDisplay").append("<li>Description: " + allMenuItems[i]["description"] + "</li>");
-        $("#MenuDisplay").append("<li>Catagory: " + allMenuItems[i]["catagory"] + "</li>");
+        $("#MenuDisplay").append("<li>Category: " + allMenuItems[i]["category"] + "</li>");
 
         // properties
         var propertyString = allMenuItems[i]["properties"];
@@ -199,8 +199,8 @@ function displayMenuItems() {
     </select>
     </div>
 
-    <label for="subcatagory">Select the subcatagory type</label><br>
-    <select name="subcatagory" id="subcatagory">
+    <label for="subcategory">Select the subcategory type</label><br>
+    <select name="subcategory" id="subcategory">
         <option></option>
     </select>
 

@@ -17,7 +17,7 @@ $lunch = array();
 
 // sort into the array
 for ($i = 0; $i < count($allMenuItems); $i++) {
-	if ($allMenuItems[$i]["catagory"] == "Lunch") {
+	if ($allMenuItems[$i]["category"] == "Lunch") {
 		array_push($lunch, $allMenuItems[$i]);
 	}
 }
@@ -47,22 +47,22 @@ display();
 function display() {
     // display the classic lunchs
     for (var i = 0; i < lunch.length; i++) {
-        if (lunch[i]["subcatagory"] == "Sandwiches") {
+        if (lunch[i]["subcategory"] == "Sandwiches") {
             var imagelink = "../../private/images/menu/" + lunch[i]["image"];
             $("#sandwichapp").append("<a href='../checkout.php?name=" + lunch[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + lunch[i]["name"] + "</p></div><div class='hero-desc'><p>" + lunch[i]["description"] +  "</p></div></a>");
-        } else if (lunch[i]["subcatagory"] == "Salads") {
+        } else if (lunch[i]["subcategory"] == "Salads") {
             var imagelink = "../../private/images/menu/" + lunch[i]["image"];
             $("#saladsapp").append("<a href='../checkout.php?name=" + lunch[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + lunch[i]["name"] + "</p></div><div class='hero-desc'><p>" + lunch[i]["description"] +  "</p></div></a>");
-        } else if (lunch[i]["subcatagory"] == "Soups") {
+        } else if (lunch[i]["subcategory"] == "Soups") {
             var imagelink = "../../private/images/menu/" + lunch[i]["image"];
             $("#soupsapp").append("<a href='../checkout.php?name=" + lunch[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + lunch[i]["name"] + "</p></div><div class='hero-desc'><p>" + lunch[i]["description"] +  "</p></div></a>");
-        } else if (lunch[i]["subcatagory"] == "Grilled Naan Sandwiches") {
+        } else if (lunch[i]["subcategory"] == "Grilled Naan Sandwiches") {
             var imagelink = "../../private/images/menu/" + lunch[i]["image"];
             $("#naanapp").append("<a href='../checkout.php?name=" + lunch[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + lunch[i]["name"] + "</p></div><div class='hero-desc'><p>" + lunch[i]["description"] +  "</p></div></a>");
-        } else if (lunch[i]["subcatagory"] == "From The Grill") {
+        } else if (lunch[i]["subcategory"] == "From The Grill") {
             var imagelink = "../../private/images/menu/" + lunch[i]["image"];
             $("#grillapp").append("<a href='../checkout.php?name=" + lunch[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + lunch[i]["name"] + "</p></div><div class='hero-desc'><p>" + lunch[i]["description"] +  "</p></div></a>");
-        } else if (lunch[i]["subcatagory"] == "All Day Meals") {
+        } else if (lunch[i]["subcategory"] == "All Day Meals") {
             var imagelink = "../../private/images/menu/" + lunch[i]["image"];
             $("#alldayapp").append("<a href='../checkout.php?name=" + lunch[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + lunch[i]["name"] + "</p></div><div class='hero-desc'><p>" + lunch[i]["description"] +  "</p></div></a>");
         }

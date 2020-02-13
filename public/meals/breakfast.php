@@ -18,7 +18,7 @@ $breakfast = array();
 
 // sort into the array
 for ($i = 0; $i < count($allMenuItems); $i++) {
-	if ($allMenuItems[$i]["catagory"] == "Breakfast") {
+	if ($allMenuItems[$i]["category"] == "Breakfast") {
 		array_push($breakfast, $allMenuItems[$i]);
 	}
 }
@@ -50,19 +50,19 @@ display();
 function display() {
     // display the classic breakfasts
     for (var i = 0; i < breakfast.length; i++) {
-        if (breakfast[i]["subcatagory"] == "Classic Breakfasts") {
+        if (breakfast[i]["subcategory"] == "Classic Breakfasts") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
             $("#classicbreakfastsapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
-        } else if (breakfast[i]["subcatagory"] == "Omlettes") {
+        } else if (breakfast[i]["subcategory"] == "Omlettes") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
-            $("#omlettesapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
-        } else if (breakfast[i]["subcatagory"] == "Frittatas") {
+            $("#omelettesapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
+        } else if (breakfast[i]["subcategory"] == "Frittatas") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
             $("#frittatasapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
-        } else if (breakfast[i]["subcatagory"] == "Cereal") {
+        } else if (breakfast[i]["subcategory"] == "Cereal") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
             $("#cerealapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
-        } else if (breakfast[i]["subcatagory"] == "From The Griddle") {
+        } else if (breakfast[i]["subcategory"] == "From The Griddle") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
             $("#griddleapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
         }
@@ -76,7 +76,7 @@ function display() {
     </div>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Omlettes</h3>
-        <div id="omlettesapp"></div>
+        <div id="omelettesapp"></div>
     </div>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Frittatas</h3>

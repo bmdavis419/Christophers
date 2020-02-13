@@ -17,7 +17,7 @@ $dinner = array();
 
 // sort into the array
 for ($i = 0; $i < count($allMenuItems); $i++) {
-	if ($allMenuItems[$i]["catagory"] == "Dinner") {
+	if ($allMenuItems[$i]["category"] == "Dinner") {
 		array_push($dinner, $allMenuItems[$i]);
 	}
 }
@@ -47,22 +47,22 @@ display();
 function display() {
     // display the classic dinners
     for (var i = 0; i < dinner.length; i++) {
-        if (dinner[i]["subcatagory"] == "After 5 Menu") {
+        if (dinner[i]["subcategory"] == "After 5 Menu") {
             var imagelink = "../../private/images/menu/" + dinner[i]["image"];
             $("#after5app").append("<a href='../checkout.php?name=" + dinner[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + dinner[i]["name"] + "</p></div><div class='hero-desc'><p>" + dinner[i]["description"] +  "</p></div></a>");
-        } else if (dinner[i]["subcatagory"] == "Seafood") {
+        } else if (dinner[i]["subcategory"] == "Seafood") {
             var imagelink = "../../private/images/menu/" + dinner[i]["image"];
             $("#seafoodapp").append("<a href='../checkout.php?name=" + dinner[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + dinner[i]["name"] + "</p></div><div class='hero-desc'><p>" + dinner[i]["description"] +  "</p></div></a>");
-        } else if (dinner[i]["subcatagory"] == "Appetizers") {
+        } else if (dinner[i]["subcategory"] == "Appetizers") {
             var imagelink = "../../private/images/menu/" + dinner[i]["image"];
             $("#app").append("<a href='../checkout.php?name=" + dinner[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + dinner[i]["name"] + "</p></div><div class='hero-desc'><p>" + dinner[i]["description"] +  "</p></div></a>");
-        } else if (dinner[i]["subcatagory"] == "Salads") {
+        } else if (dinner[i]["subcategory"] == "Salads") {
             var imagelink = "../../private/images/menu/" + dinner[i]["image"];
             $("#saladsapp").append("<a href='../checkout.php?name=" + dinner[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + dinner[i]["name"] + "</p></div><div class='hero-desc'><p>" + dinner[i]["description"] +  "</p></div></a>");
-        } else if (dinner[i]["subcatagory"] == "All Day Meals") {
+        } else if (dinner[i]["subcategory"] == "All Day Meals") {
             var imagelink = "../../private/images/menu/" + dinner[i]["image"];
             $("#alldayapp").append("<a href='../checkout.php?name=" + dinner[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + dinner[i]["name"] + "</p></div><div class='hero-desc'><p>" + dinner[i]["description"] +  "</p></div></a>");
-        } else if (dinner[i]["subcatagory"] == "Sandwiches") {
+        } else if (dinner[i]["subcategory"] == "Sandwiches") {
             var imagelink = "../../private/images/menu/" + dinner[i]["image"];
             $("#sandwichesapp").append("<a href='../checkout.php?name=" + dinner[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + dinner[i]["name"] + "</p></div><div class='hero-desc'><p>" + dinner[i]["description"] +  "</p></div></a>");
         }

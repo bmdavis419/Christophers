@@ -13,11 +13,11 @@
 </div>
 <hr>
 <div class="optionHeader">
-<h6>Dynamically Entered Option Possiblity</h6>
+<h6>Dynamically Entered Option Possibility</h6>
 </div>
 <div class="optionList">
-    <div class="option" onclick="classList.add('clickedOption')"><p class="optionText">Possiblity 1</p></div>
-    <div class="option" onclick="classList.add('clickedOption')"><p class="optionText">Possiblity 2</p></div>
+    <div class="option" onclick="classList.add('clickedOption')"><p class="optionText">Possibility 1</p></div>
+    <div class="option" onclick="classList.add('clickedOption')"><p class="optionText">Possibility 2</p></div>
 </div>
 </main>
 

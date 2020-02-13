@@ -18,7 +18,7 @@ $dessert = array();
 
 // sort into the array
 for ($i = 0; $i < count($allMenuItems); $i++) {
-	if ($allMenuItems[$i]["catagory"] == "Dessert") {
+	if ($allMenuItems[$i]["category"] == "Dessert") {
 		array_push($dessert, $allMenuItems[$i]);
 	}
 }
@@ -50,7 +50,7 @@ display();
 function display() {
     // display the classic desserts
     for (var i = 0; i < dessert.length; i++) {
-        if (dessert[i]["catagory"] == "Dessert") {
+        if (dessert[i]["category"] == "Dessert") {
             var imagelink = "../../private/images/menu/" + dessert[i]["image"];
             $("#dessertsapp").append("<a href='../checkout.php?name=" + dessert[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + dessert[i]["name"] + "</p></div><div class='hero-desc'><p>" + dessert[i]["description"] +  "</p></div></a>");
         }

@@ -33,18 +33,18 @@ USE `christophersdb`;
 CREATE TABLE `menuitems` (
   `name` varchar(255) DEFAULT NULL,
   `properties` varchar(1000) DEFAULT NULL,
-  `catagory` varchar(20) DEFAULT NULL,
+  `category` varchar(20) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `cost` varchar(20) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `subcatagory` varchar(255) DEFAULT NULL
+  `subcategory` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `menuitems`
 --
 
-INSERT INTO `menuitems` (`name`, `properties`, `catagory`, `description`, `cost`, `image`, `subcatagory`) VALUES
+INSERT INTO `menuitems` (`name`, `properties`, `category`, `description`, `cost`, `image`, `subcategory`) VALUES
 ('Salmon', 'Turkey,TestItemTwo,', 'Dinner', 'Taste good', '12.99', '5e41aeb4197a80.89470857.jpg', 'Seafood'),
 ('Breakfast', 'TestItem,Turkey,', 'Breakfast', '3432lkjefl;sjdaf3iojsadfjkl;asdf', '5.99', '5e42fa0e5f54f4.77635013.jpg', 'Omlettes'),
 ('Feature', 'Turkey,', 'Features', 'DESC.', '1.99', '5e42fa66dccd38.37954665.jpg', 'Breakfast'),
@@ -649,7 +649,7 @@ USE `testdatabase`;
 CREATE TABLE `menuitems` (
   `name` varchar(255) DEFAULT NULL,
   `properties` varchar(255) DEFAULT NULL,
-  `catagory` varchar(255) DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `cost` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL
@@ -659,11 +659,11 @@ CREATE TABLE `menuitems` (
 -- Dumping data for table `menuitems`
 --
 
-INSERT INTO `menuitems` (`name`, `properties`, `catagory`, `description`, `cost`, `image`) VALUES
+INSERT INTO `menuitems` (`name`, `properties`, `category`, `description`, `cost`, `image`) VALUES
 ('Test Breakfast', 'TestItem,Item To Add,', 'Breakfast', 'Tastes good', '10.00', '5e3b0e7f403da8.04469804.jpeg'),
 ('Test Lunch', 'TestItem,Item To Add,', 'Lunch', 'Enter desc. here...', '5.00', '5e3b0ea3ed3f55.45476690.jpg'),
 ('Test After 5', 'TestItem,Item To Add,', 'After 5', 'Enter desc. here...', '7.00', '5e3b0eb736f663.60332551.jpg'),
-('Test Desert', 'TestItem,Item To Add,', 'Deserts', 'Enter desc. here...', '4.00', '5e3b0ee178d951.20921759.jpeg'),
+('Test Desert', 'TestItem,Item To Add,', 'Desserts', 'Enter desc. here...', '4.00', '5e3b0ee178d951.20921759.jpeg'),
 ('Test All Day', 'TestItem,Item To Add,', 'All Day', 'Enter desc. here...', '11.00', '5e3b0f00a5ff05.78038372.jpeg'),
 ('Test Side', 'Item To Add,TestItem,', 'Sides', 'Enter desc. here...', '8.00', '5e3b0f13782290.98054467.jpeg');
 

@@ -17,7 +17,7 @@ $features = array();
 
 // sort into the array
 for ($i = 0; $i < count($allMenuItems); $i++) {
-	if ($allMenuItems[$i]["catagory"] == "Features") {
+	if ($allMenuItems[$i]["category"] == "Features") {
 		array_push($features, $allMenuItems[$i]);
 	}
 }
@@ -47,28 +47,28 @@ display();
 function display() {
     // display the classic featuress
     for (var i = 0; i < features.length; i++) {
-        if (features[i]["subcatagory"] == "Breakfast") {
+        if (features[i]["subcategory"] == "Breakfast") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
             $("#breakfastapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
-        } else if (features[i]["subcatagory"] == "Lunch") {
+        } else if (features[i]["subcategory"] == "Lunch") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
             $("#lunchapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
-        } else if (features[i]["subcatagory"] == "Dinner") {
+        } else if (features[i]["subcategory"] == "Dinner") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
             $("#dinnerapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
-        } else if (features[i]["subcatagory"] == "Cabbage Roll Monday") {
+        } else if (features[i]["subcategory"] == "Cabbage Roll Monday") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
             $("#cabbageapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
-        } else if (features[i]["subcatagory"] == "Vegan Wednesday") {
+        } else if (features[i]["subcategory"] == "Vegan Wednesday") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
             $("#veganapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
-        } else if (features[i]["subcatagory"] == "Feature Four Thursday") {
+        } else if (features[i]["subcategory"] == "Feature Four Thursday") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
             $("#fourapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
-        } else if (features[i]["subcatagory"] == "Fresh Catch") {
+        } else if (features[i]["subcategory"] == "Fresh Catch") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
             $("#freshapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
-        } else if (features[i]["subcatagory"] == "Other") {
+        } else if (features[i]["subcategory"] == "Other") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
             $("#otherapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
         }
