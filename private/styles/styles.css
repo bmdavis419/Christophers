@@ -585,7 +585,111 @@ a.hero-image {
 #price {
 	float:right;
 }
+/*Admin Styles*/
+.adminIndex {
+	background-color:cornsilk;
+}
+.adminLogin {
+	margin-top:5%;
+	font-size:3em;
+	color:brown;
+	text-align:center;
 
+}
+.reviewBox {
+	text-align:center;
+	margin-bottom:5%;
+}
+input {
+	font-size:20px;
+	width:15%;
+	height:30px;
+	padding-top:6px;
+}
+.adminButton {
+	position:relative;
+	width:7%;
+	height:50px;
+	padding:0px;
+	font-size:30px;
+}
+.adminDirectoryContainer {
+	width:90%;
+	float:left;
+	position:relative;
+	margin:6%;
+	text-align:center;
+}
+.adminDirectory {
+	background-color:green;
+	color:white;
+	text-align:center;
+	padding:20px;
+	margin:50px;
+	font-size:50px;
+	border-radius:20%;
+}
+.addHeader {
+	text-align:center;
+	color:brown;
+	font-size:3em;
+}
+.editable {
+	background-color:rgb(255, 243, 194);
+	width:90%;
+	margin-left:3%;
+	padding:2%;
+	text-align:center;
+
+}
+.deleteButton, .stageButton, .sendButton{
+	float:left;
+	width:100px;
+	padding:5px 10px;
+	font-size:20px;
+	display:inline-block;
+	margin-top:2%;
+}
+.inputs {
+	margin:2%;
+	font-size:30px;
+	
+}
+#DisplayProp {
+	background-color:rgb(255, 243, 194);
+	width:90%;
+	padding:2%;
+	float:left;
+	margin-left:3%;
+	display:inline;
+}
+
+h7 {
+	font-size:2.5em;
+	color:brown;
+	float:left;
+	display:block;
+	width:100%;
+}
+.addedPropertyHeader {
+	float:left;
+	margin:0;
+	width:20%;
+}
+.addedProperty {
+	
+}
+.deleteProperty {
+	float:left;
+	vertical-align:middle;
+}
+.propertyItem {
+	
+}
+.DeleteButton {
+	height:40px;
+	font-size:30px;
+}
 /*IPad styles */
 @media (max-width:1025px) {
 

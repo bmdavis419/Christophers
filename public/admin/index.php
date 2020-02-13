@@ -20,8 +20,9 @@ include("../../private/shared/globalheader.php"); ?>
 	<head>
 		<title>Christophers Administration</title>
 	</head>
-	<body>
-      	<h1>Welcome to the Christopher login portal</h1> 
+	<body class="adminIndex">
+
+      	<h1 class="adminLogin" >Welcome to the Christopher login portal</h1> 
         <?php
             $msg = '';
             if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
@@ -46,9 +47,9 @@ include("../../private/shared/globalheader.php"); ?>
       ?>
       <div class="container">
        <form class="reviewBox" role="form" action="" method="post">
-            	<input type="text" class="form-control" name="username" placeholder="username" required>
-            	<input type="password" class="form-control" name="password" placeholder="password" required>
-            	<input type="submit" name="login" value="Login">
+            	<input class="adminUsername" type="text" class="form-control" name="username" placeholder="Username" required>
+            	<input class="adminPassword" type="password" class="form-control" name="password" placeholder="Password" required>
+            	<input class="adminButton" type="submit" name="login" value="Login">
        		</form>
       	</div>
    </body>
