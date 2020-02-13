@@ -84,7 +84,7 @@ function displaySubCatagory() {
     } else if (currentCatSelection == "Lunch") {
         $("#subcatagory").empty().append("<option>Sandwiches</option><option>Salads</option><option>Soups</option><option>Grilled Naan Sandwiches</option><option>From The Grill</option><option>All Day Meals</option>");
     } else if (currentCatSelection == "Dinner") {
-        $("#subcatagory").empty().append("<option>After 5 Menu</option><option>Seafood</option><option>Appetizers</option><option>Salads</option><option>All Days Meals</option><option>Sandwiches</option>");
+        $("#subcatagory").empty().append("<option>After 5 Menu</option><option>Seafood</option><option>Appetizers</option><option>Salads</option><option>All Day Meals</option><option>Sandwiches</option>");
     } else if (currentCatSelection == "Drinks") {
         $("#subcatagory").empty().append("<option>Craft Beer</option><option>Wine</option>");
     } else if (currentCatSelection == "Features") {
