@@ -352,7 +352,7 @@ h4 {
 	padding-top:1%;
 	border: 3px solid #7adfff;
 	position:relative;
-	top:-37.5px;
+	top:-5px;
 	background-color:rgb(255, 243, 194);
 	}
 h3 {
@@ -377,7 +377,11 @@ h3 {
 	line-height: 200%;   
 		font-size: 0%;  
 	}
-	
+	h8{
+		width:60%;
+		text-align:left;
+		float:left;
+	}
 	h5 {
 	text-align:left;
 	margin:0;
@@ -385,7 +389,7 @@ h3 {
 	}
 	p.desc {
 	float:left;
-	width:80%;
+	width:100%;
 	text-align:left;
 	}
 	p.price {
@@ -491,7 +495,7 @@ a.hero-image {
   }
   p.desc {
   float:left;
-  width:80%;
+  width:100%;
   text-align:left;
   }
   p.price {
@@ -867,7 +871,9 @@ textarea {
 	}
 	a.hero-image {
 		/*margin-left:5%; This is bad on order page */
+		margin-bottom:2%;
 		margin-left:0%;
+		min-width:100%;
 	}
 	p.optionText {
 		font-size:1.5em;
@@ -898,4 +904,16 @@ textarea {
 	.ui-accordion .ui-accordion-content {
 		padding:0;
 	}
+}
+/*Old small phones*/
+@media (max-width:376px) {
+a.hero-image {
+	height:350px;
+}
+}
+/*Super small phones ie iphone 5 */
+@media (max-width:321px) {
+a.hero-image {
+	height:300px;
+}
 }

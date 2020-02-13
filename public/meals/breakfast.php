@@ -70,25 +70,27 @@ function display() {
 }
 </script>
 <div class="MealPage">
+    <div class="menuPage">
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Classic Breakfasts</h3>
         <div id="classicbreakfastsapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Omlettes</h3>
         <div id="omelettesapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Frittatas</h3>
         <div id="frittatasapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Cereal</h3>
         <div id="cerealapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>From The Griddle</h3>
         <div id="griddleapp"></div>
     </div>
+</div>
 </div>
 <?php include("../../private/shared/globalfooter.php"); ?>

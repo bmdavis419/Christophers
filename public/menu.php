@@ -84,7 +84,7 @@ function displayFeatures() {
 	// loop out breakfast dishes
 	for (var i = 0; i < features.length; i++) {
 		if (features[i]["subcategory"] == "Breakfast") {
-			$("#featuresbreakfast").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>");
+			$("#featuresbreakfast").append("<h8>" + features[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + features[i]["description"] + "</p>");
 		} else if (features[i]["subcategory"] == "Lunch") {
 			$("#featureslunch").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>");
 		} else if (features[i]["subcategory"] == "Dinner") {
@@ -276,6 +276,6 @@ function displayDesserts() {
 		<h3>Desserts</h3>
 		<div id="dessertsdisplay"></div>
 	</div>
-<hr>
+
 </div>
 <?php include("../private/shared/globalfooter.php"); ?>
