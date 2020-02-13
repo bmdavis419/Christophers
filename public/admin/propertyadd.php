@@ -238,11 +238,11 @@ function displayItems() {
     <label for="selectOne">Select Only One:</label>
     <input type="checkbox" id="selectOne" name="selectOne" value="1"></input><br>
 </div>
-</div>
 </form>
 
 <div id="DisplayProp"></div>
 <button class="DeleteButton" type="Delete" name="add" value="Send" id="submit">Delete</button>
+</div>
 <?php
 } else {
 	echo 'Access denied';

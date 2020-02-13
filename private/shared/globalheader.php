@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="<?php echo urlfor('/private/styles/styles.css'); ?>">
 	<link rel="stylesheet" href="<?php echo urlfor('/private/scripts/jquery-ui-1.12.1/jquery-ui.css'); ?>">
 	<link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 	<!-- Scripts -->
 	<script src="<?php echo urlfor('private/scripts/jquery-1.11.1.js'); ?>"></script>
@@ -25,7 +26,7 @@
 					<a id="bag"href="<?php echo urlfor("public/bag.php"); ?>">Bag</a> <!--Waiting for dynamic php statements -->
 			</nav>
 			<div class="mobileMenuImgWrapper">
-				<img class="mobileMenuImg" src="<?php echo urlfor('/private/images/menuLogoTrans.png');?>">
+				<img class="mobileMenuImg"  src="<?php echo urlfor('/private/images/menuLogoTrans.png');?>">
 				</img>
 			</div>
 			<div class="navLogo"><!--Includes Christopher's Icon logo -->
