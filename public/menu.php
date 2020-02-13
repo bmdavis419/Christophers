@@ -89,9 +89,60 @@ function displayFeatures() {
 	for (var i = 0; i < breakfast.length; i++) {
 		if (breakfast[i]["subcatagory"] == "Classic Breakfasts") {
 			$("#classicbreakfasts").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>");
+			$("#featuresbreakfast").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>")} else if (features[i]["subcatagory"] == "Lunch") {
+			$("#featureslunch").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>") }else if (features[i]["subcatagory"] == "Dinner") {$("#featuresdinner").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>")
+			}else if (features[i]["subcatagory"] == "Cabbage Roll Monday") {
+			$("#featurescabbagerollmonday").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>")
+			}else if (features[i]["subcatagory"] == "Vegan Wednesday") {
+			$("#featuresveganwednesday").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>")
+			}else if (features[i]["subcatagory"] == "Feature Four Thursday") {
+			$("#featuresfeaturefourthursday").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>")
+			}else if (features[i]["subcatagory"] == "Fresh Catch") {
+			$("#featuresfreshcatch").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>")}
+
 		}
 	}
-}
+	for (var i = 0; i < breakfast.length; i++) {
+		if (breakfast[i]["subcatagory"] == "Classic Breakfasts") {
+			$("#classicbreakfasts").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>")} else 
+			if (breakfast[i]["subcatagory"] == "Omelettes") {
+			$("#omelettes").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>")} else 
+			if (breakfast[i]["subcatagory"] == "Frittatas") {
+			$("#frittatas").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>")} else 
+			if (breakfast[i]["subcatagory"] == "Cereal") {
+			$("#cereal").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>")} else 
+			if (breakfast[i]["subcatagory"] == "From The Griddle") {
+			$("#fromthegriddle").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>")}
+	}
+	for (var i = 0; i < lunch.length; i++) {
+		if (lunch[i]["subcatagory"] == "Sandwiches") {
+			$("#sandwiches").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>")} else 
+			if (lunch[i]["subcatagory"] == "Salads") {
+			$("#salads").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>")} else 
+			if (lunch[i]["subcatagory"] == "Soups") {
+			$("#soups").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>")} else 
+			if (lunch[i]["subcatagory"] == "Grilled Naan Sandwiches") {
+			$("#grilled naan sandwiches").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>")} else 
+			if (lunch[i]["subcatagory"] == "From The Grill") {
+			$("#from the grill").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>")} else 
+			if (lunch[i]["subcatagory"] == "All Day Meals") {
+			$("#all day meals").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>")}
+	}
+	for (var i = 0; i < dinner.length; i++) {
+		if (dinner[i]["subcatagory"] == "After 5 Menu") {
+			$("#after 5 menu").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>")} else 
+			if (dinner[i]["subcatagory"] == "Seafood") {
+			$("#seafood").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>")} else 
+			if (dinner[i]["subcatagory"] == "Appetizers") {
+			$("#appetizers").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>")} else 
+			if (dinner[i]["subcatagory"] == "Salads") {
+			$("#salads").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>")} else 
+			if (dinner[i]["subcatagory"] == "All Day Meals") {
+			$("#all day meals").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>")} else 
+			if (dinner[i]["subcatagory"] == "Sandwiches") {
+			$("#sandwiches").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>")}
+			
+	}
 </script>
 <div class="menuPage">
 	<div id="weeklyFeatures1" class="outerAccordion">
@@ -99,6 +150,74 @@ function displayFeatures() {
 		<div>
 			<h4>Breakfast</h4><div id="featuresbreakfast"></div>
 			<br>
+			<h4>Lunch</h4><div id="featureslunch"></div>
+			<br>
+			<h4>Dinner</h4><div id="featuresdinner"></div>
+			<br>
+			<h4>Cabbage Roll Monday</h4><div id="featurescabbagerollmonday"></div>
+			<br>
+			<h4>Vegan Wednesday</h4><div id="featuresdinner"></div>
+			<br>
+			<h4>Feature Four Thursday</h4><div id="featuresdinner"></div>
+			<br>
+			<h4>Fresh Catch</h4><div id="featuresdinner"></div>
+			<br>
+		</div>
+	</div>
+<hr>
+	<div id="accordionCtrl" class="outerAccordion">
+		<h3>Breakfast</h3>
+		<div>
+			<div id="innerAccordionCtrl" class="innerAccordion">
+				<h5>Classic Breakfasts</h5><div id="classicbreakfasts"></div>
+				<br>
+				<h5>Omelettes</h5><div id="omelettes"></div>
+				<br>
+				<h5>Frittatas</h5><div id="frittatas"></div>
+				<br>
+				<h5>Cereal</h5><div id=cereal"></div>
+				<br>
+				<h5>From The Griddle</h5><div id="from the griddle"></div>
+				<br>
+			</div>
+		</div>
+	</div>
+<hr>
+	<div id="accordionCtrl" class="outerAccordion">
+		<h3>Lunch</h3>
+		<div>
+			<div id="innerAccordionCtrl" class="innerAccordion">
+				<h5>Sandwiches</h5><div id="sandwiches"></div>
+				<br>
+				<h5>Salads</h5><div id="salads"></div>
+				<br>
+				<h5>Soups</h5><div id="soups"></div>
+				<br>
+				<h5>Grilled Naan Sandwiches</h5><div id="grilled naan sandwiches"></div>
+				<br>
+				<h5>From the Grill</h5><div id="from the grill"></div>
+				<br>
+				<h5>All Day Meals</h5><div id="all day meals"></div>
+			</div>
+		</div>
+	</div>
+<hr>
+	<div id="accordionCtrl" class="outerAccordion">
+		<h3>Dinner</h3>
+		<div>
+			<div id="innerAccordionCtrl" class="innerAccordion">
+				<h5>After 5 Menu</h5><div id="after 5 menu"></div>
+				<br>
+				<h5>Seafood</h5><div id="seafood"></div>
+				<br>
+				<h5>Appetizers</h5><div id="appetizers"></div>
+				<br>
+				<h5>Salads</h5><div id="salads"></div>
+				<br>
+				<h5>All Day Meals</h5><div id="all day meals"></div>
+				<br>
+				<h5>Sandwiches</h5><div id="sandwiches"></div>
+			</div>
 		</div>
 		<div>
 			<h4>Lunches</h4><div id="featureslunches"></div>
@@ -106,16 +225,12 @@ function displayFeatures() {
 		</div>
 	</div>
 
-	<div id="accordionCtrl" class="outerAccordion">
-		<h3>Breakfast</h3>
-		<div>
-			<div id="innerAccordionCtrl" class="innerAccordion">
-				<h5>Classic Breakfasts</h5>
-				<div id = "classicbreakfasts"></div>
-			</div>
-		</div>
-	</div>
-	
+
+
+
+
+
+
 			<!--To add outer content copy <h3>-</div>(directly above)-->
     <!--Closes outer accordion --> 
 		<hr> <!-- line between accordions -->
