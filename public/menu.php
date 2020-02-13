@@ -80,7 +80,15 @@ function displayFeatures() {
 	// loop out breakfast dishes
 	for (var i = 0; i < features.length; i++) {
 		if (features[i]["subcatagory"] == "Breakfast") {
-			$("#featuresbreakfast").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>")
+			$("#featuresbreakfast").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>");
+		} else if (features[i]["subcatagory"] == "Lunch") {
+			$("#featureslunches").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>");
+		}
+	}
+
+	for (var i = 0; i < breakfast.length; i++) {
+		if (breakfast[i]["subcatagory"] == "Classic Breakfasts") {
+			$("#classicbreakfasts").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>");
 		}
 	}
 }
@@ -92,8 +100,21 @@ function displayFeatures() {
 			<h4>Breakfast</h4><div id="featuresbreakfast"></div>
 			<br>
 		</div>
+		<div>
+			<h4>Lunches</h4><div id="featureslunches"></div>
+			<br>
+		</div>
 	</div>
 
+	<div id="accordionCtrl" class="outerAccordion">
+		<h3>Breakfast</h3>
+		<div>
+			<div id="innerAccordionCtrl" class="innerAccordion">
+				<h5>Classic Breakfasts</h5>
+				<div id = "classicbreakfasts"></div>
+			</div>
+		</div>
+	</div>
 	
 			<!--To add outer content copy <h3>-</div>(directly above)-->
     <!--Closes outer accordion --> 
