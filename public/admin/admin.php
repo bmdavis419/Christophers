@@ -8,6 +8,7 @@ if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
 ?>
 <!-- LINKS TO MENU AND PROPERTY ADDITIONS -->
 <div class="adminDirectoryContainer">
+<h1 class="adminLogin" >Select Which You'd Like to Create:</h1> 
 <a class="adminDirectory" href="<?php echo urlfor('public/admin/menuadd.php'); ?>">Menu  </a>
 <a class="adminDirectory" href="<?php echo urlfor('public/admin/propertyadd.php'); ?>">Properties</a>
 </div>

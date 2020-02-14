@@ -7,8 +7,9 @@
     </div>
     <div class="checkoutDesc">
                 <h5 class="checkout">Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
-                                <p id="selectedOptions">passed in data from the user selection and formatted accordingly POTENTIALOPTION - SELECTEDOPTION, REPEAT</p>
-                                <p id="price">$PRICE</p>
+                <p id="price">$PRICE</p>                
+                <p id="selectedOptions">passed in data from the user selection and formatted accordingly POTENTIALOPTION - SELECTEDOPTION, REPEAT</p>
+                            
                                                               
 </div>
 <hr>
@@ -17,8 +18,9 @@
     </div>
     <div class="checkoutDesc">
                 <h5 class="checkout">Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
-                                <p id="selectedOptions">passed in data from the user selection and formatted accordingly POTENTIALOPTION - SELECTEDOPTION, REPEAT</p>
-                                <p id="price">$PRICE</p>
+                <p id="price">$PRICE</p>               
+                <p id="selectedOptions">passed in data from the user selection and formatted accordingly POTENTIALOPTION - SELECTEDOPTION, REPEAT</p>
+                               
                                 
                                 
 </div>
