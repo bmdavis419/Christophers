@@ -51,12 +51,12 @@
 
 		function myFunction() {
  			 if (window.pageYOffset >= sticky + 50) { 
-  			  navbar.classList.add("sticky")
-			  navbar.classList.remove("navBar")
+  			  navbar.classList.add("sticky");
+			  navbar.classList.remove("navBar");
   			} else {
     			navbar.classList.remove("sticky");
-				navbar.classList.add("navBar")
+				navbar.classList.add("navBar");
 			
-  }
-}
-</script>
+  			}
+		}
+		</script>

@@ -225,17 +225,17 @@ function displayDesserts() {
 		<div>
 			<div id="innerAccordionCtrl" class="innerAccordion">
 				<h5>Sandwiches</h5>
-				<div id="lunchessandwiches"></div>
+				<div id="lunchssandwiches"></div>
 				<h5>Salads</h5>
-				<div id="lunchessalads"></div>
+				<div id="lunchssalads"></div>
 				<h5>Soups</h5>
-				<div id="lunchessoups"></div>
+				<div id="lunchssoups"></div>
 				<h5>Grilled Naan Sandwiches</h5>
-				<div id="lunchesnaan"></div>
+				<div id="lunchsnaan"></div>
 				<h5>From The Grill</h5>
-				<div id="lunchesgrill"></div>
+				<div id="lunchsgrill"></div>
 				<h5>All Day Meals</h5>
-				<div id="lunchesallday"></div>
+				<div id="lunchsallday"></div>
 			</div>
 		</div>
 	</div>
