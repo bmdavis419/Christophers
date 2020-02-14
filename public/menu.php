@@ -172,7 +172,7 @@ function displayDesserts() {
 }
 </script>
 <div class="menuPage">
-	<div id="weeklyFeatures" class="outerAccordion">
+	<div id="accordionCtrl" class="outerAccordion">
 		<h3>Weekly Features</h3>
 		<div>
 			<h4>Breakfast</h4>

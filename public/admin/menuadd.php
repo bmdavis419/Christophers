@@ -201,13 +201,8 @@ function displayMenuItems() {
     </select>
     </div>
 
-<<<<<<< HEAD
     <label for="subcategory">Select the subcategory type</label><br>
     <select name="subcategory" id="subcategory">
-=======
-    <label class="type"for="subcatagory">Select the subcatagory type:</label><br>
-    <select name="subcatagory" id="subcatagory">
->>>>>>> benWare
         <option></option>
     </select>
 

@@ -101,7 +101,7 @@
 	font-family:"Merriweather";
 }
 .ui-accordion .ui-accordion-content {
-	padding: 0.5em 1.1em;
+	padding: 1em 2.2em;
 	border-top: 0;
 	overflow: auto;
 }
@@ -904,7 +904,7 @@ body .ui-tooltip {
 }
 .ui-widget-content {
 	border: 1px solid #dddddd;
-	background: #ffffff;
+	background: rgb(255,252,235);
 	color: #333333;
 }
 .ui-widget-content a {
@@ -932,7 +932,7 @@ works properly when clicked or hovered */
 html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
 	border: 1px solid #c5c5c5;
-	background: #f6f6f6;
+	background: rgb(255,252,235);
 	font-weight: normal;
 	color: #454545;
 }
@@ -954,8 +954,7 @@ a:visited.ui-button,
 .ui-widget-header .ui-state-focus,
 .ui-button:hover,
 .ui-button:focus {
-	border: 1px solid #cccccc;
-	background: #ededed;
+	background: rgb(255,245,220);
 	font-weight: normal;
 	color: #2b2b2b;
 }
@@ -1310,4 +1309,11 @@ a.ui-button:active,
 .ui-widget-shadow {
 	-webkit-box-shadow: 0px 0px 5px #666666;
 	box-shadow: 0px 0px 5px #666666;
+}
+
+@media (max-width:700px) {
+.ui-accordion .ui-accordion-content {
+	padding: 0.25em 0.65em;
+	border-top: 0;
+	overflow: auto;
 }
