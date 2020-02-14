@@ -11,7 +11,7 @@
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 	<!-- Scripts -->
-	<script src="<?php echo urlfor('private/scripts/jquery-1.11.1.js'); ?>"></script>
+	<script src="<?php echo urlfor('private/scripts/jquery-3.4.1.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo urlfor('/private/scripts/jquery-ui-1.12.1/external/jquery/jquery.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo urlfor('/private/scripts/jquery-ui-1.12.1/jquery-ui.js'); ?>"></script>
 </head>
@@ -51,12 +51,12 @@
 
 		function myFunction() {
  			 if (window.pageYOffset >= sticky + 50) { 
-  			  navbar.classList.add("sticky")
-			  navbar.classList.remove("navBar")
+  			  navbar.classList.add("sticky");
+			  navbar.classList.remove("navBar");
   			} else {
     			navbar.classList.remove("sticky");
-				navbar.classList.add("navBar")
+				navbar.classList.add("navBar");
 			
-  }
-}
-</script>
+  			}
+		}
+		</script>

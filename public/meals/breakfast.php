@@ -52,19 +52,19 @@ function display() {
     for (var i = 0; i < breakfast.length; i++) {
         if (breakfast[i]["subcategory"] == "Classic Breakfasts") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
-            $("#classicbreakfastsapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
+            $("#classicbreakfastsapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "&category=" + breakfast[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
         } else if (breakfast[i]["subcategory"] == "Omlettes") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
-            $("#omelettesapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
+            $("#omelettesapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "&category=" + breakfast[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
         } else if (breakfast[i]["subcategory"] == "Frittatas") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
-            $("#frittatasapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
+            $("#frittatasapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "&category=" + breakfast[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
         } else if (breakfast[i]["subcategory"] == "Cereal") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
-            $("#cerealapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
+            $("#cerealapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "&category=" + breakfast[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
         } else if (breakfast[i]["subcategory"] == "From The Griddle") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
-            $("#griddleapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
+            $("#griddleapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "&category=" + breakfast[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
         }
     }
 }
