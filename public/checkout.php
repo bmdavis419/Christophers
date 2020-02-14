@@ -187,7 +187,9 @@ $("document").ready(function(){
                                 <p id="price">$PRICE</p>
 </div>
 <hr>
-<br><br><br><br><br><br><br>
 <div id="displayOptions"></div>
+<form method="POST" action="addtobag.php">
+    <button type="submit">Submit</button>
+</form>
 </main>
 <?php include("../private/shared/globalfooter.php"); ?>
