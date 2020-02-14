@@ -86,19 +86,19 @@ function displayFeatures() {
 		if (features[i]["subcategory"] == "Breakfast") {
 			$("#featuresbreakfast").append("<h8>" + features[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + features[i]["description"] + "</p>");
 		} else if (features[i]["subcategory"] == "Lunch") {
-			$("#featureslunch").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>");
+			$("#featureslunch").append("<h8>" + features[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + features[i]["description"] + "</p>");
 		} else if (features[i]["subcategory"] == "Dinner") {
-			$("#featuresdinner").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>");
+			$("#featuresdinner").append("<h8>" + features[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + features[i]["description"] + "</p>");
 		} else if (features[i]["subcategory"] == "Cabbage Roll Monday") {
-			$("#featurescabbagerollmonday").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>");
+			$("#featurescabbagerollmonday").append("<h8>" + features[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + features[i]["description"] + "</p>");
 		} else if (features[i]["subcategory"] == "Vegan Wednesday") {
-			$("#featuresvegan").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>");
+			$("#featuresvegan").append("<h8>" + features[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + features[i]["description"] + "</p>");
 		} else if (features[i]["subcategory"] == "Feature Four Thursday") {
-			$("#featuresfour").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>");
+			$("#featuresfour").append("<h8>" + features[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + features[i]["description"] + "</p>");
 		} else if (features[i]["subcategory"] == "Fresh Catch") {
-			$("#featurescatch").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>");
+			$("#featurescatch").append("<h8>" + features[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + features[i]["description"] + "</p>");
 		} else if (features[i]["subcategory"] == "Other") {
-			$("#featuresother").append("<h5>" + features[i]["name"] + "</h5><p class='desc'>" + features[i]["description"] + "</p><p class='price'>" + features[i]["cost"] + "</p>");
+			$("#featuresother").append("<h8>" + features[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + features[i]["description"] + "</p>");
 		} 
 	}
 }
@@ -106,15 +106,15 @@ function displayFeatures() {
 function displayBreakfast() {
 	for (var i = 0; i < breakfast.length; i++) {
 		if (breakfast[i]["subcategory"] == "Classic Breakfasts") {
-			$("#breakfastsclassic").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>");
+			$("#breakfastsclassic").append("<h8>" + breakfast[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + breakfast[i]["description"] + "</p>");
 		} else if (breakfast[i]["subcategory"] == "Omlettes") {
-			$("#breakfastsomelettes").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>");
+			$("#breakfastsomelettes").append("<h8>" + breakfast[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + breakfast[i]["description"] + "</p>");
 		} else if (breakfast[i]["subcategory"] == "Frittatas") {
-			$("#breakfastsfrittatas").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>");
+			$("#breakfastsfrittatas").append("<h8>" + breakfast[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + breakfast[i]["description"] + "</p>");
 		} else if (breakfast[i]["subcategory"] == "Cereal") {
-			$("#breakfastscereal").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>");
+			$("#breakfastscereal").append("<h8>" + breakfast[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + breakfast[i]["description"] + "</p>");
 		} else if (breakfast[i]["subcategory"] == "From The Griddle") {
-			$("#breakfastsgriddle").append("<h5>" + breakfast[i]["name"] + "</h5><p class='desc'>" + breakfast[i]["description"] + "</p><p class='price'>" + breakfast[i]["cost"] + "</p>");
+			$("#breakfastsgriddle").append("<h8>" + breakfast[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + breakfast[i]["description"] + "</p>");
 		}
 	}
 }
@@ -122,17 +122,17 @@ function displayBreakfast() {
 function displayLunch() {
 	for (var i = 0; i < lunch.length; i++) {
 		if (lunch[i]["subcategory"] == "Sandwiches") {
-			$("#lunchssandwiches").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>");
+			$("#lunchssandwiches").append("<h8>" + lunch[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + lunch[i]["description"] + "</p>");
 		} else if (lunch[i]["subcategory"] == "Salads") {
-			$("#lunchssalads").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>");
+			$("#lunchssalads").append("<h8>" + lunch[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + lunch[i]["description"] + "</p>");
 		} else if (lunch[i]["subcategory"] == "Soups") {
-			$("#lunchssoups").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>");
+			$("#lunchssoups").append("<h8>" + lunch[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + lunch[i]["description"] + "</p>");
 		} else if (lunch[i]["subcategory"] == "Grilled Naan Sandwiches") {
-			$("#lunchsnaan").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>");
+			$("#lunchsnaan").append("<h8>" + lunch[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + lunch[i]["description"] + "</p>");
 		} else if (lunch[i]["subcategory"] == "From The Grill") {
-			$("#lunchsgrill").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>");
+			$("#lunchsgrill").append("<h8>" + lunch[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + lunch[i]["description"] + "</p>");
 		} else if (lunch[i]["subcategory"] == "All Day Meals") {
-			$("#lunchsallday").append("<h5>" + lunch[i]["name"] + "</h5><p class='desc'>" + lunch[i]["description"] + "</p><p class='price'>" + lunch[i]["cost"] + "</p>");
+			$("#lunchsallday").append("<h8>" + lunch[i]["name"] + "</h8><p class='price'>" + features[i]["cost"] + "</p><p class='desc'>" + lunch[i]["description"] + "</p>");
 		}
 	}
 }
@@ -140,17 +140,17 @@ function displayLunch() {
 function displayDinner() {
 	for (var i = 0; i < dinner.length; i++) {
 		if (dinner[i]["subcategory"] == "After 5 Menu") {
-			$("#dinnersafter5").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>");
+			$("#dinnersafter5").append("<h8>" + dinner[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + dinner[i]["description"] + "</p>");
 		} else if (dinner[i]["subcategory"] == "Seafood") {
-			$("#dinnersseafood").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>");
+			$("#dinnersseafood").append("<h8>" + dinner[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + dinner[i]["description"] + "</p>");
 		} else if (dinner[i]["subcategory"] == "Appetizers") {
-			$("#dinnersappetizers").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>");
+			$("#dinnersappetizers").append("<h8>" + dinner[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + dinner[i]["description"] + "</p>");
 		} else if (dinner[i]["subcategory"] == "Salads") {
-			$("#dinnerssalads").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>");
+			$("#dinnerssalads").append("<h8>" + dinner[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + dinner[i]["description"] + "</p>");
 		} else if (dinner[i]["subcategory"] == "All Day Meals") {
-			$("#dinnersallday").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>");
+			$("#dinnersallday").append("<h8>" + dinner[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + dinner[i]["description"] + "</p>");
 		} else if (dinner[i]["subcategory"] == "Sandwiches") {
-			$("#dinnerssandwiches").append("<h5>" + dinner[i]["name"] + "</h5><p class='desc'>" + dinner[i]["description"] + "</p><p class='price'>" + dinner[i]["cost"] + "</p>");
+			$("#dinnerssandwiches").append("<h8>" + dinner[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + dinner[i]["description"] + "</p>");
 		}
 	}
 }
@@ -158,16 +158,16 @@ function displayDinner() {
 function displayDrinks() {
 	for (var i = 0; i < drinks.length; i++) {
 		if (drinks[i]["subcategory"] == "Craft Beer") {
-			$("#drinksbeer").append("<h5>" + drinks[i]["name"] + "</h5><p class='desc'>" + drinks[i]["description"] + "</p><p class='price'>" + drinks[i]["cost"] + "</p>");
+			$("#drinksbeer").append("<h8>" + drinks[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + drinks[i]["description"] + "</p>");
 		} else if (drinks[i]["subcategory"] == "Wine") {
-			$("#drinkswine").append("<h5>" + drinks[i]["name"] + "</h5><p class='desc'>" + drinks[i]["description"] + "</p><p class='price'>" + drinks[i]["cost"] + "</p>");
+			$("#drinkswine").append("<h8>" + drinks[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + drinks[i]["description"] + "</p>");
 		}
 	}
 }
 
 function displayDesserts() {
 	for (var i = 0; i < dessert.length; i++) {
-		$("#dessertsdisplay").append("<h5>" + dessert[i]["name"] + "</h5><p class='desc'>" + dessert[i]["description"] + "</p><p class='price'>" + dessert[i]["cost"] + "</p>");
+		$("#dessertsdisplay").append("<h8>" + dessert[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + dessert[i]["description"] + "</p>");
 	}
 }
 </script>
@@ -176,28 +176,28 @@ function displayDesserts() {
 		<h3>Weekly Features</h3>
 		<div>
 			<h4>Breakfast</h4>
-			<div id="featuresbreakfast"></div>
+			<div class="features" id="featuresbreakfast"></div>
 			<br>
 			<h4>Lunch</h4>
-			<div id="featureslunch"></div>
+			<div class="features" id="featureslunch"></div>
 			<br>
 			<h4>Dinner</h4>
-			<div id="featuresdinner"></div>
+			<div class="features" id="featuresdinner"></div>
 			<br>
 			<h4>Cabbage Roll Monday</h4>
-			<div id="featurescabbagerollmonday"></div>
+			<div class="features" id="featurescabbagerollmonday"></div>
 			<br>
 			<h4>Vegan Wednesday</h4>
-			<div id="featuresvegan"></div>
+			<div class="features" id="featuresvegan"></div>
 			<br>
 			<h4>Feature Four Thursday</h4>
-			<div id="featuresfour"></div>
+			<div class="features" id="featuresfour"></div>
 			<br>
 			<h4>Fresh Catch</h4>
-			<div id="featurescatch"></div>
+			<div class="features" id="featurescatch"></div>
 			<br>
 			<h4>Other</h4>
-			<div id="featuresother"></div>
+			<div class="features" id="featuresother"></div>
 			<br>
 		</div>
 	</div>

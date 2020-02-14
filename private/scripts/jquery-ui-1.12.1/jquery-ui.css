@@ -96,7 +96,7 @@
 	position: relative;
 	margin: 2px 0 0 0;
 	padding: .5em .5em .5em .7em;
-	font-size: 100%;
+	font-size: 1.5em;
 	font-weight:bold;
 	font-family:"Merriweather";
 }
@@ -981,7 +981,7 @@ a.ui-button:focus {
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
-	background: green;
+	background: #096A00;
 	font-weight: normal;
 	color: #ffffff;
 }
@@ -1316,4 +1316,17 @@ a.ui-button:active,
 	padding: 0.25em 0.65em;
 	border-top: 0;
 	overflow: auto;
+}
+}
+@media (max-width:376px) {
+.ui-accordion .ui-accordion-header {
+	display: block;
+	cursor: pointer;
+	position: relative;
+	margin: 2px 0 0 0;
+	padding: .5em .5em .5em .7em;
+	font-size: 1em;
+	font-weight:bold;
+	font-family:"Merriweather";
+}
 }

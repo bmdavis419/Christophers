@@ -1,7 +1,7 @@
 /*Global Styles */
 html {
 	font-family: 'Merriweather', serif;
-background-color:cornsilk;
+background-color:rgb(255, 248, 210);;
 margin:0;
 color: black;
 max-width: 100%;
@@ -21,8 +21,8 @@ display:none;
 .navWrapper{
 	width:100%;
 	padding-bottom:10%;
-	background-color:#4bae37;
-	border-bottom: 3px solid #7adfff;
+	background-color:#096A00;
+	border-bottom: 3px solid #800008;
 }
 .navBar a{
   float: left;
@@ -32,7 +32,7 @@ display:none;
   padding: 3% 8% 3% 8%;
   width:9%;
   text-decoration: none;
-  font-size: 30px;
+  font-size: 40px;
   transition:0.25s;
 }
 #menu {
@@ -64,8 +64,8 @@ img.navImg {
   top: 0;
   width:100%;
   z-index: 1;
-  background-color:#4bae37;
-  border-bottom: 3px solid #7adfff;
+  background-color:#096A00;
+  border-bottom: 3px solid #800008;
   font-size: 30px;
   text-align: center;
 }
@@ -102,11 +102,11 @@ footer {
 	margin-left:auto;
 	margin-right:auto;
 	clear:both;
-	background-color:#4bae37;
+	background-color:#096A00;
 	height:400px;
 	padding-top:50px;
 	color:white;
-	border-top:3px solid #7adfff;
+	border-top:3px solid #800008;
 }
 .socials {
 text-align:center;
@@ -188,7 +188,7 @@ margin:0.25%
 	margin-right:5%;
 	max-width:600px;
 	max-height:350px;
-	border-color:#7adfff;
+	border-color:#800008;
 	border-style:solid;
 	border-width:3px;
 }
@@ -211,7 +211,7 @@ line-height:1.5em;
 font-size:1.5em;
 padding-bottom:50px;
 padding-top:1%;
-border: 3px solid #7adfff;
+border: 3px solid #800008;
 position:relative;
 top:-37.5px;
 background-color:rgb(255, 243, 194);
@@ -335,7 +335,7 @@ img {vertical-align: middle;}
 
 /* menu styling */
 h4 {
-	color:green;
+	color:#096A00;
 	font-size:1.5em;
 }
 .menuPage{
@@ -350,7 +350,7 @@ h4 {
 	font-size:1.5em;
 	padding-bottom:50px;
 	padding-top:1%;
-	border: 3px solid #7adfff;
+	border: 3px solid #800008;
 	position:relative;
 	top:-5px;
 	background-color:rgb(255, 243, 194);
@@ -381,6 +381,8 @@ h3 {
 		width:60%;
 		text-align:left;
 		float:left;
+		margin-top:2%;
+		margin-bottom:1%;
 	}
 	h5 {
 	text-align:left;
@@ -396,13 +398,18 @@ h3 {
 	float:right;
 	text-align:right;
 	width:20%;
+	margin-top:2%;
+	margin-bottom:1%;
 	}
 	hr {
 	margin:1%;
-	border-top: 5px solid #7adfff;
+	border-top: 5px solid #800008;
 	
 	}
-
+	.features {
+		clear:both;
+		overflow:auto;
+	}
 /* orders page styles */
 a.hero-image {
 	display:block;
@@ -463,10 +470,6 @@ a.hero-image {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("breakfast.jpg");
 	transform:scale(1.1);
   }
-  h3 {
-  position:relative;
-  font-size:40px;
-  }
   
   .ui-accordion {
   text-align:center;
@@ -486,7 +489,7 @@ a.hero-image {
 	  font-size: 0%;  
   }
   .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-	  color:green;
+	  color:#096A00;
   }
   h5 {
   text-align:left;
@@ -549,9 +552,9 @@ a.hero-image {
   .optionHeader {
 	  height:60px;
 	  width:100%;
-	  background-color:#4bae37;
-	  border-bottom: 3px solid #7adfff;
-	  border-top: 3px solid #7adfff;
+	  background-color:#096A00;
+	  border-bottom: 3px solid #800008;
+	  border-top: 3px solid #800008;
   }
   h6{
 	  color:white;
@@ -588,7 +591,18 @@ a.hero-image {
 /*Bag */
 #price {
 	float:right;
+	width:20%;
+	text-align:right;
 }
+h5.checkout {
+	float:left;
+	width:80%;
+}
+#selectedOptions {
+	margin-top:2%;
+	float:left;
+}
+
 /*Admin Styles*/
 .adminIndex {
 	background-color:cornsilk;
@@ -623,15 +637,16 @@ input {
 	position:relative;
 	margin:6%;
 	text-align:center;
+	margin-top:2%;
 }
 .adminDirectory {
-	background-color:green;
+	background-color:#096A00;
 	color:white;
 	text-align:center;
 	padding:20px;
 	margin:50px;
 	font-size:50px;
-	border-radius:20%;
+	border-radius: 2%;
 }
 .addHeader {
 	text-align:center;
@@ -644,7 +659,7 @@ input {
 	margin-left:3%;
 	padding:2%;
 	text-align:center;
-	border: 3px solid #7adfff;
+	border: 3px solid #800008;
 }
 .deleteButton, .stageButton, .sendButton{
 	float:left;
@@ -730,9 +745,31 @@ textarea {
 		margin-left:0%;
 		max-width:62.5%;
 	}
+	.indexArticle, .indexAside {
+		max-width:95%;
+		font-size:1em;
+		
+	}
+	.indexAside {
+		font-size:1.5em;
+		margin-left:5%;
+	}
+	.checkoutImgWrapper {
+		width:50%;
+		padding:0.25em;
+	}
+	.checkoutDesc {
+		width:42%;
+	}
 }
 /*Phone Styles*/ 
 @media (max-width:700px) {
+	.hero-text {
+		font-size:40px;
+	}
+	.hero-desc {
+		font-size:20px;
+	}
 	.sticky {
 		display:none;
 	}
@@ -814,7 +851,7 @@ textarea {
 		display:none;
 		width:50%;
 		padding-top:70%;
-		background-color:green;
+		background-color:#096A00;
 		z-index:1;
 		position:absolute;
 		top:0;
@@ -824,8 +861,8 @@ textarea {
 	.navWrapper {
 	width:100%;
 	padding-bottom:20%;
-	background-color:#4bae37;
-	border-bottom: 3px solid #7adfff;
+	background-color:#096A00;
+	border-bottom: 3px solid #800008;
 	}
 	.mobileNavMenu a {
 		position:absolute;
@@ -882,7 +919,15 @@ textarea {
 		width:45%;
 	}
 	.checkoutDesc {
-		width:40%;
+		font-size:1em;
+	}
+	#price {
+		float:left;
+		width:100%;
+		text-align:left;
+	}
+	h5.checkout {
+		width:100%;
 	}
 	p#checkout {
 		width:100%;
@@ -904,11 +949,41 @@ textarea {
 	.ui-accordion .ui-accordion-content {
 		padding:0;
 	}
+	a.checkout {
+		display:block;
+		background-image: /* linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("breakfast.jpg") */linear-gradient(tan, tan);
+		width:100%;
+		height:300px;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		position: relative;
+		float:left;
+		overflow:hidden;
+	  }
 }
 /*Old small phones*/
 @media (max-width:376px) {
 a.hero-image {
 	height:350px;
+}
+a.checkout {
+	display:block;
+	background-image: /* linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("breakfast.jpg") */linear-gradient(tan, tan);
+	width:100%;
+	height:250px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	float:left;
+	overflow:hidden;
+  }
+  h5.checkout {
+	font-size:1.25em;
+}
+#selectedOptions {
+	font-size:0.75em;
 }
 }
 /*Super small phones ie iphone 5 */
@@ -916,4 +991,17 @@ a.hero-image {
 a.hero-image {
 	height:300px;
 }
+a.checkout {
+	display:block;
+	background-image: /* linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("breakfast.jpg") */linear-gradient(tan, tan);
+	width:100%;
+	height:200px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	float:left;
+	overflow:hidden;
+  }
+
 }
