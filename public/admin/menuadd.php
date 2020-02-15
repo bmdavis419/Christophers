@@ -160,11 +160,11 @@ function displayMenuItems() {
         // properties
         var propertyString = allMenuItems[i]["properties"];
         var allMenuItemProperties = propertyString.split(",");
-        $("#MenuDisplay ul."+i).append("<li>Attached Properties:");
+        $("#MenuDisplay ul."+i).append("<li>Attached Properties:<ul></ul></li>");
         for (var n = 0; n < allMenuItemProperties.length - 1; n++) {
-            $("#MenuDisplay").append("<li>" + allMenuItemProperties[n] + "</li>");
+            $("#MenuDisplay ul."+i+" ul").append("<li>" + allMenuItemProperties[n] + "</li>");
         }
-        $("#MenuDisplay").append("</li></ul>");
+      
     }
 }
 </script>
