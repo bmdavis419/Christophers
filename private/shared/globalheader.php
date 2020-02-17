@@ -50,13 +50,13 @@
 		var sticky = navbar.offsetTop;
 
 		function myFunction() {
+			// check if the page has moved
  			 if (window.pageYOffset >= sticky + 50) { 
   			  navbar.classList.add("sticky");
 			  navbar.classList.remove("navBar");
   			} else {
     			navbar.classList.remove("sticky");
-				navbar.classList.add("navBar");
-			
+				navbar.classList.add("navBar");			
   			}
 		}
 		</script>

@@ -77,6 +77,7 @@ $("document").ready(function() {
 	displayLunch();
 	displayDinner();
 	displayDrinks();
+	displayDesserts();
 });
 
 // function to fill in the weekly features
