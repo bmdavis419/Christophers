@@ -434,9 +434,47 @@ a.hero-image {
 	color: white;
 	font-size:50px;
 	}
-	a.hero-image:hover{
-	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("breakfast.jpg");
+	a.hero-image:nth-child(1):hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/breakfast.jpg");
 	transform:scale(1.1);
+  }
+  a.hero-image:nth-child(1) {
+	  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/breakfast.jpg");
+  }
+  a.hero-image:nth-child(2):hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/lunch.jpg");
+	transform:scale(1.1);
+  }
+  a.hero-image:nth-child(2) {
+	  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/lunch.jpg");
+  }
+  a.hero-image:nth-child(3):hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/dinner.jpg");
+	transform:scale(1.1);
+  }
+  a.hero-image:nth-child(3) {
+	  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/dinner.jpg");
+  }
+  a.hero-image:nth-child(4):hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/dessert.jpg");
+	transform:scale(1.1);
+  }
+  a.hero-image:nth-child(4) {
+	  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/dessert.jpg");
+  }
+  a.hero-image:nth-child(5):hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/drinks.jpg");
+	transform:scale(1.1);
+  }
+  a.hero-image:nth-child(5) {
+	  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/drinks.jpg");
+  }
+  a.hero-image:nth-child(6):hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/specials.jpg");
+	transform:scale(1.1);
+  }
+  a.hero-image:nth-child(6) {
+	  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/specials.jpg");
   }
 
   /* Meals Page Styles */

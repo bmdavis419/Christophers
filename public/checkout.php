@@ -179,7 +179,7 @@ $("document").ready(function(){
 </script>
 <main class="checkout">
     <div class="checkoutImgWrapper">
-        <img class="checkout" id="dishImg">
+        <img class="checkout" id="dishImg" style="max-width: 600px;">
     </div>
     <div class="checkoutDesc">
                 <h5 class="checkout" id="dishName">Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
