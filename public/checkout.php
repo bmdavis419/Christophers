@@ -142,6 +142,10 @@ function fillDataInProperties() {
     }
 }
 
+// vars for checkout 
+var radioButtonsSent = [];
+var checkBoxesSent = [];
+
 // display all of the properties
 function displayProperties() {
     // loop through the menu item properties
@@ -158,23 +162,36 @@ function displayProperties() {
             $("#list-" + i).append("<fieldset id='items-" + i + "'><legend>Select one:</legend></fieldset>");
             for (var n = 0; n < descriptions.length - 1; n++) {
                 var tempDesc = descriptions[n].split("|");
-                $("#items-" + i).append("<label for='radio-" + i + n + "'>" + tempDesc[0] + "-$" + tempDesc[1] + "<input type='radio' id='radio-" + i + n + "' name='" + filledMenuItemProperties[i]["name"] + "' value='" + tempDesc[0] + "|" + filledMenuItemProperties[i]["name"] + "'></label>");
+                $("#items-" + i).append("<label for='radio-" + i + n + "'>" + tempDesc[0] + "-$" + tempDesc[1] + "<input type='radio' id='radio-" + i + n + "' name='" + filledMenuItemProperties[i]["name"] + "' value='" + tempDesc[0] + "|" + tempDesc[1] + "' required></label>");
             }
+            // add the radio button to the array that will be sent
+            radioButtonsSent.push(filledMenuItemProperties[i]["name"]);
         } else {
             // make checkboxes
             $("#list-" + i).append("<fieldset id='items-" + i + "'><legend>Select:</legend></fieldset>");
             for (var n = 0; n < descriptions.length - 1; n++) {
                 var tempDesc = descriptions[n].split("|");
-                $("#items-" + i).append("<label for='check-" + i + n + "'>" + tempDesc[0] + "-$" + tempDesc[1] + "<input type='checkbox' id='check-" + i + n + "' name='" + filledMenuItemProperties[i]["name"] + "' value='" + tempDesc[0] + "|" + filledMenuItemProperties[i]["name"] + "'></label>");
+                $("#items-" + i).append("<label for='check-" + i + n + "'>" + tempDesc[0] + "-$" + tempDesc[1] + "<input type='checkbox' id='check-" + i + n + "' name='" + filledMenuItemProperties[i]["name"] + "-" + n + "' value='" + tempDesc[0] + "|" + tempDesc[1] + "'></label>");
+                // add the checkbox to the list of things to be checked for
+                checkBoxesSent.push(filledMenuItemProperties[i]["name"] + "-" + n);
             }
         }
     }
+}
+
+// function to set the value on the hidden inputs
+function setHiddenValues() {
+    $("#checkboxes").val(JSON.stringify(checkBoxesSent));
+    $("#radio").val(JSON.stringify(radioButtonsSent));
+    $("#name").val(menuItem["name"]);
+    $("#cost").val(menuItem["cost"]);
 }
 
 $("document").ready(function(){
     fillTopData();
     fillDataInProperties();
     displayProperties();
+    setHiddenValues();
 });
 </script>
 <main class="checkout">
@@ -187,8 +204,15 @@ $("document").ready(function(){
                                 <p id="price">$PRICE</p>
 </div>
 <hr>
-<div id="displayOptions"></div>
 <form method="POST" action="addtobag.php">
+    <div id="displayOptions"></div>
+
+    <!-- hidden option which is where data will be sent to next page -->
+    <input type="hidden" id="checkboxes" name="checkboxes">
+    <input type="hidden" id="radio" name="radio">
+    <input type="hidden" id="name" name="name">
+    <input type="hidden" id="cost" name="cost">
+
     <button type="submit">Submit</button>
 </form>
 </main>

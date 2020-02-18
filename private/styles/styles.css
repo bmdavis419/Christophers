@@ -21,8 +21,9 @@ display:none;
 .navWrapper{
 	width:100%;
 	padding-bottom:10%;
-	background-color:#096A00;
+	background-color:#096A00; 
 	/* background-color: #2987ca; */
+	/* background-color: #77dd77; */
 	border-bottom: 3px solid #800008;
 }
 .navBar a{
