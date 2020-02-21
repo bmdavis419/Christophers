@@ -185,6 +185,7 @@ function setHiddenValues() {
     $("#radio").val(JSON.stringify(radioButtonsSent));
     $("#name").val(menuItem["name"]);
     $("#cost").val(menuItem["cost"]);
+    $("#image").val(menuItem["image"]);
 }
 
 $("document").ready(function(){
@@ -210,6 +211,7 @@ $("document").ready(function(){
     <!-- hidden option which is where data will be sent to next page -->
     <input type="hidden" id="checkboxes" name="checkboxes">
     <input type="hidden" id="radio" name="radio">
+    <input type="hidden" id="image" name="image">
     <input type="hidden" id="name" name="name">
     <input type="hidden" id="cost" name="cost">
 
