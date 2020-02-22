@@ -47,7 +47,6 @@ for ($i = 0; $i < count($checkBoxes); $i++) {
 }
 
 // make the string that will be added to the bag array
-session_unset();
 $bagString = $name . ",";
 $bagString = $bagString . $subTotal . ",";
 $bagString = $bagString . $image . ",";
