@@ -567,6 +567,10 @@ a.hero-image {
 	  margin:auto;
 	  display:inline-block;
   }
+  .checkoutLabel {
+	  float:left;
+	  width:33%;
+  }
   a.checkout {
 	display:block;
 	background-image: /* linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("breakfast.jpg") */linear-gradient(tan, tan);
@@ -590,7 +594,7 @@ a.hero-image {
 	  font-size:1.5em;
   }
   .optionHeader {
-	  height:60px;
+	  height:45px;
 	  width:100%;
 	  background-color:#096A00;
 	  border-bottom: 3px solid #800008;
@@ -605,6 +609,18 @@ a.hero-image {
 	  position:relative;
 	  font-weight:normal;
   }
+  h10{
+	color:white;
+	font-size:45px;
+	top:-5px;
+	margin:auto;
+	text-align:center;
+	position:relative;
+	font-weight:normal;
+}
+.checkoutOptions {
+	text-align:center;
+}
 .option {
 	  width: 12.5%; /*Adjust these two values to be greater as you get smaller */
 	  padding-top:12.5%;
@@ -623,6 +639,12 @@ a.hero-image {
 	transform: translate(-50%, -50%);
 	color: white;
 	font-size:2em;
+}
+.optionList {
+	font-size:2em;
+}
+fieldset {
+	border: 3px solid #800008;
 }
 .clickedOption {
 	opacity:1.5;
@@ -747,8 +769,8 @@ h7 {
 	font-size:30px;
 	margin-bottom:2%;
 }
-#submit {
-	margin-top:1%;
+.submit {
+	margin:1%;
 	width:10%;
 	height:40px;
 	font-size:25px;

@@ -151,7 +151,7 @@ function displayProperties() {
     // loop through the menu item properties
     for (var i = 0; i < filledMenuItemProperties.length; i++) {
         // generate div container and title
-        $("#displayOptions").append("<div class='optionHeader'><h6>" + filledMenuItemProperties[i]["name"] + "</h6></div><div class='optionList' id='list-" + i + "'></div>");
+        $("#displayOptions").append("<div class='optionHeader'><h10>" + filledMenuItemProperties[i]["name"] + "</h10></div><div class='optionList' id='list-" + i + "'></div>");
 
         // split the descriptions into an array
         var descriptions = filledMenuItemProperties[i]["descriptions"].split(",");
@@ -162,7 +162,7 @@ function displayProperties() {
             $("#list-" + i).append("<fieldset id='items-" + i + "'><legend>Select one:</legend></fieldset>");
             for (var n = 0; n < descriptions.length - 1; n++) {
                 var tempDesc = descriptions[n].split("|");
-                $("#items-" + i).append("<label for='radio-" + i + n + "'>" + tempDesc[0] + "-$" + tempDesc[1] + "<input type='radio' id='radio-" + i + n + "' name='" + filledMenuItemProperties[i]["name"] + "' value='" + tempDesc[0] + "|" + tempDesc[1] + "' required></label>");
+                $("#items-" + i).append("<label class='checkoutLabel' for='radio-" + i + n + "'>" + tempDesc[0] + "-$" + tempDesc[1] + "<input type='radio' id='radio-" + i + n + "' name='" + filledMenuItemProperties[i]["name"] + "' value='" + tempDesc[0] + "|" + tempDesc[1] + "' required></label>");
             }
             // add the radio button to the array that will be sent
             radioButtonsSent.push(filledMenuItemProperties[i]["name"]);
@@ -171,7 +171,7 @@ function displayProperties() {
             $("#list-" + i).append("<fieldset id='items-" + i + "'><legend>Select:</legend></fieldset>");
             for (var n = 0; n < descriptions.length - 1; n++) {
                 var tempDesc = descriptions[n].split("|");
-                $("#items-" + i).append("<label for='check-" + i + n + "'>" + tempDesc[0] + "-$" + tempDesc[1] + "<input type='checkbox' id='check-" + i + n + "' name='" + filledMenuItemProperties[i]["name"] + "-" + n + "' value='" + tempDesc[0] + "|" + tempDesc[1] + "'></label>");
+                $("#items-" + i).append("<label class='C' for='check-" + i + n + "'>" + tempDesc[0] + "-$" + tempDesc[1] + "<input type='checkbox' id='check-" + i + n + "' name='" + filledMenuItemProperties[i]["name"] + "-" + n + "' value='" + tempDesc[0] + "|" + tempDesc[1] + "'></label>");
                 // add the checkbox to the list of things to be checked for
                 checkBoxesSent.push(filledMenuItemProperties[i]["name"] + "-" + n);
             }
@@ -201,13 +201,14 @@ $("document").ready(function(){
     </div>
     <div class="checkoutDesc">
                 <h5 class="checkout" id="dishName">Name of Dish</h5> <!--IMPORANT:Include the date in weekly feature names name -->
-								<p id="dishDesc"class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
-                                <p id="price">$PRICE</p>
+                <p id="price">$PRICE</p>
+                                <p id="dishDesc"class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
+                                
 </div>
 <hr>
 <form method="POST" action="addtobag.php">
+    <div class="checkoutOptions">
     <div id="displayOptions"></div>
-
     <!-- hidden option which is where data will be sent to next page -->
     <input type="hidden" id="checkboxes" name="checkboxes">
     <input type="hidden" id="radio" name="radio">
@@ -215,7 +216,7 @@ $("document").ready(function(){
     <input type="hidden" id="name" name="name">
     <input type="hidden" id="cost" name="cost">
 
-    <button type="submit">Submit</button>
+    <button type="submit" class="submit">Submit</button>
 </form>
 </main>
 <?php include("../private/shared/globalfooter.php"); ?>

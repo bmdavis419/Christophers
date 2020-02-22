@@ -49,22 +49,24 @@ function display() {
     for (var i = 0; i < drink.length; i++) {
         if (drink[i]["subcategory"] == "Craft Beer") {
             var imagelink = "../../private/images/menu/" + drink[i]["image"];
-            $("#craftapp").append("<a href='../checkout.php?name=" + drink[i]["name"] + "&category=" + drink[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + drink[i]["name"] + "</p></div><div class='hero-desc'><p>" + drink[i]["description"] +  "</p></div></a>");
+            $("#craftapp").append("<a href='../checkout.php?name=" + drink[i]["name"] + "&category=" + drink[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + drink[i]["name"] + "</p></div><div class='hero-desc'><p>" + drink[i]["description"] +  "</p></div></a>");
         } else if (drink[i]["subcategory"] == "Wine") {
             var imagelink = "../../private/images/menu/" + drink[i]["image"];
-            $("#wineapp").append("<a href='../checkout.php?name=" + drink[i]["name"] + "&category=" + drink[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + drink[i]["name"] + "</p></div><div class='hero-desc'><p>" + drink[i]["description"] +  "</p></div></a>");
+            $("#wineapp").append("<a href='../checkout.php?name=" + drink[i]["name"] + "&category=" + drink[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + drink[i]["name"] + "</p></div><div class='hero-desc'><p>" + drink[i]["description"] +  "</p></div></a>");
         }
     }
 }
 </script>
 <div class="MealPage">
+<div class="menuPage">
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Craft Beer</h3>
         <div id="craftapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Wine</h3>
         <div id="wineapp"></div>
-    </div>
+    </div><hr>
+</div>
 </div>
 <?php include("../../private/shared/globalfooter.php"); ?>

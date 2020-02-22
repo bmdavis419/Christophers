@@ -49,64 +49,66 @@ function display() {
     for (var i = 0; i < features.length; i++) {
         if (features[i]["subcategory"] == "Breakfast") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
-            $("#breakfastapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
+            $("#breakfastapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
         } else if (features[i]["subcategory"] == "Lunch") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
-            $("#lunchapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
+            $("#lunchapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
         } else if (features[i]["subcategory"] == "Dinner") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
-            $("#dinnerapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
+            $("#dinnerapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
         } else if (features[i]["subcategory"] == "Cabbage Roll Monday") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
-            $("#cabbageapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
+            $("#cabbageapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
         } else if (features[i]["subcategory"] == "Vegan Wednesday") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
-            $("#veganapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
+            $("#veganapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
         } else if (features[i]["subcategory"] == "Feature Four Thursday") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
-            $("#fourapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
+            $("#fourapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
         } else if (features[i]["subcategory"] == "Fresh Catch") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
-            $("#freshapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
+            $("#freshapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
         } else if (features[i]["subcategory"] == "Other") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
-            $("#otherapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
+            $("#otherapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
         }
     }
 }
 </script>
 <div class="MealPage">
+<div class="menuPage">
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Breakfast</h3>
         <div id="breakfastapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Lunch</h3>
         <div id="lunchapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Dinner</h3>
         <div id="dinnerapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Cabbage Roll Monday</h3>
         <div id="cabbageapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Vegan Wednesday</h3>
         <div id="veganapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Feature Four Thursday</h3>
         <div id="fourapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Fresh Catch</h3>
         <div id="freshapp"></div>
-    </div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>Other</h3>
         <div id="otherapp"></div>
+    </div><hr>
     </div>
 </div>
 <?php include("../../private/shared/globalfooter.php"); ?>
