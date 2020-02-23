@@ -9,7 +9,7 @@ if (isset($_POST["firstname"])) {
     $lastname = "'" . $_POST["lastname"] . "'";
     $email = "'" . $_POST["email"] . "'";
     $subtotal = "'" . $_SESSION["subtotal"] . "'";
-    $bag = "'" . $_POST["bagItems"] . "'";
+    $bag = "'" . $_SESSION["bagstring"] . "'";
     $time = "'" . date("h:i") . "'";
 
     // insert into the database
@@ -18,6 +18,6 @@ if (isset($_POST["firstname"])) {
     mysqli_query($conn, $sql);
 }
 session_unset();
-echo "Thank you for ordering!";
+echo "<h1 class='adminLogin'>Thank you for ordering!</h1>";
 ?>
 <?php include("../private/shared/globalfooter.php"); ?>

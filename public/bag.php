@@ -12,6 +12,7 @@ $bagItems = "";
 if (isset($_SESSION["bag"])) {
     $bagItems = $_SESSION["bag"];
     $subtotal = 0;
+    $bagString = "";
     for ($i = 0; $i < count($bagItems); $i++) {
         // split the bag item string
         $itemDetails = explode(",", $bagItems[$i]);
@@ -29,7 +30,14 @@ if (isset($_SESSION["bag"])) {
         }
         echo("</ul></p></div><hr>");
     }
+    // create the string of  bag items
+    for ($i = 0;  $i < count($bagItems); $i++) {
+        $bagString = $bagString . $bagItems[$i] . "|";
+    }
     $_SESSION["subtotal"] = $subtotal;
+    $_SESSION["bagstring"] = $bagString;
+} else {
+    echo "<h1 class='adminLogin'>Go to the order page to add items to your bag!</h1>";
 }
 ?>
 <script>
@@ -37,15 +45,12 @@ if (isset($_SESSION["bag"])) {
 $("document").ready(function() {
     // display in the subtotal
     $("#subtotal").val(<?php echo($subtotal); ?>);
-
-    // add the menu items in the hidden input
-    $("#bagItems").val(<?php echo(json_encode($bagItems)); ?>);
 });
 </script>
 <form method="POST" action="submitorder.php">
-    <label for="firstname">First Name:<input type="text" id="firstname" name="firstname"></input></label>
-    <label for="lastname">Last Name:<input type="text" id="lastname" name="lastname"></input></label>
-    <label for="email">Email:<input type="email" id="email" name="email"></input></label>
+    <label for="firstname">First Name:<input type="text" id="firstname" name="firstname" required></input></label>
+    <label for="lastname">Last Name:<input type="text" id="lastname" name="lastname" required></input></label>
+    <label for="email">Email:<input type="email" id="email" name="email" required></input></label>
     <label for="subtotal">Subtotal:<input type="text" id="subtotal" name="subtotal" readonly></input></label>
     <input type="hidden" id="bagItems" name="bagItems">
     <button type="submit">Place Order</button>

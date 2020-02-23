@@ -34,9 +34,9 @@ include("../../private/shared/globalheader.php"); ?>
 
 	       	// use the password_verify function to authenticate the password (https://secure.php.net/manual/en/function.password-verify.php)
                	if ($username_string=='admin' && password_verify($password_string, $hash)) {
-               	   $_SESSION['valid'] = true;
-               	   $_SESSION['timeout'] = time();
-                   $_SESSION['username'] = $username_string;
+               	   $_SESSION['validk'] = true;
+               	   $_SESSION['timeoutk'] = time();
+                   $_SESSION['usernamek'] = $username_string;
 
 		   // redirect to the admin page if true
 		   header("Location: kitchen.php");
