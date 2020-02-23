@@ -29,6 +29,7 @@ if (isset($_SESSION["bag"])) {
         }
         echo("</ul></p></div><hr>");
     }
+    $_SESSION["subtotal"] = $subtotal;
 }
 ?>
 <script>
