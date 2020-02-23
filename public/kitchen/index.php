@@ -22,7 +22,7 @@ include("../../private/shared/globalheader.php"); ?>
 	</head>
 	<body class="adminIndex">
 
-      	<h1 class="adminLogin" >Welcome to the Christopher login portal</h1> 
+      	<h1 class="adminLogin" >Welcome to the Christopher Kitchen Portal</h1> 
         <?php
             $msg = '';
             if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
