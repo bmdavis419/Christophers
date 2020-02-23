@@ -3,8 +3,7 @@
 include("../../private/shared/globalheader.php"); 
 session_start();
 if (isset($_SESSION['validk'])&& ($_SESSION['validk'] = true)){ ?>
-
-
+<meta http-equiv="refresh" content="60"> 
 <?php
 // pull down all of the menu items and sort them into the correct arrays
 // call database
