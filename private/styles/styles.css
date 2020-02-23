@@ -235,7 +235,8 @@ font-size:2em;
 	width:100%;
 	height:auto;
 	background:black;
-	border-bottom: 3px solid #7ad
+	border-bottom: 3px solid #7ad;
+	max-height:1000px;
 }
 .indexImg {
 	height:auto;
@@ -483,9 +484,22 @@ a.hero-image {
   
 .hero-image {
 	display:block;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("breakfast.jpg");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
 	width:27.5%;
 	min-width:400px;
+	height:450px;
+	margin:2%;
+	margin-left:3.25%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	float:left;
+	overflow:hidden;
+  }
+  .checkout-image {
+	display:block;
+	width:100%;
 	height:450px;
 	margin:2%;
 	margin-left:3.25%;
@@ -510,7 +524,13 @@ a.hero-image {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("breakfast.jpg");
 	transform:scale(1.1);
   }
-  
+  .kitchenContent {
+	  width:95%;
+	  margin:2.5%;
+  }
+  li {
+	  text-align:left;
+  }
   .ui-accordion {
   text-align:center;
   }
@@ -645,6 +665,7 @@ a.hero-image {
 }
 fieldset {
 	border: 3px solid #800008;
+	margin:1%;
 }
 .clickedOption {
 	opacity:1.5;
@@ -666,6 +687,10 @@ h5.checkout {
 }
 
 /*Admin Styles*/
+form {
+	clear:both;
+	text-align:center;
+}
 .adminIndex {
 	background-color:cornsilk;
 }
@@ -771,7 +796,6 @@ h7 {
 }
 .submit {
 	margin:1%;
-	width:10%;
 	height:40px;
 	font-size:25px;
 }
@@ -800,6 +824,9 @@ textarea {
 /*IPad styles */
 @media (max-width:1025px) {
 
+	.navBar a {
+		font-size:20px;
+	}
 	.indexAside {
 		font-size:1.5em;
 	}
@@ -826,6 +853,10 @@ textarea {
 }
 /*Phone Styles*/ 
 @media (max-width:700px) {
+	.checkoutLabel {
+		float:left;
+		width:100%;
+	}
 	.hero-text {
 		font-size:40px;
 	}

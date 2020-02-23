@@ -21,7 +21,7 @@ if (isset($_SESSION["bag"])) {
         $subtotal += floatval($itemDetails[1]);
 
         // create the item
-        echo("<div class='checkoutImgWrapper'><img class='checkout' src='../private/images/menu/" . $itemDetails[2] . "'></img></div>");
+        echo("<div class='checkoutImgWrapper'><img class='checkout-image' src='../private/images/menu/" . $itemDetails[2] . "'></img></div>");
         echo("<div class='checkoutDesc'><h5 class='checkout'>" . $itemDetails[0] . "</h5><p id='price'>$" . $itemDetails[1] . "</p><p id='selectedOptions'><ul>");
         // get all of the properties added
         for ($n = 3; $n < count($itemDetails); $n++) {
