@@ -387,6 +387,8 @@ h3 {
 		float:left;
 		margin-top:2%;
 		margin-bottom:1%;
+		font-weight: bold;
+		text-decoration: underline;
 	}
 	h5 {
 	text-align:left;
@@ -528,6 +530,10 @@ a.hero-image {
   .kitchenContent {
 	  width:95%;
 	  margin:2.5%;
+	  font-size:2em;
+  }
+  .kitchenItem {
+	  clear:both;
   }
   li {
 	  text-align:left;
@@ -697,7 +703,7 @@ form {
 }
 .adminLogin {
 	margin-top:5%;
-	margin-bottom:5%;
+	margin-bottom:6%;
 	font-size:3em;
 	color:brown;
 	text-align:center;
@@ -852,9 +858,30 @@ textarea {
 	.checkoutDesc {
 		width:42%;
 	}
+	.indexArticle, .indexAside {
+		max-width:95%;
+		border:none;
+		width:100%;
+		float:none;
+		
+	}
+	a.hero-image {
+		width:44%;
+		
+}
+/*IPad regular styles*/
+@media (max-width:775px) {
+	a.hero-image {
+		width:80%;
+		margin-left:10%;
+		
+	  }
 }
 /*Phone Styles*/ 
 @media (max-width:700px) {
+	.submit {
+		font-size:4.1em;
+	}
 	.checkoutLabel {
 		float:left;
 		width:100%;

@@ -33,7 +33,7 @@ for ($i = 0; $i < count($allMenuItems); $i++) {
 		array_push($lunch, $allMenuItems[$i]);
 	} elseif ($allMenuItems[$i]["category"] == "Dinner") {
 		array_push($dinner, $allMenuItems[$i]);
-	} elseif ($allMenuItems[$i]["category"] == "Desert") {
+	} elseif ($allMenuItems[$i]["category"] == "Dessert") {
 		array_push($desserts, $allMenuItems[$i]);
 	} elseif ($allMenuItems[$i]["category"] == "Drinks") {
 		array_push($drinks, $allMenuItems[$i]);

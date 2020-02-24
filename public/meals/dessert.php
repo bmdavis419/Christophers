@@ -52,7 +52,7 @@ function display() {
     for (var i = 0; i < dessert.length; i++) {
         if (dessert[i]["category"] == "Dessert") {
             var imagelink = "../../private/images/menu/" + dessert[i]["image"];
-            $("#dessertsapp").append("<a href='../checkout.php?name=" + dessert[i]["name"] + "&category=" + dessert[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + dessert[i]["name"] + "</p></div><div class='hero-desc'><p>" + dessert[i]["description"] +  "</p></div></a>");
+            $("#dessertsapp").append("<a href='../checkout.php?name=" + dessert[i]["name"] + "&category=" + dessert[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" + imagelink + ");'><div class='hero-text'><p>" + dessert[i]["name"] + "</p></div><div class='hero-desc'><p>" + dessert[i]["description"] +  "</p></div></a>");
         }
     }
 }
