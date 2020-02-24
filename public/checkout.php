@@ -205,7 +205,6 @@ $("document").ready(function(){
                                 <p id="dishDesc"class="desc">Description Description Description Description Description Description Description Description Description Description Description Description</p>
                                 
 </div>
-<hr>
 <form method="POST" action="addtobag.php">
     <div class="checkoutOptions">
     <div id="displayOptions"></div>
