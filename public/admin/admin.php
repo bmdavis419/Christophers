@@ -12,6 +12,27 @@ if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
 <a class="adminDirectory" href="<?php echo urlfor('public/admin/menuadd.php'); ?>">Menu  </a>
 <a class="adminDirectory" href="<?php echo urlfor('public/admin/propertyadd.php'); ?>">Properties</a>
 </div>
+<form action="changewait.php" method="POST">
+	<?php 
+	require("../../private/functions/databaseconfig.php");
+	$sql = "SELECT * FROM wait";
+	$result = mysqli_query($conn, $sql);
+	$wait = array();
+	
+	// fill data into the array
+	if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)) {
+			$wait[] = $row;
+		}
+	}
+
+	$currentWaitTime = $wait[0]["time"];
+
+	echo ("<label for='currentwait'>Current wait time: <input type='text' id='currentwait' name='currentwait' readonly value='" . $currentWaitTime . "'></label><br>");
+	?>
+	<label for="wait">Enter the current wait time in the format you want users to see (ex: 40mins): <input type="text" id="wait" name="wait"></label>
+	<button type="submit">Update</button>
+</form>
 <?php
 } else {
 	echo 'Access denied';

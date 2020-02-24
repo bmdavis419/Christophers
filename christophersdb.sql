@@ -3,15 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2020 at 05:11 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Generation Time: Feb 24, 2020 at 06:25 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-USE christophersdb;
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -59,7 +59,8 @@ INSERT INTO `menuitems` (`name`, `properties`, `category`, `description`, `cost`
 ('The Veggie Sandwich', 'Condiments,Sides,', 'Lunch', 'Cream cheese, tomato, cucumbers and sprouts.', '5.95', '5e52966f855a26.35492602.jpg', 'Sandwiches'),
 ('Carrot Cake', 'Condiments,Sides,', 'Dessert', 'Homemade carrot cake baked to perfection.', '9.95', '5e52970586e627.57137157.jpg', ''),
 ('Cheesecake', 'Condiments,Sides,', 'Dessert', 'Cheesecake, made with the highest quality ingredients.', '8.95', '5e5297787dda71.08201238.jpg', 'Classic Breakfasts'),
-('Founders', 'Condiments,Sides,', 'Drinks', 'A high quality craft beer.', '5.95', '5e529801370123.29466384.jpg', 'Craft Beer');
+('Founders', 'Condiments,Sides,', 'Drinks', 'A high quality craft beer.', '5.95', '5e529801370123.29466384.jpg', 'Craft Beer'),
+('Taco', 'Taco Sauce,', 'Lunch', 'This is a great food!', '9.99', '5e52af2d8ab6e1.04417096.jpg', 'Sandwiches');
 
 -- --------------------------------------------------------
 
@@ -75,6 +76,16 @@ CREATE TABLE `orders` (
   `bag` longtext DEFAULT NULL,
   `timesent` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`) VALUES
+('Bill', 'Man', 'asdf@asdf', '22.9', 'Stroganoff,15.95,5e529163198038.40767693.jpg,Condiments: Relish,Sides: Corn,|The Veggie Sandwich,6.95,5e52966f855a26.35492602.jpg,Condiments: Mustard,|', '11:17'),
+('Test', 'Test', 'TETS@test', '30.9', 'Chicken Parmesan,15.95,5e52903d521fd7.11120202.jpg,Side Salad Dressing: Blue Cheese,Sides: Corn,|Chicken Parmesan,14.95,5e52903d521fd7.11120202.jpg,Side Salad Dressing: Blue Cheese,|', '12:24'),
+('Test', 'Test', 'TETS@test', '', '', '12:24'),
+('Test', 'Test', 'TETS@test', '', '', '12:24');
 
 -- --------------------------------------------------------
 
@@ -98,6 +109,23 @@ INSERT INTO `properties` (`name`, `descriptions`, `selectOnlyOne`) VALUES
 ('Sides', 'Corn|1.00,', '0'),
 ('Condiments', 'Ketchup|1.00,Mustard|1.00,Relish|1.00,', '1'),
 ('Taco Sauce', 'Ranch|1.00,Spicy|0.50,Dill|0.75,Salsa|0.70,', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wait`
+--
+
+CREATE TABLE `wait` (
+  `time` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wait`
+--
+
+INSERT INTO `wait` (`time`) VALUES
+('40 Minutes');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

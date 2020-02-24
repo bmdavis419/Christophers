@@ -18,6 +18,19 @@ if (isset($_POST["firstname"])) {
     mysqli_query($conn, $sql);
 }
 session_unset();
-echo "<h1 class='adminLogin'>Thank you for ordering!</h1>";
+require("../private/functions/databaseconfig.php");
+$sql = "SELECT * FROM wait";
+$result = mysqli_query($conn, $sql);
+$wait = array();
+	
+// fill data into the array
+if (mysqli_num_rows($result) > 0) {
+	while($row = mysqli_fetch_assoc($result)) {
+		$wait[] = $row;
+	}
+}
+
+$currentWaitTime = $wait[0]["time"];
+echo "<h1 class='adminLogin'>Thank you for ordering!<br>Your order should be ready in approximately " . $currentWaitTime . ".</h1>";
 ?>
 <?php include("../private/shared/globalfooter.php"); ?>
