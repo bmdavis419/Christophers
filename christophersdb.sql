@@ -105,7 +105,7 @@ CREATE TABLE `properties` (
 
 INSERT INTO `properties` (`name`, `descriptions`, `selectOnlyOne`) VALUES
 ('Steak Sauce', 'Yes|1.00,No|0.00,', '1'),
-('Side Salad Dressing', 'Ceasar|2.00,Blue Cheese|1.00,Cheddar|1.20,', '0'),
+('Side Salad Dressing', 'Caesar|2.00,Blue Cheese|1.00,Cheddar|1.20,', '0'),
 ('Sides', 'Corn|1.00,', '0'),
 ('Condiments', 'Ketchup|1.00,Mustard|1.00,Relish|1.00,', '1'),
 ('Taco Sauce', 'Ranch|1.00,Spicy|0.50,Dill|0.75,Salsa|0.70,', '1');

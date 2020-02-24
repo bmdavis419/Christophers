@@ -71,7 +71,7 @@ $(".innerAccordion").accordion({
 
 		<!--End dynamic zone-->
 		</div>
-		<h3>Omlettes</h3>
+		<h3>Omelettes</h3>
 		<div>
 			<!--This content should be dynamic-->
 			<a href="placeholder" class="hero-image"><!--Links to correct template-->

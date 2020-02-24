@@ -52,8 +52,8 @@ function display() {
     for (var i = 0; i < breakfast.length; i++) {
         if (breakfast[i]["subcategory"] == "Classic Breakfasts") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
-            $("#classicbreakfastsapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "&category=" + breakfast[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
-        } else if (breakfast[i]["subcategory"] == "Omlettes") {
+            $("#classicbreakfastsapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "&category=" + breakfast[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
+        } else if (breakfast[i]["subcategory"] == "Omelettes") {
             var imagelink = "../../private/images/menu/" + breakfast[i]["image"];
             $("#omelettesapp").append("<a href='../checkout.php?name=" + breakfast[i]["name"] + "&category=" + breakfast[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" + imagelink + ");'><div class='hero-text'><p>" + breakfast[i]["name"] + "</p></div><div class='hero-desc'><p>" + breakfast[i]["description"] +  "</p></div></a>");
         } else if (breakfast[i]["subcategory"] == "Frittatas") {
@@ -76,7 +76,7 @@ function display() {
         <div id="classicbreakfastsapp"></div>
     </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
-        <h3>Omlettes</h3>
+        <h3>Omelettes</h3>
         <div id="omelettesapp"></div>
     </div><hr>
     <div id="accordionCtrl" class="outerAccordion">

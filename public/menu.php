@@ -34,7 +34,7 @@ for ($i = 0; $i < count($allMenuItems); $i++) {
 		array_push($lunch, $allMenuItems[$i]);
 	} elseif ($allMenuItems[$i]["category"] == "Dinner") {
 		array_push($dinner, $allMenuItems[$i]);
-	} elseif ($allMenuItems[$i]["category"] == "Desert") {
+	} elseif ($allMenuItems[$i]["category"] == "Dessert") {
 		array_push($desserts, $allMenuItems[$i]);
 	} elseif ($allMenuItems[$i]["category"] == "Drinks") {
 		array_push($drinks, $allMenuItems[$i]);
@@ -108,7 +108,7 @@ function displayBreakfast() {
 	for (var i = 0; i < breakfast.length; i++) {
 		if (breakfast[i]["subcategory"] == "Classic Breakfasts") {
 			$("#breakfastsclassic").append("<h8>" + breakfast[i]["name"] + "</h8><p class='price'>" + breakfast[i]["cost"] + "</p><p class='desc'>" + breakfast[i]["description"] + "</p>");
-		} else if (breakfast[i]["subcategory"] == "Omlettes") {
+		} else if (breakfast[i]["subcategory"] == "Omelettes") {
 			$("#breakfastsomelettes").append("<h8>" + breakfast[i]["name"] + "</h8><p class='price'>" + breakfast[i]["cost"] + "</p><p class='desc'>" + breakfast[i]["description"] + "</p>");
 		} else if (breakfast[i]["subcategory"] == "Frittatas") {
 			$("#breakfastsfrittatas").append("<h8>" + breakfast[i]["name"] + "</h8><p class='price'>" + breakfast[i]["cost"] + "</p><p class='desc'>" + breakfast[i]["description"] + "</p>");
@@ -209,7 +209,7 @@ function displayDesserts() {
 			<div id="innerAccordionCtrl" class="innerAccordion">
 				<h5>Classic Breakfasts</h5>
 				<div id="breakfastsclassic"></div>
-				<h5>Omlettes</h5>
+				<h5>Omelettes</h5>
 				<div id="breakfastsomelettes"></div>
 				<h5>Frittatas</h5>
 				<div id="breakfastsfrittatas"></div>

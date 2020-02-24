@@ -65,7 +65,7 @@ if (isset($_GET["category"]) && isset($_GET["name"])) {
     echo("ERROR");
 }
 
-// check which catagory it is in and then populate the menu item from there
+// check which category it is in and then populate the menu item from there
 if ($selectedCategory == "Breakfast") {
     for ($i = 0; $i < count($breakfast); $i++) {
         if ($breakfast[$i]["name"] == $selectedMenuItem) {

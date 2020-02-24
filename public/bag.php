@@ -4,7 +4,7 @@
 
 <!--This page will be populated directly from the checkout page if it is clicked -->
 <?php
-// "Steak,22.99,5e470b3665b554.32533391.jpg,Steak Sauce: No,Side Salad Dressing: Ceasar,Side Salad Dressing: Blue Cheese,"
+// "Steak,22.99,5e470b3665b554.32533391.jpg,Steak Sauce: No,Side Salad Dressing: Caesar,Side Salad Dressing: Blue Cheese,"
 // echo out the items in the bag
 // check if the session is set
 $subtotal = 0;
