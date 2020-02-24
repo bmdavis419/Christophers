@@ -38,7 +38,7 @@ function displaySubCategory() {
     var currentCatSelection = $("#type").val();
     // NEED TO GET ACTUAL VALUES ASFDSDAFSDFASDAFSDAF
     if (currentCatSelection == "Breakfast") {
-        $("#subcategory").empty().append("<option>Classic Breakfasts</option><option>Omlettes</option><option>Frittatas</option><option>Cereal</option><option>From The Griddle</option>");
+        $("#subcategory").empty().append("<option>Classic Breakfasts</option><option>Omelettes</option><option>Frittatas</option><option>Cereal</option><option>From The Griddle</option>");
     } else if (currentCatSelection == "Lunch") {
         $("#subcategory").empty().append("<option>Sandwiches</option><option>Salads</option><option>Soups</option><option>Grilled Naan Sandwiches</option><option>From The Grill</option><option>All Day Meals</option>");
     }

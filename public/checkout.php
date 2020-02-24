@@ -33,7 +33,7 @@ for ($i = 0; $i < count($allMenuItems); $i++) {
 		array_push($lunch, $allMenuItems[$i]);
 	} elseif ($allMenuItems[$i]["category"] == "Dinner") {
 		array_push($dinner, $allMenuItems[$i]);
-	} elseif ($allMenuItems[$i]["category"] == "Desert") {
+	} elseif ($allMenuItems[$i]["category"] == "Dessert") {
 		array_push($desserts, $allMenuItems[$i]);
 	} elseif ($allMenuItems[$i]["category"] == "Drinks") {
 		array_push($drinks, $allMenuItems[$i]);
@@ -65,7 +65,7 @@ if (isset($_GET["category"]) && isset($_GET["name"])) {
     echo("ERROR");
 }
 
-// check which catagory it is in and then populate the menu item from there
+// check which category it is in and then populate the menu item from there
 if ($selectedCategory == "Breakfast") {
     for ($i = 0; $i < count($breakfast); $i++) {
         if ($breakfast[$i]["name"] == $selectedMenuItem) {

@@ -80,7 +80,7 @@ function displaySubCategory() {
     var currentCatSelection = $("#type").val();
     $("#subcategory").prop("disabled", false);
     if (currentCatSelection == "Breakfast") {
-        $("#subcategory").empty().append("<option>Classic Breakfasts</option><option>Omlettes</option><option>Frittatas</option><option>Cereal</option><option>From The Griddle</option>");
+        $("#subcategory").empty().append("<option>Classic Breakfasts</option><option>Omelettes</option><option>Frittatas</option><option>Cereal</option><option>From The Griddle</option>");
     } else if (currentCatSelection == "Lunch") {
         $("#subcategory").empty().append("<option>Sandwiches</option><option>Salads</option><option>Soups</option><option>Grilled Naan Sandwiches</option><option>From The Grill</option><option>All Day Meals</option>");
     } else if (currentCatSelection == "Dinner") {
@@ -155,7 +155,7 @@ function displayMenuItems() {
         $("#MenuDisplay div#addedMenuItem"+i).append("<img src='../../private/images/menu/" + allMenuItems[i]["image"] + "' style='max-height: 450px; max-width: 450px;'></img><ul class=" + i + ">");
         $("#MenuDisplay ul."+i).append("<li>Price: $" + allMenuItems[i]["cost"] + "</li>");
         $("#MenuDisplay ul."+i).append("<li>Description: " + allMenuItems[i]["description"] + "</li>");
-        $("#MenuDisplay ul."+i).append("<li>Catagory: " + allMenuItems[i]["catagory"] + "</li>");
+        $("#MenuDisplay ul."+i).append("<li>Category: " + allMenuItems[i]["category"] + "</li>");
 
         // properties
         var propertyString = allMenuItems[i]["properties"];
