@@ -198,6 +198,7 @@ margin:0.25%
 h1 {
 	font-size:2em;
 	line-height:1em;
+
 }
 h2 {
 	font-size:1.5em;
@@ -696,6 +697,7 @@ form {
 }
 .adminLogin {
 	margin-top:5%;
+	margin-bottom:5%;
 	font-size:3em;
 	color:brown;
 	text-align:center;
@@ -710,6 +712,10 @@ input {
 	width:15%;
 	height:30px;
 	padding-top:6px;
+}
+button {
+	font-size:2.1em;
+	margin:1%;
 }
 .adminButton {
 	position:relative;
@@ -794,11 +800,7 @@ h7 {
 	font-size:30px;
 	margin-bottom:2%;
 }
-.submit {
-	margin:1%;
-	height:40px;
-	font-size:25px;
-}
+
 textarea {
 	font-family:"Merriweather";
 	margin-bottom:2%;
@@ -1014,14 +1016,7 @@ textarea {
 	.checkoutDesc {
 		font-size:1em;
 	}
-	#price {
-		float:left;
-		width:100%;
-		text-align:left;
-	}
-	h5.checkout {
-		width:100%;
-	}
+
 	p#checkout {
 		width:100%;
 	}
@@ -1037,7 +1032,7 @@ textarea {
 	}
 	p.desc {
 		width:90%;
-		font-size:0.75em;
+		font-size:1em;
 	}
 	.ui-accordion .ui-accordion-content {
 		padding:0;
@@ -1054,6 +1049,58 @@ textarea {
 		float:left;
 		overflow:hidden;
 	  }
+	  h10{
+		color:white;
+		font-size:25px;
+		top:-5px;
+		margin:auto;
+		text-align:center;
+		position:relative;
+		font-weight:normal;
+	}
+	.optionHeader {
+		height:26px;
+	}
+	.checkoutImgWrapper {
+		width:100%;
+		padding:0;
+		border-bottom: 3px solid #800008;
+	}
+	.checkout-image {
+		margin:0;
+		padding:0;
+		height:auto;
+	}
+	.checkoutDesc {
+		width:100%;
+		float:left;
+	}
+	h5.checkout {
+		width:60%;
+		margin-left:5%;
+	}
+	.desc {
+		margin-left:5%;
+	}
+	#price {
+		float:right;
+		margin-right:5%;
+	}
+	.checkoutOptions {
+		font-size:0.5em;
+	}
+	.checkoutOptions label{
+		width:100%;
+	}
+	form label{
+		display:block;
+		text-align:left;
+		margin-left:10%;
+		margin:1%;
+	}
+	input {
+		width:50%;
+	}
 }
 /*Old small phones*/
 @media (max-width:376px) {
