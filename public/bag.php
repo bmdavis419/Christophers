@@ -51,6 +51,7 @@ $("document").ready(function() {
     <label for="firstname">First Name:<input type="text" id="firstname" name="firstname" required></input></label>
     <label for="lastname">Last Name:<input type="text" id="lastname" name="lastname" required></input></label>
     <label for="email">Email:<input type="email" id="email" name="email" required></input></label>
+    <label for="phone">Phone Number:<input type="tel" id="tel" name="tel" required></input><label>
     <label for="subtotal">Subtotal:<input type="text" id="subtotal" name="subtotal" readonly></input></label>
     <input type="hidden" id="bagItems" name="bagItems">
     <button type="submit">Place Order</button>

@@ -1,19 +1,15 @@
 <?php require_once("../private/functions/initialize.php"); ?>
 <?php include("../private/shared/globalheader.php"); ?>
 <?php 
-// pull all of the propertys and items from the database
+// pull down all of the menu items and sort them into the correct arrays
 // call database
 require("../private/functions/databaseconfig.php");
-$sql = "SELECT * FROM menuitems";
-$result = mysqli_query($conn, $sql);
-$allMenuItems = array();
+$stmt = $conn->prepare("SELECT * FROM menuitems");
+$stmt->execute();
+$result = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
 // fill data into the array
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-        $allMenuItems[] = $row;
-    }
-}
+$allMenuItems = $result;
 
 // sort into each section
 
@@ -42,17 +38,13 @@ for ($i = 0; $i < count($allMenuItems); $i++) {
 	}
 }
 
-// properties
-$sql = "SELECT * FROM properties";
-$result = mysqli_query($conn, $sql);
-$allProperties = array();
+// pull down all of the properties and sort them into the correct arrays
+$stmt = $conn->prepare("SELECT * FROM properties");
+$stmt->execute();
+$result = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
 // fill data into the array
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-        $allProperties[] = $row;
-    }
-}
+$allProperties = $result;
 
 // get the data to be sent to the jquery
 $selectedCategory;

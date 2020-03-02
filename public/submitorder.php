@@ -3,34 +3,54 @@
 <?php
 session_start();
 date_default_timezone_set("America/New_York");
-if (isset($_POST["firstname"])) {
+if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["email"]) && isset($_POST["tel"]) && isset($_SESSION["bagstring"])) {
     // set variables with all of the data from orders page
-    $firstname = "'" . $_POST["firstname"] . "'";
-    $lastname = "'" . $_POST["lastname"] . "'";
-    $email = "'" . $_POST["email"] . "'";
-    $subtotal = "'" . $_SESSION["subtotal"] . "'";
-    $bag = "'" . $_SESSION["bagstring"] . "'";
-    $time = "'" . date("h:i") . "'";
+    // trim everything in post
+    function clean_value(&$value) {
+        $temp = trim($value);
+        $value = htmlspecialchars($temp);
+    }
+    array_filter($_POST, 'clean_value');
+
+    // sanitize all of the variables
+    $firstname = filter_var($_POST["firstname"], FILTER_SANITIZE_STRING);
+    $lastname = filter_var($_POST["lastname"], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+    $phone = filter_var($_POST["tel"], FILTER_SANITIZE_NUMBER_INT);
+    $subtotal = $_SESSION["subtotal"];
+    $bag = $_SESSION["bagstring"];
+    $time = date("h:i");
 
     // insert into the database
     include("../private/functions/databaseconfig.php");
-    $sql = "INSERT INTO orders (firstname, lastname, email, subtotal, bag, timesent) VALUES ($firstname, $lastname, $email, $subtotal, $bag, $time);";
-    mysqli_query($conn, $sql);
-}
-session_unset();
-require("../private/functions/databaseconfig.php");
-$sql = "SELECT * FROM wait";
-$result = mysqli_query($conn, $sql);
-$wait = array();
+    // create the statement
+    $stmt = $conn->prepare("INSERT INTO orders (firstname, lastname, email, subtotal, bag, timesent, phone) VALUES (:f, :l, :e, :s, :b, :t, :p)");
+    $stmt->bindParam('f', $firstname);
+    $stmt->bindParam('l', $lastname);
+    $stmt->bindParam('e', $email);
+    $stmt->bindParam('s', $subtotal);
+    $stmt->bindParam('b', $bag);
+    $stmt->bindParam('t', $time);
+    $stmt->bindParam('p', $phone);
+
+    // insert
+    if ($stmt->execute()) {
+        session_unset();
+        $stmt = $conn->prepare("SELECT * FROM wait");
+        $stmt->execute();
+        $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
 	
-// fill data into the array
-if (mysqli_num_rows($result) > 0) {
-	while($row = mysqli_fetch_assoc($result)) {
-		$wait[] = $row;
-	}
+        // fill data into the array
+        $wait = $result;
+
+        $currentWaitTime = $wait[0]["time"];
+        echo "<h1 class='adminLogin'>Thank you for ordering!<br>Your order should be ready in approximately " . $currentWaitTime . ".</h1>";
+    } else {
+        echo "<h1 class='adminLogin'>There was an error sending your order to our cooks. Please try again, and we apologize for the inconvenence.</h1>";
+    }
+} else {
+    header("Location: bag.php?error");
 }
 
-$currentWaitTime = $wait[0]["time"];
-echo "<h1 class='adminLogin'>Thank you for ordering!<br>Your order should be ready in approximately " . $currentWaitTime . ".</h1>";
 ?>
 <?php include("../private/shared/globalfooter.php"); ?>

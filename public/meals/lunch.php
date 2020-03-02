@@ -1,16 +1,14 @@
 <?php require_once("../../private/functions/initialize.php");
 include("../../private/shared/globalheader.php");
+// pull down all of the menu items and sort them into the correct arrays
+// call database
 require("../../private/functions/databaseconfig.php");
-$sql = "SELECT * FROM menuitems";
-$result = mysqli_query($conn, $sql);
-$allMenuItems = array();
+$stmt = $conn->prepare("SELECT * FROM menuitems");
+$stmt->execute();
+$result = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
 // fill data into the array
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-        $allMenuItems[] = $row;
-    }
-}
+$allMenuItems = $result;
 
 // initialize the array
 $lunch = array();
