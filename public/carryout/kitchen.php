@@ -7,19 +7,15 @@ if (isset($_SESSION['validk'])&& ($_SESSION['validk'] = true)){ ?>
 <?php
 // pull down all of the menu items and sort them into the correct arrays
 // call database
+// call database
 require("../../private/functions/databaseconfig.php");
-$sql = "SELECT * FROM orders";
-$result = mysqli_query($conn, $sql);
-$allOrders = array();
-
-// fill data into the array
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-        $allOrders[] = $row;
-    }
-}
+$stmt = $conn->prepare("SELECT * FROM orders");
+$stmt->execute();
+$result = $stmt->fetchALL(PDO::FETCH_ASSOC);
+$allOrders = $result;
 
 // echo out all of the kitchen items
+echo("<h1 class='adminLogin'>Carryout Orders:</h1>");
 foreach ($allOrders as $order) {
     echo ("<div class='kitchenContent'><div id='accordionCtrl' class='kitchenAccordion'><h3>" . $order["firstname"] . " " . $order["lastname"] . "-" . $order["timesent"] . "-$" . $order["subtotal"] . "</h3>");
     echo ("<div class='kitchenInner'>");
