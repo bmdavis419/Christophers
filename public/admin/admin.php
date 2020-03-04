@@ -14,17 +14,12 @@ if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
 </div>
 <form action="changewait.php" method="POST">
 	<?php 
+	// call database
 	require("../../private/functions/databaseconfig.php");
-	$sql = "SELECT * FROM wait";
-	$result = mysqli_query($conn, $sql);
-	$wait = array();
-	
-	// fill data into the array
-	if (mysqli_num_rows($result) > 0) {
-		while($row = mysqli_fetch_assoc($result)) {
-			$wait[] = $row;
-		}
-	}
+	$stmt = $conn->prepare("SELECT * FROM wait");
+	$stmt->execute();
+	$result = $stmt->fetchALL(PDO::FETCH_ASSOC);
+	$wait = $result;
 
 	$currentWaitTime = $wait[0]["time"];
 
