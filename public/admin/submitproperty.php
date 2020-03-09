@@ -1,6 +1,6 @@
 <?php
 // add to database
-if (isset($_COOKIE["property"])) {
+if (isset($_COOKIE["property"]) && isset($_SESSION['valid']) && ($_SESSION['valid'] = true)) {
     // enter data into database
     // call database config
     include("../../private/functions/databaseconfig.php");

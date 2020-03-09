@@ -1,7 +1,7 @@
 <?php
 // MENU
 // read everything from the previous page and add it to the database
-if (isset($_POST["add"])) {
+if (isset($_POST["add"]) && isset($_SESSION['valid']) && ($_SESSION['valid'] = true)) {
     // upload the image
     // set vars with the file name and properties
     $file = $_FILES['image'];

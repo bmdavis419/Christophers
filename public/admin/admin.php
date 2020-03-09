@@ -4,7 +4,7 @@ require_once("../../private/functions/initialize.php");
 // includes the initialize function as well as the global header
 include("../../private/shared/globalheader.php");
 // ini_set('display_errors', 'Off');
-if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
+if (isset($_SESSION['valid']) && ($_SESSION['valid'] = true)){
 ?>
 <!-- LINKS TO MENU AND PROPERTY ADDITIONS -->
 <div class="adminDirectoryContainer">
