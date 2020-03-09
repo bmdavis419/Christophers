@@ -1,5 +1,6 @@
 <?php
 // add to database
+session_start();
 if (isset($_COOKIE["property"]) && isset($_SESSION['valid']) && ($_SESSION['valid'] = true)) {
     // enter data into database
     // call database config

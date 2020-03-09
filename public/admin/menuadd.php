@@ -158,7 +158,9 @@ function displayMenuItems() {
         for (var n = 0; n < allMenuItemProperties.length - 1; n++) {
             $("#MenuDisplay ul."+i+" ul").append("<li>" + allMenuItemProperties[n] + "</li>");
         }
-      
+        
+        // echo them for delete
+        $("#deletemenu").append("<label for='" + allMenuItems[i]["name"] + "'>" + allMenuItems[i]["name"] + "<input type='radio' name='menuitemdeleterdo' id='" + allMenuItems[i]["name"] +"' value='" + allMenuItems[i]["name"] + "'></label>");
     }
 }
 </script>
@@ -204,6 +206,12 @@ function displayMenuItems() {
 
     <button type="submit" name="add" value="Send" id="submit">Send</button>
 </div>
+</form>
+
+<form action="deletemenuitem.php" method="POST">
+    <h1 class="addHeader">Remove Menu Items</h1>
+    <fieldset id="deletemenu"></fieldset>
+    <button type="submit">Remove</button>
 </form>
 
 <!-- Section to display all of the added menu items -->

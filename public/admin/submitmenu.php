@@ -1,5 +1,6 @@
 <?php
 // MENU
+session_start();
 // read everything from the previous page and add it to the database
 if (isset($_POST["add"]) && isset($_SESSION['valid']) && ($_SESSION['valid'] = true)) {
     // upload the image
@@ -53,7 +54,7 @@ if (isset($_POST["add"]) && isset($_SESSION['valid']) && ($_SESSION['valid'] = t
     $name = filter_var($_POST["name"], FILTER_SANITIZE_STRING);
     $description = filter_var($_POST["description"], FILTER_SANITIZE_STRING);
     $cost = $_POST["cost"];
-    $properties = "'" . $_COOKIE["SelectedProperties"] . "'";
+    $properties = $_COOKIE["SelectedProperties"];
     $category = filter_var($_POST["type"], FILTER_SANITIZE_STRING);
     $subcategory = filter_var($_POST["subcategory"], FILTER_SANITIZE_STRING);
 
