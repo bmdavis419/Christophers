@@ -27,7 +27,7 @@ if (isset($_POST["add"])) {
             if ($fileSize < 1000000) {
                 $fileNameNew = uniqid('', true) . "." . $fileActualExt;
                 $fileDestination = "../../private/images/menu/" . $fileNameNew;
-                $image = "'" . $fileNameNew . "'";
+                $image = $fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
             } else {
                 header("Location: menuadd.php?fileistoobig");
@@ -42,20 +42,36 @@ if (isset($_POST["add"])) {
     // call database config
     include("../../private/functions/databaseconfig.php");
 
+    // CLEAN POST
+    function clean_value(&$value) {
+        $temp = trim($value);
+        $value = htmlspecialchars($temp);
+    }
+    array_filter($_POST, 'clean_value');
+
     // set vars
-    $name = "'" . $_POST["name"] . "'";
-    $description = "'" . $_POST["description"] . "'";
-    $cost = "'" . $_POST["cost"] . "'";
+    $name = filter_var($_POST["name"], FILTER_SANITIZE_STRING);
+    $description = filter_var($_POST["description"], FILTER_SANITIZE_STRING);
+    $cost = $_POST["cost"];
     $properties = "'" . $_COOKIE["SelectedProperties"] . "'";
-    $category = "'" . $_POST["type"] . "'";
-    $subcategory = "'" . $_POST["subcategory"] . "'";
+    $category = filter_var($_POST["type"], FILTER_SANITIZE_STRING);
+    $subcategory = filter_var($_POST["subcategory"], FILTER_SANITIZE_STRING);
 
     // create query and run
-    $sql = "INSERT INTO menuitems (name, description, category, properties, cost, image, subcategory) VALUES ($name, $description, $category, $properties, $cost, $image, $subcategory);";
-    mysqli_query($conn, $sql);
-
-    // send back to previous page
-    header("Location: menuadd.php?additionsuccess");
+    $stmt = $conn->prepare("INSERT INTO menuitems (name, description, category, properties, cost, image, subcategory) VALUES (:n, :d, :c, :p, :cs, :i, :s)");
+    $stmt->bindParam('n', $name);
+    $stmt->bindParam('d', $description);
+    $stmt->bindParam('c', $category);
+    $stmt->bindParam('p', $properties);
+    $stmt->bindParam('cs', $cost);
+    $stmt->bindParam('i', $image);
+    $stmt->bindParam('s', $subcategory);
+    if ($stmt->execute()) {
+        // send back to previous page
+        header("Location: menuadd.php?additionsuccess");
+    } else {
+        header("Location: menuadd.php?therewasanerrorwithyourdata");
+    }
 } else {
     header("Location: menuadd.php?additionfailure");
 }

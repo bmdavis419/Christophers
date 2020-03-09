@@ -163,17 +163,12 @@ function displayItemsForDelete() {
 // create array
 $allProperties = array();
 
-// database
-include("../../private/functions/databaseconfig.php");
-$sql = "SELECT * FROM properties";
-$result = mysqli_query($conn, $sql);
-
-// fill data into the array
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-        $allProperties[] = $row;
-    }
-}
+// call database
+require("../../private/functions/databaseconfig.php");
+$stmt = $conn->prepare("SELECT * FROM properties");
+$stmt->execute();
+$result = $stmt->fetchALL(PDO::FETCH_ASSOC);
+$allProperties = $result;
 ?>
 <script>
 // function for creating multiline

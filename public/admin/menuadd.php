@@ -13,31 +13,25 @@ if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
 $allProperties = array();
 
 // database
-include("../../private/functions/databaseconfig.php");
-$sql = "SELECT * FROM properties";
-$result = mysqli_query($conn, $sql);
+// call database
+require("../../private/functions/databaseconfig.php");
+$stmt = $conn->prepare("SELECT * FROM properties");
+$stmt->execute();
+$result = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
 // fill data into the array
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-        $allProperties[] = $row;
-    }
-}
+$allProperties= $result;
 
 // get all of the menu items in an array and pass it to js
 $allMenuItems = array();
 
-// database
-include("../../private/functions/databaseconfig.php");
-$sql = "SELECT * FROM menuitems";
-$result = mysqli_query($conn, $sql);
+// call database
+$stmt = $conn->prepare("SELECT * FROM menuitems");
+$stmt->execute();
+$result = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
 // fill data into the array
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-        $allMenuItems[] = $row;
-    }
-}
+$allMenuItems = $result;
 ?>
 <script>
 $("document").ready(function () {
