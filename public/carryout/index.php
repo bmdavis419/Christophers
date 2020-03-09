@@ -18,11 +18,11 @@ include("../../private/shared/globalheader.php"); ?>
 ?>
 <html>
 	<head>
-		<title>Christophers Kitchen</title>
+		<title>Christophers Carryout</title>
 	</head>
 	<body class="adminIndex">
 
-      	<h1 class="adminLogin" >Welcome to the Christopher Kitchen Portal</h1> 
+      	<h1 class="adminLogin" >Welcome to the Christopher Carry Out Portal</h1> 
         <?php
             $msg = '';
             if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {

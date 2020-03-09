@@ -33,8 +33,18 @@ if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["ema
     $stmt->bindParam('t', $time);
     $stmt->bindParam('p', $phone);
 
+    // create a second statement for the admin
+    $permstmt = $conn->prepare("INSERT INTO permorders (firstname, lastname, email, subtotal, bag, timesent, phone) VALUES (:f, :l, :e, :s, :b, :t, :p)");
+    $permstmt->bindParam('f', $firstname);
+    $permstmt->bindParam('l', $lastname);
+    $permstmt->bindParam('e', $email);
+    $permstmt->bindParam('s', $subtotal);
+    $permstmt->bindParam('b', $bag);
+    $permstmt->bindParam('t', $time);
+    $permstmt->bindParam('p', $phone);
+
     // insert
-    if ($stmt->execute()) {
+    if ($stmt->execute() && $permstmt->execute()) {
         session_unset();
         $stmt = $conn->prepare("SELECT * FROM wait");
         $stmt->execute();
