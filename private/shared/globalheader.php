@@ -26,27 +26,52 @@
 					<a id="order"href="<?php echo urlfor("public/order.php"); ?>">Order</a> <!--Waiting for dynamic php statements -->
 					<a id="bag"href="<?php echo urlfor("public/bag.php"); ?>">Bag</a> <!--Waiting for dynamic php statements -->
 			</nav>
-			<div class="mobileMenuImgWrapper">
-				<img class="mobileMenuImg"  src="<?php echo urlfor('/private/images/menuLogoTrans.png');?>">
-				</img>
-			</div>
-			<div class="navLogo"><!--Includes Christopher's Icon logo -->
-				<img class="navImg" src="<?php echo urlfor('/private/images/chrisLogo.png');?>">
-			</div>
-		</div>
-			<div class="mobileNavMenu">
-				<nav class="mobilenavBar">
-				<a id="homeM" href="<?php echo urlfor("public/index.php"); ?>">Home</a> <!--Waiting for dynamic php statements -->
-					<a id="menuM" href="<?php echo urlfor("public/menu.php"); ?>">Menu</a> <!--Waiting for dynamic php statements -->
-					<a id="orderM"href="<?php echo urlfor("public/order.php"); ?>">Order</a> <!--Waiting for dynamic php statements -->
-					<a id="bagM"href="<?php echo urlfor("public/bag.php"); ?>">Bag</a> <!--Waiting for dynamic php statements -->
-			</nav>
-					</div>
+		<div class="mobileHeader">
+        <div id='mobileNav' class="mobileNavBar">
+            <div class="topNav">
+                <nav class="burger">
+                    <div id="line1"></div>
+                    <div id="line2"></div>
+                    <div id="line3"></div>
+                </nav>
+				<div class="navLogo">
+                <img class="navImg" href="index.html" src="<?php echo urlfor('/private/images/chrisLogo.png');?>">
+				</div>
+            </div>
+            <div class="mobileLinks">  
+                <a href="<?php echo urlfor("public/index.php"); ?>" id="navLink">Home</a>
+                <a href="<?php echo urlfor("public/menu.php"); ?>">Menu</a>
+                <a href="<?php echo urlfor("public/order.php"); ?>" id="navLink">Order</a>
+                <a href="<?php echo urlfor("public/bag.php"); ?>" id="navLink">Bag</a>
+            </div>
+        </div>
+    </div>
+	</div>
 	
 		<script>
 			//If the page scrolls down the navbar transitions to sticky version
 		window.onscroll = function() {myFunction()};
-
+$(function() {
+    $('.burger').click(function() {
+        let nav = $('#mobileNav');
+        if (nav.hasClass('mobileNavBar')) {
+            nav.switchClass('mobileNavBar', 'burgerClicked', 1000);
+            $('#line2').hide();
+            $('#line1').css('transform', 'rotateZ(45deg) translateY(11px)');
+            $('#line3').css('transform', 'rotateZ(-45deg) translateY(-11px)');
+            $('#nameText').hide();
+            $('.mobileLinks').css('display', 'flex');
+        } else if (nav.hasClass('burgerClicked')) {
+            nav.switchClass('burgerClicked', 'mobileNavBar', 1000, function() {
+                $('#nameText').show();
+                $('#line1').css('transform', 'none');
+                $('#line3').css('transform', 'none');
+                $('#line2').show();
+                $('.mobileLinks').hide();
+            });
+        }
+    });
+}); 
 		var navbar = document.getElementById("navBar");
 		var sticky = navbar.offsetTop;
 
