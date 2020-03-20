@@ -14,7 +14,7 @@ if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["ema
 
     // sanitize all of the variables
     $firstname = filter_var($_POST["firstname"], FILTER_SANITIZE_STRING);
-    $lastname = filter_var($_POST["lastnagit me"], FILTER_SANITIZE_STRING);
+    $lastname = filter_var($_POST["lastname"], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
     $phone = filter_var($_POST["tel"], FILTER_SANITIZE_NUMBER_INT);
     $subtotal = $_SESSION["subtotal"];

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2020 at 06:25 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Generation Time: Mar 15, 2020 at 09:37 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,7 +45,6 @@ CREATE TABLE `menuitems` (
 INSERT INTO `menuitems` (`name`, `properties`, `category`, `description`, `cost`, `image`, `subcategory`) VALUES
 ('Steak', 'Steak Sauce,Side Salad Dressing,', 'Dinner', 'An excellent meal!', '19.99', '5e470b3665b554.32533391.jpg', 'After 5 Menu'),
 ('Salmon', 'Side Salad Dressing,Sides,', 'Dinner', 'A great meal!', '11.99', '5e4ab68991ff56.23897576.jpeg', 'Seafood'),
-('Burger', 'Condiments,', 'Dinner', 'A good food!', '5.99', '5e4b4563eab4d6.38675668.jpeg', 'Sandwiches'),
 ('Taco', 'Sides,Taco Sauce,', 'Lunch', 'A very good food, has Spaniard origin. Comes in many flavors, a great meal.', '9.99', '5e527ea0d06a12.23396318.jpg', 'All Day Meals'),
 ('Christopher’s New York Strip', 'Steak Sauce,Sides,', 'Dinner', 'Grilled to temp. 8 oz. New York strip, with house-made mashed potatoes.', '19.95', '5e528fa1748ca8.41236358.jpg', 'After 5 Menu'),
 ('Chicken Parmesan', 'Side Salad Dressing,Sides,', 'Dinner', 'A lightly breaded local Hill Family Farm breast of chicken with melted provolone cheese.', '13.95', '5e52903d521fd7.11120202.jpg', 'After 5 Menu'),
@@ -74,18 +73,40 @@ CREATE TABLE `orders` (
   `email` varchar(200) DEFAULT NULL,
   `subtotal` varchar(30) DEFAULT NULL,
   `bag` longtext DEFAULT NULL,
-  `timesent` varchar(100) DEFAULT NULL
+  `timesent` varchar(100) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`) VALUES
-('Bill', 'Man', 'asdf@asdf', '22.9', 'Stroganoff,15.95,5e529163198038.40767693.jpg,Condiments: Relish,Sides: Corn,|The Veggie Sandwich,6.95,5e52966f855a26.35492602.jpg,Condiments: Mustard,|', '11:17'),
-('Test', 'Test', 'TETS@test', '30.9', 'Chicken Parmesan,15.95,5e52903d521fd7.11120202.jpg,Side Salad Dressing: Blue Cheese,Sides: Corn,|Chicken Parmesan,14.95,5e52903d521fd7.11120202.jpg,Side Salad Dressing: Blue Cheese,|', '12:24'),
-('Test', 'Test', 'TETS@test', '', '', '12:24'),
-('Test', 'Test', 'TETS@test', '', '', '12:24');
+INSERT INTO `orders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`, `phone`) VALUES
+('Benjamin', 'Davis', 'bmdavis419@protonmail.com', '15.95', 'Chicken Parmesan,15.95,5e52903d521fd7.11120202.jpg,Side Salad Dressing: Blue Cheese,Sides: Corn,|', '06:01', '9373041163'),
+('Benjamin', 'Davis', 'bmdavis419@protonmail.com', '20.99', 'Steak,20.99,5e470b3665b554.32533391.jpg,Steak Sauce: No,Side Salad Dressing: Blue Cheese,|', '07:55', '9373041163');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permorders`
+--
+
+CREATE TABLE `permorders` (
+  `firstname` varchar(100) DEFAULT NULL,
+  `lastname` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `subtotal` varchar(30) DEFAULT NULL,
+  `bag` longtext DEFAULT NULL,
+  `timesent` varchar(30) DEFAULT NULL,
+  `phone` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `permorders`
+--
+
+INSERT INTO `permorders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`, `phone`) VALUES
+('Benjamin', 'Davis', 'bmdavis419@protonmail.com', '20.99', 'Steak,20.99,5e470b3665b554.32533391.jpg,Steak Sauce: No,Side Salad Dressing: Blue Cheese,|', '07:55', '9373041163');
 
 -- --------------------------------------------------------
 
@@ -125,7 +146,7 @@ CREATE TABLE `wait` (
 --
 
 INSERT INTO `wait` (`time`) VALUES
-('40 Minutes');
+('20 Minutes');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
