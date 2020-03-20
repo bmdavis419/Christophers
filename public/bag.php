@@ -46,7 +46,7 @@ if (isset($_SESSION["bag"])) {
 ?>
 <div class="bagtoOrder">
 <h1>Return to the order page to put more food in your bag.</h1>
-<button>To Order Page</button>
+<button><a href="<?php echo urlfor("public/order.php"); ?>">To Order Page</a></button>
 <h1>Or checkout below.</h1>
 <hr>
 </div>
