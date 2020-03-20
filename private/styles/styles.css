@@ -20,11 +20,15 @@ display:none;
 }
 .navWrapper{
 	width:100%;
-	padding-bottom:10%;
 	background-color:#096A00; 
 	/* background-color: #2987ca; */
 	/* background-color: #77dd77; */
 	border-bottom: 3px solid #800008;
+}
+.navWrapper a{
+	background-color:#096A00;
+	border-bottom: 3px solid #800008;
+	display:block;
 }
 .navBar a{
   float: left;
@@ -55,9 +59,10 @@ overflow:hidden;
 img.navImg { 
 	width:100%;
 	height: 100%;
+	padding-top:1%;
 	}
 /*Mobile menu hidden */
-	.mobileMenu {
+	.mobileLinks {
 		display:none;
 	}
 /*Creates sticky navBar in conjunction with javascript*/
@@ -344,7 +349,7 @@ h4 {
 }
 .menuPage{
 	margin:0 auto;
-	margin-top:4%;
+	margin-top:10%;
 	text-align:center;
 	max-width:90%;
 	margin-left:2.5%;
@@ -356,7 +361,6 @@ h4 {
 	padding-top:1%;
 	border: 3px solid #800008;
 	position:relative;
-	top:-5px;
 	background-color:rgb(255, 243, 194);
 	}
 h3 {
@@ -879,6 +883,63 @@ textarea {
 }
 /*Phone Styles*/ 
 @media (max-width:700px) {
+	.navWrapper {
+		padding-bottom:12%;
+	}
+	.mobileHeader {
+        display: block;
+    }
+    #navBar {
+        display: none;
+    }
+    .mobileNavBar {
+        background-color:#096A00;
+        height: 45px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: .85;
+        z-index: 2;
+    }
+    .burger {
+        height: 35px;
+        order: 2;
+        width: 70px;
+		margin-top: 7px;
+		margin-left:20px;
+    }
+    #line1, #line2, #line3 {
+        background-color: white;
+        height: 4px;
+        margin: 12px;
+    }
+    .topNav {
+        display: flex;
+        justify-content: left;
+        width: 100%;
+    }
+    .burgerClicked {
+        background-color:#096A00;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 1;
+        z-index: 2;
+		border-bottom:3px #800008 solid;
+		position:relative;
+    }
+    .mobileLinks {
+        display:none;
+        flex-direction: column;
+        margin-top: 6vh;
+    }
+    .mobileLinks a {
+		margin-bottom: 12vh;
+		color:white;
+		font-size:60px;
+		text-decoration:none;
+    }
 	.submit {
 		font-size:4.1em;
 	}
@@ -957,32 +1018,8 @@ textarea {
 		margin:2% 40% 2% 40%;
 		top:-10px;
 	}
-	.mobileMenuImgWrapper {
-		width:10%;
-		margin-left:10%;
-		display:block;
-	}
-	.mobileMenuImg {
-		float:left;
-		width:100%;
-	}
-	.navWrapper:active + .mobileNavMenu, .navWrapper:hover + .mobileNavMenu, .mobileNavMenu:active + .mobileNavMenu,.mobileNavMenu:hover + .mobileNavMenu {
-		display: block;
-	}
-	.mobileNavMenu {
-		display:none;
-		width:50%;
-		padding-top:70%;
-		background-color:#096A00;
-		z-index:1;
-		position:absolute;
-		top:0;
-		left:0;
-		height:auto;
-	}
 	.navWrapper {
 	width:100%;
-	padding-bottom:20%;
 	background-color:#096A00;
 	border-bottom: 3px solid #800008;
 	}
