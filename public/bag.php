@@ -37,9 +37,19 @@ if (isset($_SESSION["bag"])) {
     $_SESSION["subtotal"] = $subtotal;
     $_SESSION["bagstring"] = $bagString;
 } else {
-    echo "<h1 class='adminLogin'>Go to the order page to add items to your bag!</h1>";
+    echo '<style type="text/css">
+        .bagtoOrder {
+            margin-top:15%;
+        }
+        </style>';
 }
 ?>
+<div class="bagtoOrder">
+<h1>Return to the order page to put more food in your bag.</h1>
+<button>To Order Page</button>
+<h1>Or checkout below.</h1>
+<hr>
+</div>
 <script>
 // display the subtotal
 $("document").ready(function() {

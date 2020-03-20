@@ -10,7 +10,10 @@ overflow-x: hidden; /*Disables horizontal scrolling*/
 body {
 	margin:0;
 }
-
+a, a:hover, a:focus, a:active {
+	text-decoration: none;
+	color: inherit;
+}
 /*Global Header Styles*/
 .mobileMenuImgWrapper {
 	display:none;
@@ -591,6 +594,12 @@ a.hero-image {
 	transform: translate(-50%, -50%);
 	}
   /*Checkout*/
+  .btnCheckout {
+	  float:left;
+  }
+  .checkout {
+	  clear:both;
+  }
   .checkoutImgWrapper {
 	  width: 30%;
 	  height:auto;
@@ -683,6 +692,13 @@ fieldset {
 }
 
 /*Bag */
+.bagtoOrder {
+	text-align:center;
+	color:#096A00;
+}
+.bagtoOrder h1{
+	font-size:3em;
+}
 #price {
 	float:right;
 	width:20%;
@@ -725,7 +741,11 @@ input {
 }
 button {
 	font-size:2.1em;
+	background-image:linear-gradient(-45deg,rgba(9,106,0,.8),rgba(9,106,0,1));
 	margin:1%;
+	padding:0.5%;
+	color:white;
+	border:rgba(9,106,0,0.5);
 }
 .adminButton {
 	position:relative;

@@ -187,6 +187,7 @@ $("document").ready(function(){
     setHiddenValues();
 });
 </script>
+<button class="btnCheckout" ><a href="<?php echo urlfor("public/order.php"); ?>">&#8592;Order Page</a></button>
 <main class="checkout">
     <div class="checkoutImgWrapper">
         <img class="checkout-image" id="dishImg">
