@@ -7,8 +7,7 @@ date_default_timezone_set("America/New_York");
 // function to validate the order time
 function validateOrder($bag) {
     // get the current time
-    //$time = date("H:i");
-    $time = "17:46";
+    $time = date("H:i");
     $breakfast = "7:30";
     $lunch = "11:00";
     $dinner = "16:30";
@@ -23,18 +22,34 @@ function validateOrder($bag) {
     // get the current range of availability
     $currentlyAvailable = array();
     if ($breakfastTimeStamp < $currentTimeStamp && $lunchTimeStamp > $currentTimeStamp) {
-        echo "breakfast";
+        $currentlyAvailable = array("Breakfast", "Dessert", "Drinks", "Features");
     } else if ($lunchTimeStamp < $currentTimeStamp && $dinnerTimeStamp > $currentTimeStamp) {
-        echo "lunch";
+        $currentlyAvailable = array("Lunch", "Dessert", "Drinks", "Features");
     } else if ($dinnerTimeStamp < $currentTimeStamp && $closeTimeStamp > $currentTimeStamp) {
-        echo "dinner";
+        $currentlyAvailable = array("Dinner", "Dessert", "Drinks", "Features");
     } else {
-        echo "closed";
+        $currentlyAvailable = ("");
     }
+
+    // get all of the categorys selected by the user
+    $bagItems = explode("|", $bag);
+
+    // remove last item
+    $bagItems = array_pop($bagItems);
+
+    // list of categorys
+    $categoryList = array();
+    for ($i = 0; $i < count($bagItems); $i++) {
+        // split the bag item and add
+        $split = explode(",", $bagItems[$i]);
+        array_push($categoryList, $split[1]);
+    }
+
+    echo $categoryList[0];
 }
 
 // "Christopher’s New York Strip,Dinner,20.95,5e528fa1748ca8.41236358.jpg,Steak Sauce: No,Sides: Corn,|"
-validateOrder("asdf");
+validateOrder($_SESSION["bagstring"]);
 
 
 if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["email"]) && isset($_POST["tel"]) && isset($_SESSION["bagstring"])) {
