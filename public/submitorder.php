@@ -3,6 +3,40 @@
 <?php
 session_start();
 date_default_timezone_set("America/New_York");
+
+// function to validate the order time
+function validateOrder($bag) {
+    // get the current time
+    //$time = date("H:i");
+    $time = "17:46";
+    $breakfast = "7:30";
+    $lunch = "11:00";
+    $dinner = "16:30";
+    $close = "21:00";
+
+    $currentTimeStamp = strtotime($time);
+    $breakfastTimeStamp = strtotime($breakfast);
+    $lunchTimeStamp = strtotime($lunch);
+    $dinnerTimeStamp = strtotime($dinner);
+    $closeTimeStamp = strtotime($close);
+
+    // get the current range of availability
+    $currentlyAvailable = array();
+    if ($breakfastTimeStamp < $currentTimeStamp && $lunchTimeStamp > $currentTimeStamp) {
+        echo "breakfast";
+    } else if ($lunchTimeStamp < $currentTimeStamp && $dinnerTimeStamp > $currentTimeStamp) {
+        echo "lunch";
+    } else if ($dinnerTimeStamp < $currentTimeStamp && $closeTimeStamp > $currentTimeStamp) {
+        echo "dinner";
+    } else {
+        echo "closed";
+    }
+}
+
+// "Christopher’s New York Strip,Dinner,20.95,5e528fa1748ca8.41236358.jpg,Steak Sauce: No,Sides: Corn,|"
+validateOrder("asdf");
+
+
 if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["email"]) && isset($_POST["tel"]) && isset($_SESSION["bagstring"])) {
     // set variables with all of the data from orders page
     // trim everything in post
@@ -20,11 +54,12 @@ if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["ema
     $subtotal = $_SESSION["subtotal"];
     $bag = $_SESSION["bagstring"];
     $time = date("h:i");
+    $date = date("Y-m-d");
 
     // insert into the database
     include("../private/functions/databaseconfig.php");
     // create the statement
-    $stmt = $conn->prepare("INSERT INTO orders (firstname, lastname, email, subtotal, bag, timesent, phone) VALUES (:f, :l, :e, :s, :b, :t, :p)");
+    $stmt = $conn->prepare("INSERT INTO orders (firstname, lastname, email, subtotal, bag, timesent, phone, date) VALUES (:f, :l, :e, :s, :b, :t, :p, :d)");
     $stmt->bindParam('f', $firstname);
     $stmt->bindParam('l', $lastname);
     $stmt->bindParam('e', $email);
@@ -32,9 +67,10 @@ if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["ema
     $stmt->bindParam('b', $bag);
     $stmt->bindParam('t', $time);
     $stmt->bindParam('p', $phone);
+    $stmt->bindParam('d', $date);
 
     // create a second statement for the admin
-    $permstmt = $conn->prepare("INSERT INTO permorders (firstname, lastname, email, subtotal, bag, timesent, phone) VALUES (:f, :l, :e, :s, :b, :t, :p)");
+    $permstmt = $conn->prepare("INSERT INTO permorders (firstname, lastname, email, subtotal, bag, timesent, phone, date) VALUES (:f, :l, :e, :s, :b, :t, :p, :d)");
     $permstmt->bindParam('f', $firstname);
     $permstmt->bindParam('l', $lastname);
     $permstmt->bindParam('e', $email);
@@ -42,6 +78,7 @@ if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["ema
     $permstmt->bindParam('b', $bag);
     $permstmt->bindParam('t', $time);
     $permstmt->bindParam('p', $phone);
+    $permstmt->bindParam('d', $date);
 
     // insert
     if ($stmt->execute() && $permstmt->execute()) {

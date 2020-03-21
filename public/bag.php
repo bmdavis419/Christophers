@@ -4,7 +4,7 @@
 
 <!--This page will be populated directly from the checkout page if it is clicked -->
 <?php
-// "Steak,22.99,5e470b3665b554.32533391.jpg,Steak Sauce: No,Side Salad Dressing: Caesar,Side Salad Dressing: Blue Cheese,"
+// "Steak,Dinner,22.99,5e470b3665b554.32533391.jpg,Steak Sauce: No,Side Salad Dressing: Caesar,Side Salad Dressing: Blue Cheese,"
 // echo out the items in the bag
 // check if the session is set
 $subtotal = 0;
@@ -19,13 +19,13 @@ if (isset($_SESSION["bag"])) {
         array_pop($itemDetails);
     
         // add the price to the subtotal
-        $subtotal += floatval($itemDetails[1]);
+        $subtotal += floatval($itemDetails[2]);
 
         // create the item
-        echo("<div class='checkoutImgWrapper'><img class='checkout-image' src='../private/images/menu/" . $itemDetails[2] . "'></img></div>");
-        echo("<div class='checkoutDesc'><h5 class='checkout'>" . $itemDetails[0] . "</h5><p id='price'>$" . $itemDetails[1] . "</p><p id='selectedOptions'><ul>");
+        echo("<div class='checkoutImgWrapper'><img class='checkout-image' src='../private/images/menu/" . $itemDetails[3] . "'></img></div>");
+        echo("<div class='checkoutDesc'><h5 class='checkout'>" . $itemDetails[0] . "</h5><p id='price'>$" . $itemDetails[2] . "</p><p id='selectedOptions'><ul>");
         // get all of the properties added
-        for ($n = 3; $n < count($itemDetails); $n++) {
+        for ($n = 4; $n < count($itemDetails); $n++) {
             echo("<li>" . $itemDetails[$n] . "</li>");
         }
         echo("</ul></p></div><hr>");

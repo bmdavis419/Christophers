@@ -28,6 +28,11 @@ if (isset($_SESSION['valid']) && ($_SESSION['valid'] = true)){
 	<label for="wait">Enter the current wait time in the format you want users to see (ex: 40mins): <input type="text" id="wait" name="wait"></label>
 	<button type="submit">Update</button>
 </form>
+
+<form action="logout.php" method="POST">
+	<button type="submit" name="log">Logout</button>
+</form>
+
 <?php
 } else {
 	echo 'Access denied';
