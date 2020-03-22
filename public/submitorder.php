@@ -35,7 +35,7 @@ function validateOrder($bag) {
     $bagItems = explode("|", $bag);
 
     // remove last item
-    $bagItems = array_pop($bagItems);
+    array_pop($bagItems);
 
     // list of categorys
     $categoryList = array();
@@ -45,15 +45,27 @@ function validateOrder($bag) {
         array_push($categoryList, $split[1]);
     }
 
-    echo $categoryList[0];
+    $isAllowed = true;
+
+    // compare the items in the category list
+    for ($i = 0; $i < count($categoryList); $i++) {
+        if (in_array($categoryList[$i], $currentlyAvailable) != true) {
+            $isAllowed = false;
+        }
+    }
+    
+    // return
+    return $isAllowed;
 }
 
 // "Christopher’s New York Strip,Dinner,20.95,5e528fa1748ca8.41236358.jpg,Steak Sauce: No,Sides: Corn,|"
-validateOrder($_SESSION["bagstring"]);
+$test = validateOrder($_SESSION["bagstring"]);
 
 
 if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["email"]) && isset($_POST["tel"]) && isset($_SESSION["bagstring"])) {
-    // set variables with all of the data from orders page
+    // validate the order
+    if (validateOrder($_SESSION["bagstring"])) {
+        // set variables with all of the data from orders page
     // trim everything in post
     function clean_value(&$value) {
         $temp = trim($value);
@@ -108,7 +120,11 @@ if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["ema
         $currentWaitTime = $wait[0]["time"];
         echo "<h1 class='adminLogin'>Thank you for ordering!<br>Your order should be ready in approximately " . $currentWaitTime . ".</h1>";
     } else {
-        echo "<h1 class='adminLogin'>There was an error sending your order to our cooks. Please try again, and we apologize for the inconvenence.</h1>";
+        echo "<h1 class='adminLogin'>There was an error sending your order. Please try again, and we apologize for the inconvenence.</h1>";
+    }
+    } else {
+        session_unset();
+        echo "<h1 class='adminLogin'>You have one or more items in your bag that are not available at this time. Please return to the order page and make selections based off of our current offerings.</h1>";
     }
 } else {
     header("Location: bag.php?error");
