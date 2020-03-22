@@ -1,10 +1,10 @@
 <?php 
-require_once("../../private/functions/initialize.php");
-include("../../private/shared/globalheader.php"); ?>
+require_once("../private/functions/initialize.php");
+include("../private/shared/cateringheader.php");  ?>
 <?php
 // pull down all of the menu items and sort them into the correct arrays
 // call database
-require("../../private/functions/databaseconfig.php");
+require("../private/functions/databaseconfig.php");
 $stmt = $conn->prepare("SELECT * FROM cateringitems");
 $stmt->execute();
 $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
@@ -254,4 +254,4 @@ function displayPicnic() {
 	</div>
 <hr>
 </div>
-<?php include("../../private/shared/globalfooter.php"); ?>
+<?php include("../private/shared/globalfooter.php"); ?>
