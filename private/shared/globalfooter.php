@@ -5,7 +5,6 @@
 	<h2>Christopher's Restaurant</h2>
 	<address>
 		<p>2318 DOROTHY LANE, KETTERING, OH, 45420<p>
-		<a href="http://christopherscatering.biz">Catering Website</a><br>
 		<a href="tel:9372990089">937-299-0089</a><br>
 		<a href="mailto:info@christophers.biz">Email Here</a><br>
 	</address>
