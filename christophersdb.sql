@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2020 at 09:37 PM
+-- Generation Time: Mar 22, 2020 at 08:06 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -21,6 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `christophersdb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cateringitems`
+--
+
+CREATE TABLE `cateringitems` (
+  `name` varchar(200) DEFAULT NULL,
+  `category` varchar(30) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `price` varchar(255) DEFAULT NULL,
+  `subcategory` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cateringitems`
+--
+
+INSERT INTO `cateringitems` (`name`, `category`, `description`, `price`, `subcategory`) VALUES
+('FIRST ITEM', 'Hors', 'asdf', '$REEE', 'Hot Hors Doeuvres'),
+('Second item', 'Entrees', 'FFXA AASDF EESA DF', '$a lareg ', 'Pasta/Vegetarian'),
+('THIRD ITEM', 'Breakfast', 'FOR', 'assdfsadf', 'A la Carte'),
+('Sandwich Box', 'Boxed', 'Choose from all natural turkey, ham or roast beef with provolone, cheddar or Swiss cheese. Or try our popular veggie sandwich (cream cheese, cucumbers, sprouts and tomato).', '$8.50 half sandwich / $10.95 whole sandwich', 'Specialty Sandwiches'),
+('Spinach Salad with Hot Bacon Dressing', 'Sides', 'Tender fresh baby spinach, sliced eggs, purple onions and bacon bits.', '$3.50', 'Side Salads'),
+('Hot Dogs & Hamburgers', 'Picnic Time', 'With Cole Slaw, and Potato Salad.', '$8.95 per person (100 or more) $9.50 per person (50-100).', ''),
+('Homemade Carrot Cake Squares', 'Desserts', 'Best in town!', '$2.50', 'Perfect Endings');
 
 -- --------------------------------------------------------
 
@@ -74,16 +101,16 @@ CREATE TABLE `orders` (
   `subtotal` varchar(30) DEFAULT NULL,
   `bag` longtext DEFAULT NULL,
   `timesent` varchar(100) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL
+  `phone` varchar(20) DEFAULT NULL,
+  `date` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`, `phone`) VALUES
-('Benjamin', 'Davis', 'bmdavis419@protonmail.com', '15.95', 'Chicken Parmesan,15.95,5e52903d521fd7.11120202.jpg,Side Salad Dressing: Blue Cheese,Sides: Corn,|', '06:01', '9373041163'),
-('Benjamin', 'Davis', 'bmdavis419@protonmail.com', '20.99', 'Steak,20.99,5e470b3665b554.32533391.jpg,Steak Sauce: No,Side Salad Dressing: Blue Cheese,|', '07:55', '9373041163');
+INSERT INTO `orders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`, `phone`, `date`) VALUES
+('Benjamin', 'Davis', 'bmdavis419@protonmail.com', '15.95', 'Chicken Parmesan,Dinner,15.95,5e52903d521fd7.11120202.jpg,Side Salad Dressing: Blue Cheese,Sides: Corn,|', '01:38', '9373041163', '2020-03-21');
 
 -- --------------------------------------------------------
 
@@ -98,15 +125,16 @@ CREATE TABLE `permorders` (
   `subtotal` varchar(30) DEFAULT NULL,
   `bag` longtext DEFAULT NULL,
   `timesent` varchar(30) DEFAULT NULL,
-  `phone` varchar(30) DEFAULT NULL
+  `phone` varchar(30) DEFAULT NULL,
+  `date` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `permorders`
 --
 
-INSERT INTO `permorders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`, `phone`) VALUES
-('Benjamin', 'Davis', 'bmdavis419@protonmail.com', '20.99', 'Steak,20.99,5e470b3665b554.32533391.jpg,Steak Sauce: No,Side Salad Dressing: Blue Cheese,|', '07:55', '9373041163');
+INSERT INTO `permorders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`, `phone`, `date`) VALUES
+('Benjamin', 'Davis', 'bmdavis419@protonmail.com', '15.95', 'Chicken Parmesan,Dinner,15.95,5e52903d521fd7.11120202.jpg,Side Salad Dressing: Blue Cheese,Sides: Corn,|', '01:38', '9373041163', '2020-03-21');
 
 -- --------------------------------------------------------
 

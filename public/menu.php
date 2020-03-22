@@ -155,16 +155,16 @@ function displayDinner() {
 function displayDrinks() {
 	for (var i = 0; i < drinks.length; i++) {
 		if (drinks[i]["subcategory"] == "Craft Beer") {
-			$("#drinksbeer").append("<h8>" + drinks[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + drinks[i]["description"] + "</p>");
+			$("#drinksbeer").append("<h8>" + drinks[i]["name"] + "</h8><p class='price'>" + drinks[i]["cost"] + "</p><p class='desc'>" + drinks[i]["description"] + "</p>");
 		} else if (drinks[i]["subcategory"] == "Wine") {
-			$("#drinkswine").append("<h8>" + drinks[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + drinks[i]["description"] + "</p>");
+			$("#drinkswine").append("<h8>" + drinks[i]["name"] + "</h8><p class='price'>" + drinks[i]["cost"] + "</p><p class='desc'>" + drinks[i]["description"] + "</p>");
 		}
 	}
 }
 
 function displayDesserts() {
 	for (var i = 0; i < dessert.length; i++) {
-		$("#dessertsdisplay").append("<h8>" + dessert[i]["name"] + "</h8><p class='price'>" + dinner[i]["cost"] + "</p><p class='desc'>" + dessert[i]["description"] + "</p>");
+		$("#dessertsdisplay").append("<h8>" + dessert[i]["name"] + "</h8><p class='price'>" + dessert[i]["cost"] + "</p><p class='desc'>" + dessert[i]["description"] + "</p>");
 	}
 }
 </script>
