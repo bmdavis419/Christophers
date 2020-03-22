@@ -178,6 +178,7 @@ function setHiddenValues() {
     $("#name").val(menuItem["name"]);
     $("#cost").val(menuItem["cost"]);
     $("#image").val(menuItem["image"]);
+    $("#category").val(menuItem["category"]);
 }
 
 $("document").ready(function(){
@@ -207,6 +208,7 @@ $("document").ready(function(){
     <input type="hidden" id="image" name="image">
     <input type="hidden" id="name" name="name">
     <input type="hidden" id="cost" name="cost">
+    <input type="hidden" id="category" name="category">
 
     <button type="submit" class="submit">Submit</button>
 </form>

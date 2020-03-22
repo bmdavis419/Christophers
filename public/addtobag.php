@@ -8,6 +8,7 @@ $checkBoxes = json_decode($_POST["checkboxes"]);
 $name = htmlspecialchars($_POST["name"]);
 $subTotal = floatval($_POST["cost"]);
 $image = $_POST["image"];
+$category = htmlspecialchars($_POST["category"]);
 
 // change all of the spaces to _ in the arrays
 for ($i = 0; $i < count($radioButtons); $i++) {
@@ -48,6 +49,7 @@ for ($i = 0; $i < count($checkBoxes); $i++) {
 
 // make the string that will be added to the bag array
 $bagString = $name . ",";
+$bagString = $bagString . $category . ",";
 $bagString = $bagString . $subTotal . ",";
 $bagString = $bagString . $image . ",";
 for ($i = 0; $i < count($itemsAdded); $i++) {

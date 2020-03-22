@@ -14,7 +14,8 @@ include("../../private/shared/globalheader.php"); ?>
 	ini_set('session.gc_probability', 1);
 	ini_set('session.gc_divisor',1);
 //	ini_set('session.cookie_secure',1); // enable HTTPS support if available
-   	session_start();
+	   session_start();
+	   ob_start();
 ?>
 <html>
 	<head>
