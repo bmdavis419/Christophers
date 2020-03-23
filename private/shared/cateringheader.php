@@ -33,7 +33,7 @@
                     <div id="line3"></div>
                 </nav>
 				<div class="navLogo">
-                <img class="navImg" href="index.html" src="<?php echo urlfor('christophers/private/images/chrisLogo.png');?>">
+                <a class="logo"href="<?php echo urlfor("christophers/index.html"); ?>"><img class="navImg"  src="<?php echo urlfor('christophers/private/images/chrisLogo.png');?>"></a>
 				</div>
             </div>
             <div class="mobileLinks">  

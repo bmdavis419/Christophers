@@ -31,7 +31,9 @@ display:none;
 .navWrapper a{
 	background-color:#096A00;
 	border-bottom: 3px solid #800008;
-	display:block;
+}
+a.logo {
+	border:0;
 }
 .navBar a{
   float: left;
@@ -714,6 +716,9 @@ h5.checkout {
 }
 
 /*Admin Styles*/
+.btnAdmin {
+	display:block;
+}
 form {
 	clear:both;
 	text-align:center;
@@ -722,7 +727,7 @@ form {
 	background-color:cornsilk;
 }
 .adminLogin {
-	margin-top:5%;
+	margin-top:10%;
 	margin-bottom:6%;
 	font-size:3em;
 	color:brown;
@@ -746,6 +751,7 @@ button {
 	padding:0.5%;
 	color:white;
 	border:rgba(9,106,0,0.5);
+	cursor:pointer;
 }
 .adminButton {
 	position:relative;
@@ -775,6 +781,7 @@ button {
 	text-align:center;
 	color:brown;
 	font-size:3em;
+	margin-top:12%;
 }
 .editable {
 	background-color:rgb(255, 243, 194);
