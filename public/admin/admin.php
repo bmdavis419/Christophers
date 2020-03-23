@@ -13,7 +13,7 @@ if (isset($_SESSION['valid']) && ($_SESSION['valid'] = true)){
 <a class="adminDirectory" href="<?php echo urlfor('public/admin/propertyadd.php'); ?>">Properties</a>
 </div>
 <script>
-$("document").ready(function() {
+$("document").ready(() => {
 	$(".outerAccordion").accordion({
 		clearStyle:true,
 		heightStyle:"panel",
@@ -83,7 +83,7 @@ for (var i = 0; i < allOrders.length; i++) {
 	}
 }
 
-function displayOrders() {
+var displayOrders = () => {
 	// fill the permanent dates
 	for (var i = 0; i < allDates.length; i++) {
 		$("#permdates").append("<h5>TEst</h5><div></div>");
