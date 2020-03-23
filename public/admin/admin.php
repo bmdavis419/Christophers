@@ -9,8 +9,9 @@ if (isset($_SESSION['valid']) && ($_SESSION['valid'] = true)){
 <!-- LINKS TO MENU AND PROPERTY ADDITIONS -->
 <div class="adminDirectoryContainer">
 <h1 class="adminLogin" >Select Which You'd Like to Create:</h1> 
-<a class="adminDirectory" href="<?php echo urlfor('public/admin/menuadd.php'); ?>">Menu  </a>
+<a class="adminDirectory" href="<?php echo urlfor('public/admin/menuadd.php'); ?>">Menu</a>
 <a class="adminDirectory" href="<?php echo urlfor('public/admin/propertyadd.php'); ?>">Properties</a>
+<a class="adminDirectory" href="<?php echo urlfor('public/admin/cateringadd.php'); ?>">Catering</a>
 </div>
 <script>
 $("document").ready(() => {
@@ -86,7 +87,29 @@ for (var i = 0; i < allOrders.length; i++) {
 var displayOrders = () => {
 	// fill the permanent dates
 	for (var i = 0; i < allDates.length; i++) {
-		$("#permdates").append("<h5>TEst</h5><div></div>");
+		$("#permdates").append("<h5>" + allDates[i].date + "</h5><div><div id='" + i + "' class='newAcc'></div></div>");
+
+		let orders = allDates[i].orders;
+		// append each of the dates into the section
+		for (var n = 0; n < orders.length; n++) {
+			$("#" + i).append("<h5>" + orders[n]["firstname"] + " " + orders[n]["lastname"] + "|" + orders[n]["email"] + "|" + orders[n]["phone"] + "|" + orders[n]["timesent"] + "|$" + orders[n]["subtotal"] + "</h5><div id='" + i + n + "'></div>");
+
+			// append in the orders
+			// "Chicken Parmesan,Dinner,15.95,5e52903d521fd7.11120202.jpg,Side Salad Dressing: Blue Cheese,Sides: Corn,|"
+			let bagItems = orders[n]["bag"];
+			bagItems = bagItems.split("|");
+			bagItems.pop();
+			for (var c = 0; c < bagItems.length; c++) {
+				let bagParts = bagItems[c].split(",");
+				bagParts.pop();
+				// append
+				$("#" + i + n).append("<h5>" + bagParts[0] + "-" + bagParts[2] + "</h5><ul id='" + i + n + c + "'></ul>");
+				for (var t = 4; t < bagParts.length; t++) {
+					$("#" + i + n + c).append("<li>" + bagParts[t] + "</li>");
+				}
+			}
+		}
+
 		$(".innerAccordion").accordion("destroy");
 		$(".outerAccordion").accordion({
 			clearStyle:true,
@@ -95,6 +118,12 @@ var displayOrders = () => {
 			active:false,	
 		});
 		$(".innerAccordion").accordion({
+			clearStyle:true,
+			heightStyle:"panel",
+			collapsible:true,
+			active:false,
+		});
+		$(".newAcc").accordion({
 			clearStyle:true,
 			heightStyle:"panel",
 			collapsible:true,
@@ -109,19 +138,6 @@ var displayOrders = () => {
 		<h3>All Orders</h3>
 		<div>
 			<div id="permdates" class="innerAccordion">
-				<h5>After 5 Menu</h5>
-				<div id="dinnersafter5"></div>
-				<h5>Seafood</h5>
-				<div id="dinnersseafood"></div>
-				<h5>Appetizers</h5>
-				<div id="dinnersappetizers"></div>
-				<h5>Salads</h5>
-				<div id="dinnersalads"></div>
-				<h5>All Day Meals</h5>
-				<div id="dinnersallday"></div>
-				<h5>Sandwiches</h5>
-				<div id="dinnerssandwiches"></div>
-				<h5>TEst</h5><div></div>
 			</div>
 		</div>
 	</div>
