@@ -9,8 +9,8 @@ include("../../private/shared/globalheader.php"); ?>
 	ini_set('session_use_only_cookies', 1); // session ID can't be passed through URLs, use cookies
 	ini_set('session.hash_function', 'whirlpool'); // hashing function whirlpool
 	ini_set('session.use_trans_sid', 0); // disable transparent sid support
-	ini_set('session.cookie_lifetime',1800); // set cookie timeout to 30 minutes
-	ini_set('session.gc_maxlifetime', 1800); // server keeps session data for 30 minutes
+	//ini_set('session.cookie_lifetime',1800); // set cookie timeout to 30 minutes
+	//ini_set('session.gc_maxlifetime', 1800); // server keeps session data for 30 minutes
 	ini_set('session.gc_probability', 1);
 	ini_set('session.gc_divisor',1);
 //	ini_set('session.cookie_secure',1); // enable HTTPS support if available
