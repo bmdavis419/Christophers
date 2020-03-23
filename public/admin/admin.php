@@ -86,7 +86,20 @@ for (var i = 0; i < allOrders.length; i++) {
 function displayOrders() {
 	// fill the permanent dates
 	for (var i = 0; i < allDates.length; i++) {
-		
+		$("#permdates").append("<h5>TEst</h5><div></div>");
+		$(".innerAccordion").accordion("destroy");
+		$(".outerAccordion").accordion({
+			clearStyle:true,
+			heightStyle:"panel",
+			collapsible:true,
+			active:false,	
+		});
+		$(".innerAccordion").accordion({
+			clearStyle:true,
+			heightStyle:"panel",
+			collapsible:true,
+			active:false,
+		});
 	}
 }
 </script>
@@ -108,6 +121,7 @@ function displayOrders() {
 				<div id="dinnersallday"></div>
 				<h5>Sandwiches</h5>
 				<div id="dinnerssandwiches"></div>
+				<h5>TEst</h5><div></div>
 			</div>
 		</div>
 	</div>
