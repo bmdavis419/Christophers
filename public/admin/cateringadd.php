@@ -153,9 +153,9 @@ function displayCateringItems() {
 </script>
 </head>
 <body>
-<button class="btnAdmin" ><a href="<?php echo urlfor("public/admin"); ?>">&#8592;Admin Page</a></button>
 <form action="submitCatering.php" method="POST" enctype="multipart/form-data">
     <h1 class="addHeader">Catering Item Creator</h1>
+    <button class="btnAdmin" ><a href="<?php echo urlfor("public/admin/admin.php"); ?>">&#8592;Admin Page</a></button>
     <div class="editable">
     <div class="inputs">
     <label for="name">Catering Item Name:</label>

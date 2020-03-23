@@ -168,7 +168,7 @@ function displayMenuItems() {
 <body>
 <form action="submitmenu.php" method="POST" enctype="multipart/form-data">
     <h1 class="addHeader">Menu Item Creator</h1>
-    <button class="btnAdmin" ><a href="<?php echo urlfor("public/admin"); ?>">&#8592;Admin Page</a></button>
+    <button class="btnAdmin" ><a href="<?php echo urlfor("public/admin/admin.php"); ?>">&#8592;Admin Page</a></button>
     <div class="editable">
     <div class="inputs">
     <label for="name">Menu Item Name:</label>

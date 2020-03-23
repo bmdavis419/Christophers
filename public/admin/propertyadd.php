@@ -213,6 +213,7 @@ function displayItems() {
 <body>
 <form id="testForm" action="submitproperty.php" method="POST">
     <h1 class="addHeader">Property Item Creator</h1>
+    <button class="btnAdmin" ><a href="<?php echo urlfor("public/admin/admin.php"); ?>">&#8592;Admin Page</a></button>
     <div class="editable">
     <div id = "displaytemp"></div>
     <fieldset id="items"></fieldset>
