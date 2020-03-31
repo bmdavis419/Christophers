@@ -18,7 +18,7 @@ for ($i = 0; $i < count($allMenuItems); $i++) {
 	if ($allMenuItems[$i]["category"] == "Dinner") {
 		array_push($dinner, $allMenuItems[$i]);
 	} else  if ($allMenuItems[$i]["category"] == "Features" && $allMenuItems[$i]["subcategory"] == "Dinner") {
-        array_push($breakfast, $allMenuItems[$i]);
+        array_push($dinner, $allMenuItems[$i]);
     }
 }
 ?>
