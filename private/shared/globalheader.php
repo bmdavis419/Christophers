@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php ini_set('display_errors', 'Off'); ?>
+<?php /* ini_set('display_errors', 'Off'); */ ?>
 <head>
 	<title>Christopher's Restaurant</title>
 	<!--Room for stylesheets and PHP -->

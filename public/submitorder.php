@@ -82,11 +82,12 @@ if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["ema
     $bag = $_SESSION["bagstring"];
     $time = date("h:i");
     $date = date("Y-m-d");
+    $status = "incoming";
 
     // insert into the database
     include("../private/functions/databaseconfig.php");
     // create the statement
-    $stmt = $conn->prepare("INSERT INTO orders (firstname, lastname, email, subtotal, bag, timesent, phone, date) VALUES (:f, :l, :e, :s, :b, :t, :p, :d)");
+    $stmt = $conn->prepare("INSERT INTO orders (firstname, lastname, email, subtotal, bag, timesent, phone, date, status) VALUES (:f, :l, :e, :s, :b, :t, :p, :d, :st)");
     $stmt->bindParam('f', $firstname);
     $stmt->bindParam('l', $lastname);
     $stmt->bindParam('e', $email);
@@ -95,6 +96,7 @@ if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["ema
     $stmt->bindParam('t', $time);
     $stmt->bindParam('p', $phone);
     $stmt->bindParam('d', $date);
+    $stmt->bindParam('st', $status);
 
     // create a second statement for the admin
     $permstmt = $conn->prepare("INSERT INTO permorders (firstname, lastname, email, subtotal, bag, timesent, phone, date) VALUES (:f, :l, :e, :s, :b, :t, :p, :d)");

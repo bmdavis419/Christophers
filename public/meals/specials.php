@@ -66,9 +66,6 @@ function display() {
         } else if (features[i]["subcategory"] == "Fresh Catch") {
             var imagelink = "../../private/images/menu/" + features[i]["image"];
             $("#freshapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
-        } else if (features[i]["subcategory"] == "Other") {
-            var imagelink = "../../private/images/menu/" + features[i]["image"];
-            $("#otherapp").append("<a href='../checkout.php?name=" + features[i]["name"] + "&category=" + features[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" + imagelink + ");'><div class='hero-text'><p>" + features[i]["name"] + "</p></div><div class='hero-desc'><p>" + features[i]["description"] +  "</p></div></a>");
         }
     }
 }
@@ -76,15 +73,15 @@ function display() {
 <div class="MealPage">
 <div class="menuPage">
     <div id="accordionCtrl" class="outerAccordion">
-        <h3>Breakfast</h3>
+        <h3>Breakfast - 7:30-11:00</h3>
         <div id="breakfastapp"></div>
     </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
-        <h3>Lunch</h3>
+        <h3>Lunch - 11:00-4:30</h3>
         <div id="lunchapp"></div>
     </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
-        <h3>Dinner</h3>
+        <h3>Dinner - 4:30-9:00</h3>
         <div id="dinnerapp"></div>
     </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
@@ -103,10 +100,7 @@ function display() {
         <h3>Fresh Catch</h3>
         <div id="freshapp"></div>
     </div><hr>
-    <div id="accordionCtrl" class="outerAccordion">
-        <h3>Other</h3>
-        <div id="otherapp"></div>
-    </div><hr>
     </div>
 </div>
+<br>
 <?php include("../../private/shared/globalfooter.php"); ?>

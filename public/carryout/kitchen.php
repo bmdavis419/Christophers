@@ -14,9 +14,24 @@ $stmt->execute();
 $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
 $allOrders = $result;
 
-// echo out all of the kitchen items
-echo("<h1 class='adminLogin'>Carryout Orders:</h1>");
+$incomingOrders = array();
+$addedOrders = array();
+$completedOrders = array();
+
+// split into three sections 
 foreach ($allOrders as $order) {
+    if ($order["status"] == "incoming") {
+        array_push($incomingOrders, $order);
+    } else if ($order["status"] == "added") {
+        array_push($addedOrders, $order);
+    } else if ($order["status"] == "completed") {
+        array_push($completedOrders, $order);
+    }
+}
+
+// echo out all of the kitchen items
+echo("<h1 class='adminLogin'>Incoming Orders:</h1>");
+foreach ($incomingOrders as $order) {
     echo ("<div class='kitchenContent'><div id='accordionCtrl' class='kitchenAccordion'><h3>" . $order["firstname"] . " " . $order["lastname"] . "-" . $order["timesent"] . "-$" . $order["subtotal"] . "</h3>");
     echo ("<div class='kitchenInner'>");
     // decode the bag
@@ -35,7 +50,53 @@ foreach ($allOrders as $order) {
         echo ("</ul><p id='price'>" . $menuItem[2] . "</p>");
         
     }
-    echo ("<form method='post' action='remove.php'><input type='hidden' name='email' id='email' value='" . $order["email"] . "'><button type='submit'>Complete order</button></form></div></div></div>");
+    echo ("<form method='post' action='add.php'><input type='hidden' name='email' id='email' value='" . $order["email"] . "'><button type='submit'>Add Order</button></form></div></div></div>");
+}
+
+echo("<h1 class='adminLogin'>Added Orders:</h1>");
+foreach ($addedOrders as $order) {
+    echo ("<div class='kitchenContent'><div id='accordionCtrl' class='kitchenAccordion'><h3>" . $order["firstname"] . " " . $order["lastname"] . "-" . $order["timesent"] . "-$" . $order["subtotal"] . "</h3>");
+    echo ("<div class='kitchenInner'>");
+    // decode the bag
+    $decodedBag = $order["bag"];
+    // echo out the bag
+    $bagItems = explode("|", $decodedBag);
+    array_pop($bagItems);
+    for ($i = 0; $i < count($bagItems); $i++) {
+        // split the string
+        $menuItem = explode(",", $bagItems[$i]);
+        array_pop($menuItem);
+        echo ("<h5 class='kitchenItem'>" . $menuItem[0] . "</h5><ul>");
+        for ($n = 4; $n < count($menuItem); $n++) {
+            echo("<li>". $menuItem[$n] . "</li>");
+        }
+        echo ("</ul><p id='price'>" . $menuItem[2] . "</p>");
+        
+    }
+    echo ("<form method='post' action='complete.php'><input type='hidden' name='email' id='email' value='" . $order["email"] . "'><button type='submit'>Complete order</button></form></div></div></div>");
+}
+
+echo("<h1 class='adminLogin'>Completed Orders:</h1>");
+foreach ($completedOrders as $order) {
+    echo ("<div class='kitchenContent'><div id='accordionCtrl' class='kitchenAccordion'><h3>" . $order["firstname"] . " " . $order["lastname"] . "-" . $order["timesent"] . "-$" . $order["subtotal"] . "</h3>");
+    echo ("<div class='kitchenInner'>");
+    // decode the bag
+    $decodedBag = $order["bag"];
+    // echo out the bag
+    $bagItems = explode("|", $decodedBag);
+    array_pop($bagItems);
+    for ($i = 0; $i < count($bagItems); $i++) {
+        // split the string
+        $menuItem = explode(",", $bagItems[$i]);
+        array_pop($menuItem);
+        echo ("<h5 class='kitchenItem'>" . $menuItem[0] . "</h5><ul>");
+        for ($n = 4; $n < count($menuItem); $n++) {
+            echo("<li>". $menuItem[$n] . "</li>");
+        }
+        echo ("</ul><p id='price'>" . $menuItem[2] . "</p>");
+        
+    }
+    echo ("<form method='post' action='remove.php'><input type='hidden' name='email' id='email' value='" . $order["email"] . "'><button type='submit'>Delete Order CANNOT BE UNDONE</button></form></div></div></div>");
 }
 ?>
 <script type="text/javascript">
@@ -47,8 +108,21 @@ $("document").ready(function() {
 		collapsible:true,
 		active:false,	
 	});
+    $(".outerAccordion").accordion({
+		clearStyle:true,
+		heightStyle:"panel",
+		collapsible:true,
+		active:false,	
+	});
+	$(".innerAccordion").accordion({
+		clearStyle:true,
+		heightStyle:"panel",
+		collapsible:true,
+		active:false,
+	});
 });
 </script>
+
 </body>
 </html>
 <?php } else {

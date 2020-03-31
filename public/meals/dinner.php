@@ -17,7 +17,9 @@ $dinner = array();
 for ($i = 0; $i < count($allMenuItems); $i++) {
 	if ($allMenuItems[$i]["category"] == "Dinner") {
 		array_push($dinner, $allMenuItems[$i]);
-	}
+	} else  if ($allMenuItems[$i]["category"] == "Features" && $allMenuItems[$i]["subcategory"] == "Dinner") {
+        array_push($breakfast, $allMenuItems[$i]);
+    }
 }
 ?>
 <script type="text/javascript"> // the javascript needs to be on this page but all the styles already exist
@@ -63,12 +65,19 @@ function display() {
         } else if (dinner[i]["subcategory"] == "Sandwiches") {
             var imagelink = "../../private/images/menu/" + dinner[i]["image"];
             $("#sandwichesapp").append("<a href='../checkout.php?name=" + dinner[i]["name"] + "&category=" + dinner[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" + imagelink + ");'><div class='hero-text'><p>" + dinner[i]["name"] + "</p></div><div class='hero-desc'><p>" + dinner[i]["description"] +  "</p></div></a>");
+        } else if (dinner[i]["subcategory"] == "Dinner") {
+            var imagelink = "../../private/images/menu/" + dinner[i]["image"];
+            $("#featuresapp").append("<a href='../checkout.php?name=" + dinner[i]["name"] + "&category=" + dinner[i]["category"] + "' class='hero-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" + imagelink + ");'><div class='hero-text'><p>" + dinner[i]["name"] + "</p></div><div class='hero-desc'><p>" + dinner[i]["description"] +  "</p></div></a>");
         }
     }
 }
 </script>
 <div class="MealPage">
 <div class="menuPage">
+    <div id="accordionCtrl" class="outerAccordion">
+        <h3>Dinner Features</h3>
+        <div id="featuresapp"></div>
+    </div><hr>
     <div id="accordionCtrl" class="outerAccordion">
         <h3>After 5 Menu</h3>
         <div id="after5app"></div>
