@@ -6,7 +6,7 @@
 	<address>
 		<p>2318 DOROTHY LANE, KETTERING, OH, 45420<p>
 		<a href="tel:9372990089">937-299-0089</a><br>
-		<a href="mailto:info@christophers.biz">Email Here</a><br>
+		<a href="mailto:info@christophers.biz">INFO@CHRISTOPHERS.biz</a><br>
 	</address>
 	<div class="socials">
 		<a href="facebook.com"  class="fa fa-facebook"></a>
