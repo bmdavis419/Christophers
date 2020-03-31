@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2020 at 08:06 PM
+-- Generation Time: Mar 31, 2020 at 08:19 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -102,15 +102,9 @@ CREATE TABLE `orders` (
   `bag` longtext DEFAULT NULL,
   `timesent` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
-  `date` varchar(20) DEFAULT NULL
+  `date` varchar(20) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`, `phone`, `date`) VALUES
-('Benjamin', 'Davis', 'bmdavis419@protonmail.com', '15.95', 'Chicken Parmesan,Dinner,15.95,5e52903d521fd7.11120202.jpg,Side Salad Dressing: Blue Cheese,Sides: Corn,|', '01:38', '9373041163', '2020-03-21');
 
 -- --------------------------------------------------------
 
@@ -128,13 +122,6 @@ CREATE TABLE `permorders` (
   `phone` varchar(30) DEFAULT NULL,
   `date` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `permorders`
---
-
-INSERT INTO `permorders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`, `phone`, `date`) VALUES
-('Benjamin', 'Davis', 'bmdavis419@protonmail.com', '15.95', 'Chicken Parmesan,Dinner,15.95,5e52903d521fd7.11120202.jpg,Side Salad Dressing: Blue Cheese,Sides: Corn,|', '01:38', '9373041163', '2020-03-21');
 
 -- --------------------------------------------------------
 
