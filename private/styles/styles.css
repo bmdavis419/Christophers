@@ -397,7 +397,6 @@ h3 {
 		margin-top:2%;
 		margin-bottom:1%;
 		font-weight: bold;
-		text-decoration: underline;
 	}
 	h5 {
 	text-align:left;
@@ -1326,4 +1325,13 @@ a.checkout {
 	overflow:hidden;
 }
 }
+}
+
+.dineIn, .carryOut {
+	color: #096A00;
+	border: 3px solid #096A00;
+	display: inline;
+	padding: 5px;
+	border-radius: 15px;
+	text-decoration: none;
 }
