@@ -16,7 +16,9 @@ $dessert = array();
 // sort into the array
 for ($i = 0; $i < count($allMenuItems); $i++) {
 	if ($allMenuItems[$i]["category"] == "Dessert") {
-		array_push($dessert, $allMenuItems[$i]);
+        if ($allMenuItems[$i]["type"] == "Out" || $allMenuItems[$i]["type"] == "Both" || $allMenuItems[$i]["type"] == "") {
+            array_push($dessert, $allMenuItems[$i]);
+        }
 	}
 }
 ?>

@@ -17,9 +17,13 @@ $breakfast = array();
 // sort into the array
 for ($i = 0; $i < count($allMenuItems); $i++) {
 	if ($allMenuItems[$i]["category"] == "Breakfast") {
-		array_push($breakfast, $allMenuItems[$i]);
+        if ($allMenuItems[$i]["type"] == "Out" || $allMenuItems[$i]["type"] == "Both" || $allMenuItems[$i]["type"] == "") {
+            array_push($breakfast, $allMenuItems[$i]);
+        }
 	} else  if ($allMenuItems[$i]["category"] == "Features" && $allMenuItems[$i]["subcategory"] == "Breakfast") {
-        array_push($breakfast, $allMenuItems[$i]);
+        if ($allMenuItems[$i]["type"] == "Out" || $allMenuItems[$i]["type"] == "Both" || $allMenuItems[$i]["type"] == "") {
+            array_push($breakfast, $allMenuItems[$i]);
+        }
     }
 }
 ?>

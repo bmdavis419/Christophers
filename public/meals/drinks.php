@@ -16,7 +16,9 @@ $drink = array();
 // sort into the array
 for ($i = 0; $i < count($allMenuItems); $i++) {
 	if ($allMenuItems[$i]["category"] == "Drinks") {
-		array_push($drink, $allMenuItems[$i]);
+        if ($allMenuItems[$i]["type"] == "Out" || $allMenuItems[$i]["type"] == "Both" || $allMenuItems[$i]["type"] == "") {
+            array_push($drink, $allMenuItems[$i]);
+        }
 	}
 }
 ?>
