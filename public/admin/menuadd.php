@@ -160,7 +160,7 @@ function displayMenuItems() {
         }
         
         // echo them for delete
-        $("#deletemenu").append("<label for='" + allMenuItems[i]["name"] + "'>" + allMenuItems[i]["name"] + "<input type='radio' name='menuitemdeleterdo' id='" + allMenuItems[i]["name"] +"' value='" + allMenuItems[i]["name"] + "'></label>");
+        $("#deletemenu").append("<label for='" + allMenuItems[i]["name"] + "'>" + allMenuItems[i]["name"] + "<input type='radio' name='menuitemdeleterdo' id='" + allMenuItems[i]["name"] +"' value='" + allMenuItems[i]["name"] + "|" + allMenuItems[i]["image"] + "'></label><br>");
     }
 }
 </script>
@@ -204,6 +204,16 @@ function displayMenuItems() {
     </select>
 
     <fieldset id="properties"></fieldset>
+
+    <fieldset id="menutype">
+        <legend>Type</legend>
+        <label for="radio-1">Dine-In</label>
+        <input type="radio" name="menutype" id="radio-1" value="In">
+        <label for="radio-2">Carry-Out</label>
+        <input type="radio" name="menutype" id="radio-2" value="Out">
+        <label for="radio-3">Both</label>
+        <input type="radio" name="menutype" id="radio-3" value="Both">
+    </fieldset>
 
     <button type="submit" name="add" value="Send" id="submit">Send</button>
 </div>

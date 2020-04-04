@@ -14,7 +14,7 @@ function validateOrder($bag) {
     $close = "21:00";
 
     $currentTimeStamp = strtotime($time);
-    $breakfastTimeStamp = strtotime($breakfast);
+    $breakfastTimeStamp = strtotime($breakfast); 
     $lunchTimeStamp = strtotime($lunch);
     $dinnerTimeStamp = strtotime($dinner);
     $closeTimeStamp = strtotime($close);
@@ -120,7 +120,7 @@ if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["ema
         $wait = $result;
 
         $currentWaitTime = $wait[0]["time"];
-        echo "<h1 class='adminLogin'>Thank you for ordering!<br>Your order should be ready in approximately " . $currentWaitTime . ".</h1>";
+        echo "<h1 class='adminLogin'>Thank you for ordering!<br>Your order should be ready in approximately " . $currentWaitTime . ".<br>We look forward to seeing you then!</h1>";
     } else {
         echo "<h1 class='adminLogin'>There was an error sending your order. Please try again, and we apologize for the inconvenence.</h1>";
     }

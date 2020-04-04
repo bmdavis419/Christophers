@@ -2,7 +2,14 @@
 session_start();
 if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
     // get the deleted item
-    $itemToDelete = $_POST["menuitemdeleterdo"];
+    $itemsToDelete = $_POST["menuitemdeleterdo"];
+
+    // get image and name
+    $split = explode("|", $itemsToDelete);
+
+    // parts
+    $itemToDelete = $split[0];
+    $image = $split[1];
 
     // database
     require("../../private/functions/databaseconfig.php");
@@ -12,6 +19,8 @@ if (isset($_SESSION['valid'])&& ($_SESSION['valid'] = true)){
 
     // EXEC
     if ($stmt->execute()) {
+        // delete the picture
+        unlink("../../private/images/menu/" . $image);
         header("Location: menuadd.php?success");
     } else {
         header("Location: menuadd.php?failure");

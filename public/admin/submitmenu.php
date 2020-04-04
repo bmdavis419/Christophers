@@ -57,9 +57,10 @@ if (isset($_POST["add"]) && isset($_SESSION['valid']) && ($_SESSION['valid'] = t
     $properties = $_COOKIE["SelectedProperties"];
     $category = filter_var($_POST["type"], FILTER_SANITIZE_STRING);
     $subcategory = filter_var($_POST["subcategory"], FILTER_SANITIZE_STRING);
+    $type = $_POST["menutype"];
 
     // create query and run
-    $stmt = $conn->prepare("INSERT INTO menuitems (name, description, category, properties, cost, image, subcategory) VALUES (:n, :d, :c, :p, :cs, :i, :s)");
+    $stmt = $conn->prepare("INSERT INTO menuitems (name, description, category, properties, cost, image, subcategory, type) VALUES (:n, :d, :c, :p, :cs, :i, :s, :t)");
     $stmt->bindParam('n', $name);
     $stmt->bindParam('d', $description);
     $stmt->bindParam('c', $category);
@@ -67,6 +68,7 @@ if (isset($_POST["add"]) && isset($_SESSION['valid']) && ($_SESSION['valid'] = t
     $stmt->bindParam('cs', $cost);
     $stmt->bindParam('i', $image);
     $stmt->bindParam('s', $subcategory);
+    $stmt->bindParam('t', $type);
     if ($stmt->execute()) {
         // send back to previous page
         header("Location: menuadd.php?additionsuccess");

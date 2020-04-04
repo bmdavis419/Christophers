@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2020 at 08:19 PM
+-- Generation Time: Apr 04, 2020 at 09:03 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -47,7 +47,8 @@ INSERT INTO `cateringitems` (`name`, `category`, `description`, `price`, `subcat
 ('Sandwich Box', 'Boxed', 'Choose from all natural turkey, ham or roast beef with provolone, cheddar or Swiss cheese. Or try our popular veggie sandwich (cream cheese, cucumbers, sprouts and tomato).', '$8.50 half sandwich / $10.95 whole sandwich', 'Specialty Sandwiches'),
 ('Spinach Salad with Hot Bacon Dressing', 'Sides', 'Tender fresh baby spinach, sliced eggs, purple onions and bacon bits.', '$3.50', 'Side Salads'),
 ('Hot Dogs & Hamburgers', 'Picnic Time', 'With Cole Slaw, and Potato Salad.', '$8.95 per person (100 or more) $9.50 per person (50-100).', ''),
-('Homemade Carrot Cake Squares', 'Desserts', 'Best in town!', '$2.50', 'Perfect Endings');
+('Homemade Carrot Cake Squares', 'Desserts', 'Best in town!', '$2.50', 'Perfect Endings'),
+('ASDFASDFASDF', 'Boxed', 'asDFASDFASDF', '232', 'Salads');
 
 -- --------------------------------------------------------
 
@@ -62,31 +63,34 @@ CREATE TABLE `menuitems` (
   `description` varchar(255) DEFAULT NULL,
   `cost` varchar(20) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `subcategory` varchar(50) DEFAULT NULL
+  `subcategory` varchar(50) DEFAULT NULL,
+  `type` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `menuitems`
 --
 
-INSERT INTO `menuitems` (`name`, `properties`, `category`, `description`, `cost`, `image`, `subcategory`) VALUES
-('Steak', 'Steak Sauce,Side Salad Dressing,', 'Dinner', 'An excellent meal!', '19.99', '5e470b3665b554.32533391.jpg', 'After 5 Menu'),
-('Salmon', 'Side Salad Dressing,Sides,', 'Dinner', 'A great meal!', '11.99', '5e4ab68991ff56.23897576.jpeg', 'Seafood'),
-('Taco', 'Sides,Taco Sauce,', 'Lunch', 'A very good food, has Spaniard origin. Comes in many flavors, a great meal.', '9.99', '5e527ea0d06a12.23396318.jpg', 'All Day Meals'),
-('Christopher’s New York Strip', 'Steak Sauce,Sides,', 'Dinner', 'Grilled to temp. 8 oz. New York strip, with house-made mashed potatoes.', '19.95', '5e528fa1748ca8.41236358.jpg', 'After 5 Menu'),
-('Chicken Parmesan', 'Side Salad Dressing,Sides,', 'Dinner', 'A lightly breaded local Hill Family Farm breast of chicken with melted provolone cheese.', '13.95', '5e52903d521fd7.11120202.jpg', 'After 5 Menu'),
-('Vegetable Strudel', 'Condiments,Sides,', 'Dinner', 'A blend of seasoned vegetables, wild rice blend and cheeses.', '13.95', '5e529091bb87a8.45211861.jpg', 'After 5 Menu'),
-('Maple Mustard Glazed Porkchop', 'Condiments,Steak Sauce,', 'Dinner', 'Ohio-maple mustard glazed local KJB porkchops.', '15.95', '5e5291220886d4.43315930.jpg', 'After 5 Menu'),
-('Stroganoff', 'Condiments,Sides,', 'Dinner', 'Homemade stroganoff sauce cooked with fresh portabellas, shallots, and a pinch of tarragon.', '13.95', '5e529163198038.40767693.jpg', 'After 5 Menu'),
-('Fish and Chips', 'Sides,', 'Dinner', 'Fresh cod, beer battered and served with fries and coleslaw.', '8.95', '5e5291f85482c4.99397342.jpg', 'Seafood'),
-('Barn Buster', 'Sides,', 'Breakfast', 'Three eggs cooked to order with a breakfast meat, home fries or fruit, toast, and one pancake.', '8.95', '5e5293ad919d69.00838965.jpg', 'Classic Breakfasts'),
-('Breakfast Burrito', 'Sides,', 'Breakfast', 'Eggs, sausage, mushrooms, peppers, onions, salsa, and cheddar cheese in a fresh tortilla wrap. ', '7.95', '5e5294ea2c7c70.16619326.jpg', 'Classic Breakfasts'),
-('Tuna Melt', 'Sides,', 'Lunch', 'From the grill with tuna and melted cheddar.', '5.95', '5e5296152a2431.16363916.jpg', 'Sandwiches'),
-('The Veggie Sandwich', 'Condiments,Sides,', 'Lunch', 'Cream cheese, tomato, cucumbers and sprouts.', '5.95', '5e52966f855a26.35492602.jpg', 'Sandwiches'),
-('Carrot Cake', 'Condiments,Sides,', 'Dessert', 'Homemade carrot cake baked to perfection.', '9.95', '5e52970586e627.57137157.jpg', ''),
-('Cheesecake', 'Condiments,Sides,', 'Dessert', 'Cheesecake, made with the highest quality ingredients.', '8.95', '5e5297787dda71.08201238.jpg', 'Classic Breakfasts'),
-('Founders', 'Condiments,Sides,', 'Drinks', 'A high quality craft beer.', '5.95', '5e529801370123.29466384.jpg', 'Craft Beer'),
-('Taco', 'Taco Sauce,', 'Lunch', 'This is a great food!', '9.99', '5e52af2d8ab6e1.04417096.jpg', 'Sandwiches');
+INSERT INTO `menuitems` (`name`, `properties`, `category`, `description`, `cost`, `image`, `subcategory`, `type`) VALUES
+('Steak', 'Steak Sauce,Side Salad Dressing,', 'Dinner', 'An excellent meal!', '19.99', '5e470b3665b554.32533391.jpg', 'After 5 Menu', NULL),
+('Salmon', 'Side Salad Dressing,Sides,', 'Dinner', 'A great meal!', '11.99', '5e4ab68991ff56.23897576.jpeg', 'Seafood', NULL),
+('Taco', 'Sides,Taco Sauce,', 'Lunch', 'A very good food, has Spaniard origin. Comes in many flavors, a great meal.', '9.99', '5e527ea0d06a12.23396318.jpg', 'All Day Meals', NULL),
+('Christopher’s New York Strip', 'Steak Sauce,Sides,', 'Dinner', 'Grilled to temp. 8 oz. New York strip, with house-made mashed potatoes.', '19.95', '5e528fa1748ca8.41236358.jpg', 'After 5 Menu', NULL),
+('Chicken Parmesan', 'Side Salad Dressing,Sides,', 'Dinner', 'A lightly breaded local Hill Family Farm breast of chicken with melted provolone cheese.', '13.95', '5e52903d521fd7.11120202.jpg', 'After 5 Menu', NULL),
+('Vegetable Strudel', 'Condiments,Sides,', 'Dinner', 'A blend of seasoned vegetables, wild rice blend and cheeses.', '13.95', '5e529091bb87a8.45211861.jpg', 'After 5 Menu', NULL),
+('Maple Mustard Glazed Porkchop', 'Condiments,Steak Sauce,', 'Dinner', 'Ohio-maple mustard glazed local KJB porkchops.', '15.95', '5e5291220886d4.43315930.jpg', 'After 5 Menu', NULL),
+('Stroganoff', 'Condiments,Sides,', 'Dinner', 'Homemade stroganoff sauce cooked with fresh portabellas, shallots, and a pinch of tarragon.', '13.95', '5e529163198038.40767693.jpg', 'After 5 Menu', NULL),
+('Fish and Chips', 'Sides,', 'Dinner', 'Fresh cod, beer battered and served with fries and coleslaw.', '8.95', '5e5291f85482c4.99397342.jpg', 'Seafood', NULL),
+('Barn Buster', 'Sides,', 'Breakfast', 'Three eggs cooked to order with a breakfast meat, home fries or fruit, toast, and one pancake.', '8.95', '5e5293ad919d69.00838965.jpg', 'Classic Breakfasts', NULL),
+('Breakfast Burrito', 'Sides,', 'Breakfast', 'Eggs, sausage, mushrooms, peppers, onions, salsa, and cheddar cheese in a fresh tortilla wrap. ', '7.95', '5e5294ea2c7c70.16619326.jpg', 'Classic Breakfasts', NULL),
+('Tuna Melt', 'Sides,', 'Lunch', 'From the grill with tuna and melted cheddar.', '5.95', '5e5296152a2431.16363916.jpg', 'Sandwiches', NULL),
+('The Veggie Sandwich', 'Condiments,Sides,', 'Lunch', 'Cream cheese, tomato, cucumbers and sprouts.', '5.95', '5e52966f855a26.35492602.jpg', 'Sandwiches', NULL),
+('Carrot Cake', 'Condiments,Sides,', 'Dessert', 'Homemade carrot cake baked to perfection.', '9.95', '5e52970586e627.57137157.jpg', '', NULL),
+('Cheesecake', 'Condiments,Sides,', 'Dessert', 'Cheesecake, made with the highest quality ingredients.', '8.95', '5e5297787dda71.08201238.jpg', 'Classic Breakfasts', NULL),
+('Founders', 'Condiments,Sides,', 'Drinks', 'A high quality craft beer.', '5.95', '5e529801370123.29466384.jpg', 'Craft Beer', NULL),
+('Taco', 'Taco Sauce,', 'Lunch', 'This is a great food!', '9.99', '5e52af2d8ab6e1.04417096.jpg', 'Sandwiches', NULL),
+('Testing Type', 'Condiments,', 'Drinks', 'This is carryout only', '22.99', '5e88d4ec62f257.83021863.jpg', 'Wine', 'Out'),
+('ASDF', 'Steak Sauce,', 'Features', 'BREAKFAST', '2.99', '5e88d5f6a5c433.58290983.jpg', 'Breakfast', 'In');
 
 -- --------------------------------------------------------
 
@@ -106,6 +110,14 @@ CREATE TABLE `orders` (
   `status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`, `phone`, `date`, `status`) VALUES
+('COMP', 'ASDF', 'test@email', '26.19', 'Sandwich,Features,26.19,5e83933eaebea7.01312633.jpg,Side Salad Dressing: Caesar,Side Salad Dressing: Blue Cheese,Side Salad Dressing: Cheddar,Sides: Corn,|', '03:58', '222-111-2223', '2020-03-31', 'completed'),
+('Competition', 'Test', 'email@email.com', '7.95', 'The Veggie Sandwich,Lunch,7.95,5e52966f855a26.35492602.jpg,Condiments: Relish,Sides: Corn,|', '03:13', '222-333-4444', '2020-04-02', 'completed');
+
 -- --------------------------------------------------------
 
 --
@@ -122,6 +134,17 @@ CREATE TABLE `permorders` (
   `phone` varchar(30) DEFAULT NULL,
   `date` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `permorders`
+--
+
+INSERT INTO `permorders` (`firstname`, `lastname`, `email`, `subtotal`, `bag`, `timesent`, `phone`, `date`) VALUES
+('Benjamin', 'Davis', 'bmdavis419@protonmail.com', '10.49', 'Taco,Lunch,10.49,5e52af2d8ab6e1.04417096.jpg,Taco Sauce: Spicy,|', '03:08', '9373041163', '2020-03-31'),
+('ASDF', 'ASDf', 'asdf@asdf.com', '6.95', 'Tuna Melt,Lunch,6.95,5e5296152a2431.16363916.jpg,Sides: Corn,|', '03:15', '9373041163', '2020-03-31'),
+('Test', 'Competition', 'EMAIl@Email', '24.99', 'Sandwich,Features,24.99,5e83933eaebea7.01312633.jpg,Side Salad Dressing: Caesar,Side Salad Dressing: Blue Cheese,Sides: Corn,|', '03:37', '222-222-2222', '2020-03-31'),
+('COMP', 'ASDF', 'test@email', '26.19', 'Sandwich,Features,26.19,5e83933eaebea7.01312633.jpg,Side Salad Dressing: Caesar,Side Salad Dressing: Blue Cheese,Side Salad Dressing: Cheddar,Sides: Corn,|', '03:58', '222-111-2223', '2020-03-31'),
+('Competition', 'Test', 'email@email.com', '7.95', 'The Veggie Sandwich,Lunch,7.95,5e52966f855a26.35492602.jpg,Condiments: Relish,Sides: Corn,|', '03:13', '222-333-4444', '2020-04-02');
 
 -- --------------------------------------------------------
 
