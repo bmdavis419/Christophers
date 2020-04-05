@@ -906,6 +906,9 @@ div.catering {
 	justify-content:center;
 	align-items:center;
 	font-size:3em;
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
 }
 div.catering:hover {
 	transform:scale(1.1);

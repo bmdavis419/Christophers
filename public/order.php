@@ -29,7 +29,6 @@ include("../private/shared/globalheader.php"); ?>
    $currentlyAvailable = array();
    if ($breakfastTimeStamp < $currentTimeStamp && $lunchTimeStamp > $currentTimeStamp) {
        $currentlyAvailable = "Breakfast";
-       echo "why";
    } else if ($lunchTimeStamp < $currentTimeStamp && $dinnerTimeStamp > $currentTimeStamp) {
        $currentlyAvailable = "Lunch";
    } else if ($dinnerTimeStamp < $currentTimeStamp && $closeTimeStamp > $currentTimeStamp) {
