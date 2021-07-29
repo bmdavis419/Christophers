@@ -12,6 +12,11 @@ export const resolvers = {
 					email: "email2",
 					id: "fdsa",
 				},
+				{
+					name: "three",
+					email: "email3",
+					id: "jadfsjasdfj",
+				},
 			];
 		},
 	},
