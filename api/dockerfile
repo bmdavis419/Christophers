@@ -1,0 +1,17 @@
+FROM node:14-slim
+
+WORKDIR /usr/src/app
+
+ENV NODE_ENV = "production"
+
+COPY package*.json ./
+
+RUN npm i --save typescript
+
+RUN npm ci
+
+COPY . ./
+
+RUN npm run build
+
+CMD ["node", "build/app.js"]
