@@ -1,68 +1,93 @@
 import { GetServerSideProps } from "next";
-import React from "react";
+import React, { useState } from "react";
 import MenuHeader from '../components/menu/MenuHeader';
-
+import MenuFeatures from '../components/menu/MenuFeatures';
 interface PropsInterface {
-	Categories: [{
+	Features: [{
 		name: string,
 		id: string,
-		subcategories: [{
-			name: string,
+		type: string,
+		menuItem: [{
+			name:string,
 			id: string,
-			menuItems: [{
-				name:string,
-				id: string,
-				description:string,
-				price:number,
-				image:string,
-				type:number, //0 both - 1 Dine-in - 2 Carryout
+			description:string,
+			price:number,
+			image:string,
+			type:number, //0 both - 1 Dine-in - 2 Carryout
 			}]
 		}]
-	}]
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	// ...
 	return {
 	  props: {
-		Categories: [{
-			name: "Breakfast",
-			id:"1a",
-			subcategories: [{
-				name: "Cereal",
-				id:"1b",
-				menuItems: [{
-					id:"1c",
-					name:"Cheerios",
-					description:"",
-					price:9.99,
-					image:"lmao",
-					type:0, //0 both - 1 Dine-in - 2 Carryout
-				}]
-			}]
-		},{
-			name: "Lunch",
-			id:"2a",
-			subcategories: [{
-				name: "Sandwiches",
-				id:"2b",
-				menuItems: [{
-					id:"2c",
-					name:"BLT",
-					description:"",
-					price:9.99,
-					image:"lmao",
-					type:0, //0 both - 1 Dine-in - 2 Carryout
-				}]
-			}]
-		}]
+		  Features: [{
+			  name: "Fresh Beef",
+			  id:1,
+			  type:"Daily Special",
+			  menuItem: {
+				description: "This is our very special dish that is only available today. It includes one fresh side and a desert! Available on Tuesdays.",
+				id: 1,
+				image:"LogoRes.jpg"
+			  }
+			 
+
+		  },
+		  {
+			name: "Fresh Beef 2",
+			id:1,
+			type:"Fresh Fish",
+			menuItem: {
+			  description: "2nd is our very special dish that is only available today. It includes one fresh side and a desert! Available on Tuesdays.",
+			  id: 2,
+			  image:"LogoRes.jpg"
+			}
+		   
+
+		},
+		{
+			name: "Fresh Beef 3",
+			id:1,
+			type:"Big Money",
+			menuItem: {
+			  description: "3rd is our very special dish that is only available today. It includes one fresh side and a desert! Available on Tuesdays.",
+			  id: 1,
+			  image:"LogoRes.jpg"
+			}
+		   
+
+		},
+		{
+			name: "Fresh Beef 3",
+			id:1,
+			type:"Big Money",
+			menuItem: {
+			  description: "3rd is our very special dish that is only available today. It includes one fresh side and a desert! Available on Tuesdays.",
+			  id: 1,
+			  image:"LogoRes.jpg"
+			}
+		   
+
+		},
+		]
 			
 		}
 	  }
   };
+
 export default function menu(props:PropsInterface) {
 	console.log(props);
+	const {Features} = props
+	const [index, setIndex] = useState(0);
+
+  function setActiveFeature(e:HTMLFormElement,i:number) {
+	  e.preventDefault
+	  setIndex(i);
+  }
 	return( <div className="md:mt-16 md:mx-80%  flex flex-col items-center justify-center">
+			<MenuHeader/>
+			<MenuFeatures numFeatures={Features.length} activeFeature={index} Feature={Features[index]} setActiveFeature={setActiveFeature}/>
 			<MenuHeader/>
 	</div>);
 }

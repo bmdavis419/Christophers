@@ -20,6 +20,17 @@ module.exports = {
 			borderRadius: {
 				'50px' : '50px',
 			},
+			height: {
+				"96":"24rem",
+				"144":"36rem",
+				"192":"48rem",
+				"1/2vw":"50vw",
+				"1/3vw":"33vw",
+				".4vw":"40vw",
+				"1/4vw":"25vw",
+				"1/2vh":"50vh",
+			   }
+		 
 		},
 	},
 	variants: {
