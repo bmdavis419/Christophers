@@ -4,7 +4,7 @@ import menuHeaderImg from '/LogoRes.jpg';
 
 export default function menuHeader(){
     return (
-        <div className="back bg-no-repeat bg-cover bg-center bg-menu-header md:rounded-50px w-full h-96 md:h-72 align-middle flex flex-col justify-evenly items-center">
+        <div className="back bg-no-repeat bg-cover bg-center bg-menu-header md:rounded-50px w-full h-1/2 md:h-72 align-middle flex flex-col justify-evenly items-center">
         <style jsx>{`
             .back {
                 background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("/LogoRes.jpg");
