@@ -1,21 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.resolvers = void 0;
+var homepage_1 = require("./queries/homepage");
 exports.resolvers = {
     Query: {
-        tests: function () {
-            return [
-                {
-                    name: "one",
-                    email: "email",
-                    id: "asdf",
-                },
-                {
-                    name: "two",
-                    email: "email2",
-                    id: "fdsa",
-                },
-            ];
-        },
+        homepageBanner: homepage_1.homepageBanner,
+        restaurantInfo: homepage_1.restaurantInfo,
     },
 };
