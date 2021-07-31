@@ -19,6 +19,7 @@ module.exports = {
 			   },
 			borderRadius: {
 				'50px' : '50px',
+				faqborder: '30px'
 			},
 			height: {
 				"96":"24rem",
@@ -29,7 +30,18 @@ module.exports = {
 				".4vw":"40vw",
 				"1/4vw":"25vw",
 				"1/2vh":"50vh",
-			   }
+			   },
+			fontSize: {
+				headsm: ['40px', '47px'],
+				standard: ['25px', '29.5px'],
+				headmd: ['48px', '56.25px']
+			},
+			backgroundColor: {
+				faqbox: '#DCDCDC'
+			},
+			padding: {
+				faq: '93px'
+			}
 		 
 		},
 	},

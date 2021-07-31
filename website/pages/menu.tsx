@@ -98,6 +98,5 @@ export default function menu(props:PropsInterface) {
 	return( <div className="md:mt-16 md:mx-80%  flex flex-col items-center justify-center">
 			<MenuHeader/>
 			<MenuFeatures numFeatures={Features.length} activeFeature={index} Feature={Features[index]} setActiveFeature={setActiveFeature}/>
-  			<MenuDropdownMenu />
 	</div>);
 }
