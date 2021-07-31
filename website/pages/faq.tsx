@@ -71,10 +71,11 @@ export default function faq(props: FAQInterface) {
 	return (
 		<div>
 			<h2 className="text-primary text-headmd text-center">Frequently Asked Questions</h2>
-			<div className="grid grid-flow-row grid-cols-2 gap-6 px-faq py-5">
+			<div className="grid grid-flow-row md:grid-cols-2 sm:grid-cols-1 md:px-faq md:py-5 gap-6">
 				{restaurants}
 				{caterings}
 			</div>
+			
 		</div>
 		
 		

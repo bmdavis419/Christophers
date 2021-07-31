@@ -10,7 +10,7 @@ const FaqCard = (props: FaqCardInterface) => {
     return (
         <div>
             <div className="bg-faqbox rounded-faqborder justify-items-center p-8">
-                <div className="pl-faq pb-4">
+                <div className="md:pl-faq pb-4">
                     <h3 className="text-primary text-headsm bg-grey-600">{question}</h3>    
                 </div>
                 <div>
