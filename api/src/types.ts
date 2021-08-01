@@ -62,9 +62,12 @@ export const typeDefs = gql`
 		id: ID
 		name: String
 		description: String
-		price: Float
+		price: String
 		image: String
 		type: Int
+		isOldImage: Boolean
+		category: Category
+		subcategory: Subcategory
 	}
 	type Feature {
 		id: ID
@@ -75,5 +78,11 @@ export const typeDefs = gql`
 		homepageBanner: HomepageBanner
 		homepageFeatures: [HomepageFeature]
 		restaurantInfo: RestaurantInfo
+		categories: [Category]
+		subcategories: [Subcategory]
+		menuItems: [MenuItem]
+		category(id: ID): Category
+		subcategory(id: ID): Subcategory
+		menuItem(id: ID): MenuItem
 	}
 `;
