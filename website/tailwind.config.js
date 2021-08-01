@@ -27,8 +27,10 @@ module.exports = {
 				"192":"48rem",
 				"1/2vw":"50vw",
 				"1/3vw":"33vw",
-				".4vw":"40vw",
+				"2/5vw":"40vw",
 				"1/4vw":"25vw",
+				"4/5vw":"80vw",
+				"100vw":"100vw",
 				"1/2vh":"50vh",
 			   },
 			fontSize: {

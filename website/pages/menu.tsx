@@ -23,7 +23,6 @@ interface PropsInterface {
 		Subcategories: [{
 			name: string,
 			id: string
-
 		}]
 	}]
 }
@@ -95,8 +94,8 @@ export default function menu(props:PropsInterface) {
 	  e.preventDefault
 	  setIndex(i);
   }
-	return( <div className="md:mt-16 md:mx-80%  flex flex-col items-center justify-center">
-			<MenuHeader/>
+	return( <div className="md:mt-16 md:mx-80% flex flex-col items-center justify-center">
+			<MenuHeader />
 			<MenuFeatures numFeatures={Features.length} activeFeature={index} Feature={Features[index]} setActiveFeature={setActiveFeature}/>
 	</div>);
 }
