@@ -1,10 +1,13 @@
 import { GetServerSideProps } from "next";
+import { gql } from "@apollo/client";
+import client from "../apollo-client";
 import React, { useState } from "react";
 import MenuHeader from '../components/menu/MenuHeader';
 import MenuFeatures from '../components/menu/MenuFeatures';
 import MenuDropdownMenu from '../components/menu/MenuDropdownMenu';
+import MenuBox from "../components/menu/MenuBox";
 interface PropsInterface {
-	Features: [{
+	features: [{
 		name: string,
 		id: string,
 		type: string,
@@ -17,10 +20,9 @@ interface PropsInterface {
 			type:number, //0 both - 1 Dine-in - 2 Carryout
 			}]
 		}],
-	Categories: [{
+	categories: [{
 		name: string,
-		id: string,
-		Subcategories: [{
+		subcategories: [{
 			name: string,
 			id: string
 		}]
@@ -28,74 +30,56 @@ interface PropsInterface {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	// ...
+	const { data } = await client.query({
+		query: gql`
+			{
+				categories {
+					subcategories {
+					  id
+					  name
+					}
+					name
+				  }
+			}
+		`,
+	});
+
 	return {
-	  props: {
-		  Features: [{
-			  name: "Fresh Beef",
-			  id:1,
-			  type:"Daily Special",
-			  menuItem: {
-				description: "This is our very special dish that is only available today. It includes one fresh side and a desert! Available on Tuesdays.",
-				id: 1,
-				image:"LogoRes.jpg"
-			  }
-			 
-
-		  },
-		  {
-			name: "Fresh Beef 2",
-			id:1,
-			type:"Fresh Fish",
-			menuItem: {
-			  description: "2nd is our very special dish that is only available today. It includes one fresh side and a desert! Available on Tuesdays.",
-			  id: 2,
-			  image:"LogoRes.jpg"
-			}
-		   
-
+		props: {
+			categories:data.categories,
 		},
-		{
-			name: "Fresh Beef 3",
-			id:1,
-			type:"Big Money",
-			menuItem: {
-			  description: "3rd is our very special dish that is only available today. It includes one fresh side and a desert! Available on Tuesdays.",
-			  id: 1,
-			  image:"LogoRes.jpg"
-			}
-		   
-
-		},
-		{
-			name: "Fresh Beef 3",
-			id:1,
-			type:"Big Money",
-			menuItem: {
-			  description: "3rd is our very special dish that is only available today. It includes one fresh side and a desert! Available on Tuesdays.",
-			  id: 1,
-			  image:"LogoRes.jpg"
-			}
-		   
-
-		},
-		]
-			
-		}
-	  }
+	};
   };
 
 export default function menu(props:PropsInterface) {
-	console.log(props);
-	const {Features} = props
+
+	const {categories} = props
 	const [index, setIndex] = useState(0);
+	const [id, setId] = useState(categories[0].subcategories[0].id)
+	const [name, setName] = useState(categories[0].subcategories[0].name)
 
   function setActiveFeature(e:HTMLFormElement,i:number) {
-	  e.preventDefault
+	  e.preventDefault;
 	  setIndex(i);
   }
+  function setActiveId(e:HTMLFormElement, id: string) {
+	  e.preventDefault;
+	  setId(id);
+	  for(let cat of categories) {
+		for(let sub of cat.subcategories) {
+			if(sub.id === id) {
+				setName(sub.name)
+			}
+		}
+	  }
+  }
+
 	return( <div className="md:mt-16 md:mx-80% flex flex-col items-center justify-center">
 			<MenuHeader />
-			<MenuFeatures numFeatures={Features.length} activeFeature={index} Feature={Features[index]} setActiveFeature={setActiveFeature}/>
-	</div>);
+					{/*<MenuFeatures numFeatures={3} activeFeature={index} Feature={Features[index]} setActiveFeature={setActiveFeature}/>*/} 
+			<div className="mt-16 flex flex-row flex-grow-0">
+			<MenuDropdownMenu  categories={categories} setActiveId={setActiveId} activeId={id}/>
+			<MenuBox id={id} name={name}/>
+			</div>
+			</div>);
 }
