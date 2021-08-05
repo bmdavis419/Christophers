@@ -22,7 +22,13 @@ module.exports = {
 				faqborder: '30px'
 			},
 			height: {
+				"88": "22rem",
 				"96":"24rem",
+				"104":"26rem",
+				"112":"28rem",
+				"120":"30rem",
+				"128":"32rem",
+				"136":"40rem",
 				"144":"36rem",
 				"192":"48rem",
 				"1/2vw":"50vw",
