@@ -26,3 +26,7 @@ a {
 .formTextBox {
 	@apply py-2 px-3 rounded-md focus:shadow-inner bg-gray-100 border border-gray-200;
 }
+
+.navItem {
+	@apply text-white text-lg block font-bold rounded-full hover:bg-gray-400 hover:bg-opacity-50 px-3 py-2 mb-3 cursor-pointer;
+}
