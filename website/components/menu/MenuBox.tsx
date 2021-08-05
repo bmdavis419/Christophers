@@ -27,16 +27,22 @@ export default function MenuBox(props: PropsInterface) {
     const { loading,error,data } = useQuery(GET_MENU_ITEMS, {variables:{id:props.id}});
 
 
-var nums = [];
-for (var i = 1; i <= 16; i++) {
-   nums.push(i);
-}
-    if (loading) return <div className="grid grid-flow-row grid-cols-4 gap-16 mb-16 mx-16">
-        {nums.map(()=> {return <div className="h-72 w-72 gray-300 "></div>})}
+
+    if (loading) return <div className=" grid-cols-2 menu3col:grid-cols-3 menu4col:grid-cols-4 animate-pulse grid grid-flow-row gap-16 mb-16 mx-16">
+        <div className="w-36 h-48 md:w-72 md:h-96 bg-gray-200 rounded-xl"></div>
+        <div className="w-36 h-48 md:w-72 md:h-96 bg-gray-200 rounded-xl"></div>
+        <div className="w-36 h-48 md:w-72 md:h-96 bg-gray-200 rounded-xl"></div>
+        <div className="w-36 h-48 md:w-72 md:h-96 bg-gray-200 rounded-xl"></div>
+        <div className="w-36 h-48 md:w-72 md:h-96 bg-gray-200 rounded-xl"></div>
+        <div className="w-36 h-48 md:w-72 md:h-96 bg-gray-200 rounded-xl"></div>
+        <div className="w-36 h-48 md:w-72 md:h-96 bg-gray-200 rounded-xl"></div>
+        <div className="w-36 h-48 md:w-72 md:h-96 bg-gray-200 rounded-xl"></div>
+        <div className="w-36 h-48 md:w-72 md:h-96 bg-gray-200 rounded-xl"></div>
+        <div className="w-36 h-48 md:w-72 md:h-96 bg-gray-200 rounded-xl"></div>
 </div>;
     if (error) return <div>`Error! ${error}`</div>;
     return (
-        <div className="grid grid-flow-row grid-cols-4 gap-16 mb-16 mx-16">
+        <div className="grid-cols-2 menu2col:grid-cols-2 menu3col:grid-cols-3 menu4col:grid-cols-4 grid grid-flow-row  gap-16 mb-16 mx-4 md:mx-16">
             {data.subcategory.menuItems && data.subcategory.menuItems.map((menuItem:any) => {return <MenuItem menuItem={menuItem}/>})}
         </div>
     )

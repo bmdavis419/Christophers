@@ -49,7 +49,12 @@ module.exports = {
 			},
 			padding: {
 				faq: '93px'
-			}
+			},
+			screens: { 
+				"menu2col" :"890px",
+				"menu3col" : "1300px",
+				"menu4col":"1600px",
+			},
 		 
 		},
 	},

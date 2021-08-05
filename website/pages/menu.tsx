@@ -74,12 +74,14 @@ export default function menu(props:PropsInterface) {
 	  }
   }
 
-	return( <div className="md:mt-16 md:mx-80% flex flex-col items-center justify-center">
+	return( <div className="md:mt-16 flex flex-col items-center justify-center">
+		<div className="w-full md:w-4/5">
 			<MenuHeader />
 					{/*<MenuFeatures numFeatures={3} activeFeature={index} Feature={Features[index]} setActiveFeature={setActiveFeature}/>*/} 
-			<div className="mt-16 flex flex-row flex-grow-0">
+		</div>
+		<div className=" lg:mx-12 md:mt-16 flex flex-col md:flex-row flex-grow-0">
 			<MenuDropdownMenu  categories={categories} setActiveId={setActiveId} activeId={id}/>
 			<MenuBox id={id} name={name}/>
-			</div>
-			</div>);
+		</div>
+	</div>);
 }
