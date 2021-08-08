@@ -48,13 +48,19 @@ module.exports = {
 				faqbox: '#DCDCDC'
 			},
 			padding: {
-				faq: '93px'
+				faq: '93px',
+				"1/10":"10%",
 			},
 			screens: { 
 				"menu2col" :"890px",
 				"menu3col" : "1300px",
 				"menu4col":"1600px",
 			},
+			maxWidth: {
+                "1/2": "50%",
+                "3/4": "75%",
+                "9/10": "90%"
+            },
 		 
 		},
 	},

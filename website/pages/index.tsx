@@ -68,5 +68,5 @@ export default function Home(props: PropsInterface) {
 	const { homepageBanner, restaurantInfo } = props;
 	console.log(homepageBanner);
 	console.log(restaurantInfo);
-	return <div className="text-primary">homepage</div>;
+	return <div className="min-h-screen text-primary">homepage</div>;
 }

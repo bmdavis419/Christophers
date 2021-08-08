@@ -75,7 +75,7 @@ export default function menu(props:PropsInterface) {
   }
 
 	return( <div className="md:mt-16 flex flex-col items-center justify-center">
-		<div className="w-full md:w-4/5">
+		<div className=" w-full md:w-4/5">
 			<MenuHeader />
 					{/*<MenuFeatures numFeatures={3} activeFeature={index} Feature={Features[index]} setActiveFeature={setActiveFeature}/>*/} 
 		</div>
