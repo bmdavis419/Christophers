@@ -42,7 +42,7 @@ export default function MenuBox(props: PropsInterface) {
 </div>;
     if (error) return <div>`Error! ${error}`</div>;
     return (
-        <div className="grid-cols-2 menu2col:grid-cols-2 menu3col:grid-cols-3 menu4col:grid-cols-4 grid grid-flow-row  gap-16 mb-16 mx-4 md:mx-16">
+        <div className="min-h-screen grid-cols-2 menu2col:grid-cols-2 menu3col:grid-cols-3 menu4col:grid-cols-4 grid grid-flow-row  gap-16 mb-16 mx-4 md:mx-16">
             {data.subcategory.menuItems && data.subcategory.menuItems.map((menuItem:any) => {return <MenuItem menuItem={menuItem}/>})}
         </div>
     )

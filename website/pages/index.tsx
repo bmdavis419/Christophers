@@ -1,5 +1,7 @@
 import { gql } from "@apollo/client";
 import { GetServerSideProps } from "next";
+import React from "react";
+import Info from"../components/index/Info";
 import client from "../apollo-client";
 
 interface PropsInterface {
@@ -66,7 +68,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 export default function Home(props: PropsInterface) {
 	const { homepageBanner, restaurantInfo } = props;
-	console.log(homepageBanner);
-	console.log(restaurantInfo);
-	return <div className="min-h-screen text-primary">homepage</div>;
+	return <div className="grid grid-cols-3">
+		<Info restaurantInfo={restaurantInfo} />
+		
+	</div>;
 }

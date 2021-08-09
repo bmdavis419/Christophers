@@ -10,8 +10,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   
   return (
     <ApolloProvider client={client}>
-      <Header />
+      <Header  />
+      <div className="min-h-screen">
       <Component {...pageProps} />
+      </div>
       <Footer />
     </ApolloProvider>)
 }
