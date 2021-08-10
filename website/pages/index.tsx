@@ -1,6 +1,9 @@
 import { gql } from "@apollo/client";
 import { GetServerSideProps } from "next";
+import React, { useState } from "react";
+import Info from"../components/index/Info";
 import client from "../apollo-client";
+import IndexFeatures from "../components/index/IndexFeatures";
 
 interface PropsInterface {
 	homepageBanner: {
@@ -24,6 +27,16 @@ interface PropsInterface {
 		phone: number;
 		location: string;
 	};
+	homepageFeatures: [{
+		id:string;
+		title:string;
+		description:string;
+		topLinkText:string;
+		topLink:string;
+		bottomLinkText:string;
+		bottomLink:string;
+		image:string;
+	  }];
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -52,6 +65,16 @@ export const getServerSideProps: GetServerSideProps = async () => {
 					phone
 					location
 				}
+				homepageFeatures {
+					id
+					title
+					description
+					topLinkText
+					topLink
+					bottomLinkText
+					bottomLink
+					image
+				  }
 			}
 		`,
 	});
@@ -60,13 +83,17 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		props: {
 			homepageBanner: data.homepageBanner,
 			restaurantInfo: data.restaurantInfo,
+			homepageFeatures: data.homepageFeatures,
 		},
 	};
 };
 
 export default function Home(props: PropsInterface) {
-	const { homepageBanner, restaurantInfo } = props;
-	console.log(homepageBanner);
-	console.log(restaurantInfo);
-	return <div className="text-primary">homepage</div>;
+	const { homepageBanner, restaurantInfo,homepageFeatures } = props;
+
+	return <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 m-16">
+		<div className="col-span-2"> 		<IndexFeatures homepageFeatures={homepageFeatures} /></div>
+		<Info restaurantInfo={restaurantInfo} />
+
+	</div>;
 }
