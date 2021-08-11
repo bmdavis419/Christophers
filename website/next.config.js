@@ -2,9 +2,9 @@
 module.exports = {
 	images: {
 		domains: [
-			"https://firebasestorage.googleapis.com",
+			"https://fidrebasestorage.googleapis.com",
 			"firebasestorage.googleapis.com",
+			"christophers-321318.appspot.com",
 		],
 	},
-	distDir: "build",
 };
