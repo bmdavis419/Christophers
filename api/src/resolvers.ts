@@ -54,16 +54,24 @@ export const resolvers = {
 	},
 	MenuItem: {
 		async subcategory(parent: { subcategory: string }) {
-			const dataRef = db.collection("Subcategory").doc(parent.subcategory);
-			const doc = await dataRef.get();
-			const id = doc.id;
-			return { ...doc.data, id };
+			if (parent.subcategory) {
+				const dataRef = db.collection("Subcategory").doc(parent.subcategory);
+				const doc = await dataRef.get();
+				const id = doc.id;
+				return { ...doc.data(), id };
+			} else {
+				return null;
+			}
 		},
 		async category(parent: { category: string }) {
-			const dataRef = db.collection("Category").doc(parent.category);
-			const doc = await dataRef.get();
-			const id = doc.id;
-			return { ...doc.data, id };
+			if (parent.category) {
+				const dataRef = db.collection("Category").doc(parent.category);
+				const doc = await dataRef.get();
+				const id = doc.id;
+				return { ...doc.data(), id };
+			} else {
+				return null;
+			}
 		},
 	},
 };
