@@ -9,11 +9,7 @@ export default function Header() {
 				<div className="flex flex-row justify-start pl-24 pt-4">
 					<Link href="/">
 						<a>
-							<Image
-								src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80"
-								width={296}
-								height={70}
-							/>
+							<Image src="/LogoRes.jpeg" width={296} height={70} />
 						</a>
 					</Link>
 				</div>
