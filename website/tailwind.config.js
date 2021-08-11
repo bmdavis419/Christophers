@@ -19,6 +19,7 @@ module.exports = {
 			   },
 			borderRadius: {
 				'50px' : '50px',
+				'40': '40px',
 				faqborder: '30px'
 			},
 			height: {
@@ -38,11 +39,24 @@ module.exports = {
 				"4/5vw":"80vw",
 				"100vw":"100vw",
 				"1/2vh":"50vh",
+				"550": "550px",
+				"300": "300px",
 			   },
+			width: {
+				"550": "550px",
+				"300": "300px",
+			},
+			dropShadow: {
+				'gallery': '0px 4px 4px rgba(0, 0, 0, 0.25)'
+			},
+			gap: {
+				'130': '130px'
+			},
 			fontSize: {
 				headsm: ['40px', '47px'],
 				standard: ['25px', '29.5px'],
-				headmd: ['48px', '56.25px']
+				headmd: ['48px', '56.25px'],
+				headlg: ['64px', '75px']
 			},
 			backgroundColor: {
 				faqbox: '#DCDCDC'
