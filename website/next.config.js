@@ -5,6 +5,7 @@ module.exports = {
 			"https://fidrebasestorage.googleapis.com",
 			"firebasestorage.googleapis.com",
 			"christophers-321318.appspot.com",
+			"images.unsplash.com",
 		],
 	},
 	target: "serverless",

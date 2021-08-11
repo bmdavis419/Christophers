@@ -10,7 +10,7 @@ export default function Header() {
 					<Link href="/">
 						<a>
 							<Image
-								src="https://firebasestorage.googleapis.com/v0/b/christophers-321318.appspot.com/o/logos%2FLogoRes.jpg?alt=media&token=151e8457-84a8-4127-bd16-e1406ce2ab21"
+								src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80"
 								width={296}
 								height={70}
 							/>
