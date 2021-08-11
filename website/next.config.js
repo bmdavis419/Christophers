@@ -7,4 +7,5 @@ module.exports = {
 			"christophers-321318.appspot.com",
 		],
 	},
+	target: "serverless",
 };
