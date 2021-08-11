@@ -119,12 +119,14 @@ exports.resolvers = {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
+                            if (!parent.subcategory) return [3 /*break*/, 2];
                             dataRef = config_1.db.collection("Subcategory").doc(parent.subcategory);
                             return [4 /*yield*/, dataRef.get()];
                         case 1:
                             doc = _a.sent();
                             id = doc.id;
-                            return [2 /*return*/, __assign(__assign({}, doc.data), { id: id })];
+                            return [2 /*return*/, __assign(__assign({}, doc.data()), { id: id })];
+                        case 2: return [2 /*return*/, null];
                     }
                 });
             });
@@ -135,12 +137,14 @@ exports.resolvers = {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
+                            if (!parent.category) return [3 /*break*/, 2];
                             dataRef = config_1.db.collection("Category").doc(parent.category);
                             return [4 /*yield*/, dataRef.get()];
                         case 1:
                             doc = _a.sent();
                             id = doc.id;
-                            return [2 /*return*/, __assign(__assign({}, doc.data), { id: id })];
+                            return [2 /*return*/, __assign(__assign({}, doc.data()), { id: id })];
+                        case 2: return [2 /*return*/, null];
                     }
                 });
             });
