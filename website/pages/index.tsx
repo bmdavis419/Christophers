@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Info from"../components/index/Info";
 import client from "../apollo-client";
 import IndexFeatures from "../components/index/IndexFeatures";
+import IndexHeader from "../components/index/IndexHeader";
+import IndexUpdates from "../components/index/IndexUpdates";
 
 interface PropsInterface {
 	homepageBanner: {
@@ -91,9 +93,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Home(props: PropsInterface) {
 	const { homepageBanner, restaurantInfo,homepageFeatures } = props;
 
-	return <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 m-16">
-		<div className="col-span-2"> 		<IndexFeatures homepageFeatures={homepageFeatures} /></div>
+	return <div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 md:m-16">
+		<div className="col-span-3"><IndexHeader homepageBanner={homepageBanner}/></div>
+		<div className="col-span-3 md:col-span-2"><IndexFeatures homepageFeatures={homepageFeatures} /></div>
 		<Info restaurantInfo={restaurantInfo} />
+		<div className="col-span-3"><IndexUpdates/></div>
 
 	</div>;
 }
