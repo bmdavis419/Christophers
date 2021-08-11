@@ -48,7 +48,7 @@ export default function gallery(props:PropsInterface) {
     return (
         <div className="flex flex-col">
             <div className="text-headlg text-primary text-center mb-6">Gallery</div>
-            <div className="grid grid-flow-row md:grid-cols-2 sm:grid-rows-2 sm:grid-cols-1 gap-6 md:gap-130 justify-items-center filter drop-shadow-gallery">
+            <div className="grid grid-flow-row lg:grid-cols-2 md:grid-cols-1 sm:grid-rows-2 sm:grid-cols-1 gap-6 md:gap-130 justify-items-center filter drop-shadow-gallery">
                 {sortedImages[index].map((el, i) => {
                     return (<GalleryImage pic={el.image} index={i}/>)
                 })}
