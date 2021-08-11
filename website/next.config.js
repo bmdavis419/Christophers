@@ -1,7 +1,10 @@
 // next.config.js
 module.exports = {
 	images: {
-		domains: ["firebasestorage.googleapis.com"],
+		domains: [
+			"https://firebasestorage.googleapis.com",
+			"firebasestorage.googleapis.com",
+		],
 	},
 	distDir: "build",
 };
