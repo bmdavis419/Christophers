@@ -121,3 +121,5 @@ dist
 *.key
 /build
 build/
+# Local Netlify folder
+.netlify

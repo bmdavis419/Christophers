@@ -10,9 +10,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<ApolloProvider client={client}>
 			<Header />
-			<div className="min-h-screen">
+			<main className="min-h-screen">
 				<Component {...pageProps} />
-			</div>
+			</main>
 			<Footer />
 		</ApolloProvider>
 	);
