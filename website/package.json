@@ -10,6 +10,9 @@
 	},
 	"dependencies": {
 		"@apollo/client": "^3.3.21",
+		"@headlessui/react": "^1.4.0",
+		"@heroicons/react": "^1.0.3",
+		"@netlify/plugin-nextjs": "^3.8.0",
 		"apollo": "^2.33.4",
 		"next": "11.0.1",
 		"react": "17.0.2",
