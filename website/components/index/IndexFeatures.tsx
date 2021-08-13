@@ -49,6 +49,7 @@ export default function IndexFeatures(props: PropsInterface) {
 				className={`rounded-full mt-auto m-2 lg:m-3 p-3 xl:p-4 2xl:p-5 bg-${
 					index == i ? "primary" : "gray-400"
 				}`}
+				key={i}
 			></div>
 		);
 	}
