@@ -27,13 +27,32 @@ export default function Menu() {
 		}
 	`);
 
+	const {
+		loading: loadingCat,
+		error: errorCat,
+		data: dataCat,
+	} = useQuery(gql`
+		{
+			categories {
+				name
+				id
+				subcategories {
+					id
+					name
+				}
+			}
+		}
+	`);
+
 	// make sure there is data before render
-	if (loading) return <Loading />;
+	if (loading || loadingCat) return <Loading />;
 	if (error) return <div>Error: {error.message}</div>;
+	if (errorCat) return <div>Error: {errorCat.message}</div>;
 
 	return (
-		<div>
+		<div className="w-full px-5">
 			{data &&
+				dataCat &&
 				data.menuItems.map(
 					(menuItem: {
 						name: string;
@@ -46,7 +65,13 @@ export default function Menu() {
 						category: { id: string; name: string };
 						subcategory: { name: string; id: string };
 					}) => {
-						return <MenuItemCard menuItem={menuItem} />;
+						return (
+							<MenuItemCard
+								menuItem={menuItem}
+								key={menuItem.id}
+								categories={dataCat.categories}
+							/>
+						);
 					}
 				)}
 		</div>
