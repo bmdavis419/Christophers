@@ -15,6 +15,7 @@ export default function Menu() {
 				image
 				type
 				isOldImage
+				isFeature
 				category {
 					id
 					name
@@ -61,6 +62,7 @@ export default function Menu() {
 						price: string;
 						image: string;
 						type: number;
+						isFeature: boolean;
 						isOldImage: boolean;
 						category: { id: string; name: string };
 						subcategory: { name: string; id: string };

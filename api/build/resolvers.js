@@ -51,6 +51,7 @@ exports.resolvers = void 0;
 var config_1 = require("./firebase/config");
 var homepage_1 = require("./queries/homepage");
 var menu_1 = require("./queries/menu");
+var menu_2 = require("./mutations/menu");
 exports.resolvers = {
     Query: {
         homepageBanner: homepage_1.homepageBanner,
@@ -61,6 +62,29 @@ exports.resolvers = {
         category: menu_1.category,
         menuItem: menu_1.menuItem,
         subcategory: menu_1.subcategory,
+        feature: menu_1.feature,
+        features: menu_1.features,
+    },
+    Mutation: {
+        updateMenuItem: menu_2.updateMenuItem,
+        addFeature: menu_2.addFeature,
+    },
+    Feature: {
+        menuItem: function (parent) {
+            return __awaiter(this, void 0, void 0, function () {
+                var docRef, data;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            docRef = config_1.db.collection("MenuItem").doc(parent.menuItem);
+                            return [4 /*yield*/, docRef.get()];
+                        case 1:
+                            data = _a.sent();
+                            return [2 /*return*/, __assign(__assign({}, data.data()), { id: data.id })];
+                    }
+                });
+            });
+        },
     },
     Category: {
         subcategories: function (parent) {
