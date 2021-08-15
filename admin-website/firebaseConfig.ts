@@ -1,3 +1,5 @@
+import "firebase/storage";
+
 // Your web app's Firebase configuration
 export const firebaseConfig = {
 	apiKey: "AIzaSyDhNYABSbofUUZhNnGLcU79tvNEahcLTco",

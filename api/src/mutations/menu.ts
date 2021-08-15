@@ -28,3 +28,25 @@ export const updateMenuItem = async (
 	const data = await docRef.get();
 	return { ...data.data(), id: args.id };
 };
+
+export const addFeature = async (
+	_: any,
+	args: {
+		menuID: string;
+		type: string;
+	}
+) => {
+	const docRef = db.collection("Feature");
+	const res = await docRef.add({
+		menuItem: args.menuID,
+		type: args.type,
+	});
+	const data = await docRef.doc(res.id).get();
+
+	// update the menu item to be a feature
+	const menuRef = db.collection("MenuItem").doc(args.menuID);
+	await menuRef.update({
+		isFeature: true,
+	});
+	return { ...data.data(), id: res.id };
+};

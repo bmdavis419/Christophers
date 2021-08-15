@@ -33,6 +33,24 @@ export const menuItems = async () => {
 	return returnDocs;
 };
 
+export const features = async () => {
+	const dataRef = db.collection("Feature");
+	const docs = await dataRef.get();
+	let returnDocs: any = [];
+	docs.docs.forEach((doc) => {
+		const id = doc.id;
+		returnDocs.push({ ...doc.data(), id });
+	});
+	return returnDocs;
+};
+
+export const feature = async (_: null, args: { id: string }) => {
+	const dataRef = db.collection("Feature").doc(args.id);
+	const doc = await dataRef.get();
+	const id = doc.id;
+	return { ...doc.data(), id };
+};
+
 export const category = async (_: null, args: { id: string }) => {
 	const dataRef = db.collection("Category").doc(args.id);
 	const doc = await dataRef.get();

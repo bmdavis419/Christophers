@@ -68,6 +68,7 @@ export const typeDefs = gql`
 		isOldImage: Boolean
 		category: Category
 		subcategory: Subcategory
+		isFeature: Boolean
 	}
 	type Feature {
 		id: ID
@@ -84,6 +85,8 @@ export const typeDefs = gql`
 		category(id: ID): Category
 		subcategory(id: ID): Subcategory
 		menuItem(id: ID): MenuItem
+		feature(id: ID): Feature
+		features: [Feature]
 	}
 	type Mutation {
 		updateMenuItem(
@@ -96,5 +99,6 @@ export const typeDefs = gql`
 			image: String
 			type: Int
 		): MenuItem
+		addFeature(menuID: ID!, type: String!): Feature
 	}
 `;

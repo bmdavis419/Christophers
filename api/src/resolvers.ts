@@ -7,8 +7,10 @@ import {
 	category,
 	menuItem,
 	subcategory,
+	feature,
+	features,
 } from "./queries/menu";
-import { updateMenuItem } from "./mutations/menu";
+import { updateMenuItem, addFeature } from "./mutations/menu";
 
 export const resolvers = {
 	Query: {
@@ -20,9 +22,19 @@ export const resolvers = {
 		category,
 		menuItem,
 		subcategory,
+		feature,
+		features,
 	},
 	Mutation: {
 		updateMenuItem,
+		addFeature,
+	},
+	Feature: {
+		async menuItem(parent: { menuItem: string }) {
+			const docRef = db.collection("MenuItem").doc(parent.menuItem);
+			const data = await docRef.get();
+			return { ...data.data(), id: data.id };
+		},
 	},
 	Category: {
 		async subcategories(parent: { subcategories: [string] }) {
