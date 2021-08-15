@@ -51,6 +51,7 @@ exports.resolvers = void 0;
 var config_1 = require("./firebase/config");
 var homepage_1 = require("./queries/homepage");
 var menu_1 = require("./queries/menu");
+var menu_2 = require("./mutations/menu");
 exports.resolvers = {
     Query: {
         homepageBanner: homepage_1.homepageBanner,
@@ -61,6 +62,9 @@ exports.resolvers = {
         category: menu_1.category,
         menuItem: menu_1.menuItem,
         subcategory: menu_1.subcategory,
+    },
+    Mutation: {
+        updateMenuItem: menu_2.updateMenuItem,
     },
     Category: {
         subcategories: function (parent) {

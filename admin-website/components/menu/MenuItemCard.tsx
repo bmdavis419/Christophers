@@ -1,3 +1,4 @@
+import { gql, useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import MenuCategory from "./MenuCategory";
 import MenuImage from "./MenuImage";
@@ -50,6 +51,36 @@ export default function MenuItemCard(props: PropsInterface) {
 		category: menuItem.category,
 		subcategory: menuItem.subcategory,
 	});
+
+	// mutation to update an item
+	const UPDATE_MENU_ITEM = gql`
+		mutation UpdateMenuItem(
+			$id: ID!
+			$name: String
+			$category: ID
+			$subcategory: ID
+			$description: String
+			$price: String
+			$image: String
+			$type: Int
+		) {
+			updateMenuItem(
+				id: $id
+				name: $name
+				category: $category
+				subcategory: $subcategory
+				description: $description
+				price: $price
+				image: $image
+				type: $type
+			) {
+				name
+				id
+			}
+		}
+	`;
+	const [updateMenuItem, { data, loading, error }] =
+		useMutation(UPDATE_MENU_ITEM);
 
 	// get the input modal states
 	const [showModal, setShowModal] = useState(false);
@@ -137,6 +168,18 @@ export default function MenuItemCard(props: PropsInterface) {
 										type="button"
 										onClick={(e) => {
 											e.preventDefault();
+											updateMenuItem({
+												variables: {
+													id: menuItem.id,
+													name: formState.name,
+													description: formState.description,
+													image: formState.image,
+													category: formState.category.id,
+													subcategory: formState.subcategory.id,
+													type: formState.type,
+													price: formState.price,
+												},
+											});
 										}}
 									>
 										Save Changes

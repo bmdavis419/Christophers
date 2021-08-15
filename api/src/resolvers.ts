@@ -8,6 +8,7 @@ import {
 	menuItem,
 	subcategory,
 } from "./queries/menu";
+import { updateMenuItem } from "./mutations/menu";
 
 export const resolvers = {
 	Query: {
@@ -19,6 +20,9 @@ export const resolvers = {
 		category,
 		menuItem,
 		subcategory,
+	},
+	Mutation: {
+		updateMenuItem,
 	},
 	Category: {
 		async subcategories(parent: { subcategories: [string] }) {

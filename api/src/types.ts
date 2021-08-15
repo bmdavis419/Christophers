@@ -85,4 +85,16 @@ export const typeDefs = gql`
 		subcategory(id: ID): Subcategory
 		menuItem(id: ID): MenuItem
 	}
+	type Mutation {
+		updateMenuItem(
+			id: ID!
+			name: String
+			category: ID
+			subcategory: ID
+			description: String
+			price: String
+			image: String
+			type: Int
+		): MenuItem
+	}
 `;
