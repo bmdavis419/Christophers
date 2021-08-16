@@ -68,6 +68,8 @@ exports.resolvers = {
     Mutation: {
         updateMenuItem: menu_2.updateMenuItem,
         addFeature: menu_2.addFeature,
+        removeFeature: menu_2.removeFeature,
+        removeMenuItem: menu_2.removeMenuItem,
     },
     Feature: {
         menuItem: function (parent) {

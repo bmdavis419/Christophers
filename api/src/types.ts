@@ -69,6 +69,7 @@ export const typeDefs = gql`
 		category: Category
 		subcategory: Subcategory
 		isFeature: Boolean
+		featureID: ID
 	}
 	type Feature {
 		id: ID
@@ -100,5 +101,7 @@ export const typeDefs = gql`
 			type: Int
 		): MenuItem
 		addFeature(menuID: ID!, type: String!): Feature
+		removeFeature(id: ID!, menuID: ID!): ID
+		removeMenuItem(id: ID!, featureID: String): ID
 	}
 `;

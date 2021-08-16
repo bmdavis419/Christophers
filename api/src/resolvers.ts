@@ -10,7 +10,12 @@ import {
 	feature,
 	features,
 } from "./queries/menu";
-import { updateMenuItem, addFeature } from "./mutations/menu";
+import {
+	updateMenuItem,
+	addFeature,
+	removeFeature,
+	removeMenuItem,
+} from "./mutations/menu";
 
 export const resolvers = {
 	Query: {
@@ -28,6 +33,8 @@ export const resolvers = {
 	Mutation: {
 		updateMenuItem,
 		addFeature,
+		removeFeature,
+		removeMenuItem,
 	},
 	Feature: {
 		async menuItem(parent: { menuItem: string }) {

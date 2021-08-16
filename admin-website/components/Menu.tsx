@@ -16,6 +16,7 @@ export default function Menu() {
 				type
 				isOldImage
 				isFeature
+				featureID
 				category {
 					id
 					name
