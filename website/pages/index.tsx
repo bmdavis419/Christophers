@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 import { GetServerSideProps } from "next";
-import React, { useState } from "react";
-import Info from"../components/index/Info";
+import React from "react";
+import Info from "../components/index/Info";
 import client from "../apollo-client";
 import IndexFeatures from "../components/index/IndexFeatures";
 import IndexHeader from "../components/index/IndexHeader";
@@ -29,16 +29,18 @@ interface PropsInterface {
 		phone: number;
 		location: string;
 	};
-	homepageFeatures: [{
-		id:string;
-		title:string;
-		description:string;
-		topLinkText:string;
-		topLink:string;
-		bottomLinkText:string;
-		bottomLink:string;
-		image:string;
-	  }];
+	homepageFeatures: [
+		{
+			id: string;
+			title: string;
+			description: string;
+			topLinkText: string;
+			topLink: string;
+			bottomLinkText: string;
+			bottomLink: string;
+			image: string;
+		}
+	];
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -76,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 					bottomLinkText
 					bottomLink
 					image
-				  }
+				}
 			}
 		`,
 	});
@@ -91,13 +93,22 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 export default function Home(props: PropsInterface) {
-	const { homepageBanner, restaurantInfo,homepageFeatures } = props;
+	const { homepageBanner, restaurantInfo, homepageFeatures } = props;
 
-	return <div><div className="col-span-3"><IndexHeader homepageBanner={homepageBanner}/></div>
-		 <div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 md:m-16">
-		<div className="col-span-3 md:col-span-2"><IndexFeatures homepageFeatures={homepageFeatures} /></div>
-		<Info restaurantInfo={restaurantInfo} />
-		<div className="col-span-3"><IndexUpdates/></div>
+	return (
+		<div>
+			<div className="col-span-3">
+				<IndexHeader homepageBanner={homepageBanner} />
+			</div>
+			<div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 md:m-16">
+				<div className="col-span-3 md:col-span-2">
+					<IndexFeatures homepageFeatures={homepageFeatures} />
+				</div>
+				<Info restaurantInfo={restaurantInfo} />
+				<div className="col-span-3">
+					<IndexUpdates />
+				</div>
+			</div>
 		</div>
-	</div>;
+	);
 }
