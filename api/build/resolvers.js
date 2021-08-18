@@ -52,8 +52,15 @@ var config_1 = require("./firebase/config");
 var homepage_1 = require("./queries/homepage");
 var menu_1 = require("./queries/menu");
 var menu_2 = require("./mutations/menu");
+var faq_1 = require("./queries/faq");
+var about_1 = require("./queries/about");
 exports.resolvers = {
     Query: {
+        cateringFAQ: faq_1.cateringFAQ,
+        restaurantFAQ: faq_1.restaurantFAQ,
+        about: about_1.about,
+        homepageCards: homepage_1.homepageCards,
+        homepageFeatures: homepage_1.homepageFeatures,
         homepageBanner: homepage_1.homepageBanner,
         restaurantInfo: homepage_1.restaurantInfo,
         categories: menu_1.categories,
@@ -68,6 +75,8 @@ exports.resolvers = {
     Mutation: {
         updateMenuItem: menu_2.updateMenuItem,
         addFeature: menu_2.addFeature,
+        removeFeature: menu_2.removeFeature,
+        removeMenuItem: menu_2.removeMenuItem,
     },
     Feature: {
         menuItem: function (parent) {

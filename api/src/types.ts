@@ -32,6 +32,12 @@ export const typeDefs = gql`
 		location: String
 		locationLink: String
 	}
+	type HomepageCard {
+		id: ID
+		title: String
+		date: String
+		content: String
+	}
 	type About {
 		id: ID
 		topHeading: String
@@ -69,6 +75,7 @@ export const typeDefs = gql`
 		category: Category
 		subcategory: Subcategory
 		isFeature: Boolean
+		featureID: ID
 	}
 	type Feature {
 		id: ID
@@ -78,7 +85,11 @@ export const typeDefs = gql`
 	type Query {
 		homepageBanner: HomepageBanner
 		homepageFeatures: [HomepageFeature]
+		homepageCards: [HomepageCard]
 		restaurantInfo: RestaurantInfo
+		restaurantFAQ: [RestaurantFAQ]
+		cateringFAQ: [CateringFAQ]
+		about: About
 		categories: [Category]
 		subcategories: [Subcategory]
 		menuItems: [MenuItem]
@@ -100,5 +111,7 @@ export const typeDefs = gql`
 			type: Int
 		): MenuItem
 		addFeature(menuID: ID!, type: String!): Feature
+		removeFeature(id: ID!, menuID: ID!): ID
+		removeMenuItem(id: ID!, featureID: String): ID
 	}
 `;

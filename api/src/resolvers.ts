@@ -1,5 +1,10 @@
 import { db } from "./firebase/config";
-import { homepageBanner, restaurantInfo } from "./queries/homepage";
+import {
+	homepageBanner,
+	restaurantInfo,
+	homepageCards,
+	homepageFeatures,
+} from "./queries/homepage";
 import {
 	categories,
 	menuItems,
@@ -10,10 +15,22 @@ import {
 	feature,
 	features,
 } from "./queries/menu";
-import { updateMenuItem, addFeature } from "./mutations/menu";
+import {
+	updateMenuItem,
+	addFeature,
+	removeFeature,
+	removeMenuItem,
+} from "./mutations/menu";
+import { restaurantFAQ, cateringFAQ } from "./queries/faq";
+import { about } from "./queries/about";
 
 export const resolvers = {
 	Query: {
+		cateringFAQ,
+		restaurantFAQ,
+		about,
+		homepageCards,
+		homepageFeatures,
 		homepageBanner,
 		restaurantInfo,
 		categories,
@@ -28,6 +45,8 @@ export const resolvers = {
 	Mutation: {
 		updateMenuItem,
 		addFeature,
+		removeFeature,
+		removeMenuItem,
 	},
 	Feature: {
 		async menuItem(parent: { menuItem: string }) {

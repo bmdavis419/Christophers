@@ -5,9 +5,9 @@ import Image from "next/image";
 
 const navigation = [
 	{ name: "About", href: "/about" },
-	{ name: "Contact", href: "/" },
+	{ name: "Contact", href: "/contact" },
 	{ name: "Menu", href: "/menu" },
-	{ name: "Catering", href: "/" },
+	{ name: "Catering", href: "/catering" },
 ];
 
 export default function Header() {
