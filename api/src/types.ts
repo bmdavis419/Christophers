@@ -32,6 +32,12 @@ export const typeDefs = gql`
 		location: String
 		locationLink: String
 	}
+	type HomepageCard {
+		id: ID
+		title: String
+		date: String
+		content: String
+	}
 	type About {
 		id: ID
 		topHeading: String
@@ -79,7 +85,11 @@ export const typeDefs = gql`
 	type Query {
 		homepageBanner: HomepageBanner
 		homepageFeatures: [HomepageFeature]
+		homepageCards: [HomepageCard]
 		restaurantInfo: RestaurantInfo
+		restaurantFAQ: [RestaurantFAQ]
+		cateringFAQ: [CateringFAQ]
+		about: About
 		categories: [Category]
 		subcategories: [Subcategory]
 		menuItems: [MenuItem]

@@ -17,30 +17,14 @@ interface PropsInterface {
 }
 export default function IndexFeatures(props: PropsInterface) {
 	const { homepageFeatures } = props;
-	const tempContent: PropsInterface = {
-		homepageFeatures: [
-			{
-				id: "1",
-				title: "Perfect Chicken Dinner",
-				description:
-					"Our Chicken dinners are cooked to perfection and will make you come back wishing for more. I am just writing text to fill this out. Content, this is content",
-				topLinkText: "Order Online",
-				topLink: "/",
-				bottomLinkText: "Second Link",
-				bottomLink: "/",
-				image:
-					"https://firebasestorage.googleapis.com/v0/b/christophers-321318.appspot.com/o/logos%2FLogoRes.jpg?alt=media&token=151e8457-84a8-4127-bd16-e1406ce2ab21",
-			},
-		],
-	};
 	let circles: any = [];
 
 	const [index, setIndex] = useState(0);
 	function setActiveFeature(e: React.MouseEvent, i: number) {
-		e.preventDefault;
+		e.preventDefault();
 		setIndex(i);
 	}
-	for (let i: number = 0; i < tempContent.homepageFeatures.length; i++) {
+	for (let i: number = 0; i < homepageFeatures.length; i++) {
 		circles.push(
 			<div
 				onClick={(e) => {
@@ -60,7 +44,7 @@ export default function IndexFeatures(props: PropsInterface) {
 				<Image
 					layout="fill"
 					objectFit="fill"
-					src="https://firebasestorage.googleapis.com/v0/b/christophers-321318.appspot.com/o/logos%2FLogoRes.jpg?alt=media&token=151e8457-84a8-4127-bd16-e1406ce2ab21"
+					src={homepageFeatures[index].image}
 					alt="Image of featured dish"
 				/>
 			</div>
@@ -69,21 +53,21 @@ export default function IndexFeatures(props: PropsInterface) {
 					className="max-h-144 relative visible sm:invisible mix-blend-multiply"
 					objectFit="fill"
 					layout="fill"
-					src="https://firebasestorage.googleapis.com/v0/b/christophers-321318.appspot.com/o/logos%2FLogoRes.jpg?alt=media&token=151e8457-84a8-4127-bd16-e1406ce2ab21"
+					src={homepageFeatures[index].image}
 					alt="Menu Header Background Image"
 				/>
 				<h1 className="relative mix-blend normal text-3xl font-bold">
-					{tempContent.homepageFeatures[index].title}
+					{homepageFeatures[index].title}
 				</h1>
 				<p className="relative mix-blend normal text-sm xl:text-xl">
-					{tempContent.homepageFeatures[index].description}
+					{homepageFeatures[index].description}
 				</p>
 				<div className="grid grid-cols-1 2xl:grid-cols-2 gap-2 2xl:gap-16">
 					<button className="relative mix-blend normal w-40  m-auto 2xl:text-xl rounded-full py-2 2xl:py-2 bg-primary text-white">
-						{tempContent.homepageFeatures[index].topLinkText}
+						{homepageFeatures[index].topLinkText}
 					</button>
 					<button className="relative mix-blend normal w-40  m-auto 2xl:text-xl rounded-full py-2 2xl:py-2 bg-primary text-white">
-						{tempContent.homepageFeatures[index].topLinkText}
+						{homepageFeatures[index].bottomLinkText}
 					</button>
 				</div>
 				<div className="relative mix-blend normal flex flex-row self-end mx-auto">
