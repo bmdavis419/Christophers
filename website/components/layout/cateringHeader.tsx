@@ -5,14 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navigation = [
-	{ name: "About", href: "/about" },
-	{ name: "FAQ", href: "/faq" },
-	{ name: "Contact", href: "/contact" },
-	{ name: "Menu", href: "/menu" },
-	{ name: "Catering", href: "/catering" },
+	{ name: "About", href: "/catering/about" },
+	{ name: "FAQ", href: "/catering/faq" },
+	{ name: "Contact", href: "/catering#contact" },
+	{ name: "Menu", href: "/catering/menu" },
+	{ name: "Gallery", href: "/catering/gallery" },
+	{ name: "Venues", href: "/catering/venue" },
+	{ name: "Restaurant", href: "/" },
 ];
 
-export default function Header() {
+export default function CateringHeader() {
 	return (
 		<Disclosure as="nav">
 			{({ open }) => (
@@ -28,13 +30,13 @@ export default function Header() {
 							</Disclosure.Button>
 						</div>
 						<div className="justify-center md:pl-24">
-							<Link href="/">
+							<Link href="/catering">
 								<a>
 									<Image
 										alt="logo"
-										src="/logos/LogoRes.jpg"
+										src="/logos/LogoCatering.jpg"
 										width={300}
-										height={60}
+										height={75}
 										className="justify-center md:justify-start h-20 w-72 bg-black"
 									></Image>
 								</a>

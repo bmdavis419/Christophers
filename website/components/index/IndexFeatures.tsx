@@ -24,18 +24,20 @@ export default function IndexFeatures(props: PropsInterface) {
 		e.preventDefault();
 		setIndex(i);
 	}
-	for (let i: number = 0; i < homepageFeatures.length; i++) {
-		circles.push(
-			<div
-				onClick={(e) => {
-					setActiveFeature(e, i);
-				}}
-				className={`rounded-full mt-auto m-2 lg:m-3 p-3 xl:p-4 2xl:p-5 bg-${
-					index == i ? "primary" : "gray-400"
-				}`}
-				key={i}
-			></div>
-		);
+	if (homepageFeatures.length > 1) {
+		for (let i: number = 0; i < homepageFeatures.length; i++) {
+			circles.push(
+				<div
+					onClick={(e) => {
+						setActiveFeature(e, i);
+					}}
+					className={`rounded-full mt-auto m-2 lg:m-3 p-3 xl:p-4 2xl:p-5 bg-${
+						index == i ? "primary" : "gray-400"
+					}`}
+					key={i}
+				></div>
+			);
+		}
 	}
 
 	return (
@@ -56,22 +58,26 @@ export default function IndexFeatures(props: PropsInterface) {
 					src={homepageFeatures[index].image}
 					alt="Menu Header Background Image"
 				/>
-				<h1 className="relative mix-blend normal text-3xl font-bold">
-					{homepageFeatures[index].title}
-				</h1>
-				<p className="relative mix-blend normal text-sm xl:text-xl">
-					{homepageFeatures[index].description}
-				</p>
-				<div className="grid grid-cols-1 2xl:grid-cols-2 gap-2 2xl:gap-16">
-					<button className="relative mix-blend normal w-40  m-auto 2xl:text-xl rounded-full py-2 2xl:py-2 bg-primary text-white">
-						{homepageFeatures[index].topLinkText}
-					</button>
-					<button className="relative mix-blend normal w-40  m-auto 2xl:text-xl rounded-full py-2 2xl:py-2 bg-primary text-white">
-						{homepageFeatures[index].bottomLinkText}
-					</button>
-				</div>
-				<div className="relative mix-blend normal flex flex-row self-end mx-auto">
-					{circles}
+				<div className="flex items-center justify-center h-100">
+					<div>
+						<h1 className="relative mix-blend normal text-3xl font-bold mb-5">
+							{homepageFeatures[index].title}
+						</h1>
+						<p className="relative mix-blend normal text-sm xl:text-xl mb-5">
+							{homepageFeatures[index].description}
+						</p>
+						<div className="grid grid-cols-1 2xl:grid-cols-2 gap-2 2xl:gap-16 mb-5">
+							<button className="relative mix-blend normal w-40  m-auto 2xl:text-xl rounded-full py-2 2xl:py-2 bg-primary text-white">
+								{homepageFeatures[index].topLinkText}
+							</button>
+							<button className="relative mix-blend normal w-40  m-auto 2xl:text-xl rounded-full py-2 2xl:py-2 bg-primary text-white">
+								{homepageFeatures[index].bottomLinkText}
+							</button>
+						</div>
+						<div className="relative mix-blend normal flex flex-row self-end mx-auto">
+							{circles}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

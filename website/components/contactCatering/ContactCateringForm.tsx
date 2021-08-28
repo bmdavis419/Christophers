@@ -196,7 +196,7 @@ export default function ContactForm() {
 			</div>
 			<button
 				type="submit"
-				className={`bg-${buttonColor} text-white py-2 px-4 mx-2 rounded-full`}
+				className={`bg-${buttonColor} text-white py-2 px-4 mx-2 rounded-full hover:bg-secondary`}
 			>
 				Send Message
 			</button>

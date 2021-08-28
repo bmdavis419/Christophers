@@ -1,12 +1,13 @@
 import { gql } from "@apollo/client";
+import Head from "next/head";
 import { GetServerSideProps } from "next";
-import React, { useState } from "react";
-import Info from"../../components/index/Info";
+import React from "react";
+import Info from "../../components/index/Info";
 import client from "../../apollo-client";
-import IndexFeatures from "../../components/index/IndexFeatures";
 import IndexHeader from "../../components/index/IndexHeader";
 import IndexUpdates from "../../components/index/IndexUpdates";
 import ContactCateringForm from "../../components/contactCatering/ContactCateringForm";
+import CateringHeader from "../../components/layout/cateringHeader";
 
 interface PropsInterface {
 	homepageBanner: {
@@ -30,16 +31,18 @@ interface PropsInterface {
 		phone: number;
 		location: string;
 	};
-	homepageFeatures: [{
-		id:string;
-		title:string;
-		description:string;
-		topLinkText:string;
-		topLink:string;
-		bottomLinkText:string;
-		bottomLink:string;
-		image:string;
-	  }];
+	homepageFeatures: [
+		{
+			id: string;
+			title: string;
+			description: string;
+			topLinkText: string;
+			topLink: string;
+			bottomLinkText: string;
+			bottomLink: string;
+			image: string;
+		}
+	];
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -77,7 +80,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 					bottomLinkText
 					bottomLink
 					image
-				  }
+				}
 			}
 		`,
 	});
@@ -92,15 +95,38 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 export default function Home(props: PropsInterface) {
-	const { homepageBanner, restaurantInfo,homepageFeatures } = props;
+	const { homepageBanner, restaurantInfo } = props;
 
-	return <div><div className="col-span-3"><IndexHeader homepageBanner={homepageBanner}/></div>
-		 <div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 md:m-16">
-		<div className="col-span-3"><IndexUpdates/></div>
-		</div>
-        <div className="flex justify-center flex-col lg:flex-row align-center">
-            <div className="lg:mx-2 mx-auto"><ContactCateringForm /></div>
-            <div className="max-w-144"><Info restaurantInfo={restaurantInfo}/></div>
-        </div>
-	</div>;
+	return (
+		<>
+			<Head>
+				<title>Christopher's Catering</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
+			<CateringHeader />
+			<div>
+				<div className="col-span-3">
+					<IndexHeader homepageBanner={homepageBanner} />
+				</div>
+				<div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 md:m-16">
+					<div className="col-span-3">
+						<IndexUpdates />
+					</div>
+				</div>
+				<div className="flex justify-center mb-5">
+					<div
+						className="flex justify-center flex-col lg:flex-row align-center bg-white shadow-lg rounded-50px md:w-3/5 pt-3"
+						id="contact"
+					>
+						<div className="lg:mx-2 mx-auto">
+							<ContactCateringForm />
+						</div>
+						<div className="max-w-144">
+							<Info restaurantInfo={restaurantInfo} />
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 }

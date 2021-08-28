@@ -24,7 +24,7 @@ export default function MenuFeatures(props: PropsInterface) {
 	}
 	if (!Feature.menuItem) return null;
 	return (
-		<div className="overflow-hidden relative md:rounded-50px w-full sm:h-1/2vw md:h-1/3vw md:mt-4 grid sm:grid-cols-2 justify-evenly filter drop-shadow-xl bg-gray-50">
+		<div className="overflow-hidden relative md:rounded-50px w-full sm:h-1/2vw md:h-1/4vw md:mt-2 grid sm:grid-cols-2 justify-evenly filter drop-shadow-xl bg-gray-50">
 			<div className="sm:h-1/2vw md:h-1/3vw relative w-full">
 				<Image
 					layout="fill"
@@ -33,7 +33,7 @@ export default function MenuFeatures(props: PropsInterface) {
 					alt="Image of featured dish"
 				/>
 			</div>
-			<div className="text-white sm:text-black sm:pt-12 bg-black bg-opacity-60 sm:bg-transparent sm:bg-opacity-100 p-4 space-y-2 xl:space-y-4 2xl:space-y-8 h-4/5vw flex flex-col text-center lg:w-2/3 mx-auto">
+			<div className="text-white sm:text-black sm:pt-12 bg-black bg-opacity-60 sm:bg-transparent sm:bg-opacity-100 space-y-2 xl:space-y-4 2xl:space-y-8 h-4/5vw flex flex-col text-center lg:w-2/3 mx-auto">
 				<Image
 					className="relative visible sm:invisible mix-blend-darken"
 					objectFit="fill"
@@ -41,7 +41,7 @@ export default function MenuFeatures(props: PropsInterface) {
 					src={Feature.menuItem.image}
 					alt="Menu Header Background Image"
 				/>
-				<h1 className="relative mix-blend normal text-3xl xl:text-4xl 2xl:text-5xl font-bold">
+				<h1 className="relative mix-blend normal text-xl xl:text-2xl 2xl:text-3xl font-bold">
 					{Feature.menuItem.name}
 				</h1>
 				<h2 className="relative mix-blend normal text-md xl:text-xl 2xl:text-3xl">
