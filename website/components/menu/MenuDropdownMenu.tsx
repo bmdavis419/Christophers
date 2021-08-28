@@ -1,4 +1,3 @@
-import { GetServerSideProps } from "next";
 import React, { useState } from "react";
 
 interface PropsInterface {
@@ -23,14 +22,33 @@ export default function MenuDropdownMenu(props: PropsInterface) {
 	const dropdown = categories.map((cat, index) => (
 		<div>
 			<button
-				className={`block text-white drop-shadow-xl relative md:text-2xl py-8 w-full md:w-56 md:${
+				className={` block text-white drop-shadow-xl relative md:text-2xl py-8 w-full md:w-56 md:${
 					index === 0 ? "rounded-t-3xl" : ""
-				}  ${activeDD === index ? "bg-secondary" : "bg-primary"}`}
+				}  ${
+					activeDD === index
+						? "bg-secondary hover:bg-primary"
+						: "bg-primary hover:bg-secondary"
+				}`}
 				onClick={(e) => {
 					showDropDown(e, index);
 					setActiveId(e, cat.subcategories[0].id);
 				}}
 			>
+				{activeDD != index && (
+					<svg
+						className="w-7 h-7 inline-block mr-3 items-center"
+						fill="currentColor"
+						viewBox="0 0 20 20"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							fillRule="evenodd"
+							d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+							clipRule="evenodd"
+						/>
+					</svg>
+				)}
+
 				{cat.name}
 			</button>
 			<div
@@ -43,7 +61,9 @@ export default function MenuDropdownMenu(props: PropsInterface) {
 				{cat.subcategories.map((sub, i) => (
 					<button
 						className={` ${
-							activeId == sub.id ? "text-secondary" : "text-black"
+							activeId == sub.id
+								? "text-secondary"
+								: "text-black hover:text-secondary"
 						} text-sm  md:text-xl w-auto`}
 						onClick={(e) => {
 							setActiveId(e, sub.id);

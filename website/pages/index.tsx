@@ -6,6 +6,8 @@ import client from "../apollo-client";
 import IndexFeatures from "../components/index/IndexFeatures";
 import IndexHeader from "../components/index/IndexHeader";
 import IndexUpdates from "../components/index/IndexUpdates";
+import Header from "../components/layout/header";
+import Head from "next/head";
 
 interface PropsInterface {
 	homepageBanner: {
@@ -96,19 +98,26 @@ export default function Home(props: PropsInterface) {
 	const { homepageBanner, restaurantInfo, homepageFeatures } = props;
 
 	return (
-		<div>
-			<div className="col-span-3">
-				<IndexHeader homepageBanner={homepageBanner} />
-			</div>
-			<div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 md:m-16">
-				<div className="col-span-3 md:col-span-2">
-					<IndexFeatures homepageFeatures={homepageFeatures} />
-				</div>
-				<Info restaurantInfo={restaurantInfo} />
+		<>
+			<Head>
+				<title>Christopher's Restaurant</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
+			<Header />
+			<div>
 				<div className="col-span-3">
-					<IndexUpdates />
+					<IndexHeader homepageBanner={homepageBanner} />
+				</div>
+				<div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 md:m-16 md:px-20">
+					<div className="col-span-3 md:col-span-2">
+						<IndexFeatures homepageFeatures={homepageFeatures} />
+					</div>
+					<Info restaurantInfo={restaurantInfo} />
+					<div className="col-span-3">
+						<IndexUpdates />
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }

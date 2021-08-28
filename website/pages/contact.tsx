@@ -1,10 +1,11 @@
-import { gql } from '@apollo/client';
-import { GetServerSideProps } from 'next';
-import React from 'react'
-import client from '../apollo-client';
-import ContactForm from '../components/contact/ContactForm'
-import ContactCateringForm from '../components/contactCatering/ContactCateringForm';
-import Info from '../components/index/Info'
+import { gql } from "@apollo/client";
+import Head from "next/head";
+import { GetServerSideProps } from "next";
+import React from "react";
+import client from "../apollo-client";
+import ContactForm from "../components/contact/ContactForm";
+import Info from "../components/index/Info";
+import Header from "../components/layout/header";
 
 interface PropsInterface {
 	restaurantInfo: {
@@ -25,7 +26,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	const { data } = await client.query({
 		query: gql`
 			{
-
 				restaurantInfo {
 					monday
 					tuesday
@@ -47,12 +47,25 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		},
 	};
 };
-export default function contact(props:PropsInterface) {
-    const {restaurantInfo} = props
-    return (
-        <div className="flex justify-center flex-col lg:flex-row align-center">
-            <div className="lg:mx-2 mx-auto"><ContactForm /></div>
-            <div className="max-w-144"><Info restaurantInfo={restaurantInfo}/></div>
-        </div>
-    )
+export default function contact(props: PropsInterface) {
+	const { restaurantInfo } = props;
+	return (
+		<>
+			<Head>
+				<title>Contact Christopher's Restaurant</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
+			<Header />
+			<div className="w-full flex justify-center mt-5">
+				<div className="flex justify-center flex-col lg:flex-row align-center bg-white shadow-2xl rounded-50px md:w-3/5 py-5">
+					<div className="lg:mx-2 mx-auto">
+						<ContactForm />
+					</div>
+					<div className="max-w-144">
+						<Info restaurantInfo={restaurantInfo} />
+					</div>
+				</div>
+			</div>
+		</>
+	);
 }

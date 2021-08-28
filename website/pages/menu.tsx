@@ -1,11 +1,12 @@
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
 import React, { useState } from "react";
-import MenuHeader from "../components/menu/MenuHeader";
 import MenuFeatures from "../components/menu/MenuFeatures";
 import MenuDropdownMenu from "../components/menu/MenuDropdownMenu";
 import MenuBox from "../components/menu/MenuBox";
+import Header from "../components/layout/header";
 interface PropsInterface {
 	features: [
 		{
@@ -100,29 +101,35 @@ export default function menu(props: PropsInterface) {
 		}
 	}
 
-	console.log(features);
 	return (
-		<div className="md:mt-16 flex flex-col items-center justify-center">
-			<div className=" w-full md:w-4/5">
-				{/* <MenuHeader /> */}
-				{features && (
-					<MenuFeatures
-						numFeatures={features.length}
-						activeFeature={index}
-						Feature={features[index]}
-						setActiveFeature={setActiveFeature}
-						key={features[index].id}
+		<>
+			<Head>
+				<title>Christopher's Restaurant Menu</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
+			<Header />
+			<div className="md:mt-16 flex flex-col items-center justify-center">
+				<div className=" w-full md:w-3/5">
+					{/* <MenuHeader /> */}
+					{features && (
+						<MenuFeatures
+							numFeatures={features.length}
+							activeFeature={index}
+							Feature={features[index]}
+							setActiveFeature={setActiveFeature}
+							key={features[index].id}
+						/>
+					)}
+				</div>
+				<div className=" lg:mx-12 md:mt-16 flex flex-col md:flex-row flex-grow-0">
+					<MenuDropdownMenu
+						categories={categories}
+						setActiveId={setActiveId}
+						activeId={id}
 					/>
-				)}
+					<MenuBox id={id} name={name} />
+				</div>
 			</div>
-			<div className=" lg:mx-12 md:mt-16 flex flex-col md:flex-row flex-grow-0">
-				<MenuDropdownMenu
-					categories={categories}
-					setActiveId={setActiveId}
-					activeId={id}
-				/>
-				<MenuBox id={id} name={name} />
-			</div>
-		</div>
+		</>
 	);
 }
