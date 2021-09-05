@@ -48,19 +48,30 @@ export const getServerSideProps: GetServerSideProps = async () => {
           }
           name
         }
-      }
+          features {
+            menuItem {
+              description
+              name
+              type
+              image
+            }
+            id
+            type
+          }
+        }
     `,
   });
 
   return {
     props: {
       categories: data.categories,
+      features:data.features,
     },
   };
 };
 
 export default function menu(props: PropsInterface) {
-  const { categories } = props;
+  const { categories,features } = props;
   const [index, setIndex] = useState(0);
   const [id, setId] = useState(categories[0].subcategories[0].id);
   const [name, setName] = useState(categories[0].subcategories[0].name);
@@ -85,7 +96,7 @@ export default function menu(props: PropsInterface) {
     <div className="md:mt-16 flex flex-col items-center justify-center">
       <div className=" w-full md:w-4/5">
         <MenuHeader />
-        {/*<MenuFeatures numFeatures={3} activeFeature={index} Feature={Features[index]} setActiveFeature={setActiveFeature}/>*/}
+        <MenuFeatures numFeatures={features.length} activeFeature={index} Feature={features[index]} setActiveFeature={setActiveFeature}/>
       </div>
       <div className=" lg:mx-12 md:mt-16 flex flex-col md:flex-row flex-grow-0">
         <MenuDropdownMenu
