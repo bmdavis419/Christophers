@@ -178,34 +178,18 @@ export default function MenuItemCard(props: PropsInterface) {
 	};
 
 	return (
-		<div className="my-3 shadow-lg rounded-sm w-full px-3 py-2">
-			<div>
-				<span>{menuItem.name}</span>
-				<button
-					className="rounded-full bg-primary p-2 inline ml-4 text-white hover:bg-secondary hover:shadow-inner"
-					title="edit"
-					onClick={(e) => {
-						e.preventDefault();
-						setShowModal(true);
-					}}
-				>
-					<svg
-						className="w-6 h-6 inline mr-2"
-						fill="currentColor"
-						viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-					</svg>
-					edit
-				</button>
-				{!formState.isFeature ? (
+		<div className="my-3 shadow-lg w-full px-3 py-2 rounded-full">
+			<div className="flex justify-between items-center px-5">
+				<div className="inline-block">
+					<span>{menuItem.name}</span>
+				</div>
+				<div className="inline-block">
 					<button
-						className="rounded-full bg-green-500 p-2 inline ml-4 text-white hover:bg-green-300 hover:shadow-inner"
+						className="rounded-full bg-primary p-2 inline ml-4 text-white hover:bg-secondary hover:shadow-inner"
 						title="edit"
 						onClick={(e) => {
 							e.preventDefault();
-							setShowFeatureModal(true);
+							setShowModal(true);
 						}}
 					>
 						<svg
@@ -214,30 +198,72 @@ export default function MenuItemCard(props: PropsInterface) {
 							viewBox="0 0 20 20"
 							xmlns="http://www.w3.org/2000/svg"
 						>
-							<path
-								fillRule="evenodd"
-								d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-								clipRule="evenodd"
-							/>
+							<path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
 						</svg>
-						make feature
+						edit
 					</button>
-				) : (
+					{!formState.isFeature ? (
+						<button
+							className="rounded-full bg-green-500 p-2 inline ml-4 text-white hover:bg-green-300 hover:shadow-inner"
+							title="edit"
+							onClick={(e) => {
+								e.preventDefault();
+								setShowFeatureModal(true);
+							}}
+						>
+							<svg
+								className="w-6 h-6 inline mr-2"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fillRule="evenodd"
+									d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+									clipRule="evenodd"
+								/>
+							</svg>
+							make feature
+						</button>
+					) : (
+						<button
+							className="rounded-full bg-green-500 p-2 inline ml-4 text-white hover:bg-green-300 hover:shadow-inner"
+							title="edit"
+							onClick={(e) => {
+								e.preventDefault();
+								setShowStatusModal(true);
+								removeFeature({
+									variables: {
+										menuID: menuItem.id,
+										id: menuItem.featureID,
+									},
+									onCompleted: () => {
+										setFormState({ ...formState, isFeature: false });
+									},
+								});
+							}}
+						>
+							<svg
+								className="w-6 h-6 inline mr-2"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fillRule="evenodd"
+									d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+									clipRule="evenodd"
+								/>
+							</svg>
+							remove feature
+						</button>
+					)}
 					<button
-						className="rounded-full bg-green-500 p-2 inline ml-4 text-white hover:bg-green-300 hover:shadow-inner"
+						className="rounded-full bg-red-500 p-2 inline ml-4 text-white hover:bg-red-300 hover:shadow-inner"
 						title="edit"
 						onClick={(e) => {
 							e.preventDefault();
-							setShowStatusModal(true);
-							removeFeature({
-								variables: {
-									menuID: menuItem.id,
-									id: menuItem.featureID,
-								},
-								onCompleted: () => {
-									setFormState({ ...formState, isFeature: false });
-								},
-							});
+							setShowDeleteModal(true);
 						}}
 					>
 						<svg
@@ -252,31 +278,9 @@ export default function MenuItemCard(props: PropsInterface) {
 								clipRule="evenodd"
 							/>
 						</svg>
-						remove feature
+						delete item
 					</button>
-				)}
-				<button
-					className="rounded-full bg-red-500 p-2 inline ml-4 text-white hover:bg-red-300 hover:shadow-inner"
-					title="edit"
-					onClick={(e) => {
-						e.preventDefault();
-						setShowDeleteModal(true);
-					}}
-				>
-					<svg
-						className="w-6 h-6 inline mr-2"
-						fill="currentColor"
-						viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							fillRule="evenodd"
-							d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					delete item
-				</button>
+				</div>
 			</div>
 			{showModal ? (
 				<>

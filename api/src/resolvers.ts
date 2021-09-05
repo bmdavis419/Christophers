@@ -1,5 +1,10 @@
 import { db } from "./firebase/config";
-import { homepageBanner, restaurantInfo } from "./queries/homepage";
+import {
+	homepageBanner,
+	restaurantInfo,
+	homepageCards,
+	homepageFeatures,
+} from "./queries/homepage";
 import {
 	categories,
 	menuItems,
@@ -16,9 +21,16 @@ import {
 	removeFeature,
 	removeMenuItem,
 } from "./mutations/menu";
+import { restaurantFAQ, cateringFAQ } from "./queries/faq";
+import { about } from "./queries/about";
 
 export const resolvers = {
 	Query: {
+		cateringFAQ,
+		restaurantFAQ,
+		about,
+		homepageCards,
+		homepageFeatures,
 		homepageBanner,
 		restaurantInfo,
 		categories,
