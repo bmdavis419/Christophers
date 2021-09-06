@@ -36,7 +36,7 @@ export default function MenuDropdownMenu(props: PropsInterface) {
 			>
 				{activeDD != index && (
 					<svg
-						className="w-7 h-7 inline-block mr-3 items-center"
+						className="w-7 h-7 mr-3 items-center hidden md:inline"
 						fill="currentColor"
 						viewBox="0 0 20 20"
 						xmlns="http://www.w3.org/2000/svg"
