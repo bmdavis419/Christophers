@@ -109,11 +109,13 @@ export default function Home(props: PropsInterface) {
 					<IndexHeader homepageBanner={homepageBanner} />
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 md:m-16 md:px-20">
+					
 					<div className="col-span-3 md:col-span-2">
 						<IndexFeatures homepageFeatures={homepageFeatures} />
 					</div>
 					<Info restaurantInfo={restaurantInfo} />
 					<div className="col-span-3">
+					<div className="h-1 bg-red w-100vw bg-primary visible sm:invisible"></div>
 						<IndexUpdates />
 					</div>
 				</div>
