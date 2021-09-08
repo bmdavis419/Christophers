@@ -98,12 +98,16 @@ exports.resolvers = {
     Category: {
         subcategories: function (parent) {
             return __awaiter(this, void 0, void 0, function () {
-                var returnArr, dataRefs, docs;
+                var returnArr, subIDs, dataRefs, docs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             returnArr = [];
-                            dataRefs = parent.subcategories.map(function (sub) {
+                            subIDs = parent.subcategories.filter(function (item) {
+                                return item !== "";
+                            });
+                            if (!(subIDs.length > 0)) return [3 /*break*/, 2];
+                            dataRefs = subIDs.map(function (sub) {
                                 var str = "Subcategory/" + sub;
                                 return config_1.db.doc(str);
                             });
@@ -115,6 +119,7 @@ exports.resolvers = {
                                 returnArr.push(__assign(__assign({}, doc.data()), { id: id }));
                             });
                             return [2 /*return*/, returnArr];
+                        case 2: return [2 /*return*/, []];
                     }
                 });
             });
@@ -123,12 +128,16 @@ exports.resolvers = {
     Subcategory: {
         menuItems: function (parent) {
             return __awaiter(this, void 0, void 0, function () {
-                var returnArr, dataRefs, docs;
+                var returnArr, menuIDs, dataRefs, docs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             returnArr = [];
-                            dataRefs = parent.menuItems.map(function (sub) {
+                            menuIDs = parent.menuItems.filter(function (item) {
+                                return item !== "";
+                            });
+                            if (!(menuIDs.length > 0)) return [3 /*break*/, 2];
+                            dataRefs = menuIDs.map(function (sub) {
                                 var str = "MenuItem/" + sub;
                                 return config_1.db.doc(str);
                             });
@@ -140,6 +149,7 @@ exports.resolvers = {
                                 returnArr.push(__assign(__assign({}, doc.data()), { id: id }));
                             });
                             return [2 /*return*/, returnArr];
+                        case 2: return [2 /*return*/, []];
                     }
                 });
             });
@@ -148,36 +158,56 @@ exports.resolvers = {
     MenuItem: {
         subcategory: function (parent) {
             return __awaiter(this, void 0, void 0, function () {
-                var dataRef, doc, id;
+                var subIDs, dataRefs, docs, returnArr_1;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
-                            if (!parent.subcategory) return [3 /*break*/, 2];
-                            dataRef = config_1.db.collection("Subcategory").doc(parent.subcategory);
-                            return [4 /*yield*/, dataRef.get()];
+                            subIDs = parent.subcategory.filter(function (item) {
+                                return item !== "";
+                            });
+                            if (!(subIDs.length > 0)) return [3 /*break*/, 2];
+                            dataRefs = subIDs.map(function (id) {
+                                return config_1.db.doc("Subcategory/" + id);
+                            });
+                            return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
                         case 1:
-                            doc = _a.sent();
-                            id = doc.id;
-                            return [2 /*return*/, __assign(__assign({}, doc.data()), { id: id })];
-                        case 2: return [2 /*return*/, null];
+                            docs = _a.sent();
+                            returnArr_1 = [];
+                            docs.forEach(function (doc) {
+                                var id = doc.id;
+                                returnArr_1.push(__assign(__assign({}, doc.data()), { id: id }));
+                            });
+                            // return
+                            return [2 /*return*/, returnArr_1];
+                        case 2: return [2 /*return*/, []];
                     }
                 });
             });
         },
         category: function (parent) {
             return __awaiter(this, void 0, void 0, function () {
-                var dataRef, doc, id;
+                var catIDs, dataRefs, docs, returnArr_2;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
-                            if (!parent.category) return [3 /*break*/, 2];
-                            dataRef = config_1.db.collection("Category").doc(parent.category);
-                            return [4 /*yield*/, dataRef.get()];
+                            catIDs = parent.category.filter(function (item) {
+                                return item !== "";
+                            });
+                            if (!(catIDs.length > 0)) return [3 /*break*/, 2];
+                            dataRefs = catIDs.map(function (id) {
+                                return config_1.db.doc("Subcategory/" + id);
+                            });
+                            return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
                         case 1:
-                            doc = _a.sent();
-                            id = doc.id;
-                            return [2 /*return*/, __assign(__assign({}, doc.data()), { id: id })];
-                        case 2: return [2 /*return*/, null];
+                            docs = _a.sent();
+                            returnArr_2 = [];
+                            docs.forEach(function (doc) {
+                                var id = doc.id;
+                                returnArr_2.push(__assign(__assign({}, doc.data()), { id: id }));
+                            });
+                            // return
+                            return [2 /*return*/, returnArr_2];
+                        case 2: return [2 /*return*/, []];
                     }
                 });
             });

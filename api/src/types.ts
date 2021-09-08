@@ -72,8 +72,8 @@ export const typeDefs = gql`
 		image: String
 		type: Int
 		isOldImage: Boolean
-		category: Category
-		subcategory: Subcategory
+		category: [Category]
+		subcategory: [Subcategory]
 		isFeature: Boolean
 		featureID: ID
 	}

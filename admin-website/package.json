@@ -9,18 +9,23 @@
   },
   "dependencies": {
     "@apollo/client": "^3.4.4",
+    "draft-js": "^0.11.7",
+    "draft-js-export-html": "^1.4.1",
     "firebase": "^8.9.0",
     "graphql": "^15.5.1",
-    "next": "11.0.1",
+    "next": "^11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-router": "^5.2.0",
-    "reactfire": "^3.0.0-rc.3"
+    "reactfire": "^3.0.0-rc.3",
+    "sanitize-html": "^2.4.0"
   },
   "devDependencies": {
+    "@types/draft-js": "^0.11.4",
     "@types/node": "^16.4.10",
     "@types/react": "17.0.15",
     "@types/react-router": "^5.1.16",
+    "@types/sanitize-html": "^2.3.2",
     "autoprefixer": "^10.3.1",
     "postcss": "^8.3.6",
     "tailwindcss": "^2.2.7",

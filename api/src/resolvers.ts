@@ -56,57 +56,103 @@ export const resolvers = {
 		},
 	},
 	Category: {
-		async subcategories(parent: { subcategories: [string] }) {
-			let returnArr: any = [];
-			// get the subcats
-			const dataRefs = parent.subcategories.map((sub) => {
-				const str = "Subcategory/" + sub;
-				return db.doc(str);
+		async subcategories(parent: { subcategories: string[] }) {
+			let returnArr: Object[] = [];
+			const subIDs = parent.subcategories.filter((item) => {
+				return item !== "";
 			});
-			const docs = await db.getAll(...dataRefs);
-			docs.forEach((doc) => {
-				const id = doc.id;
-				returnArr.push({ ...doc.data(), id });
-			});
-			return returnArr;
+
+			if (subIDs.length > 0) {
+				// get the subcats
+				const dataRefs = subIDs.map((sub) => {
+					const str = "Subcategory/" + sub;
+					return db.doc(str);
+				});
+				const docs = await db.getAll(...dataRefs);
+				docs.forEach((doc) => {
+					const id = doc.id;
+					returnArr.push({ ...doc.data(), id });
+				});
+				return returnArr;
+			}
+			return [];
 		},
 	},
 	Subcategory: {
-		async menuItems(parent: { menuItems: [string] }) {
-			let returnArr: any = [];
-			// get the subcats
-			const dataRefs = parent.menuItems.map((sub) => {
-				const str = "MenuItem/" + sub;
-				return db.doc(str);
+		async menuItems(parent: { menuItems: string[] }) {
+			let returnArr: Object[] = [];
+
+			const menuIDs = parent.menuItems.filter((item) => {
+				return item !== "";
 			});
-			const docs = await db.getAll(...dataRefs);
-			docs.forEach((doc) => {
-				const id = doc.id;
-				returnArr.push({ ...doc.data(), id });
-			});
-			return returnArr;
+
+			if (menuIDs.length > 0) {
+				// get the subcats
+				let dataRefs = menuIDs.map((sub) => {
+					const str = "MenuItem/" + sub;
+					return db.doc(str);
+				});
+
+				const docs = await db.getAll(...dataRefs);
+				docs.forEach((doc) => {
+					const id = doc.id;
+					returnArr.push({ ...doc.data(), id });
+				});
+				return returnArr;
+			}
+			return [];
 		},
 	},
 	MenuItem: {
-		async subcategory(parent: { subcategory: string }) {
-			if (parent.subcategory) {
-				const dataRef = db.collection("Subcategory").doc(parent.subcategory);
-				const doc = await dataRef.get();
-				const id = doc.id;
-				return { ...doc.data(), id };
-			} else {
-				return null;
+		async subcategory(parent: { subcategory: string[] }) {
+			// get the array from the parent
+			const subIDs = parent.subcategory.filter((item) => {
+				return item !== "";
+			});
+
+			if (subIDs.length > 0) {
+				// go through each sub and add it to return array
+				const dataRefs = subIDs.map((id) => {
+					return db.doc(`Subcategory/${id}`);
+				});
+
+				// get the docs
+				const docs = await db.getAll(...dataRefs);
+				let returnArr: Object[] = [];
+				docs.forEach((doc) => {
+					const id = doc.id;
+					returnArr.push({ ...doc.data(), id });
+				});
+
+				// return
+				return returnArr;
 			}
+			return [];
 		},
-		async category(parent: { category: string }) {
-			if (parent.category) {
-				const dataRef = db.collection("Category").doc(parent.category);
-				const doc = await dataRef.get();
-				const id = doc.id;
-				return { ...doc.data(), id };
-			} else {
-				return null;
+		async category(parent: { category: string[] }) {
+			// get the array from the parent
+			const catIDs = parent.category.filter((item) => {
+				return item !== "";
+			});
+
+			if (catIDs.length > 0) {
+				// go through each sub and add it to return array
+				const dataRefs = catIDs.map((id) => {
+					return db.doc(`Subcategory/${id}`);
+				});
+
+				// get the docs
+				const docs = await db.getAll(...dataRefs);
+				let returnArr: Object[] = [];
+				docs.forEach((doc) => {
+					const id = doc.id;
+					returnArr.push({ ...doc.data(), id });
+				});
+
+				// return
+				return returnArr;
 			}
+			return [];
 		},
 	},
 };
