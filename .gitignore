@@ -123,3 +123,6 @@ dist
 build/
 # Local Netlify folder
 .netlify
+
+/build
+./build
