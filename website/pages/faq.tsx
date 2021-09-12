@@ -28,15 +28,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
 				},
 			],
-			
 		},
 	};
 };
 
 export default function faq(props: FAQInterface) {
-	const { RestaurantFAQ, CateringFAQ } = props;
-	let restaurants = RestaurantFAQ.map((i) => {
-		return <FaqCard question={i.question} answer={i.answer} />;
+	const { RestaurantFAQ } = props;
+	let restaurants = RestaurantFAQ.map((i, idx) => {
+		return <FaqCard question={i.question} answer={i.answer} key={idx} />;
 	});
 	return (
 		<>

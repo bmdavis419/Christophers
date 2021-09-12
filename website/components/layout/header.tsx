@@ -42,7 +42,7 @@ export default function Header() {
 						</div>
 						<div className="self-center ml-auto mr-24 text-black md:flex justify-end space-x-8 text-2xl lg:text-3xl hidden ">
 							{navigation.map((item) => (
-								<Link href={item.href}>
+								<Link href={item.href} key={item.name}>
 									<a className="hover:text-primary">{item.name}</a>
 								</Link>
 							))}

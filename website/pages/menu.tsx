@@ -52,29 +52,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		`,
 	});
 
-	const { data: featuresData } = await client.query({
-		query: gql`
-			{
-				features {
-					type
-					id
-					menuItem {
-						name
-						id
-						description
-						price
-						image
-						type
-					}
-				}
-			}
-		`,
-	});
-
 	return {
 		props: {
 			categories: data.categories,
-			features: featuresData.features,
 		},
 	};
 };
@@ -109,19 +89,7 @@ export default function menu(props: PropsInterface) {
 			</Head>
 			<Header />
 			<div className="md:mt-16 flex flex-col items-center justify-center">
-				<div className=" w-full md:w-3/5">
-					{/* <MenuHeader /> */}
-					{features && (
-						<MenuFeatures
-							numFeatures={features.length}
-							activeFeature={index}
-							Feature={features[index]}
-							setActiveFeature={setActiveFeature}
-							key={features[index].id}
-						/>
-					)}
-				</div>
-				<div className=" lg:mx-12 md:mt-16 flex flex-col md:flex-row flex-grow-0">
+				<div className=" lg:mx-12 md:mt-4 flex flex-col md:flex-row flex-grow-0">
 					<MenuDropdownMenu
 						categories={categories}
 						setActiveId={setActiveId}

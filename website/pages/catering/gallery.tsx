@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { GetServerSideProps } from "next";
 import GalleryImage from "../../components/gallery/GalleryImage";
-import pic1 from "../../components/gallery/fakeImages/pic1.jpeg";
 import ContactCateringForm from "../../components/contactCatering/ContactCateringForm";
 import { gql } from "@apollo/client";
 import client from "../../apollo-client";
 import Info from "../../components/index/Info";
 import Head from "next/head";
-import Header from "../../components/layout/header";
 import CateringHeader from "../../components/layout/cateringHeader";
 
 interface PropsInterface {
@@ -34,7 +32,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { data } = await client.query({
 		query: gql`
 			{
-
 				restaurantInfo {
 					monday
 					tuesday
@@ -46,7 +43,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 					phone
 					location
 				}
-
 			}
 		`,
 	});
@@ -55,25 +51,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		props: {
 			restaurantInfo: data.restaurantInfo,
 			images: [
-				{ image: pic1.src },
-				{ image: pic1.src },
-				{ image: pic1.src },
-				{ image: pic1.src },
-				{ image: pic1.src },
-				{ image: pic1.src },
-				{ image: pic1.src },
-				{ image: pic1.src },
-				{ image: pic1.src },
-				{ image: pic1.src },
-				{ image: pic1.src },
-				{ image: pic1.src },
+				{ image: "/images/BlueberryPie.png" },
+				{ image: "/images/BlueberryPie.png" },
+				{ image: "/images/BlueberryPie.png" },
+				{ image: "/images/BlueberryPie.png" },
+				{ image: "/images/BlueberryPie.png" },
+				{ image: "/images/BlueberryPie.png" },
+				{ image: "/images/BlueberryPie.png" },
+				{ image: "/images/BlueberryPie.png" },
+				{ image: "/images/BlueberryPie.png" },
+				{ image: "/images/BlueberryPie.png" },
+				{ image: "/images/BlueberryPie.png" },
+				{ image: "/images/BlueberryPie.png" },
 			],
 		},
 	};
 };
 
 export default function gallery(props: PropsInterface) {
-	const { images,restaurantInfo } = props;
+	const { images, restaurantInfo } = props;
 	const sortedImages = [];
 	for (let i: number = 0; i < images.length; i += 4) {
 		sortedImages.push(images.slice(i, i + 4));
@@ -94,26 +90,36 @@ export default function gallery(props: PropsInterface) {
 		);
 	}
 	return (
-		
 		<div className="flex flex-col">
 			<Head>
-				<title>Christopher's Gallery</title>
+				<title>Christopher&apos;s Gallery</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<CateringHeader />
 			<div className="text-headlg text-primary text-center mb-6">Gallery</div>
 			<div className="grid grid-flow-row lg:grid-cols-2 md:grid-cols-1 sm:grid-rows-2 sm:grid-cols-1 gap-6 md:gap-130 justify-items-center filter drop-shadow-gallery">
 				{sortedImages[index].map((el, i) => {
-					return <GalleryImage pic={el.image} index={i} />;
+					return (
+						<GalleryImage
+							pic={el.image}
+							index={i}
+							description={"testing testing test"}
+							key={i}
+						/>
+					);
 				})}
 			</div>
 			<div className="relative mix-blend normal flex flex-row self-end mx-auto mt-6">
 				{circles}
 			</div>
 			<div className="flex justify-center flex-col lg:flex-row align-center">
-            <div className="lg:mx-2 mx-auto"><ContactCateringForm /></div>
-            <div className="max-w-144"><Info restaurantInfo={restaurantInfo}/></div>
-        </div>
+				<div className="lg:mx-2 mx-auto">
+					<ContactCateringForm />
+				</div>
+				<div className="max-w-144">
+					<Info restaurantInfo={restaurantInfo} />
+				</div>
+			</div>
 		</div>
 	);
 }

@@ -2,11 +2,9 @@ import React from "react";
 import Head from "next/head";
 import { GetServerSideProps } from "next";
 import FaqCard from "../../components/faqComponents/FaqCard";
-import Header from "../../components/layout/header";
 import CateringHeader from "../../components/layout/cateringHeader";
 
 interface FAQInterface {
-
 	CateringFAQ: [
 		{
 			question: string;
@@ -61,13 +59,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default function faq(props: FAQInterface) {
 	const { CateringFAQ } = props;
-	let caterings = CateringFAQ.map((i) => {
-		return <FaqCard question={i.question} answer={i.answer} />;
+	let caterings = CateringFAQ.map((i, idx) => {
+		return <FaqCard question={i.question} answer={i.answer} key={idx} />;
 	});
 	return (
 		<>
 			<Head>
-				<title>Christopher's Restaurant FAQ</title>
+				<title>Christopher&apos;s Restaurant FAQ</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<CateringHeader />
