@@ -1,11 +1,12 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { gql } from "@apollo/client";
-import client from "../apollo-client";
+import client from "../../apollo-client";
 import React, { useState } from "react";
-import MenuDropdownMenu from "../components/menu/MenuDropdownMenu";
-import MenuBox from "../components/menu/MenuBox";
-import Header from "../components/layout/header";
+import MenuFeatures from "../../components/menu/MenuFeatures";
+import MenuDropdownMenu from "../../components/menu/MenuDropdownMenu";
+import MenuBox from "../../components/menu/MenuBox";
+import CateringHeader from "../../components/layout/cateringHeader";
 interface PropsInterface {
 	features: [
 		{
@@ -51,18 +52,43 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		`,
 	});
 
+	const { data: featuresData } = await client.query({
+		query: gql`
+			{
+				features {
+					type
+					id
+					menuItem {
+						name
+						id
+						description
+						price
+						image
+						type
+					}
+				}
+			}
+		`,
+	});
+
 	return {
 		props: {
 			categories: data.categories,
+			features: featuresData.features,
 		},
 	};
 };
 
 export default function Menu(props: PropsInterface) {
-	const { categories } = props;
+	const { categories, features } = props;
+	const [index, setIndex] = useState(0);
 	const [id, setId] = useState(categories[0].subcategories[0].id);
 	const [name, setName] = useState(categories[0].subcategories[0].name);
 
+	function setActiveFeature(e: HTMLFormElement, i: number) {
+		e.preventDefault();
+		setIndex(i);
+	}
 	function setActiveId(e: HTMLFormElement, id: string) {
 		e.preventDefault();
 		setId(id);
@@ -81,9 +107,21 @@ export default function Menu(props: PropsInterface) {
 				<title>Christopher&apos;s Restaurant Menu</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
-			<Header />
+			<CateringHeader />
 			<div className="md:mt-16 flex flex-col items-center justify-center">
-				<div className=" lg:mx-12 md:mt-4 flex flex-col md:flex-row flex-grow-0">
+				<div className=" w-full md:w-3/5">
+					{/* <MenuHeader /> */}
+					{features && (
+						<MenuFeatures
+							numFeatures={features.length}
+							activeFeature={index}
+							Feature={features[index]}
+							setActiveFeature={setActiveFeature}
+							key={features[index].id}
+						/>
+					)}
+				</div>
+				<div className=" lg:mx-12 md:mt-16 flex flex-col md:flex-row flex-grow-0">
 					<MenuDropdownMenu
 						categories={categories}
 						setActiveId={setActiveId}

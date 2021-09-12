@@ -98,9 +98,9 @@ export default function Home(props: PropsInterface) {
 	const { homepageBanner, restaurantInfo, homepageFeatures } = props;
 
 	return (
-		<>
+		<div className="w-full overflow-x-hidden">
 			<Head>
-				<title>Christopher's Restaurant</title>
+				<title>Christopher&apos;s Restaurant</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<Header />
@@ -114,10 +114,11 @@ export default function Home(props: PropsInterface) {
 					</div>
 					<Info restaurantInfo={restaurantInfo} />
 					<div className="col-span-3">
+						<div className="h-1 bg-red w-100vw bg-primary visible sm:invisible"></div>
 						<IndexUpdates />
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

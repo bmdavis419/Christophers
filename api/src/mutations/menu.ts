@@ -1,3 +1,4 @@
+import { firestore } from "firebase-admin";
 import { db } from "../firebase/config";
 
 export const updateMenuItem = async (
@@ -29,29 +30,6 @@ export const updateMenuItem = async (
 	return { ...data.data(), id: args.id };
 };
 
-export const addFeature = async (
-	_: any,
-	args: {
-		menuID: string;
-		type: string;
-	}
-) => {
-	const docRef = db.collection("Feature");
-	const res = await docRef.add({
-		menuItem: args.menuID,
-		type: args.type,
-	});
-	const data = await docRef.doc(res.id).get();
-
-	// update the menu item to be a feature
-	const menuRef = db.collection("MenuItem").doc(args.menuID);
-	await menuRef.update({
-		isFeature: true,
-		featureID: data.id,
-	});
-	return { ...data.data(), id: res.id };
-};
-
 export const removeMenuItem = async (
 	_: null,
 	args: { id: string; featureID?: string }
@@ -69,20 +47,38 @@ export const removeMenuItem = async (
 	return args.id;
 };
 
-export const removeFeature = async (
+export const createMenuItem = async (
 	_: null,
-	args: { id: string; menuID: string }
+	args: {
+		name: string;
+		category: string;
+		subcategory: string;
+		description: string;
+		price: string;
+		image: string;
+		type: number;
+		isFeature: boolean;
+		featureID?: string;
+	}
 ) => {
-	// remove the feature from the menu item
-	const updateRef = db.collection("MenuItem").doc(args.menuID);
-	await updateRef.update({
-		isFeature: false,
+	// add to database
+	const menuRef = db.collection("MenuItem");
+	const res = await menuRef.add({
+		...args,
 	});
 
-	// delete the feature
-	const removeRef = db.collection("Feature").doc(args.id);
-	await removeRef.delete();
+	// check if it is a feature
+	if (args.isFeature && args.featureID) {
+		// add to the feature table
+		const featureCategoryRef = db
+			.collection("FeatureCateogry")
+			.doc(args.featureID);
+		featureCategoryRef.update({
+			menuItems: firestore.FieldValue.arrayUnion(res.id),
+		});
+	}
 
-	// return
-	return args.id;
+	// get the menu item and return it
+	const data = await menuRef.doc(res.id).get();
+	return { ...data.data(), id: data.id };
 };

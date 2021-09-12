@@ -1,5 +1,6 @@
 import { gql } from "apollo-server";
 export const typeDefs = gql`
+	# Homepage
 	type HomepageBanner {
 		topText: String
 		midText: String
@@ -38,12 +39,16 @@ export const typeDefs = gql`
 		date: String
 		content: String
 	}
+
+	# About
 	type About {
 		id: ID
 		topHeading: String
 		subHeading: String
 		content: String
 	}
+
+	# FAQ
 	type RestaurantFAQ {
 		id: ID
 		question: String
@@ -54,6 +59,8 @@ export const typeDefs = gql`
 		question: String
 		answer: String
 	}
+
+	# Menus
 	type Category {
 		id: ID
 		name: String
@@ -64,6 +71,12 @@ export const typeDefs = gql`
 		name: String
 		menuItems: [MenuItem]
 	}
+	type FeatureCategory {
+		id: ID
+		name: String
+		daysOfWeek: [Int]
+		menuItems: [MenuItem]
+	}
 	type MenuItem {
 		id: ID
 		name: String
@@ -72,15 +85,10 @@ export const typeDefs = gql`
 		image: String
 		type: Int
 		isOldImage: Boolean
-		category: Category
-		subcategory: Subcategory
+		category: [Category]
+		subcategory: [Subcategory]
 		isFeature: Boolean
 		featureID: ID
-	}
-	type Feature {
-		id: ID
-		menuItem: MenuItem
-		type: String
 	}
 	type Query {
 		homepageBanner: HomepageBanner
@@ -96,10 +104,10 @@ export const typeDefs = gql`
 		category(id: ID): Category
 		subcategory(id: ID): Subcategory
 		menuItem(id: ID): MenuItem
-		feature(id: ID): Feature
-		features: [Feature]
+		featureCategories: [FeatureCategory]
 	}
 	type Mutation {
+		# Menu
 		updateMenuItem(
 			id: ID!
 			name: String
@@ -110,8 +118,32 @@ export const typeDefs = gql`
 			image: String
 			type: Int
 		): MenuItem
-		addFeature(menuID: ID!, type: String!): Feature
-		removeFeature(id: ID!, menuID: ID!): ID
 		removeMenuItem(id: ID!, featureID: String): ID
+		createMenuItem(
+			name: String!
+			category: ID!
+			subcategory: ID!
+			description: String!
+			price: String!
+			image: String!
+			type: Int!
+			isFeature: Boolean!
+			featureID: String
+		): MenuItem
+
+		# Feature Category
+		createFeatureCategory(
+			name: String!
+			menuItems: [String]
+			daysOfWeek: [Int]
+		): FeatureCategory
+
+		# Menu Categories and Subcategories
+		createCategory(name: String!): Category
+		updateCategory(name: String!, id: ID!): Category
+		deleteCategory(id: ID!): ID
+		createSubcategory(name: String!, category: ID!): Subcategory
+		updateSubcategory(name: String!, id: ID!): Subcategory
+		deleteSubcategory(id: ID!, catID: ID!): ID
 	}
 `;

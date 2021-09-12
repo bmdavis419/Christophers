@@ -4,6 +4,7 @@ import CateringHomepage from "./CateringHomepage";
 import Homepage from "./Homepage";
 import Menu from "./Menu";
 import Nav from "./Nav";
+import Head from "next/head";
 
 export default function Dashboard() {
 	// set the current component
@@ -14,9 +15,15 @@ export default function Dashboard() {
 	};
 
 	return (
-		<div className="md:flex flex-col md:flex-row">
-			<Nav setPageIndex={updateIndex} />
-			{components[pageIndex]}
-		</div>
+		<>
+			<Head>
+				<meta charSet="utf-8" />
+				<title>Christopher's Admin</title>
+			</Head>
+			<div className="md:flex flex-col md:flex-row">
+				<Nav setPageIndex={updateIndex} />
+				{components[pageIndex]}
+			</div>
+		</>
 	);
 }

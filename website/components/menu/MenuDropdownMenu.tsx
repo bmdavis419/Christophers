@@ -20,7 +20,7 @@ export default function MenuDropdownMenu(props: PropsInterface) {
 	const { categories, setActiveId, activeId } = props;
 	const [activeDD, setActiveDD] = useState(0);
 	const dropdown = categories.map((cat, index) => (
-		<div>
+		<div key={index}>
 			<button
 				className={` block text-white drop-shadow-xl relative md:text-2xl py-8 w-full md:w-56 md:${
 					index === 0 ? "rounded-t-3xl" : ""
@@ -36,7 +36,7 @@ export default function MenuDropdownMenu(props: PropsInterface) {
 			>
 				{activeDD != index && (
 					<svg
-						className="w-7 h-7 inline-block mr-3 items-center"
+						className="w-7 h-7 mr-3 items-center hidden md:inline"
 						fill="currentColor"
 						viewBox="0 0 20 20"
 						xmlns="http://www.w3.org/2000/svg"
@@ -68,6 +68,7 @@ export default function MenuDropdownMenu(props: PropsInterface) {
 						onClick={(e) => {
 							setActiveId(e, sub.id);
 						}}
+						key={i}
 					>
 						{sub.name}
 					</button>

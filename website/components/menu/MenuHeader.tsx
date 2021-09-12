@@ -16,9 +16,11 @@ export default function menuHeader() {
 				Something for<br></br> Everyone...
 			</h1>
 			<div className="relative mix-blend-normal flex flex-col md:flex-row w-full">
+				<a href="menu">
 				<div className=" bg-primary text-white rounded-50px mt-4 px-6 py-2 md:px-12 md:py-6 w-40 lg:w-80  text-center mx-auto">
 					Breakfast
 				</div>
+				</a>
 				<div className=" bg-primary text-white rounded-50px mt-4 px-6 py-2 md:px-12 md:py-6 w-40 lg:w-80  text-center mx-auto">
 					Lunch
 				</div>

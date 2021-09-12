@@ -52,7 +52,7 @@ export default function contact(props: PropsInterface) {
 	return (
 		<>
 			<Head>
-				<title>Contact Christopher's Restaurant</title>
+				<title>Contact Christopher&apos;s Restaurant</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<Header />

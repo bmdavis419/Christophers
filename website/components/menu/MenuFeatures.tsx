@@ -33,9 +33,9 @@ export default function MenuFeatures(props: PropsInterface) {
 					alt="Image of featured dish"
 				/>
 			</div>
-			<div className="text-white sm:text-black sm:pt-12 bg-black bg-opacity-60 sm:bg-transparent sm:bg-opacity-100 space-y-2 xl:space-y-4 2xl:space-y-8 h-4/5vw flex flex-col text-center lg:w-2/3 mx-auto">
+			<div className="text-white sm:text-black sm:pt-4 bg-black bg-opacity-60 sm:bg-transparent sm:bg-opacity-100 space-y-2 sm:h-1/2vw flex flex-col text-center xl:w-2/3 mx-auto">
 				<Image
-					className="relative visible sm:invisible mix-blend-darken"
+					className="relative visible sm:invisible mix-blend-multiply"
 					objectFit="fill"
 					layout="fill"
 					src={Feature.menuItem.image}
@@ -47,13 +47,13 @@ export default function MenuFeatures(props: PropsInterface) {
 				<h2 className="relative mix-blend normal text-md xl:text-xl 2xl:text-3xl">
 					{Feature.type}
 				</h2>
-				<p className="relative mix-blend normal text-sm xl:text-xl">
+				<p className="relative mix-blend normal text-sm 2xl:text-xl px-8 md:px-0 my-auto mx-auto">
 					{Feature.menuItem.description}
 				</p>
-				<div className="relative mix-blend normal w-40 md:w-1/2 m-auto 2xl:text-3xl rounded-full py-2 2xl:py-6 bg-primary text-white hover:bg-secondary transition duration-500 ease-in-out cursor-pointer">
+				<div className="relative mix-blend normal w-40 md:w-1/2 m-auto rounded-full p-2 bg-primary text-white hover:bg-secondary transition duration-500 ease-in-out cursor-pointer">
 					Order Online
 				</div>
-				<div className="relative mix-blend normal flex flex-row self-end mx-auto">
+				<div className="relative mix-blend normal flex flex-row mx-auto justify-end">
 					{circles}
 				</div>
 			</div>

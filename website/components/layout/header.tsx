@@ -42,10 +42,8 @@ export default function Header() {
 						</div>
 						<div className="self-center ml-auto mr-24 text-black md:flex justify-end space-x-8 text-2xl lg:text-3xl hidden ">
 							{navigation.map((item) => (
-								<Link href={item.href}>
-									<a key={item.name} className="hover:text-primary">
-										{item.name}
-									</a>
+								<Link href={item.href} key={item.name}>
+									<a className="hover:text-primary">{item.name}</a>
 								</Link>
 							))}
 						</div>
@@ -62,7 +60,7 @@ export default function Header() {
 						<Disclosure.Panel className="absolute z-10 bg-white w-screen md:hidden">
 							<div className="px-2 pt-2 pb-3 space-y-2 flex flex-col text-2xl">
 								{navigation.map((item) => (
-									<Link href={item.href}>
+									<Link href={item.href} key={item.name}>
 										<a key={item.name}>{item.name}</a>
 									</Link>
 								))}
