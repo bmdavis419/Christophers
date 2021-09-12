@@ -45,7 +45,7 @@ export default function IndexHeader(props: PropsInterface) {
 			<div className="relative mix-blend-normal justify-center flex flex-col md:flex-row w-full">
 				{/*Regex expression is used to check if the button text is empty, if it is the button doens't appear */}
 				<button
-					className={`hover:bg-secondary hover:shadow-lg rounded-full m-2 max-w-full mx-auto md:mx-8 py-4 px-5 text-white text-2xl bg-primary ${
+					className={`hover:bg-secondary hover:shadow-lg rounded-full m-2 max-w-full mx-auto md:mx-8 py-2 px-5 text-white text-xl bg-primary ${
 						/\S/.test(homepageBanner.leftLinkText) ? "block" : "hidden"
 					}`}
 				>
@@ -53,7 +53,7 @@ export default function IndexHeader(props: PropsInterface) {
 					{homepageBanner.leftLinkText}
 				</button>
 				<button
-					className={`hover:bg-secondary hover:shadow-lg rounded-full m-2 max-w-full mx-auto md:mx-8 py-4 px-5 text-white text-2xl bg-primary ${
+					className={`hover:bg-secondary hover:shadow-lg rounded-full m-2 max-w-full mx-auto md:mx-8 py-2 px-5 text-white text-xl bg-primary ${
 						/\S/.test(homepageBanner.rightLinkText) ? "block" : "hidden"
 					}`}
 				>
