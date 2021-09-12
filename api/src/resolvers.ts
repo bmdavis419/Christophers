@@ -12,17 +12,24 @@ import {
 	category,
 	menuItem,
 	subcategory,
-	feature,
-	features,
 } from "./queries/menu";
 import {
 	updateMenuItem,
-	addFeature,
-	removeFeature,
 	removeMenuItem,
+	createMenuItem,
 } from "./mutations/menu";
 import { restaurantFAQ, cateringFAQ } from "./queries/faq";
 import { about } from "./queries/about";
+import { createFeatureCategory } from "./mutations/feature";
+import { featureCategories } from "./queries/feature";
+import {
+	createCategory,
+	deleteCategory,
+	updateCategory,
+	createSubcategory,
+	updateSubcategory,
+	deleteSubcategory,
+} from "./mutations/catAndSubcat";
 
 export const resolvers = {
 	Query: {
@@ -39,21 +46,19 @@ export const resolvers = {
 		category,
 		menuItem,
 		subcategory,
-		feature,
-		features,
+		featureCategories,
 	},
 	Mutation: {
 		updateMenuItem,
-		addFeature,
-		removeFeature,
 		removeMenuItem,
-	},
-	Feature: {
-		async menuItem(parent: { menuItem: string }) {
-			const docRef = db.collection("MenuItem").doc(parent.menuItem);
-			const data = await docRef.get();
-			return { ...data.data(), id: data.id };
-		},
+		createMenuItem,
+		createFeatureCategory,
+		createCategory,
+		deleteCategory,
+		updateCategory,
+		createSubcategory,
+		updateSubcategory,
+		deleteSubcategory,
 	},
 	Category: {
 		async subcategories(parent: { subcategories: string[] }) {
@@ -74,6 +79,31 @@ export const resolvers = {
 					returnArr.push({ ...doc.data(), id });
 				});
 				return returnArr;
+			}
+			return [];
+		},
+	},
+	FeatureCategory: {
+		async menuItems(parent: { menuItems: string[] }) {
+			let returnArry: Object[] = [];
+
+			const menuIDs = parent.menuItems.filter((item) => {
+				return item !== "";
+			});
+
+			if (menuIDs.length > 0) {
+				// get the subcats
+				let dataRefs = menuIDs.map((sub) => {
+					const str = "MenuItem/" + sub;
+					return db.doc(str);
+				});
+
+				const docs = await db.getAll(...dataRefs);
+				docs.forEach((doc) => {
+					const id = doc.id;
+					returnArry.push({ ...doc.data(), id });
+				});
+				return returnArry;
 			}
 			return [];
 		},
@@ -138,7 +168,7 @@ export const resolvers = {
 			if (catIDs.length > 0) {
 				// go through each sub and add it to return array
 				const dataRefs = catIDs.map((id) => {
-					return db.doc(`Subcategory/${id}`);
+					return db.doc(`Category/${id}`);
 				});
 
 				// get the docs

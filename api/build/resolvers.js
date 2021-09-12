@@ -54,6 +54,9 @@ var menu_1 = require("./queries/menu");
 var menu_2 = require("./mutations/menu");
 var faq_1 = require("./queries/faq");
 var about_1 = require("./queries/about");
+var feature_1 = require("./mutations/feature");
+var feature_2 = require("./queries/feature");
+var catAndSubcat_1 = require("./mutations/catAndSubcat");
 exports.resolvers = {
     Query: {
         cateringFAQ: faq_1.cateringFAQ,
@@ -69,31 +72,19 @@ exports.resolvers = {
         category: menu_1.category,
         menuItem: menu_1.menuItem,
         subcategory: menu_1.subcategory,
-        feature: menu_1.feature,
-        features: menu_1.features,
+        featureCategories: feature_2.featureCategories,
     },
     Mutation: {
         updateMenuItem: menu_2.updateMenuItem,
-        addFeature: menu_2.addFeature,
-        removeFeature: menu_2.removeFeature,
         removeMenuItem: menu_2.removeMenuItem,
-    },
-    Feature: {
-        menuItem: function (parent) {
-            return __awaiter(this, void 0, void 0, function () {
-                var docRef, data;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            docRef = config_1.db.collection("MenuItem").doc(parent.menuItem);
-                            return [4 /*yield*/, docRef.get()];
-                        case 1:
-                            data = _a.sent();
-                            return [2 /*return*/, __assign(__assign({}, data.data()), { id: data.id })];
-                    }
-                });
-            });
-        },
+        createMenuItem: menu_2.createMenuItem,
+        createFeatureCategory: feature_1.createFeatureCategory,
+        createCategory: catAndSubcat_1.createCategory,
+        deleteCategory: catAndSubcat_1.deleteCategory,
+        updateCategory: catAndSubcat_1.updateCategory,
+        createSubcategory: catAndSubcat_1.createSubcategory,
+        updateSubcategory: catAndSubcat_1.updateSubcategory,
+        deleteSubcategory: catAndSubcat_1.deleteSubcategory,
     },
     Category: {
         subcategories: function (parent) {
@@ -119,6 +110,36 @@ exports.resolvers = {
                                 returnArr.push(__assign(__assign({}, doc.data()), { id: id }));
                             });
                             return [2 /*return*/, returnArr];
+                        case 2: return [2 /*return*/, []];
+                    }
+                });
+            });
+        },
+    },
+    FeatureCategory: {
+        menuItems: function (parent) {
+            return __awaiter(this, void 0, void 0, function () {
+                var returnArry, menuIDs, dataRefs, docs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            returnArry = [];
+                            menuIDs = parent.menuItems.filter(function (item) {
+                                return item !== "";
+                            });
+                            if (!(menuIDs.length > 0)) return [3 /*break*/, 2];
+                            dataRefs = menuIDs.map(function (sub) {
+                                var str = "MenuItem/" + sub;
+                                return config_1.db.doc(str);
+                            });
+                            return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
+                        case 1:
+                            docs = _a.sent();
+                            docs.forEach(function (doc) {
+                                var id = doc.id;
+                                returnArry.push(__assign(__assign({}, doc.data()), { id: id }));
+                            });
+                            return [2 /*return*/, returnArry];
                         case 2: return [2 /*return*/, []];
                     }
                 });
@@ -195,7 +216,7 @@ exports.resolvers = {
                             });
                             if (!(catIDs.length > 0)) return [3 /*break*/, 2];
                             dataRefs = catIDs.map(function (id) {
-                                return config_1.db.doc("Subcategory/" + id);
+                                return config_1.db.doc("Category/" + id);
                             });
                             return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
                         case 1:
