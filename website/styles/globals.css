@@ -18,3 +18,15 @@ a {
 * {
 	box-sizing: border-box;
 }
+body::-webkit-scrollbar {
+	width: 0.33rem;
+  }
+  
+  body::-webkit-scrollbar-track {
+	background: #1e1e24;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+	background: #D12130;
+  }
+  

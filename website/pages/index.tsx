@@ -98,7 +98,7 @@ export default function Home(props: PropsInterface) {
 	const { homepageBanner, restaurantInfo, homepageFeatures } = props;
 
 	return (
-		<>
+		<div className="w-full overflow-x-hidden">
 			<Head>
 				<title>Christopher's Restaurant</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -120,6 +120,6 @@ export default function Home(props: PropsInterface) {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

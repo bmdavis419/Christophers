@@ -73,7 +73,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		},
 	};
 };
-export default function venue(props:PropsInterface) {
+export default function partner(props:PropsInterface) {
     const {restaurantInfo} = props
     const [index,setIndex] = useState(0);
     function setActiveVenue(e: HTMLFormElement, i: number) {
@@ -83,12 +83,12 @@ export default function venue(props:PropsInterface) {
     return (
         <div>
 			<Head>
-				<title>Christopher's Venues</title>
+				<title>Christopher's Partners</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<CateringHeader />
              <div className="flex flex-col justify-evenly items-center relative w-full p-12 h-3/4vw sm:h-1/2vw lg:h-1/3vw overflow-hidden">
-                <Image className="" objectFit="cover" layout="fill" src="logos/LogoRes.jpg" alt="Venue banner image"/>
+                <Image className="" objectFit="cover" layout="fill" src="logos/LogoRes.jpg" alt="Partner banner image"/>
             </div>
             <VenueSlides numVenues={4} activeVenue={index} Venue={1} setActiveVenue={setActiveVenue} />
         <div className="flex justify-center flex-col lg:flex-row align-center">

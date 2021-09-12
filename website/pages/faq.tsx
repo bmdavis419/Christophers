@@ -11,12 +11,6 @@ interface FAQInterface {
 			answer: string;
 		}
 	];
-	CateringFAQ: [
-		{
-			question: string;
-			answer: string;
-		}
-	];
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -34,43 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
 				},
 			],
-			CateringFAQ: [
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-			],
+			
 		},
 	};
 };
@@ -78,9 +36,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function faq(props: FAQInterface) {
 	const { RestaurantFAQ, CateringFAQ } = props;
 	let restaurants = RestaurantFAQ.map((i) => {
-		return <FaqCard question={i.question} answer={i.answer} />;
-	});
-	let caterings = CateringFAQ.map((i) => {
 		return <FaqCard question={i.question} answer={i.answer} />;
 	});
 	return (
@@ -96,7 +51,6 @@ export default function faq(props: FAQInterface) {
 				</h2>
 				<div className="grid grid-flow-row lg:grid-cols-2 grid-cols-1 md:px-faq md:py-5 gap-2 lg:gap-6">
 					{restaurants}
-					{caterings}
 				</div>
 			</div>
 		</>
