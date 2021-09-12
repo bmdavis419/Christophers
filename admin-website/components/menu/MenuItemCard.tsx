@@ -21,11 +21,11 @@ interface PropsInterface {
 		category: {
 			id: string;
 			name: string;
-		};
+		}[];
 		subcategory: {
 			name: string;
 			id: string;
-		};
+		}[];
 	};
 	categories: [
 		{
@@ -68,8 +68,8 @@ export default function MenuItemCard(props: PropsInterface) {
 		mutation UpdateMenuItem(
 			$id: ID!
 			$name: String
-			$category: ID
-			$subcategory: ID
+			$category: [ID]
+			$subcategory: [ID]
 			$description: String
 			$price: String
 			$image: String
@@ -320,11 +320,6 @@ export default function MenuItemCard(props: PropsInterface) {
 										item="description"
 									/>
 									<MenuTypeField type={formState} setType={setFormState} />
-									<MenuCategory
-										categories={categories}
-										inputData={formState}
-										setInputData={setFormState}
-									/>
 									<MenuImage
 										inputData={formState}
 										setImage={setImageFile}
@@ -359,8 +354,10 @@ export default function MenuItemCard(props: PropsInterface) {
 													name: formState.name,
 													description: formState.description,
 													image: formState.image,
-													category: formState.category.id,
-													subcategory: formState.subcategory.id,
+													category: formState.category.map((cat) => cat.id),
+													subcategory: formState.subcategory.map(
+														(sub) => sub.id
+													),
 													type: formState.type,
 													price: formState.price,
 												},

@@ -22,7 +22,7 @@ export default function MenuCategory(props: PropsInterface) {
 
 	const [subDispaly, setSubDisplay] = useState(
 		categories.map((category) => {
-			if (category.id === inputData.category.id) {
+			if (inputData.category.contains(category.id)) {
 				return category.subcategories.map((sub) => {
 					return (
 						<option value={sub.id} key={sub.id}>

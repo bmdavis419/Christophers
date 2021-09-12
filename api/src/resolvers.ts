@@ -22,6 +22,14 @@ import { restaurantFAQ, cateringFAQ } from "./queries/faq";
 import { about } from "./queries/about";
 import { createFeatureCategory } from "./mutations/feature";
 import { featureCategories } from "./queries/feature";
+import {
+	createCategory,
+	deleteCategory,
+	updateCategory,
+	createSubcategory,
+	updateSubcategory,
+	deleteSubcategory,
+} from "./mutations/catAndSubcat";
 
 export const resolvers = {
 	Query: {
@@ -45,6 +53,12 @@ export const resolvers = {
 		removeMenuItem,
 		createMenuItem,
 		createFeatureCategory,
+		createCategory,
+		deleteCategory,
+		updateCategory,
+		createSubcategory,
+		updateSubcategory,
+		deleteSubcategory,
 	},
 	Category: {
 		async subcategories(parent: { subcategories: string[] }) {
@@ -154,7 +168,7 @@ export const resolvers = {
 			if (catIDs.length > 0) {
 				// go through each sub and add it to return array
 				const dataRefs = catIDs.map((id) => {
-					return db.doc(`Subcategory/${id}`);
+					return db.doc(`Category/${id}`);
 				});
 
 				// get the docs

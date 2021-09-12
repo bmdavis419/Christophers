@@ -56,6 +56,7 @@ var faq_1 = require("./queries/faq");
 var about_1 = require("./queries/about");
 var feature_1 = require("./mutations/feature");
 var feature_2 = require("./queries/feature");
+var catAndSubcat_1 = require("./mutations/catAndSubcat");
 exports.resolvers = {
     Query: {
         cateringFAQ: faq_1.cateringFAQ,
@@ -78,6 +79,12 @@ exports.resolvers = {
         removeMenuItem: menu_2.removeMenuItem,
         createMenuItem: menu_2.createMenuItem,
         createFeatureCategory: feature_1.createFeatureCategory,
+        createCategory: catAndSubcat_1.createCategory,
+        deleteCategory: catAndSubcat_1.deleteCategory,
+        updateCategory: catAndSubcat_1.updateCategory,
+        createSubcategory: catAndSubcat_1.createSubcategory,
+        updateSubcategory: catAndSubcat_1.updateSubcategory,
+        deleteSubcategory: catAndSubcat_1.deleteSubcategory,
     },
     Category: {
         subcategories: function (parent) {
@@ -209,7 +216,7 @@ exports.resolvers = {
                             });
                             if (!(catIDs.length > 0)) return [3 /*break*/, 2];
                             dataRefs = catIDs.map(function (id) {
-                                return config_1.db.doc("Subcategory/" + id);
+                                return config_1.db.doc("Category/" + id);
                             });
                             return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
                         case 1:
