@@ -49,7 +49,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		},
 	};
 };
-export default function venue(props: PropsInterface) {
+export default function Venue(props: PropsInterface) {
 	const { restaurantInfo } = props;
 	const [index, setIndex] = useState(0);
 	function setActiveVenue(e: HTMLFormElement, i: number) {
@@ -59,7 +59,7 @@ export default function venue(props: PropsInterface) {
 	return (
 		<div>
 			<Head>
-				<title>Christopher's Venues</title>
+				<title>Christopher&apos;s Venues</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<CateringHeader />

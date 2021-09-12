@@ -40,7 +40,7 @@ export default function faq(props: FAQInterface) {
 	return (
 		<>
 			<Head>
-				<title>Christopher's Restaurant FAQ</title>
+				<title>Christopher&apos;s Restaurant FAQ</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<Header />

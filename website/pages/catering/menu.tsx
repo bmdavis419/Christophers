@@ -79,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	};
 };
 
-export default function menu(props: PropsInterface) {
+export default function Menu(props: PropsInterface) {
 	const { categories, features } = props;
 	const [index, setIndex] = useState(0);
 	const [id, setId] = useState(categories[0].subcategories[0].id);
@@ -104,7 +104,7 @@ export default function menu(props: PropsInterface) {
 	return (
 		<>
 			<Head>
-				<title>Christopher's Restaurant Menu</title>
+				<title>Christopher&apos;s Restaurant Menu</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<CateringHeader />

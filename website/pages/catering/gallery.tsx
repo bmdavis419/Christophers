@@ -68,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	};
 };
 
-export default function gallery(props: PropsInterface) {
+export default function Gallery(props: PropsInterface) {
 	const { images, restaurantInfo } = props;
 	const sortedImages = [];
 	for (let i: number = 0; i < images.length; i += 4) {

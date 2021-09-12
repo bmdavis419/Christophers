@@ -3,7 +3,6 @@ import Head from "next/head";
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
 import React, { useState } from "react";
-import MenuFeatures from "../components/menu/MenuFeatures";
 import MenuDropdownMenu from "../components/menu/MenuDropdownMenu";
 import MenuBox from "../components/menu/MenuBox";
 import Header from "../components/layout/header";
@@ -59,16 +58,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	};
 };
 
-export default function menu(props: PropsInterface) {
-	const { categories, features } = props;
-	const [index, setIndex] = useState(0);
+export default function Menu(props: PropsInterface) {
+	const { categories } = props;
 	const [id, setId] = useState(categories[0].subcategories[0].id);
 	const [name, setName] = useState(categories[0].subcategories[0].name);
 
-	function setActiveFeature(e: HTMLFormElement, i: number) {
-		e.preventDefault();
-		setIndex(i);
-	}
 	function setActiveId(e: HTMLFormElement, id: string) {
 		e.preventDefault();
 		setId(id);
@@ -84,7 +78,7 @@ export default function menu(props: PropsInterface) {
 	return (
 		<>
 			<Head>
-				<title>Christopher's Restaurant Menu</title>
+				<title>Christopher&apos;s Restaurant Menu</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<Header />
