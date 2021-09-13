@@ -49,6 +49,7 @@ export default function Menu() {
 		data: dataCat,
 	} = useQuery(GET_CATEGORIES);
 
+	// state for menu items
 	const [menuItems, setMenuItems] = useState<any>([]);
 
 	// fill the menu items
@@ -65,6 +66,8 @@ export default function Menu() {
 
 	// state for creating a category
 	const [newCatState, setNewCatState] = useState("");
+
+	// state for updated prices
 
 	// mutation
 	const [createCategory, { loading: loadingCreateCat, error: errorCreateCat }] =

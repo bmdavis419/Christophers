@@ -6,6 +6,7 @@ import MenuCategory from "./MenuCategory";
 import MenuImage from "./MenuImage";
 import MenuTextField from "./MenuTextField";
 import MenuTypeField from "./MenuTypeField";
+import MenuPriceField from "./MenuPriceField";
 
 interface PropsInterface {
 	menuItem: {
@@ -56,6 +57,7 @@ export default function MenuItemCard(props: PropsInterface) {
 		subcategory: menuItem.subcategory,
 		isFeature: menuItem.isFeature,
 		featureID: menuItem.featureID,
+		id: menuItem.id,
 	});
 
 	const [featureState, setFeatureState] = useState({
@@ -184,6 +186,8 @@ export default function MenuItemCard(props: PropsInterface) {
 					<span>{menuItem.name}</span>
 				</div>
 				<div className="inline-block">
+					<MenuPriceField formState={formState} setFormState={setFormState} />
+
 					<button
 						className="rounded-full bg-primary p-2 inline ml-4 text-white hover:bg-secondary hover:shadow-inner"
 						title="edit"
@@ -318,6 +322,11 @@ export default function MenuItemCard(props: PropsInterface) {
 										inputData={formState}
 										setInputData={setFormState}
 										item="description"
+									/>
+									<MenuCategory
+										inputData={formState}
+										setInputData={setFormState}
+										categories={categories}
 									/>
 									<MenuTypeField type={formState} setType={setFormState} />
 									<MenuImage

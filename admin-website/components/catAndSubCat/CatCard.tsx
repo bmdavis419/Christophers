@@ -118,8 +118,8 @@ export default function CatCard(props: PropsInterface) {
 					</button>
 				)}
 				<div className="text-red-500 font-bold text-xs block">
-					{errorUpdateCategory}
-					{errorDeleteCategory}
+					{errorUpdateCategory?.message}
+					{errorDeleteCategory?.message}
 				</div>
 			</div>
 			<div>
@@ -158,7 +158,7 @@ export default function CatCard(props: PropsInterface) {
 					</button>
 				</div>
 				<div className="text-red-500 font-bold text-xs block">
-					{errorCreateSub}
+					{errorCreateSub?.message}
 				</div>
 			</div>
 		</div>
