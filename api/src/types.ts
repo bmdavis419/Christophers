@@ -111,8 +111,8 @@ export const typeDefs = gql`
 		updateMenuItem(
 			id: ID!
 			name: String
-			category: ID
-			subcategory: ID
+			category: [ID]
+			subcategory: [ID]
 			description: String
 			price: String
 			image: String
