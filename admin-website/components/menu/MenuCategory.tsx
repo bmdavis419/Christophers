@@ -47,7 +47,6 @@ export default function MenuCategory(props: PropsInterface) {
 									// checked={inputData.category.some((cat) => cat.id === item.id)}
 									checked={checkedArr[idx]}
 									onChange={(e) => {
-										e.preventDefault();
 										if (checkedArr[idx]) {
 											// make sure length is greater than 1
 											if (inputData.category.length > 1) {

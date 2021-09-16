@@ -28,23 +28,27 @@ interface PropsInterface {
 			id: string;
 		}[];
 	};
-	categories: [
-		{
-			name: string;
-			id: string;
-			subcategories: [
-				{
-					name: string;
-					id: string;
-				}
-			];
-		}
-	];
+	categories: {
+		name: string;
+		id: string;
+		subcategories: [
+			{
+				name: string;
+				id: string;
+			}
+		];
+	}[];
+
+	featureCategoires: {
+		name: string;
+		id: string;
+		daysOfWeek: number[];
+	}[];
 }
 
 export default function MenuItemCard(props: PropsInterface) {
 	// get the menu item from the props
-	const { menuItem, categories } = props;
+	const { menuItem, categories, featureCategoires } = props;
 
 	// get the state of components
 	const [formState, setFormState] = useState({
@@ -62,7 +66,7 @@ export default function MenuItemCard(props: PropsInterface) {
 
 	const [featureState, setFeatureState] = useState({
 		menuID: menuItem.id,
-		type: "",
+		featureID: featureCategoires[0].id,
 	});
 
 	// mutation to update an item
@@ -96,10 +100,16 @@ export default function MenuItemCard(props: PropsInterface) {
 
 	// mutation to add a feature
 	const ADD_FEATURE = gql`
-		mutation AddFeature($menuID: ID!, $type: String!) {
-			addFeature(menuID: $menuID, type: $type) {
-				type
+		mutation MakeItemFeatureMutation(
+			$makeItemFeatureFeatureCatId: ID!
+			$makeItemFeatureMenuItemId: ID!
+		) {
+			makeItemFeature(
+				featureCatId: $makeItemFeatureFeatureCatId
+				menuItemId: $makeItemFeatureMenuItemId
+			) {
 				id
+				name
 			}
 		}
 	`;
@@ -109,15 +119,23 @@ export default function MenuItemCard(props: PropsInterface) {
 				setFormState({
 					...formState,
 					isFeature: true,
-					featureID: data.addFeature.id,
+					featureID: data.makeItemFeature.id,
 				});
 			},
 		});
 
 	// mutation to remove a feature
 	const REMOVE_FEATURE = gql`
-		mutation RemoveFeature($menuID: ID!, $id: ID!) {
-			removeFeature(menuID: $menuID, id: $id)
+		mutation RemoveItemFeatureMutation(
+			$removeItemFeatureFeatureCatId: ID!
+			$removeItemFeatureMenuItemId: ID!
+		) {
+			removeItemFeature(
+				featureCatId: $removeItemFeatureFeatureCatId
+				menuItemId: $removeItemFeatureMenuItemId
+			) {
+				name
+			}
 		}
 	`;
 	const [
@@ -238,8 +256,8 @@ export default function MenuItemCard(props: PropsInterface) {
 								setShowStatusModal(true);
 								removeFeature({
 									variables: {
-										menuID: menuItem.id,
-										id: menuItem.featureID,
+										removeItemFeatureFeatureCatId: menuItem.featureID,
+										removeItemFeatureMenuItemId: menuItem.id,
 									},
 									onCompleted: () => {
 										setFormState({ ...formState, isFeature: false });
@@ -394,11 +412,27 @@ export default function MenuItemCard(props: PropsInterface) {
 								</div>
 								{/*body*/}
 								<div className="relative px-6 py-3">
-									<MenuTextField
-										inputData={featureState}
-										setInputData={setFeatureState}
-										item="type"
-									/>
+									<select
+										name="featureCatSelect"
+										id="featureCatSelect"
+										value={featureState.featureID}
+										onChange={(e) => {
+											e.preventDefault();
+											setFeatureState({
+												...featureState,
+												featureID: e.target.value,
+											});
+											console.log(featureState);
+										}}
+									>
+										{featureCategoires.map((fCat) => {
+											return (
+												<option value={fCat.id} id={fCat.id}>
+													{fCat.name}
+												</option>
+											);
+										})}
+									</select>
 								</div>
 
 								{/*footer*/}
@@ -423,8 +457,8 @@ export default function MenuItemCard(props: PropsInterface) {
 											setShowStatusModal(true);
 											await addFeature({
 												variables: {
-													menuID: featureState.menuID,
-													type: featureState.type,
+													makeItemFeatureFeatureCatId: featureState.featureID,
+													makeItemFeatureMenuItemId: featureState.menuID,
 												},
 											});
 										}}

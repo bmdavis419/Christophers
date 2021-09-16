@@ -5,11 +5,18 @@ import Homepage from "./Homepage";
 import Menu from "./Menu";
 import Nav from "./Nav";
 import Head from "next/head";
+import Features from "./Features";
 
 export default function Dashboard() {
 	// set the current component
 	const [pageIndex, setPageIndex] = useState(0);
-	const components = [<Homepage />, <About />, <Menu />, <CateringHomepage />];
+	const components = [
+		<Homepage />,
+		<About />,
+		<Menu />,
+		<Features />,
+		<CateringHomepage />,
+	];
 	const updateIndex = (num: number) => {
 		setPageIndex(num);
 	};

@@ -137,6 +137,14 @@ export const typeDefs = gql`
 			menuItems: [String]
 			daysOfWeek: [Int]
 		): FeatureCategory
+		updateFeatureCategory(
+			id: ID!
+			name: String
+			daysOfWeek: [Int]!
+		): FeatureCategory
+		deleteFeatureCategory(id: ID!): ID
+		makeItemFeature(featureCatId: ID!, menuItemId: ID!): MenuItem
+		removeItemFeature(featureCatId: ID!, menuItemId: ID!): MenuItem
 
 		# Menu Categories and Subcategories
 		createCategory(name: String!): Category

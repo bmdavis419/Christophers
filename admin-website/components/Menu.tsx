@@ -43,6 +43,20 @@ export default function Menu() {
 		}
 	`);
 
+	// read in the feature categories
+	const {
+		loading: loadingFeature,
+		error: errorFeature,
+		data: dataFeature,
+	} = useQuery(gql`
+		query Query {
+			featureCategories {
+				name
+				daysOfWeek
+				id
+			}
+		}
+	`);
 	const {
 		loading: loadingCat,
 		error: errorCat,
@@ -84,9 +98,10 @@ export default function Menu() {
 		`);
 
 	// make sure there is data before render
-	if (loading || loadingCat) return <Loading />;
+	if (loading || loadingCat || loadingFeature) return <Loading />;
 	if (error) return <div>Error: {error.message}</div>;
 	if (errorCat) return <div>Error: {errorCat.message}</div>;
+	if (errorFeature) return <div>Error: {errorFeature.message}</div>;
 
 	// sorts
 	const alphabetize = (a: any, b: any) => {
@@ -115,6 +130,13 @@ export default function Menu() {
 		return comp;
 	};
 
+	const sortFeatures = (a: any, b: any) => {
+		const itemA = a.isFeature;
+		const itemB = b.isFeature;
+
+		return itemA >= itemB ? -1 : 1;
+	};
+
 	return (
 		<div className="w-full px-5">
 			<button
@@ -138,6 +160,17 @@ export default function Menu() {
 				className="bg-primary px-5 py-3 hover:bg-secondary rounded-lg text-white m-5"
 			>
 				Reverse Alphabetize
+			</button>
+			<button
+				onClick={(e) => {
+					e.preventDefault();
+					const temp = [...data.menuItems];
+					temp.sort(sortFeatures);
+					setMenuItems(temp);
+				}}
+				className="bg-yellow-500 px-5 py-3 hover:bg-yellow-200 rounded-lg text-white m-5"
+			>
+				Sort Features
 			</button>
 			<input
 				type="text"
@@ -180,6 +213,7 @@ export default function Menu() {
 								menuItem={menuItem}
 								key={menuItem.id}
 								categories={dataCat.categories}
+								featureCategoires={dataFeature.featureCategories}
 							/>
 						);
 					}
