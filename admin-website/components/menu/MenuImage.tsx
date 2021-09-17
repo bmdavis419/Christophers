@@ -10,6 +10,7 @@ interface PropsInterface {
 
 export default function MenuImage(props: PropsInterface) {
 	const { inputData, setImage, uploadImage, setInputData } = props;
+	console.log(inputData.image);
 	return (
 		<div className="flex justify-center w-full">
 			<div>

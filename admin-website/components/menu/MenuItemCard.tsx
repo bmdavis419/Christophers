@@ -50,6 +50,29 @@ export default function MenuItemCard(props: PropsInterface) {
 	// get the menu item from the props
 	const { menuItem, categories, featureCategoires } = props;
 
+	const GET_MENU_ITEMS = gql`
+		{
+			menuItems {
+				id
+				name
+				description
+				price
+				image
+				type
+				isFeature
+				featureID
+				category {
+					id
+					name
+				}
+				subcategory {
+					id
+					name
+				}
+			}
+		}
+	`;
+
 	// get the state of components
 	const [formState, setFormState] = useState({
 		name: menuItem.name,
@@ -152,8 +175,11 @@ export default function MenuItemCard(props: PropsInterface) {
 
 	// mutation to delte the item
 	const DELETE_ITEM = gql`
-		mutation DeleteMenuItem($id: ID!) {
-			deleteMenuItem(id: $id)
+		mutation RemoveMenuItemMutation(
+			$removeMenuItemId: ID!
+			$removeMenuItemSubcatId: [ID]!
+		) {
+			removeMenuItem(id: $removeMenuItemId, subcatID: $removeMenuItemSubcatId)
 		}
 	`;
 	const [
@@ -510,8 +536,12 @@ export default function MenuItemCard(props: PropsInterface) {
 											setShowStatusModal(true);
 											deleteMenuItem({
 												variables: {
-													id: menuItem.id,
+													removeMenuItemId: menuItem.id,
+													removeMenuItemSubcatId: menuItem.subcategory.map(
+														(sub) => sub.id
+													),
 												},
+												refetchQueries: [GET_MENU_ITEMS, "menuItems"],
 											});
 										}}
 									>

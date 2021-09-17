@@ -118,11 +118,11 @@ export const typeDefs = gql`
 			image: String
 			type: Int
 		): MenuItem
-		removeMenuItem(id: ID!, featureID: String): ID
+		removeMenuItem(id: ID!, featureID: String, subcatID: [ID]!): ID
 		createMenuItem(
 			name: String!
-			category: ID!
-			subcategory: ID!
+			category: [ID]!
+			subcategory: [ID]!
 			description: String!
 			price: String!
 			image: String!

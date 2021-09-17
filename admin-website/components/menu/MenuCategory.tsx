@@ -10,7 +10,6 @@ interface PropsInterface {
 		}[];
 	}[];
 	inputData: {
-		id: string;
 		category: {
 			name: string;
 			id: string;
