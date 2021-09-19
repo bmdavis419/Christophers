@@ -29,7 +29,7 @@ export const typeDefs = gql`
 		friday: String
 		saturday: String
 		sunday: String
-		phone: Float
+		phone: String
 		location: String
 		locationLink: String
 	}
@@ -40,9 +40,34 @@ export const typeDefs = gql`
 		content: String
 	}
 
+	# Catering Homepage
+	type CateringHomepageBanner {
+		topText: String
+		midText: String
+		bottomText: String
+		leftLinkText: String
+		leftLink: String
+		rightLinkText: String
+		rightLink: String
+		images: [String]
+	}
+	type CateringHomepageCard {
+		id: String
+		title: String
+		date: String
+		content: String
+	}
+
 	# About
 	type About {
 		id: ID
+		topHeading: String
+		subHeading: String
+		content: String
+	}
+
+	# Catering About
+	type CateringAbout {
 		topHeading: String
 		subHeading: String
 		content: String
@@ -90,6 +115,47 @@ export const typeDefs = gql`
 		isFeature: Boolean
 		featureID: ID
 	}
+
+	# Catering Menus
+	type CateringCategory {
+		name: String
+		subcategories: [CateringSubcategory]
+	}
+	type CateringSubcategory {
+		name: String
+		menuItems: [CateringMenuItem]
+	}
+	type CateringMenuItem {
+		name: String
+		category: [CateringCategory]
+		subcategory: [CateringSubcategory]
+		description: String
+		price: String
+		image: String
+	}
+
+	# Gallery
+	type Gallery {
+		image: String
+		description: String
+	}
+
+	# Venue
+	type Venue {
+		id: String
+		name: String
+		image: String
+		description: String
+	}
+
+	# Partner
+	type Partner {
+		id: String
+		name: String
+		image: String
+		description: String
+	}
+
 	type Query {
 		homepageBanner: HomepageBanner
 		homepageFeatures: [HomepageFeature]
@@ -105,6 +171,18 @@ export const typeDefs = gql`
 		subcategory(id: ID): Subcategory
 		menuItem(id: ID): MenuItem
 		featureCategories: [FeatureCategory]
+		cateringHomepageBanner: CateringHomepageBanner
+		cateringHomepageCards: [CateringHomepageCard]
+		cateringAbout: CateringAbout
+		cateringCategories: [CateringCategory]
+		cateringSubcategories: [CateringSubcategory]
+		cateringMenuItems: [CateringMenuItem]
+		cateringCategory(id: ID): CateringCategory
+		cateringSubcategory(id: ID): CateringSubcategory
+		cateringMenuItem(id: ID): CateringMenuItem
+		galleryImages: [Gallery]
+		venues: [Venue]
+		partners: [Partner]
 	}
 	type Mutation {
 		# Menu
@@ -145,5 +223,141 @@ export const typeDefs = gql`
 		createSubcategory(name: String!, category: ID!): Subcategory
 		updateSubcategory(name: String!, id: ID!): Subcategory
 		deleteSubcategory(id: ID!, catID: ID!): ID
+
+		# Catering Homepage Banner
+		updateCateringHomepageBanner(
+			topText: String
+			midText: String
+			bottomText: String
+			leftLinkText: String
+			leftLink: String
+			rightLinkText: String
+			rightLink: String
+			images: [String]
+		): CateringHomepageBanner
+
+		# Catering Homepage Cards
+		updateCateringHomepageCard(
+			id: String!
+			title: String
+			date: String
+			content: String
+		): CateringHomepageCard
+		removeCateringHomepageCard(id: ID!): ID
+		createCateringHomepageCard(
+			title: String!
+			date: String!
+			content: String!
+		): CateringHomepageCard
+		# Catering FAQs
+		updateCateringFAQ(
+			id: String!
+			question: String
+			answer: String
+		): CateringFAQ
+		removeCateringFAQ(id: ID!): ID
+		createCateringFAQ(
+			question: String!
+			answer: String!
+		): CateringFAQ
+		# Restaurant FAQs
+		updateRestaurantFAQ(
+			id: String!
+			question: String
+			answer: String
+		): RestaurantFAQ
+		removeRestaurantFAQ(id: ID!): ID
+		createRestaurantFAQ(
+			question: String!
+			answer: String!
+		): RestaurantFAQ
+		# Venue
+		updateVenue(
+			id: String!
+			name: String
+			image: String
+			description: String
+		): Venue
+		removeVenue(id: ID!): ID
+		createVenue(
+			name: String!
+			image: String!
+			description: String!
+		): Venue
+		# Partner
+		updatePartner(
+			id: String!
+			name: String
+			image: String
+			description: String
+		): Partner
+		removePartner(id: ID!): ID
+		createPartner(
+			name: String!
+			image: String!
+			description: String!
+		): Partner
+
+		# Homepage Banner
+		updateHomepageBanner(
+			topText: String
+			midText: String
+			bottomText: String
+			leftLinkText: String
+			leftLink: String
+			rightLinkText: String
+			rightLink: String
+			images: [String]
+		): HomepageBanner
+
+		# Restaurant Info
+		updateRestaurantInfo(
+			monday: String
+			tuesday: String
+			wednesday: String
+			thursday: String
+			friday: String
+			saturday: String
+			sunday: String
+			phone: String
+			location: String
+			locationLink: String
+		): RestaurantInfo
+		
+		# Homepage Feature
+		updateHomepageFeature(
+			id: String!
+			title: String
+			description: String
+			topLinkText: String
+			topLink: String
+			bottomLinkText: String
+			bottomLink: String
+			image: [String]
+		): HomepageFeature
+		removeHomepageFeature(id: ID!): ID
+		createHomepageFeature(
+			title: String!
+			description: String!
+			topLinkText: String!
+			topLink: String!
+			bottomLinkText: String!
+			bottomLink: String!
+			image: [String]!
+		): HomepageFeature
+
+		# Homepage Card
+		updateHomepageCard(
+			id: String!
+			title: String
+			date: String
+			content: String
+		): HomepageCard
+		removeHomepageCard(id: ID!): ID
+		createHomepageCard(
+			title: String!
+			date: String!
+			content: String!
+		): HomepageCard
 	}
 `;

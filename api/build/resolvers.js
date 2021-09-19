@@ -56,7 +56,15 @@ var faq_1 = require("./queries/faq");
 var about_1 = require("./queries/about");
 var feature_1 = require("./mutations/feature");
 var feature_2 = require("./queries/feature");
+var gallery_1 = require("./queries/gallery");
+var venue_1 = require("./queries/venue");
+var partner_1 = require("./queries/partner");
 var catAndSubcat_1 = require("./mutations/catAndSubcat");
+var cateringHomepage_1 = require("./mutations/cateringHomepage");
+var faq_2 = require("./mutations/faq");
+var venues_1 = require("./mutations/venues");
+var partner_2 = require("./mutations/partner");
+var homepage_2 = require("./mutations/homepage");
 exports.resolvers = {
     Query: {
         cateringFAQ: faq_1.cateringFAQ,
@@ -73,6 +81,18 @@ exports.resolvers = {
         menuItem: menu_1.menuItem,
         subcategory: menu_1.subcategory,
         featureCategories: feature_2.featureCategories,
+        cateringHomepageCards: homepage_1.cateringHomepageCards,
+        cateringHomepageBanner: homepage_1.cateringHomepageBanner,
+        cateringAbout: about_1.cateringAbout,
+        cateringCategories: menu_1.cateringCategories,
+        cateringSubcategories: menu_1.cateringSubcategories,
+        cateringMenuItems: menu_1.cateringMenuItems,
+        cateringCategory: menu_1.cateringCategory,
+        cateringSubcategory: menu_1.cateringSubcategory,
+        cateringMenuItem: menu_1.cateringMenuItem,
+        galleryImages: gallery_1.galleryImages,
+        venues: venue_1.venues,
+        partners: partner_1.partners,
     },
     Mutation: {
         updateMenuItem: menu_2.updateMenuItem,
@@ -85,6 +105,30 @@ exports.resolvers = {
         createSubcategory: catAndSubcat_1.createSubcategory,
         updateSubcategory: catAndSubcat_1.updateSubcategory,
         deleteSubcategory: catAndSubcat_1.deleteSubcategory,
+        updateCateringHomepageBanner: cateringHomepage_1.updateCateringHomepageBanner,
+        updateCateringHomepageCard: cateringHomepage_1.updateCateringHomepageCard,
+        removeCateringHomepageCard: cateringHomepage_1.removeCateringHomepageCard,
+        createCateringHomepageCard: cateringHomepage_1.createCateringHomepageCard,
+        updateCateringFAQ: faq_2.updateCateringFAQ,
+        removeCateringFAQ: faq_2.removeCateringFAQ,
+        createCateringFAQ: faq_2.createCateringFAQ,
+        updateRestaurantFAQ: faq_2.updateRestaurantFAQ,
+        removeRestaurantFAQ: faq_2.removeRestaurantFAQ,
+        createRestaurantFAQ: faq_2.createRestaurantFAQ,
+        updateVenue: venues_1.updateVenue,
+        removeVenue: venues_1.removeVenue,
+        createVenue: venues_1.createVenue,
+        updatePartner: partner_2.updatePartner,
+        removePartner: partner_2.removePartner,
+        createPartner: partner_2.createPartner,
+        updateHomepageBanner: homepage_2.updateHomepageBanner,
+        updateRestaurantInfo: homepage_2.updateRestaurantInfo,
+        updateHomepageCard: homepage_2.updateHomepageCard,
+        removeHomepageCard: homepage_2.removeHomepageCard,
+        createHomepageCard: homepage_2.createHomepageCard,
+        updateHomepageFeature: homepage_2.updateHomepageFeature,
+        removeHomepageFeature: homepage_2.removeHomepageFeature,
+        createHomepageFeature: homepage_2.createHomepageFeature,
     },
     Category: {
         subcategories: function (parent) {

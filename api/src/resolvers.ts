@@ -4,6 +4,8 @@ import {
 	restaurantInfo,
 	homepageCards,
 	homepageFeatures,
+	cateringHomepageBanner,
+	cateringHomepageCards,
 } from "./queries/homepage";
 import {
 	categories,
@@ -12,6 +14,12 @@ import {
 	category,
 	menuItem,
 	subcategory,
+	cateringCategories,
+	cateringSubcategories,
+	cateringMenuItems,
+	cateringCategory,
+	cateringSubcategory,
+	cateringMenuItem,
 } from "./queries/menu";
 import {
 	updateMenuItem,
@@ -19,9 +27,12 @@ import {
 	createMenuItem,
 } from "./mutations/menu";
 import { restaurantFAQ, cateringFAQ } from "./queries/faq";
-import { about } from "./queries/about";
+import { about, cateringAbout } from "./queries/about";
 import { createFeatureCategory } from "./mutations/feature";
 import { featureCategories } from "./queries/feature";
+import { galleryImages } from "./queries/gallery";
+import { venues } from "./queries/venue";
+import { partners } from "./queries/partner";
 import {
 	createCategory,
 	deleteCategory,
@@ -30,6 +41,32 @@ import {
 	updateSubcategory,
 	deleteSubcategory,
 } from "./mutations/catAndSubcat";
+import { 
+	updateCateringHomepageBanner, 
+	updateCateringHomepageCard, 
+	removeCateringHomepageCard, 
+	createCateringHomepageCard 
+} from "./mutations/cateringHomepage"
+import {
+	updateCateringFAQ,
+	removeCateringFAQ,
+	createCateringFAQ,
+	updateRestaurantFAQ,
+	removeRestaurantFAQ,
+	createRestaurantFAQ,
+} from "./mutations/faq"
+import { updateVenue, removeVenue, createVenue } from "./mutations/venues"
+import { updatePartner, removePartner, createPartner } from "./mutations/partner"
+import { 
+	updateHomepageBanner,
+	updateRestaurantInfo,
+	updateHomepageCard,
+	removeHomepageCard,
+	createHomepageCard,
+	updateHomepageFeature,
+	removeHomepageFeature,
+	createHomepageFeature,
+} from "./mutations/homepage"
 
 export const resolvers = {
 	Query: {
@@ -47,6 +84,18 @@ export const resolvers = {
 		menuItem,
 		subcategory,
 		featureCategories,
+		cateringHomepageCards,
+		cateringHomepageBanner,
+		cateringAbout,
+		cateringCategories,
+		cateringSubcategories,
+		cateringMenuItems,
+		cateringCategory,
+		cateringSubcategory,
+		cateringMenuItem,
+		galleryImages,
+		venues,
+		partners,
 	},
 	Mutation: {
 		updateMenuItem,
@@ -59,6 +108,30 @@ export const resolvers = {
 		createSubcategory,
 		updateSubcategory,
 		deleteSubcategory,
+		updateCateringHomepageBanner,
+		updateCateringHomepageCard,
+		removeCateringHomepageCard,
+		createCateringHomepageCard,
+		updateCateringFAQ,
+		removeCateringFAQ,
+		createCateringFAQ,
+		updateRestaurantFAQ,
+		removeRestaurantFAQ,
+		createRestaurantFAQ,
+		updateVenue, 
+		removeVenue, 
+		createVenue,
+		updatePartner, 
+		removePartner, 
+		createPartner,
+		updateHomepageBanner,
+		updateRestaurantInfo,
+		updateHomepageCard,
+		removeHomepageCard,
+		createHomepageCard,
+		updateHomepageFeature,
+		removeHomepageFeature,
+		createHomepageFeature,
 	},
 	Category: {
 		async subcategories(parent: { subcategories: string[] }) {
