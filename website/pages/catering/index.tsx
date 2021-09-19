@@ -100,7 +100,7 @@ export default function Home(props: PropsInterface) {
 	return (
 		<>
 			<Head>
-				<title>Christopher's Catering</title>
+				<title>Christopher&apos;s Catering</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<CateringHeader />

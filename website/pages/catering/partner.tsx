@@ -7,9 +7,20 @@ import { GetServerSideProps } from "next";
 import { gql } from "@apollo/client";
 import Info from "../../components/index/Info";
 import Head from "next/head";
+import Header from "../../components/layout/header";
 import CateringHeader from "../../components/layout/cateringHeader";
 
 interface PropsInterface {
+	homepageBanner: {
+		topText: string;
+		midText: string;
+		bottomText: string;
+		leftLinkText: string;
+		leftLink: string;
+		rightLinkText: string;
+		rightLink: string;
+		images: [string];
+	};
 	restaurantInfo: {
 		monday: string;
 		tuesday: string;
@@ -21,6 +32,18 @@ interface PropsInterface {
 		phone: number;
 		location: string;
 	};
+	homepageFeatures: [
+		{
+			id: string;
+			title: string;
+			description: string;
+			topLinkText: string;
+			topLink: string;
+			bottomLinkText: string;
+			bottomLink: string;
+			image: string;
+		}
+	];
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -49,7 +72,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		},
 	};
 };
-export default function Venue(props: PropsInterface) {
+export default function Partner(props: PropsInterface) {
 	const { restaurantInfo } = props;
 	const [index, setIndex] = useState(0);
 	function setActiveVenue(e: HTMLFormElement, i: number) {
@@ -59,7 +82,7 @@ export default function Venue(props: PropsInterface) {
 	return (
 		<div>
 			<Head>
-				<title>Christopher&apos;s Venues</title>
+				<title>Christopher&apos;s Partners</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<CateringHeader />
@@ -68,8 +91,8 @@ export default function Venue(props: PropsInterface) {
 					className=""
 					objectFit="cover"
 					layout="fill"
-					src="/temp/HeaderTemp.jpeg"
-					alt="Venue banner image"
+					src="logos/LogoRes.jpg"
+					alt="Partner banner image"
 				/>
 			</div>
 			<VenueSlides

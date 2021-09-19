@@ -28,7 +28,13 @@ import {
 } from "./mutations/menu";
 import { restaurantFAQ, cateringFAQ } from "./queries/faq";
 import { about, cateringAbout } from "./queries/about";
-import { createFeatureCategory } from "./mutations/feature";
+import {
+	createFeatureCategory,
+	updateFeatureCategory,
+	deleteFeatureCategory,
+	makeItemFeature,
+	removeItemFeature,
+} from "./mutations/feature";
 import { featureCategories } from "./queries/feature";
 import { galleryImages } from "./queries/gallery";
 import { venues } from "./queries/venue";
@@ -102,6 +108,10 @@ export const resolvers = {
 		removeMenuItem,
 		createMenuItem,
 		createFeatureCategory,
+		updateFeatureCategory,
+		deleteFeatureCategory,
+		makeItemFeature,
+		removeItemFeature,
 		createCategory,
 		deleteCategory,
 		updateCategory,

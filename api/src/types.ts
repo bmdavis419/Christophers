@@ -189,18 +189,18 @@ export const typeDefs = gql`
 		updateMenuItem(
 			id: ID!
 			name: String
-			category: ID
-			subcategory: ID
+			category: [ID]
+			subcategory: [ID]
 			description: String
 			price: String
 			image: String
 			type: Int
 		): MenuItem
-		removeMenuItem(id: ID!, featureID: String): ID
+		removeMenuItem(id: ID!, featureID: String, subcatID: [ID]!): ID
 		createMenuItem(
 			name: String!
-			category: ID!
-			subcategory: ID!
+			category: [ID]!
+			subcategory: [ID]!
 			description: String!
 			price: String!
 			image: String!
@@ -215,6 +215,14 @@ export const typeDefs = gql`
 			menuItems: [String]
 			daysOfWeek: [Int]
 		): FeatureCategory
+		updateFeatureCategory(
+			id: ID!
+			name: String
+			daysOfWeek: [Int]!
+		): FeatureCategory
+		deleteFeatureCategory(id: ID!): ID
+		makeItemFeature(featureCatId: ID!, menuItemId: ID!): MenuItem
+		removeItemFeature(featureCatId: ID!, menuItemId: ID!): MenuItem
 
 		# Menu Categories and Subcategories
 		createCategory(name: String!): Category
