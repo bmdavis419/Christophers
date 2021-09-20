@@ -21,13 +21,25 @@ interface PropsInterface {
 		phone: number;
 		location: string;
 	};
+	venues: {
+		name: string;
+		id: string;
+		description: string;
+		image: string;
+	}[];
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	// get the data
 	const { data } = await client.query({
 		query: gql`
-			{
+			query Query {
+				venues {
+					id
+					name
+					image
+					description
+				}
 				restaurantInfo {
 					monday
 					tuesday
@@ -46,11 +58,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	return {
 		props: {
 			restaurantInfo: data.restaurantInfo,
+			venues: data.venues,
 		},
 	};
 };
 export default function Venue(props: PropsInterface) {
-	const { restaurantInfo } = props;
+	const { restaurantInfo, venues } = props;
 	const [index, setIndex] = useState(0);
 	function setActiveVenue(e: HTMLFormElement, i: number) {
 		e.preventDefault();
@@ -73,9 +86,9 @@ export default function Venue(props: PropsInterface) {
 				/>
 			</div>
 			<VenueSlides
-				numVenues={4}
+				numVenues={venues.length}
 				activeVenue={index}
-				Venue={1}
+				venue={venues[index]}
 				setActiveVenue={setActiveVenue}
 			/>
 			<div className="flex justify-center flex-col lg:flex-row align-center">

@@ -17,7 +17,8 @@ export const homepageFeatures = async () => {
 	const docs = await dataRef.get();
 	let returnDocs: any = [];
 	docs.docs.forEach((doc) => {
-		returnDocs.push(doc.data());
+		const id = doc.id;
+		returnDocs.push({...doc.data(), id});
 	});
 	return returnDocs;
 };
@@ -27,7 +28,25 @@ export const homepageCards = async () => {
 	const docs = await dataRef.get();
 	let returnDocs: any = [];
 	docs.docs.forEach((doc) => {
-		returnDocs.push(doc.data());
+		const id = doc.id;
+		returnDocs.push({...doc.data(), id});
+	});
+	return returnDocs;
+};
+
+export const cateringHomepageBanner = async () => {
+	const dataRef = db.collection("CateringHomepageBanner").doc("56KaiaRj8hpCiiBloiR2");
+	const doc = await dataRef.get();
+	return { ...doc.data() };
+};
+
+export const cateringHomepageCards = async () => {
+	const dataRef = db.collection("CateringHomepageCard");
+	const docs = await dataRef.get();
+	let returnDocs: any = [];
+	docs.docs.forEach((doc) => {
+		const id = doc.id;
+		returnDocs.push({...doc.data(), id});
 	});
 	return returnDocs;
 };

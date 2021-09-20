@@ -50,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	const { data } = await client.query({
 		query: gql`
 			{
-				homepageBanner {
+				cateringHomepageBanner {
 					topText
 					midText
 					bottomText
@@ -71,25 +71,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
 					phone
 					location
 				}
-				homepageFeatures {
-					id
-					title
-					description
-					topLinkText
-					topLink
-					bottomLinkText
-					bottomLink
-					image
-				}
 			}
 		`,
 	});
 
 	return {
 		props: {
-			homepageBanner: data.homepageBanner,
+			homepageBanner: data.cateringHomepageBanner,
 			restaurantInfo: data.restaurantInfo,
-			homepageFeatures: data.homepageFeatures,
 		},
 	};
 };

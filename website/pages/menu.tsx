@@ -7,22 +7,6 @@ import MenuDropdownMenu from "../components/menu/MenuDropdownMenu";
 import MenuBox from "../components/menu/MenuBox";
 import Header from "../components/layout/header";
 interface PropsInterface {
-	features: [
-		{
-			id: string;
-			type: string;
-			menuItem: [
-				{
-					name: string;
-					id: string;
-					description: string;
-					price: number;
-					image: string;
-					type: number; //0 both - 1 Dine-in - 2 Carryout
-				}
-			];
-		}
-	];
 	categories: [
 		{
 			name: string;

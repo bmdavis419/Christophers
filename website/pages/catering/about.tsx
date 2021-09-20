@@ -18,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { data } = await client.query({
 		query: gql`
 			{
-				about {
+				cateringAbout {
 					topHeading
 					subHeading
 					content
@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	});
 	return {
 		props: {
-			about: data.about,
+			about: data.cateringAbout,
 		},
 	};
 };
