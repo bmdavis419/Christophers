@@ -66,8 +66,8 @@ export default function Menu(props: PropsInterface) {
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<Header />
-			<div className="md:mt-16 flex flex-col items-center justify-center">
-				<div className=" lg:mx-12 md:mt-4 flex flex-col md:flex-row flex-grow-0">
+			<div className="overflow-x-hidden m-0 md:mt-16 flex flex-col items-center justify-center">
+				<div className=" w-full md:w-auto mx-0 lg:mx-12 md:mt-4 flex flex-col md:flex-row flex-grow-0">
 					<MenuDropdownMenu
 						categories={categories}
 						setActiveId={setActiveId}

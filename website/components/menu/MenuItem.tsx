@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function MenuItem(props: PropsInterface) {
 	const { name, description, price, image, type } = props.menuItem;
 	return (
-		<div className="w-36 h-48 md:w-72 md:h-96 filter drop-shadow-2xl rounded-2xl flex flex-col overflow-hidden items-center bg-gray-100">
+		<div className="mx-auto w-36 h-48 md:w-72 md:h-96 filter drop-shadow-2xl rounded-2xl flex flex-col overflow-hidden items-center bg-gray-100">
 			<div className="hover:bg-black group hover:bg-opacity-60 relative w-36 h-36 md:w-72 md:h-72">
 				<Image
 					className="mix-blend-multiply"

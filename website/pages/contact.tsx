@@ -57,7 +57,7 @@ export default function contact(props: PropsInterface) {
 			</Head>
 			<Header />
 			<div className="w-full flex justify-center mt-5">
-				<div className="flex justify-center flex-col lg:flex-row align-center bg-white shadow-2xl rounded-50px md:w-3/5 py-5">
+				<div className="flex justify-center flex-col lg:flex-row align-center  md:w-3/5 py-5">
 					<div className="lg:mx-2 mx-auto">
 						<ContactForm />
 					</div>

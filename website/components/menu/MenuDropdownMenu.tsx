@@ -78,7 +78,7 @@ export default function MenuDropdownMenu(props: PropsInterface) {
 	));
 	return (
 		<div
-			className={`z-10 sticky top-0 md:top-12 mb-${
+			className={`z-9 sticky top-0 md:top-12 mb-${
 				categories[activeDD].subcategories.length <= 4 ? "24" : "48"
 			} grid grid-cols-${
 				categories.length
