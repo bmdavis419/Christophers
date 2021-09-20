@@ -118,14 +118,17 @@ export const typeDefs = gql`
 
 	# Catering Menus
 	type CateringCategory {
+		id: ID
 		name: String
 		subcategories: [CateringSubcategory]
 	}
 	type CateringSubcategory {
+		id: ID
 		name: String
 		menuItems: [CateringMenuItem]
 	}
 	type CateringMenuItem {
+		id: ID
 		name: String
 		category: [CateringCategory]
 		subcategory: [CateringSubcategory]
@@ -209,6 +212,35 @@ export const typeDefs = gql`
 			featureID: String
 		): MenuItem
 
+		# Catering Menu Items
+		updateCateringMenuItem(
+			id: ID!
+			name: String
+			category: [ID]
+			subcategory: [ID]
+			description: String
+			price: String
+			image: String
+			type: Int
+		): MenuItem
+		removeCateringMenuItem(id: ID!, featureID: String, subcatID: [ID]!): ID
+		createCateringMenuItem(
+			name: String!
+			category: [ID]!
+			subcategory: [ID]!
+			description: String!
+			price: String!
+			image: String!
+		): MenuItem
+
+		# Menu Categories and Subcategories
+		createCateringCategory(name: String!): Category
+		updateCateringCategory(name: String!, id: ID!): Category
+		deleteCateringCategory(id: ID!): ID
+		createCateringSubcategory(name: String!, category: ID!): Subcategory
+		updateCateringSubcategory(name: String!, id: ID!): Subcategory
+		deleteCateringSubcategory(id: ID!, catID: ID!): ID
+
 		# Feature Category
 		createFeatureCategory(
 			name: String!
@@ -217,7 +249,7 @@ export const typeDefs = gql`
 		): FeatureCategory
 		updateFeatureCategory(
 			id: ID!
-			name: String
+			name: String!
 			daysOfWeek: [Int]!
 		): FeatureCategory
 		deleteFeatureCategory(id: ID!): ID
@@ -264,10 +296,7 @@ export const typeDefs = gql`
 			answer: String
 		): CateringFAQ
 		removeCateringFAQ(id: ID!): ID
-		createCateringFAQ(
-			question: String!
-			answer: String!
-		): CateringFAQ
+		createCateringFAQ(question: String!, answer: String!): CateringFAQ
 		# Restaurant FAQs
 		updateRestaurantFAQ(
 			id: String!
@@ -275,10 +304,7 @@ export const typeDefs = gql`
 			answer: String
 		): RestaurantFAQ
 		removeRestaurantFAQ(id: ID!): ID
-		createRestaurantFAQ(
-			question: String!
-			answer: String!
-		): RestaurantFAQ
+		createRestaurantFAQ(question: String!, answer: String!): RestaurantFAQ
 		# Venue
 		updateVenue(
 			id: String!
@@ -287,11 +313,7 @@ export const typeDefs = gql`
 			description: String
 		): Venue
 		removeVenue(id: ID!): ID
-		createVenue(
-			name: String!
-			image: String!
-			description: String!
-		): Venue
+		createVenue(name: String!, image: String!, description: String!): Venue
 		# Partner
 		updatePartner(
 			id: String!
@@ -300,11 +322,7 @@ export const typeDefs = gql`
 			description: String
 		): Partner
 		removePartner(id: ID!): ID
-		createPartner(
-			name: String!
-			image: String!
-			description: String!
-		): Partner
+		createPartner(name: String!, image: String!, description: String!): Partner
 
 		# Homepage Banner
 		updateHomepageBanner(
@@ -331,7 +349,7 @@ export const typeDefs = gql`
 			location: String
 			locationLink: String
 		): RestaurantInfo
-		
+
 		# Homepage Feature
 		updateHomepageFeature(
 			id: String!

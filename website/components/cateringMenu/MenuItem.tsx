@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 export default function MenuItem(props: PropsInterface) {
-	const { name, description, price, image, type } = props.menuItem;
+	const { name, description, price, image } = props.menuItem;
 	return (
 		<div className="w-36 h-48 md:w-72 md:h-96 filter drop-shadow-2xl rounded-2xl flex flex-col overflow-hidden items-center bg-gray-100">
 			<div className="hover:bg-black group hover:bg-opacity-60 relative w-36 h-36 md:w-72 md:h-72">
@@ -17,11 +17,7 @@ export default function MenuItem(props: PropsInterface) {
 					{description}
 				</div>
 			</div>
-			<div className="absolute w-14 h-5 md:w-28 md:h-10 rounded-full bg-secondary top-2 text-sm md:text-lg left-2 text-white text-center ">
-				<p className="md:mt-1.5">
-					{type == 1 ? "Dine-in" : type == 0 ? "Both" : "Carryout"}
-				</p>
-			</div>
+
 			<h1
 				className={`text-center m-1 text-sm md:${
 					name.length >= 20
@@ -51,6 +47,5 @@ interface PropsInterface {
 		description: string;
 		price: string;
 		image: string;
-		type: number; //0 both - 1 Dine-in - 2 Carryout
 	};
 }

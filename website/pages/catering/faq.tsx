@@ -3,6 +3,8 @@ import Head from "next/head";
 import { GetServerSideProps } from "next";
 import FaqCard from "../../components/faqComponents/FaqCard";
 import CateringHeader from "../../components/layout/cateringHeader";
+import client from "../../apollo-client";
+import { gql } from "@apollo/client";
 
 interface FAQInterface {
 	CateringFAQ: [
@@ -14,45 +16,21 @@ interface FAQInterface {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { data } = await client.query({
+		query: gql`
+			query Query {
+				cateringFAQ {
+					id
+					question
+					answer
+				}
+			}
+		`,
+	});
+
 	return {
 		props: {
-			CateringFAQ: [
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-			],
+			CateringFAQ: data.cateringFAQ,
 		},
 	};
 };

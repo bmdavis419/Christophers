@@ -12,7 +12,7 @@ export default function MenuTypeField(props: PropsInterface) {
 			<button
 				className={
 					type.type == 1
-						? "rounded-full bg-primary text-white font-bold px-3 py-2"
+						? "rounded-full bg-primary text-white font-bold px-3 py-2 ring-4 ring-green-500 ring-opacity-50"
 						: "rounded-full bg-secondary text-white font-bold px-3 py-2"
 				}
 				onClick={(e) => {
@@ -25,7 +25,7 @@ export default function MenuTypeField(props: PropsInterface) {
 			<button
 				className={
 					type.type == 2
-						? "rounded-full bg-primary text-white font-bold px-3 py-2"
+						? "rounded-full bg-primary text-white font-bold px-3 py-2 ring-4 ring-green-500 ring-opacity-50"
 						: "rounded-full bg-secondary text-white font-bold px-3 py-2"
 				}
 				onClick={(e) => {
@@ -38,7 +38,7 @@ export default function MenuTypeField(props: PropsInterface) {
 			<button
 				className={
 					type.type == 0
-						? "rounded-full bg-primary text-white font-bold px-3 py-2"
+						? "rounded-full bg-primary text-white font-bold px-3 py-2 ring-4 ring-green-500 ring-opacity-50"
 						: "rounded-full bg-secondary text-white font-bold px-3 py-2"
 				}
 				onClick={(e) => {

@@ -8,9 +8,10 @@ const navigation = [
 	{ name: "About", href: "/catering/about" },
 	{ name: "FAQ", href: "/catering/faq" },
 	{ name: "Contact", href: "/catering#contact" },
-	{ name: "Menu", href: "/catering" },
+	{ name: "Menu", href: "/catering/menu" },
 	{ name: "Gallery", href: "/catering/gallery" },
 	{ name: "Venues", href: "/catering/venue" },
+	{ name: "Partners", href: "/catering/partner" },
 	{ name: "Restaurant", href: "/" },
 ];
 

@@ -6,14 +6,27 @@ import Menu from "./Menu";
 import Nav from "./Nav";
 import Head from "next/head";
 import CateringFAQ from "./CateringFAQ";
-import RestaurantFAQ from "./RestaurantFAQ"
-import Venue from "./Venue"
-import Partner from "./Partner"
+import RestaurantFAQ from "./RestaurantFAQ";
+import Venue from "./Venue";
+import Partner from "./Partner";
+import Features from "./Features";
+import CateringMenu from "./CateringMenu";
 
 export default function Dashboard() {
 	// set the current component
 	const [pageIndex, setPageIndex] = useState(0);
-	const components = [<Homepage />, <About />, <Menu />, <CateringHomepage />, <CateringFAQ />, <RestaurantFAQ />, <Venue />, <Partner />];
+	const components = [
+		<Homepage />,
+		<About />,
+		<Menu />,
+		<CateringMenu />,
+		<Features />,
+		<CateringHomepage />,
+		<CateringFAQ />,
+		<RestaurantFAQ />,
+		<Venue />,
+		<Partner />,
+	];
 	const updateIndex = (num: number) => {
 		setPageIndex(num);
 	};

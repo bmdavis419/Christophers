@@ -60,11 +60,13 @@ var gallery_1 = require("./queries/gallery");
 var venue_1 = require("./queries/venue");
 var partner_1 = require("./queries/partner");
 var catAndSubcat_1 = require("./mutations/catAndSubcat");
+var cateringCatAndSubcat_1 = require("./mutations/cateringCatAndSubcat");
 var cateringHomepage_1 = require("./mutations/cateringHomepage");
 var faq_2 = require("./mutations/faq");
 var venues_1 = require("./mutations/venues");
 var partner_2 = require("./mutations/partner");
 var homepage_2 = require("./mutations/homepage");
+var cateringMenu_1 = require("./mutations/cateringMenu");
 exports.resolvers = {
     Query: {
         cateringFAQ: faq_1.cateringFAQ,
@@ -95,6 +97,15 @@ exports.resolvers = {
         partners: partner_1.partners,
     },
     Mutation: {
+        createCateringMenuItem: cateringMenu_1.createCateringMenuItem,
+        updateCateringMenuItem: cateringMenu_1.updateCateringMenuItem,
+        removeCateringMenuItem: cateringMenu_1.removeCateringMenuItem,
+        createCateringCategory: cateringCatAndSubcat_1.createCateringCategory,
+        createCateringSubcategory: cateringCatAndSubcat_1.createCateringSubcategory,
+        updateCateringCategory: cateringCatAndSubcat_1.updateCateringCategory,
+        updateCateringSubcategory: cateringCatAndSubcat_1.updateCateringSubcategory,
+        deleteCateringCategory: cateringCatAndSubcat_1.deleteCateringCategory,
+        deleteCateringSubcategory: cateringCatAndSubcat_1.deleteCateringSubcategory,
         updateMenuItem: menu_2.updateMenuItem,
         removeMenuItem: menu_2.removeMenuItem,
         createMenuItem: menu_2.createMenuItem,
@@ -148,6 +159,36 @@ exports.resolvers = {
                             if (!(subIDs.length > 0)) return [3 /*break*/, 2];
                             dataRefs = subIDs.map(function (sub) {
                                 var str = "Subcategory/" + sub;
+                                return config_1.db.doc(str);
+                            });
+                            return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
+                        case 1:
+                            docs = _a.sent();
+                            docs.forEach(function (doc) {
+                                var id = doc.id;
+                                returnArr.push(__assign(__assign({}, doc.data()), { id: id }));
+                            });
+                            return [2 /*return*/, returnArr];
+                        case 2: return [2 /*return*/, []];
+                    }
+                });
+            });
+        },
+    },
+    CateringCategory: {
+        subcategories: function (parent) {
+            return __awaiter(this, void 0, void 0, function () {
+                var returnArr, subIDs, dataRefs, docs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            returnArr = [];
+                            subIDs = parent.subcategories.filter(function (item) {
+                                return item !== "";
+                            });
+                            if (!(subIDs.length > 0)) return [3 /*break*/, 2];
+                            dataRefs = subIDs.map(function (sub) {
+                                var str = "CateringSubcategory/" + sub;
                                 return config_1.db.doc(str);
                             });
                             return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
@@ -224,6 +265,36 @@ exports.resolvers = {
             });
         },
     },
+    CateringSubcategory: {
+        menuItems: function (parent) {
+            return __awaiter(this, void 0, void 0, function () {
+                var returnArr, menuIDs, dataRefs, docs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            returnArr = [];
+                            menuIDs = parent.menuItems.filter(function (item) {
+                                return item !== "";
+                            });
+                            if (!(menuIDs.length > 0)) return [3 /*break*/, 2];
+                            dataRefs = menuIDs.map(function (sub) {
+                                var str = "CateringMenuItem/" + sub;
+                                return config_1.db.doc(str);
+                            });
+                            return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
+                        case 1:
+                            docs = _a.sent();
+                            docs.forEach(function (doc) {
+                                var id = doc.id;
+                                returnArr.push(__assign(__assign({}, doc.data()), { id: id }));
+                            });
+                            return [2 /*return*/, returnArr];
+                        case 2: return [2 /*return*/, []];
+                    }
+                });
+            });
+        },
+    },
     MenuItem: {
         subcategory: function (parent) {
             return __awaiter(this, void 0, void 0, function () {
@@ -276,6 +347,64 @@ exports.resolvers = {
                             });
                             // return
                             return [2 /*return*/, returnArr_2];
+                        case 2: return [2 /*return*/, []];
+                    }
+                });
+            });
+        },
+    },
+    CateringMenuItem: {
+        subcategory: function (parent) {
+            return __awaiter(this, void 0, void 0, function () {
+                var subIDs, dataRefs, docs, returnArr_3;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            subIDs = parent.subcategory.filter(function (item) {
+                                return item !== "";
+                            });
+                            if (!(subIDs.length > 0)) return [3 /*break*/, 2];
+                            dataRefs = subIDs.map(function (id) {
+                                return config_1.db.doc("CateringSubcategory/" + id);
+                            });
+                            return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
+                        case 1:
+                            docs = _a.sent();
+                            returnArr_3 = [];
+                            docs.forEach(function (doc) {
+                                var id = doc.id;
+                                returnArr_3.push(__assign(__assign({}, doc.data()), { id: id }));
+                            });
+                            // return
+                            return [2 /*return*/, returnArr_3];
+                        case 2: return [2 /*return*/, []];
+                    }
+                });
+            });
+        },
+        category: function (parent) {
+            return __awaiter(this, void 0, void 0, function () {
+                var catIDs, dataRefs, docs, returnArr_4;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            catIDs = parent.category.filter(function (item) {
+                                return item !== "";
+                            });
+                            if (!(catIDs.length > 0)) return [3 /*break*/, 2];
+                            dataRefs = catIDs.map(function (id) {
+                                return config_1.db.doc("CateringCategory/" + id);
+                            });
+                            return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
+                        case 1:
+                            docs = _a.sent();
+                            returnArr_4 = [];
+                            docs.forEach(function (doc) {
+                                var id = doc.id;
+                                returnArr_4.push(__assign(__assign({}, doc.data()), { id: id }));
+                            });
+                            // return
+                            return [2 /*return*/, returnArr_4];
                         case 2: return [2 /*return*/, []];
                     }
                 });

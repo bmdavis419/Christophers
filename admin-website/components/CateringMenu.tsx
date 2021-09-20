@@ -1,14 +1,14 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
 import Loading from "./Loading";
 import React, { useEffect, useState } from "react";
-import MenuItemCard from "./menu/MenuItemCard";
-import CatCard from "./catAndSubCat/CatCard";
-import CreateNewMenu from "./menu/CreateNewMenu";
+import CatCard from "./menuCatAndSubCat/CatCard";
+import CateringMenuItemCard from "./cateringMenu/CateringMenuItemCard";
+import CreateNewCateringMenuItem from "./cateringMenu/CreateNewCateringMenuItem";
 
-export default function Menu() {
+export default function CateringMenu() {
 	const GET_CATEGORIES = gql`
 		{
-			categories {
+			cateringCategories {
 				name
 				id
 				subcategories {
@@ -21,15 +21,12 @@ export default function Menu() {
 
 	const GET_MENU_ITEMS = gql`
 		{
-			menuItems {
+			cateringMenuItems {
 				id
 				name
 				description
 				price
 				image
-				type
-				isFeature
-				featureID
 				category {
 					id
 					name
@@ -45,20 +42,6 @@ export default function Menu() {
 	// read in the menu items
 	const { loading, error, data } = useQuery(GET_MENU_ITEMS);
 
-	// read in the feature categories
-	const {
-		loading: loadingFeature,
-		error: errorFeature,
-		data: dataFeature,
-	} = useQuery(gql`
-		query Query {
-			featureCategories {
-				name
-				daysOfWeek
-				id
-			}
-		}
-	`);
 	const {
 		loading: loadingCat,
 		error: errorCat,
@@ -71,7 +54,7 @@ export default function Menu() {
 	// fill the menu items
 	useEffect(() => {
 		if (data != undefined) {
-			const temp = [...data.menuItems];
+			const temp = [...data.cateringMenuItems];
 			temp.sort(alphabetize);
 			setMenuItems(temp);
 		}
@@ -91,7 +74,7 @@ export default function Menu() {
 	const [createCategory, { loading: loadingCreateCat, error: errorCreateCat }] =
 		useMutation(gql`
 			mutation CreateCategoryMutation($createCategoryName: String!) {
-				createCategory(name: $createCategoryName) {
+				createCateringCategory(name: $createCategoryName) {
 					name
 					id
 					subcategories {
@@ -112,18 +95,14 @@ export default function Menu() {
 			$createMenuItemDescription: String!
 			$createMenuItemPrice: String!
 			$createMenuItemImage: String!
-			$createMenuItemType: Int!
-			$createMenuItemIsFeature: Boolean!
 		) {
-			createMenuItem(
+			createCateringMenuItem(
 				name: $createMenuItemName
 				category: $createMenuItemCategory
 				subcategory: $createMenuItemSubcategory
 				description: $createMenuItemDescription
 				price: $createMenuItemPrice
 				image: $createMenuItemImage
-				type: $createMenuItemType
-				isFeature: $createMenuItemIsFeature
 			) {
 				id
 				name
@@ -134,10 +113,9 @@ export default function Menu() {
 	`);
 
 	// make sure there is data before render
-	if (loading || loadingCat || loadingFeature) return <Loading />;
+	if (loading || loadingCat) return <Loading />;
 	if (error) return <div>Error: {error.message}</div>;
 	if (errorCat) return <div>Error: {errorCat.message}</div>;
-	if (errorFeature) return <div>Error: {errorFeature.message}</div>;
 
 	// sorts
 	const alphabetize = (a: any, b: any) => {
@@ -166,19 +144,12 @@ export default function Menu() {
 		return comp;
 	};
 
-	const sortFeatures = (a: any, b: any) => {
-		const itemA = a.isFeature;
-		const itemB = b.isFeature;
-
-		return itemA >= itemB ? -1 : 1;
-	};
-
 	return (
 		<div className="w-full px-5">
 			<button
 				onClick={(e) => {
 					e.preventDefault();
-					const temp = [...data.menuItems];
+					const temp = [...data.cateringMenuItems];
 					temp.sort(alphabetize);
 					setMenuItems(temp);
 				}}
@@ -189,7 +160,7 @@ export default function Menu() {
 			<button
 				onClick={(e) => {
 					e.preventDefault();
-					const temp = [...data.menuItems];
+					const temp = [...data.cateringMenuItems];
 					temp.sort(revAlphabetize);
 					setMenuItems(temp);
 				}}
@@ -197,24 +168,13 @@ export default function Menu() {
 			>
 				Reverse Alphabetize
 			</button>
-			<button
-				onClick={(e) => {
-					e.preventDefault();
-					const temp = [...data.menuItems];
-					temp.sort(sortFeatures);
-					setMenuItems(temp);
-				}}
-				className="bg-yellow-500 px-5 py-3 hover:bg-yellow-200 rounded-lg text-white m-5"
-			>
-				Sort Features
-			</button>
 			<input
 				type="text"
 				className="bg-gray-300 rouned-lg px-3 py-4"
 				placeholder="search"
 				onChange={(e) => {
 					e.preventDefault();
-					const temp = data.menuItems.filter((item: any) => {
+					const temp = data.cateringMenuItems.filter((item: any) => {
 						return item.name.includes(e.target.value);
 					});
 					setMenuItems(temp);
@@ -239,7 +199,7 @@ export default function Menu() {
 				Create New Menu Item
 			</button>
 			{showCreate ? (
-				<CreateNewMenu
+				<CreateNewCateringMenuItem
 					setShowCreate={setShowCreate}
 					setShowStatusModal={setShowStatusModal}
 					createMenuItem={createMenuItem}
@@ -255,18 +215,14 @@ export default function Menu() {
 						description: string;
 						price: string;
 						image: string;
-						type: number;
-						isFeature: boolean;
-						isOldImage: boolean;
 						category: { id: string; name: string }[];
 						subcategory: { name: string; id: string }[];
 					}) => {
 						return (
-							<MenuItemCard
+							<CateringMenuItemCard
 								menuItem={menuItem}
 								key={menuItem.id}
-								categories={dataCat.categories}
-								featureCategoires={dataFeature.featureCategories}
+								categories={dataCat.cateringCategories}
 							/>
 						);
 					}
@@ -278,7 +234,7 @@ export default function Menu() {
 					</h1>
 					<div className="w-full">
 						{dataCat &&
-							dataCat.categories.map((category: any) => {
+							dataCat.cateringCategories.map((category: any) => {
 								return <CatCard category={category} key={category.id} />;
 							})}
 						<div className="mb-10">
@@ -300,7 +256,7 @@ export default function Menu() {
 											variables: {
 												createCategoryName: newCatState,
 											},
-											refetchQueries: [GET_CATEGORIES, "categories"],
+											refetchQueries: [GET_CATEGORIES, "cateringCategories"],
 										});
 									}
 								}}
