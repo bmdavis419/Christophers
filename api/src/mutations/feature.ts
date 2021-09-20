@@ -48,6 +48,26 @@ export const updateFeatureCategory = async (
 export const deleteFeatureCategory = async (_: null, args: { id: string }) => {
 	// get the ref and delte
 	const deleteRef = db.collection("FeatureCategory").doc(args.id);
+
+	const data = await deleteRef.get();
+	const fCat = data.data();
+
+	// make all features not features anymore
+	if (fCat) {
+		const menuIDs = fCat.menuItems.filter((item: string) => {
+			return item !== "";
+		});
+
+		if (menuIDs.length > 0) {
+			for (const id of menuIDs) {
+				const doc = db.collection("MenuItem").doc(id);
+				await doc.update({
+					isFeature: false,
+				});
+			}
+		}
+	}
+
 	await deleteRef.delete();
 	return args.id;
 };

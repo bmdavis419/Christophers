@@ -12,6 +12,17 @@ interface PropsInterface {
 export default function FeatureCard(props: PropsInterface) {
 	const { feature } = props;
 
+	// GQL Query
+	const GET_FEATURES_CATEGORIES = gql`
+		query Query {
+			featureCategories {
+				id
+				name
+				daysOfWeek
+			}
+		}
+	`;
+
 	// fill state
 	const [formState, setFormState] = useState(feature);
 
@@ -34,6 +45,15 @@ export default function FeatureCard(props: PropsInterface) {
 		}
 	`);
 
+	const [removeFeature, { error: errorRemove, loading: loadingRemove }] =
+		useMutation(gql`
+			mutation DeleteCateringSubcategoryMutation(
+				$deleteFeatureCategoryId: ID!
+			) {
+				deleteFeatureCategory(id: $deleteFeatureCategoryId)
+			}
+		`);
+
 	// days of week arr
 	const daysOfWeek = [
 		"Sunday",
@@ -46,7 +66,7 @@ export default function FeatureCard(props: PropsInterface) {
 	];
 
 	return (
-		<div className="bg-white shadow-2xl rounded-xl max-w-1/2 w-1/3">
+		<div className="bg-white shadow-lg rounded-xl max-w-1/2 w-1/3">
 			<h2 className="text-center mx-4 text-primary font-bold">
 				Update Feature Category
 			</h2>
@@ -106,8 +126,21 @@ export default function FeatureCard(props: PropsInterface) {
 				>
 					{loading ? "...updating" : "update"}
 				</button>
+				<button
+					onClick={(e) => {
+						e.preventDefault();
+						removeFeature({
+							variables: { deleteFeatureCategoryId: formState.id },
+							refetchQueries: [GET_FEATURES_CATEGORIES, "featureCategories"],
+						});
+					}}
+					className="bg-red-500 hover:bg-red-300 text-white ml-3 px-2 py-2 rounded-full font-bold"
+				>
+					{loadingRemove ? "...removing" : "remove"}
+				</button>
 				<span className="font-light text-red-400 block">
 					{error && error.message}
+					{errorRemove && errorRemove.message}
 				</span>
 			</div>
 		</div>

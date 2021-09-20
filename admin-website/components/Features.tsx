@@ -64,7 +64,7 @@ export default function Features() {
 			<h1 className="text-center w-full block text-primary text-3xl my-3">
 				Manage Features
 			</h1>
-			<div className="w-full flex-wrap flex space-x-4 space-y-4 mx-3">
+			<div className="w-full flex-wrap flex space-x-4 space-y-4 mx-3 mb-10">
 				{data &&
 					data.featureCategories.map(
 						(cat: { id: string; name: string; daysOfWeek: number[] }) => {
