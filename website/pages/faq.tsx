@@ -3,45 +3,45 @@ import Head from "next/head";
 import { GetServerSideProps } from "next";
 import FaqCard from "../components/faqComponents/FaqCard";
 import Header from "../components/layout/header";
+import client from "../apollo-client";
+import { gql } from "@apollo/client";
 
 interface FAQInterface {
-	RestaurantFAQ: [
-		{
-			question: string;
-			answer: string;
-		}
-	];
+	RestaurantFAQ: {
+		question: string;
+		answer: string;
+	}[];
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { data } = await client.query({
+		query: gql`
+			query Query {
+				restaurantFAQ {
+					id
+					question
+					answer
+				}
+			}
+		`,
+	});
+
 	return {
 		props: {
-			RestaurantFAQ: [
-				{
-					question: "RestaurantQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "RestaurantQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-			],
-			
+			RestaurantFAQ: data.restaurantFAQ,
 		},
 	};
 };
 
 export default function faq(props: FAQInterface) {
-	const { RestaurantFAQ, CateringFAQ } = props;
-	let restaurants = RestaurantFAQ.map((i) => {
-		return <FaqCard question={i.question} answer={i.answer} />;
+	const { RestaurantFAQ } = props;
+	let restaurants = RestaurantFAQ.map((i, idx) => {
+		return <FaqCard question={i.question} answer={i.answer} key={idx} />;
 	});
 	return (
 		<>
 			<Head>
-				<title>Christopher's Restaurant FAQ</title>
+				<title>Christopher&apos;s Restaurant FAQ</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<Header />

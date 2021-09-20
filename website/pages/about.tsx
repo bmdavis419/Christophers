@@ -39,7 +39,7 @@ export default function about(props: PropsInterface) {
 	return (
 		<>
 			<Head>
-				<title>About Christopher's Restaurant</title>
+				<title>About Christopher&apos;s Restaurant</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<Header />

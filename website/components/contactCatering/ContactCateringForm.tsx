@@ -154,8 +154,8 @@ export default function ContactForm() {
 					>
 						Preferred Venue
 					</label>
-					{Venue.map((i) => (
-						<div className="mt-1">
+					{Venue.map((i, idx) => (
+						<div className="mt-1" key={idx}>
 							<input type="radio" id={i} name="venue" className="m-1" />
 							<label htmlFor={i}>{i}</label>
 						</div>
@@ -168,8 +168,8 @@ export default function ContactForm() {
 					>
 						Type of Service
 					</label>
-					{Service.map((i) => (
-						<div className="mt-1">
+					{Service.map((i, idx) => (
+						<div className="mt-1" key={idx}>
 							<input type="radio" id={i} name="service" className="m-1" />
 							<label htmlFor={i}>{i}</label>
 						</div>

@@ -104,7 +104,7 @@ export default function CatCard(props: PropsInterface) {
 						className="ml-4 bg-red-500 text-white rounded-lg px-2 py-1 hover:bg-red-400"
 						onClick={(e) => {
 							e.preventDefault();
-							if (categoryState.subcategories.length !== 0) {
+							if (categoryState.subcategories.length == 0) {
 								deleteCategory({
 									variables: {
 										deleteCategoryId: category.id,
@@ -118,8 +118,8 @@ export default function CatCard(props: PropsInterface) {
 					</button>
 				)}
 				<div className="text-red-500 font-bold text-xs block">
-					{errorUpdateCategory}
-					{errorDeleteCategory}
+					{errorUpdateCategory?.message}
+					{errorDeleteCategory?.message}
 				</div>
 			</div>
 			<div>
@@ -158,7 +158,7 @@ export default function CatCard(props: PropsInterface) {
 					</button>
 				</div>
 				<div className="text-red-500 font-bold text-xs block">
-					{errorCreateSub}
+					{errorCreateSub?.message}
 				</div>
 			</div>
 		</div>

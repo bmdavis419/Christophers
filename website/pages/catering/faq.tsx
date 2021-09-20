@@ -2,11 +2,11 @@ import React from "react";
 import Head from "next/head";
 import { GetServerSideProps } from "next";
 import FaqCard from "../../components/faqComponents/FaqCard";
-import Header from "../../components/layout/header";
 import CateringHeader from "../../components/layout/cateringHeader";
+import client from "../../apollo-client";
+import { gql } from "@apollo/client";
 
 interface FAQInterface {
-
 	CateringFAQ: [
 		{
 			question: string;
@@ -16,58 +16,34 @@ interface FAQInterface {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { data } = await client.query({
+		query: gql`
+			query Query {
+				cateringFAQ {
+					id
+					question
+					answer
+				}
+			}
+		`,
+	});
+
 	return {
 		props: {
-			CateringFAQ: [
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-				{
-					question: "CateringQuestion",
-					answer:
-						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut sunt, odit, atque amet, dolorum dolorem aliquam et totam labore in sint natus repudiandae consequuntur officia? Commodi a necessitatibus sapiente.",
-				},
-			],
+			CateringFAQ: data.cateringFAQ,
 		},
 	};
 };
 
 export default function faq(props: FAQInterface) {
 	const { CateringFAQ } = props;
-	let caterings = CateringFAQ.map((i) => {
-		return <FaqCard question={i.question} answer={i.answer} />;
+	let caterings = CateringFAQ.map((i, idx) => {
+		return <FaqCard question={i.question} answer={i.answer} key={idx} />;
 	});
 	return (
 		<>
 			<Head>
-				<title>Christopher's Restaurant FAQ</title>
+				<title>Christopher&apos;s Restaurant FAQ</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<CateringHeader />

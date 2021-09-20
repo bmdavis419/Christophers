@@ -5,7 +5,8 @@ export const restaurantFAQ = async () => {
 	const docs = await dataRef.get();
 	let returnDocs: any = [];
 	docs.docs.forEach((doc) => {
-		returnDocs.push(doc);
+		const id = doc.id;
+		returnDocs.push({...doc.data(), id});
 	});
 	return returnDocs;
 };
@@ -15,7 +16,9 @@ export const cateringFAQ = async () => {
 	const docs = await dataRef.get();
 	let returnDocs: any = [];
 	docs.docs.forEach((doc) => {
-		returnDocs.push(doc);
+		const id = doc.id;
+		returnDocs.push({...doc.data(), id});
 	});
 	return returnDocs;
 };
+

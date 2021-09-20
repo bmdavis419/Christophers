@@ -11,6 +11,7 @@ const navigation = [
 	{ name: "Menu", href: "/catering/menu" },
 	{ name: "Gallery", href: "/catering/gallery" },
 	{ name: "Venues", href: "/catering/venue" },
+	{ name: "Partners", href: "/catering/partner" },
 	{ name: "Restaurant", href: "/" },
 ];
 

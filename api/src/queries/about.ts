@@ -5,3 +5,9 @@ export const about = async () => {
 	const doc = await dataRef.get();
 	return { ...doc.data() };
 };
+
+export const cateringAbout = async () => {
+	const dataRef = db.collection("CateringAbout").doc("pddchrzoSCy1CWltRNhO");
+	const doc = await dataRef.get();
+	return { ...doc.data() };
+};

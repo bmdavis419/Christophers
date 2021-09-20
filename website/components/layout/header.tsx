@@ -8,6 +8,7 @@ const navigation = [
 	{ name: "About", href: "/about" },
 	{ name: "FAQ", href: "/faq" },
 	{ name: "Contact", href: "/contact" },
+	{ name: "Features", href: "/Features" },
 	{ name: "Menu", href: "/menu" },
 	{ name: "Catering", href: "/catering" },
 ];
@@ -42,7 +43,7 @@ export default function Header() {
 						</div>
 						<div className="self-center ml-auto mr-24 text-black md:flex justify-end space-x-8 text-2xl lg:text-3xl hidden ">
 							{navigation.map((item) => (
-								<Link href={item.href}>
+								<Link href={item.href} key={item.name}>
 									<a className="hover:text-primary">{item.name}</a>
 								</Link>
 							))}
