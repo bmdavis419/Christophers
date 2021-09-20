@@ -34,7 +34,7 @@ export default function Login() {
 					<form onSubmit={loginEvent}>
 						<div className="mb-3">
 							<label htmlFor="email" className="formLabel">
-								email
+								Email
 							</label>
 							<input
 								type="text"
@@ -49,7 +49,7 @@ export default function Login() {
 						</div>
 						<div className="mb-3">
 							<label htmlFor="password" className="formLabel">
-								password
+								Password
 							</label>
 							<input
 								type="password"
@@ -65,9 +65,9 @@ export default function Login() {
 						<div className="flex justify-center">
 							<button
 								type="submit"
-								className="rounded-full bg-primary text-white px-3 py-2 text-lg hover:bg-secondary"
+								className="rounded-full bg-primary text-white px-4 py-1 text-lg hover:bg-secondary"
 							>
-								login
+								Login
 							</button>
 						</div>
 					</form>

@@ -97,7 +97,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Home(props: PropsInterface) {
 	const { homepageBanner, restaurantInfo, homepageFeatures } = props;
 
-	return (
+	return ( 
 		<div className="w-full overflow-x-hidden">
 			<Head>
 				<title>Christopher's Restaurant</title>
