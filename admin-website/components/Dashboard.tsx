@@ -11,6 +11,7 @@ import Venue from "./Venue";
 import Partner from "./Partner";
 import Features from "./Features";
 import CateringMenu from "./CateringMenu";
+import Gallery from "./Gallery";
 
 export default function Dashboard() {
 	// set the current component
@@ -26,6 +27,7 @@ export default function Dashboard() {
 		<RestaurantFAQ />,
 		<Venue />,
 		<Partner />,
+		<Gallery />,
 	];
 	const updateIndex = (num: number) => {
 		setPageIndex(num);
