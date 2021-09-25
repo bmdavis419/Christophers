@@ -1,13 +1,12 @@
-import { firestore } from "firebase-admin";
 import { db } from "../firebase/config";
 
 export const updatePartner = async (
 	_: any,
 	args: {
 		id: string;
-        name?: string;
-        image?: string;
-        description?: string;
+		name?: string;
+		image?: string;
+		description?: string;
 	}
 ) => {
 	const updateObject = {
@@ -22,11 +21,7 @@ export const updatePartner = async (
 	return { ...data.data() };
 };
 
-export const removePartner = async (
-	_: null,
-	args: { id: string; }
-) => {
-
+export const removePartner = async (_: null, args: { id: string }) => {
 	const ref = db.collection("Partner").doc(args.id);
 	await ref.delete();
 	return args.id;
@@ -35,9 +30,9 @@ export const removePartner = async (
 export const createPartner = async (
 	_: null,
 	args: {
-        name: string;
-        image: string;
-        description: string;
+		name: string;
+		image: string;
+		description: string;
 	}
 ) => {
 	// add to database
@@ -50,4 +45,3 @@ export const createPartner = async (
 	const data = await ref.doc(res.id).get();
 	return { ...data.data(), id: data.id };
 };
-

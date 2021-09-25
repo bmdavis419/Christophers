@@ -5,7 +5,7 @@ export const galleryImages = async () => {
 	const docs = await dataRef.get();
 	let returnDocs: any = [];
 	docs.docs.forEach((doc) => {
-		returnDocs.push(doc.data());
+		returnDocs.push({ ...doc.data(), id: doc.id });
 	});
 	return returnDocs;
 };

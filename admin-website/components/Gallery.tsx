@@ -1,5 +1,7 @@
+import { gql, useMutation } from "@apollo/client";
 import firebase from "firebase";
 import React, { useState } from "react";
+import GalleryUpdate from "./gallery/GalleryUpdate";
 
 interface CreateInterface {
 	description: string;
@@ -20,6 +22,16 @@ export default function Gallery() {
 		uploadProgress: "",
 		uploadError: "",
 	});
+
+	const GET_GALLERY_IMAGES = gql`
+		query Query {
+			galleryImages {
+				image
+				description
+				id
+			}
+		}
+	`;
 
 	// upload an image
 	const uploadImage = (e: any) => {
@@ -54,18 +66,50 @@ export default function Gallery() {
 						setCreateState({
 							...createState,
 							image: `/images/${createState.imageFile.name}`,
+							canCreate: true,
+							uploadProgress: "complete",
 						});
 					}
 				}
 			);
+		} else {
+			setCreateState({ ...createState, uploadError: "Please Select a File!" });
 		}
 	};
 
+	// mutation to create
+	const [createGalleryImage, { error, loading }] = useMutation(gql`
+		mutation CreateGalleryImageMutation(
+			$createGalleryImageImage: String!
+			$createGalleryImageDescription: String
+		) {
+			createGalleryImage(
+				image: $createGalleryImageImage
+				description: $createGalleryImageDescription
+			) {
+				image
+				id
+				description
+			}
+		}
+	`);
+
 	return (
-		<div>
+		<div className="w-full">
 			<h1 className="text-center text-primary font-bold text-3xl">Gallery</h1>
-			<div className="bg-white rounded-3xl shadow-lg px-5 py-5">
+			<GalleryUpdate />
+			<div className="bg-white rounded-3xl shadow-lg px-5 py-5 w-2/5">
 				<div className="ring-2 ring-primary rounded-xl px-5 py-5">
+					<div className="text-center font-bold text-primary text-2xl">
+						Create New
+					</div>
+					<div className="text-green-500 text-center font-light text-lg">
+						{createState.uploadProgress}
+					</div>
+					<div className="text-red-500 text-center font-light text-lg">
+						{createState.uploadError}
+						{error?.message}
+					</div>
 					<div className="mb-2">
 						<label htmlFor="createName" className="block font-light text-lg">
 							description
@@ -97,14 +141,35 @@ export default function Gallery() {
 						/>
 					</div>
 					<div className="mb-2 flex justify-between w-full px-12">
-						<button className="bg-green-500 hover:bg-green-300 text-white font-bold px-2 py-2 rounded-full text-xl">
+						<button
+							className="bg-green-500 hover:bg-green-300 text-white font-bold px-2 py-2 rounded-full text-xl"
+							onClick={uploadImage}
+						>
 							Upload
 						</button>
 						<button
 							className="bg-red-500 hover:bg-red-300 text-white font-bold px-2 py-2 rounded-full text-xl disabled:opacity-50"
 							disabled={!createState.canCreate}
+							onClick={(e) => {
+								createGalleryImage({
+									variables: {
+										createGalleryImageImage: createState.image,
+										createGalleryImageDescription: createState.description,
+									},
+									onCompleted: () => {
+										setCreateState({
+											...createState,
+											canCreate: false,
+											description: "",
+											image: "",
+											imageFile: null,
+										});
+									},
+									refetchQueries: [GET_GALLERY_IMAGES, "Query"],
+								});
+							}}
 						>
-							Create
+							{loading ? "...loading" : "Create"}
 						</button>
 					</div>
 				</div>

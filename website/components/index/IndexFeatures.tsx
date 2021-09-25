@@ -47,7 +47,7 @@ export default function IndexFeatures(props: PropsInterface) {
 					layout="fill"
 					objectFit="fill"
 					src={homepageFeatures[index].image}
-					alt="Image of featured dish"
+					alt="Image of featured dish"  
 				/>
 			</div>
 			<div className="text-white sm:text-black sm:pt-4 bg-opacity-60 sm:bg-transparent sm:bg-opacity-100 space-y-4 sm:h-1/2vw flex flex-col text-center w-full xl:w-2/3 mx-auto">
