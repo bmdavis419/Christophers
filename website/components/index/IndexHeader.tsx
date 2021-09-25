@@ -37,7 +37,7 @@ export default function IndexHeader(props: PropsInterface) {
 				alt="Index Header Background Image"
 			/>
 			<h1 className="relative mix-blend-normal text-white text-xl md:text-5xl xl:text-6xl text-center mx-auto font-bold">
-				{homepageBanner.topText}
+				Christopher's Restaurant <span className="block">and Catering</span>
 			</h1>
 			<h1 className="relative mix-blend-normal text-white text-lg md:text-2xl xl:text-3xl text-center mx-auto w-11/12">
 				{homepageBanner.midText}

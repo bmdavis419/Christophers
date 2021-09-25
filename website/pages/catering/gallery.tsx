@@ -23,6 +23,8 @@ interface PropsInterface {
 	images: [
 		{
 			image: string;
+			description: string;
+			id: string;
 		}
 	];
 }
@@ -31,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	// get the data
 	const { data } = await client.query({
 		query: gql`
-			{
+			query Query {
 				restaurantInfo {
 					monday
 					tuesday
@@ -42,6 +44,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 					sunday
 					phone
 					location
+					locationLink
+				}
+				galleryImages {
+					image
+					description
+					id
 				}
 			}
 		`,
@@ -50,20 +58,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	return {
 		props: {
 			restaurantInfo: data.restaurantInfo,
-			images: [
-				{ image: "/images/BlueberryPie.png" },
-				{ image: "/images/BlueberryPie.png" },
-				{ image: "/images/BlueberryPie.png" },
-				{ image: "/images/BlueberryPie.png" },
-				{ image: "/images/BlueberryPie.png" },
-				{ image: "/images/BlueberryPie.png" },
-				{ image: "/images/BlueberryPie.png" },
-				{ image: "/images/BlueberryPie.png" },
-				{ image: "/images/BlueberryPie.png" },
-				{ image: "/images/BlueberryPie.png" },
-				{ image: "/images/BlueberryPie.png" },
-				{ image: "/images/BlueberryPie.png" },
-			],
+			images: data.galleryImages,
 		},
 	};
 };
@@ -103,7 +98,7 @@ export default function Gallery(props: PropsInterface) {
 						<GalleryImage
 							pic={el.image}
 							index={i}
-							description={"testing testing test"}
+							description={el.description}
 							key={i}
 						/>
 					);
