@@ -90,6 +90,11 @@ import {
 	updateCateringMenuItem,
 	removeCateringMenuItem,
 } from "./mutations/cateringMenu";
+import {
+	createGalleryImage,
+	deleteGalleryImage,
+	updateGalleryImage,
+} from "./mutations/gallery";
 
 export const resolvers = {
 	Query: {
@@ -168,6 +173,9 @@ export const resolvers = {
 		updateHomepageFeature,
 		removeHomepageFeature,
 		createHomepageFeature,
+		createGalleryImage,
+		deleteGalleryImage,
+		updateGalleryImage,
 	},
 	Category: {
 		async subcategories(parent: { subcategories: string[] }) {

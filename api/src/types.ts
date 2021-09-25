@@ -141,6 +141,7 @@ export const typeDefs = gql`
 	type Gallery {
 		image: String
 		description: String
+		id: ID
 	}
 
 	# Venue
@@ -385,5 +386,10 @@ export const typeDefs = gql`
 			date: String!
 			content: String!
 		): HomepageCard
+
+		# Gallery
+		createGalleryImage(image: String!, description: String): Gallery
+		updateGalleryImage(image: String, description: String, id: ID!): Gallery
+		deleteGalleryImage(id: ID!): ID
 	}
 `;
