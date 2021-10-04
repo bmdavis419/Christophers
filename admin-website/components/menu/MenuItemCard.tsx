@@ -7,6 +7,7 @@ import MenuImage from "./MenuImage";
 import MenuTextField from "./MenuTextField";
 import MenuTypeField from "./MenuTypeField";
 import MenuPriceField from "./MenuPriceField";
+import MenuTextArea from "./MenuTextArea";
 
 interface PropsInterface {
 	menuItem: {
@@ -362,7 +363,7 @@ export default function MenuItemCard(props: PropsInterface) {
 										setInputData={setFormState}
 										item="price"
 									/>
-									<MenuTextField
+									<MenuTextArea
 										inputData={formState}
 										setInputData={setFormState}
 										item="description"
