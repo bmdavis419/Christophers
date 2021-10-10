@@ -3,6 +3,7 @@ import firebase from "firebase";
 import React, { useState } from "react";
 import MenuCategory from "./MenuCategory";
 import MenuImage from "./MenuImage";
+import MenuTextArea from "./MenuTextArea";
 import MenuTextField from "./MenuTextField";
 import MenuTypeField from "./MenuTypeField";
 
@@ -125,7 +126,7 @@ export default function CreateNewMenu(props: PropsInterface) {
 								setInputData={setFormState}
 								item="price"
 							/>
-							<MenuTextField
+							<MenuTextArea
 								inputData={formState}
 								setInputData={setFormState}
 								item="description"

@@ -196,9 +196,10 @@ export default function ContactForm() {
 			</div>
 			<button
 				type="submit"
-				className={`bg-${buttonColor} text-white py-2 px-4 mx-2 rounded-full hover:bg-secondary`}
+				className={`bg-${buttonColor} text-white py-2 px-4 mx-2 rounded-full hover:bg-secondary opacity-50`}
+				disabled={true}
 			>
-				Send Message
+				Coming Soon
 			</button>
 		</form>
 	);

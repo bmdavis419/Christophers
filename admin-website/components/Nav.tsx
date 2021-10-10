@@ -3,6 +3,7 @@ import { useAuth } from "reactfire";
 
 interface PropsInterface {
 	setPageIndex: Function;
+	pageIndex: number;
 }
 
 export default function Nav(props: PropsInterface) {
@@ -14,7 +15,7 @@ export default function Nav(props: PropsInterface) {
 		auth.signOut();
 	};
 
-	const { setPageIndex } = props;
+	const { setPageIndex, pageIndex } = props;
 
 	return (
 		<div className=" md:min-h-screen md:w-1/6 bg-primary">
@@ -27,7 +28,7 @@ export default function Nav(props: PropsInterface) {
 				<div className="flex justify-center">
 					<ul className="text-center">
 						<li
-							className="navItem"
+							className={`navItem ${pageIndex === 0 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(0);
 							}}
@@ -49,7 +50,7 @@ export default function Nav(props: PropsInterface) {
 							Homepage
 						</li>
 						<li
-							className="navItem"
+							className={`navItem ${pageIndex === 1 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(1);
 							}}
@@ -69,7 +70,7 @@ export default function Nav(props: PropsInterface) {
 							About
 						</li>
 						<li
-							className="navItem"
+							className={`navItem ${pageIndex === 2 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(2);
 							}}
@@ -89,7 +90,7 @@ export default function Nav(props: PropsInterface) {
 							Menu
 						</li>
 						<li
-							className="navItem"
+							className={`navItem ${pageIndex === 3 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(3);
 							}}
@@ -109,7 +110,7 @@ export default function Nav(props: PropsInterface) {
 							Catering Menu
 						</li>
 						<li
-							className="navItem"
+							className={`navItem ${pageIndex === 4 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(4);
 							}}
@@ -125,7 +126,7 @@ export default function Nav(props: PropsInterface) {
 							Features
 						</li>
 						<li
-							className="navItem"
+							className={`navItem ${pageIndex === 5 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(5);
 							}}
@@ -141,82 +142,112 @@ export default function Nav(props: PropsInterface) {
 							Catering Home
 						</li>
 						<li
-							className="navItem"
+							className={`navItem ${pageIndex === 6 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(6);
 							}}
 						>
 							<svg
 								className="w-6 h-6 inline mr-3"
-								fill="currentColor"
-								viewBox="0 0 20 20"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg"
 							>
-								<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
 							</svg>
 							Catering FAQ
 						</li>
 						<li
-							className="navItem"
+							className={`navItem ${pageIndex === 7 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(7);
 							}}
 						>
 							<svg
 								className="w-6 h-6 inline mr-3"
-								fill="currentColor"
-								viewBox="0 0 20 20"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg"
 							>
-								<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
 							</svg>
 							Restaurant FAQ
 						</li>
 						<li
-							className="navItem"
+							className={`navItem ${pageIndex === 8 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(8);
 							}}
 						>
 							<svg
 								className="w-6 h-6 inline mr-3"
-								fill="currentColor"
-								viewBox="0 0 20 20"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg"
 							>
-								<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+								/>
 							</svg>
 							Venue
 						</li>
 						<li
-							className="navItem"
+							className={`navItem ${pageIndex === 9 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(9);
 							}}
 						>
 							<svg
 								className="w-6 h-6 inline mr-3"
-								fill="currentColor"
-								viewBox="0 0 20 20"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg"
 							>
-								<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
 							</svg>
 							Partner
 						</li>
 						<li
-							className="navItem"
+							className={`navItem ${pageIndex === 10 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(10);
 							}}
 						>
 							<svg
 								className="w-6 h-6 inline mr-3"
-								fill="currentColor"
-								viewBox="0 0 20 20"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg"
 							>
-								<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+								/>
 							</svg>
 							Gallery
 						</li>

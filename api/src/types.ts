@@ -213,6 +213,13 @@ export const typeDefs = gql`
 			featureID: String
 		): MenuItem
 
+		# About
+		updateAbout(
+			topHeading: String!
+			subHeading: String!
+			content: String!
+		): About
+
 		# Catering Menu Items
 		updateCateringMenuItem(
 			id: ID!
@@ -360,7 +367,7 @@ export const typeDefs = gql`
 			topLink: String
 			bottomLinkText: String
 			bottomLink: String
-			image: [String]
+			image: String
 		): HomepageFeature
 		removeHomepageFeature(id: ID!): ID
 		createHomepageFeature(
@@ -370,7 +377,7 @@ export const typeDefs = gql`
 			topLink: String!
 			bottomLinkText: String!
 			bottomLink: String!
-			image: [String]!
+			image: String!
 		): HomepageFeature
 
 		# Homepage Card

@@ -90,6 +90,7 @@ import {
 	updateCateringMenuItem,
 	removeCateringMenuItem,
 } from "./mutations/cateringMenu";
+import { updateAbout } from "./mutations/about";
 import {
 	createGalleryImage,
 	deleteGalleryImage,
@@ -143,6 +144,7 @@ export const resolvers = {
 		deleteFeatureCategory,
 		makeItemFeature,
 		removeItemFeature,
+		updateAbout,
 		createCategory,
 		deleteCategory,
 		updateCategory,

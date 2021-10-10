@@ -56,8 +56,11 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 	`);
 
 	return (
-		<div className="flex justify-between mb-7 px-4 rouned-xl shadow-lg py-4">
-			<div className="grid grid-cols-4 gap-4">
+		<div className="mb-7 px-4 rounded-xl shadow-lg py-4 mx-5">
+			<h1 className="text-center font-bold text-primary text-xl">
+				Homepage Banner
+			</h1>
+			<div className="">
 				<div>
 					<label
 						className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -69,7 +72,7 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 						id="topText"
 						type="text"
 						placeholder="topText"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
+						className="bg-gray-300 px-3 py-3 rounded-lg w-full"
 						value={homepageBannerState.topText}
 						onChange={(e) => {
 							e.preventDefault();
@@ -93,7 +96,7 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 						id="midText"
 						type="text"
 						placeholder="midText"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
+						className="bg-gray-300 px-3 py-3 rounded-lg w-full"
 						value={homepageBannerState.midText}
 						onChange={(e) => {
 							e.preventDefault();
@@ -116,7 +119,7 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 						id="bottomText"
 						type="text"
 						placeholder="bottomText"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
+						className="bg-gray-300 px-3 py-3 rounded-lg w-full"
 						value={homepageBannerState.bottomText}
 						onChange={(e) => {
 							e.preventDefault();
@@ -139,7 +142,7 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 						id="leftLinkText"
 						type="text"
 						placeholder="leftLinkText"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
+						className="bg-gray-300 px-3 py-3 rounded-lg w-full"
 						value={homepageBannerState.leftLinkText}
 						onChange={(e) => {
 							e.preventDefault();
@@ -162,7 +165,7 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 						id="leftLink"
 						type="text"
 						placeholder="leftLink"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
+						className="bg-gray-300 px-3 py-3 rounded-lg w-full"
 						value={homepageBannerState.leftLink}
 						onChange={(e) => {
 							e.preventDefault();
@@ -185,7 +188,7 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 						id="rightLinkText"
 						type="text"
 						placeholder="rightLinkText"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
+						className="bg-gray-300 px-3 py-3 rounded-lg w-full"
 						value={homepageBannerState.rightLinkText}
 						onChange={(e) => {
 							e.preventDefault();
@@ -208,7 +211,7 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 						id="rightLink"
 						type="text"
 						placeholder="rightLink"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
+						className="bg-gray-300 px-3 py-3 rounded-lg w-full"
 						value={homepageBannerState.rightLink}
 						onChange={(e) => {
 							e.preventDefault();
@@ -221,30 +224,33 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 					/>
 				</div>
 
-				<button
-					className="col-start-1 col-end-2 ml-4 bg-green-500 text-white rounded-lg px-2 py-1 hover:bg-green-400 inline-block"
-					disabled={!canUpdate}
-					onClick={(e) => {
-						setCanUpdate(false);
+				<div className="w-full flex justify-center mt-5">
+					<button
+						className="col-start-1 col-end-2 ml-4 bg-green-500 text-white rounded-lg px-2 py-1 hover:bg-green-400 inline-block disabled:opacity-50"
+						disabled={!canUpdate}
+						onClick={(e) => {
+							setCanUpdate(false);
 
-						updateHomepageBanner({
-							variables: {
-								updateHomepageBannerTopText: homepageBannerState.topText,
-								updateHomepageBannerMidText: homepageBannerState.midText,
-								updateHomepageBannerBottomText: homepageBannerState.bottomText,
-								updateHomepageBannerLeftLinkText:
-									homepageBannerState.leftLinkText,
-								updateHomepageBannerLeftLink: homepageBannerState.leftLink,
-								updateHomepageBannerRightLinkText:
-									homepageBannerState.rightLinkText,
-								updateHomepageBannerRightLink: homepageBannerState.rightLink,
-								updateHomepageBannerImages: homepageBannerState.images,
-							},
-						});
-					}}
-				>
-					{loading ? "...loading" : "Update"}
-				</button>
+							updateHomepageBanner({
+								variables: {
+									updateHomepageBannerTopText: homepageBannerState.topText,
+									updateHomepageBannerMidText: homepageBannerState.midText,
+									updateHomepageBannerBottomText:
+										homepageBannerState.bottomText,
+									updateHomepageBannerLeftLinkText:
+										homepageBannerState.leftLinkText,
+									updateHomepageBannerLeftLink: homepageBannerState.leftLink,
+									updateHomepageBannerRightLinkText:
+										homepageBannerState.rightLinkText,
+									updateHomepageBannerRightLink: homepageBannerState.rightLink,
+									updateHomepageBannerImages: homepageBannerState.images,
+								},
+							});
+						}}
+					>
+						{loading ? "...loading" : "Update"}
+					</button>
+				</div>
 			</div>
 		</div>
 	);

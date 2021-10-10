@@ -121,7 +121,7 @@ export const updateHomepageFeature = async (
 		topLink?: string;
 		bottomLinkText?: string;
 		bottomLink?: string;
-		image?: string[];
+		image?: string;
 	}
 ) => {
 	const updateObject = {
@@ -131,7 +131,7 @@ export const updateHomepageFeature = async (
 		...(args.topLink && { topLink: args.topLink }),
 		...(args.bottomLinkText && { bottomLinkText: args.bottomLinkText }),
 		...(args.bottomLink && { bottomLink: args.bottomLink }),
-		...(args.image && { image: [...args.image] }),
+		...(args.image && { image: args.image }),
 	};
 
 	const docRef = db.collection("HomepageFeature").doc(args.id);
@@ -155,9 +155,10 @@ export const createHomepageFeature = async (
 		topLink: string;
 		bottomLinkText: string;
 		bottomLink: string;
-		image: string[];
+		image: string;
 	}
 ) => {
+	console.log(args);
 	// add to database
 	const ref = db.collection("HomepageFeature");
 	const res = await ref.add({
