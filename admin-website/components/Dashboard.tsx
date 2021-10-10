@@ -40,7 +40,7 @@ export default function Dashboard() {
 				<title>Christopher's Admin</title>
 			</Head>
 			<div className="md:flex flex-col md:flex-row">
-				<Nav setPageIndex={updateIndex} />
+				<Nav setPageIndex={updateIndex} pageIndex={pageIndex} />
 				{components[pageIndex]}
 			</div>
 		</>

@@ -76,8 +76,8 @@ export default function About() {
 		}
 	}, [data]);
 
-	if (loading) return "Loading...";
-	if (error) return `Error! ${error.message}`;
+	if (loading) return <div>Loading...</div>;
+	if (error) return <div>Error</div>;
 
 	return (
 		<div className="h-screen w-full flex justify-center">
