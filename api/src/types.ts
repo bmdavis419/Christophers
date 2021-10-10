@@ -213,6 +213,13 @@ export const typeDefs = gql`
 			featureID: String
 		): MenuItem
 
+		# About
+		updateAbout(
+			topHeading: String!
+			subHeading: String!
+			content: String!
+		): About
+
 		# Catering Menu Items
 		updateCateringMenuItem(
 			id: ID!

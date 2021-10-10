@@ -67,6 +67,7 @@ var venues_1 = require("./mutations/venues");
 var partner_2 = require("./mutations/partner");
 var homepage_2 = require("./mutations/homepage");
 var cateringMenu_1 = require("./mutations/cateringMenu");
+var about_2 = require("./mutations/about");
 var gallery_2 = require("./mutations/gallery");
 exports.resolvers = {
     Query: {
@@ -115,6 +116,7 @@ exports.resolvers = {
         deleteFeatureCategory: feature_1.deleteFeatureCategory,
         makeItemFeature: feature_1.makeItemFeature,
         removeItemFeature: feature_1.removeItemFeature,
+        updateAbout: about_2.updateAbout,
         createCategory: catAndSubcat_1.createCategory,
         deleteCategory: catAndSubcat_1.deleteCategory,
         updateCategory: catAndSubcat_1.updateCategory,

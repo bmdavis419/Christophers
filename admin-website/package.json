@@ -11,6 +11,7 @@
     "@apollo/client": "^3.4.4",
     "draft-js": "^0.11.7",
     "draft-js-export-html": "^1.4.1",
+    "draft-js-import-html": "^1.4.1",
     "firebase": "^8.9.0",
     "graphql": "^15.5.1",
     "next": "^11.1.2",
