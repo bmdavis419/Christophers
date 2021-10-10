@@ -367,7 +367,7 @@ export const typeDefs = gql`
 			topLink: String
 			bottomLinkText: String
 			bottomLink: String
-			image: [String]
+			image: String
 		): HomepageFeature
 		removeHomepageFeature(id: ID!): ID
 		createHomepageFeature(
@@ -377,7 +377,7 @@ export const typeDefs = gql`
 			topLink: String!
 			bottomLinkText: String!
 			bottomLink: String!
-			image: [String]!
+			image: String!
 		): HomepageFeature
 
 		# Homepage Card

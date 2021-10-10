@@ -31,18 +31,7 @@ interface PropsInterface {
 		phone: number;
 		location: string;
 	};
-	homepageFeatures: [
-		{
-			id: string;
-			title: string;
-			description: string;
-			topLinkText: string;
-			topLink: string;
-			bottomLinkText: string;
-			bottomLink: string;
-			image: string;
-		}
-	];
+	homepageCards: { id: string; title: string; date: string; content: string }[];
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -71,6 +60,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
 					phone
 					location
 				}
+				cateringHomepageCards {
+					content
+					date
+					title
+					id
+				}
 			}
 		`,
 	});
@@ -79,12 +74,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		props: {
 			homepageBanner: data.cateringHomepageBanner,
 			restaurantInfo: data.restaurantInfo,
+			homepageCards: data.cateringHomepageCards,
 		},
 	};
 };
 
 export default function Home(props: PropsInterface) {
-	const { homepageBanner, restaurantInfo } = props;
+	const { homepageBanner, restaurantInfo, homepageCards } = props;
 
 	return (
 		<>
@@ -99,7 +95,19 @@ export default function Home(props: PropsInterface) {
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 md:m-16">
 					<div className="col-span-3">
-						<IndexUpdates />
+						<div className="h-1 bg-red w-100vw bg-primary visible sm:invisible"></div>
+						{homepageCards &&
+							homepageCards.map((card) => {
+								return (
+									<IndexUpdates
+										content={card.content}
+										title={card.title}
+										date={card.date}
+										id={card.id}
+										key={card.id}
+									/>
+								);
+							})}
 					</div>
 				</div>
 				<div className="flex justify-center mb-5">

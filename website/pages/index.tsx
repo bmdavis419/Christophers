@@ -32,18 +32,17 @@ interface QueryData {
 		phone: number;
 		location: string;
 	};
-	homepageFeatures: [
-		{
-			id: string;
-			title: string;
-			description: string;
-			topLinkText: string;
-			topLink: string;
-			bottomLinkText: string;
-			bottomLink: string;
-			image: string;
-		}
-	];
+	homepageFeatures: {
+		id: string;
+		title: string;
+		description: string;
+		topLinkText: string;
+		topLink: string;
+		bottomLinkText: string;
+		bottomLink: string;
+		image: string;
+	}[];
+	homepageCards: { id: string; title: string; date: string; content: string }[];
 }
 
 export default function Home() {
@@ -81,6 +80,12 @@ export default function Home() {
 				bottomLink
 				image
 			}
+			homepageCards {
+				title
+				date
+				content
+				id
+			}
 		}
 	`);
 
@@ -109,7 +114,18 @@ export default function Home() {
 						<Info restaurantInfo={data.restaurantInfo} />
 						<div className="col-span-3">
 							<div className="h-1 bg-red w-100vw bg-primary visible sm:invisible"></div>
-							<IndexUpdates />
+							{data.homepageCards &&
+								data.homepageCards.map((card) => {
+									return (
+										<IndexUpdates
+											content={card.content}
+											title={card.title}
+											date={card.date}
+											id={card.id}
+											key={card.id}
+										/>
+									);
+								})}
 						</div>
 					</div>
 				</div>
