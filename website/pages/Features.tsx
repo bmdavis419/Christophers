@@ -70,7 +70,9 @@ export default function Features(props: PropsInterface) {
 				setDisplayIdx={setDisplayIdx}
 				featureCategories={featureCategories}
 			/>
-			<FeaturesDisplay featureCat={featureCategories[displayIdx]} />
+			{featureCategories[displayIdx].menuItems.length > 0 && (
+				<FeaturesDisplay featureCat={featureCategories[displayIdx]} />
+			)}
 		</>
 	);
 }
