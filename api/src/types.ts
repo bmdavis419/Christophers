@@ -150,6 +150,7 @@ export const typeDefs = gql`
 		name: String
 		image: String
 		description: String
+		bannerImage: String
 	}
 
 	# Partner
@@ -158,6 +159,7 @@ export const typeDefs = gql`
 		name: String
 		image: String
 		description: String
+		bannerImage: String
 	}
 
 	type Query {
@@ -319,18 +321,30 @@ export const typeDefs = gql`
 			name: String
 			image: String
 			description: String
+			bannerImage: String
 		): Venue
 		removeVenue(id: ID!): ID
-		createVenue(name: String!, image: String!, description: String!): Venue
+		createVenue(
+			name: String!
+			image: String!
+			description: String!
+			bannerImage: String
+		): Venue
 		# Partner
 		updatePartner(
 			id: String!
 			name: String
 			image: String
 			description: String
+			bannerImage: String
 		): Partner
 		removePartner(id: ID!): ID
-		createPartner(name: String!, image: String!, description: String!): Partner
+		createPartner(
+			name: String!
+			image: String!
+			description: String!
+			bannerImage: String
+		): Partner
 
 		# Homepage Banner
 		updateHomepageBanner(

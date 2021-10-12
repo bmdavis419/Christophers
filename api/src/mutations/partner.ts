@@ -1,24 +1,26 @@
 import { db } from "../firebase/config";
 
 export const updatePartner = async (
-	_: any,
+	_: null,
 	args: {
 		id: string;
 		name?: string;
 		image?: string;
 		description?: string;
+		bannerImage?: string;
 	}
 ) => {
 	const updateObject = {
 		...(args.name && { name: args.name }),
 		...(args.image && { image: args.image }),
 		...(args.description && { description: args.description }),
+		...(args.bannerImage && { bannerImage: args.bannerImage }),
 	};
 
 	const docRef = db.collection("Partner").doc(args.id);
 	await docRef.update({ ...updateObject });
 	const data = await docRef.get();
-	return { ...data.data() };
+	return { ...data.data(), id: data.id };
 };
 
 export const removePartner = async (_: null, args: { id: string }) => {
@@ -32,6 +34,7 @@ export const createPartner = async (
 	args: {
 		name: string;
 		image: string;
+		bannerImage: string;
 		description: string;
 	}
 ) => {

@@ -2,18 +2,20 @@ import { firestore } from "firebase-admin";
 import { db } from "../firebase/config";
 
 export const updateVenue = async (
-	_: any,
+	_: null,
 	args: {
 		id: string;
-        name?: string;
-        image?: string;
-        description?: string;
+		name?: string;
+		image?: string;
+		description?: string;
+		bannerImage?: string;
 	}
 ) => {
 	const updateObject = {
 		...(args.name && { name: args.name }),
 		...(args.image && { image: args.image }),
 		...(args.description && { description: args.description }),
+		...(args.bannerImage && { bannerImage: args.bannerImage }),
 	};
 
 	const docRef = db.collection("Venue").doc(args.id);
@@ -22,11 +24,7 @@ export const updateVenue = async (
 	return { ...data.data() };
 };
 
-export const removeVenue = async (
-	_: null,
-	args: { id: string; }
-) => {
-
+export const removeVenue = async (_: null, args: { id: string }) => {
 	const ref = db.collection("Venue").doc(args.id);
 	await ref.delete();
 	return args.id;
@@ -35,9 +33,10 @@ export const removeVenue = async (
 export const createVenue = async (
 	_: null,
 	args: {
-        name: string;
-        image: string;
-        description: string;
+		name: string;
+		image: string;
+		description: string;
+		bannerImage: string;
 	}
 ) => {
 	// add to database
@@ -50,4 +49,3 @@ export const createVenue = async (
 	const data = await ref.doc(res.id).get();
 	return { ...data.data(), id: data.id };
 };
-
