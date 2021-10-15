@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { gql, useMutation, useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import Loading from "./Loading";
 import VenueCard from "./venue/VenueCard";
 import VenueCreate from "./venue/VenueCreate";
@@ -12,6 +12,7 @@ export default function Venue() {
 				name
 				image
 				description
+				bannerImage
 			}
 		}
 	`;
@@ -54,8 +55,13 @@ export default function Venue() {
 					name: string;
 					image: string;
 					description: string;
+					bannerImage: string;
 				}) => {
-					return <VenueCard venueCard={card} key={card.id} />;
+					return (
+						<div className="flex w-full justify-center">
+							<VenueCard venueCard={card} key={card.id} GET_VENUE={GET_VENUE} />
+						</div>
+					);
 				}
 			)}
 		</div>

@@ -1,53 +1,43 @@
-import { DocumentNode, gql, useMutation } from "@apollo/client";
+import { useMutation, gql } from "@apollo/client";
 import firebase from "firebase";
+import { DocumentNode } from "graphql";
 import React, { useState } from "react";
 import ImageUpload from "./ImageUpload";
 
 interface PropsInterface {
-	venueCard: {
-		id: string;
+	setFormState: Function;
+	GET_VENUE: DocumentNode;
+	formState: {
 		name: string;
-		image: string;
 		description: string;
+		image: string;
 		bannerImage: string;
 	};
-	GET_VENUE: DocumentNode;
 }
 
-export default function CateringFAQCard(props: PropsInterface) {
-	const { venueCard, GET_VENUE } = props;
-	const [canUpdate, setCanUpdate] = useState(false);
+export default function VenueCreate(props: PropsInterface) {
+	// extract form props
+	const { setFormState, GET_VENUE, formState } = props;
 
-	// form state
-	const [formState, setFormState] = useState({ ...venueCard });
-	console.log(formState);
-
-	// create the mutations
-	const [updateVenue, { loading, error }] = useMutation(gql`
-		mutation (
-			$updateVenueId: String!
-			$name: String
-			$image: String
-			$description: String
-			$bannerImage: String
+	// muation to create
+	const [createVenue, { loading, error }] = useMutation(gql`
+		mutation Mutation(
+			$createVenueName: String!
+			$createVenueImage: String!
+			$createVenueDescription: String!
+			$createVenueBannerImage: String!
 		) {
-			updateVenue(
-				id: $updateVenueId
-				name: $name
-				image: $image
-				description: $description
-				bannerImage: $bannerImage
+			createPartner(
+				name: $createVenueName
+				image: $createVenueImage
+				description: $createVenueDescription
+				bannerImage: $createVenueBannerImage
 			) {
+				id
 				name
-				description
 				image
-				bannerImage
+				description
 			}
-		}
-	`);
-	const [removeVenue] = useMutation(gql`
-		mutation UpdateVenueMutation($removeVenueId: ID!) {
-			removeVenue(id: $removeVenueId)
 		}
 	`);
 
@@ -76,7 +66,6 @@ export default function CateringFAQCard(props: PropsInterface) {
 				},
 				() => {
 					setFormState({ ...formState, image: `/images/${imageFile.name}` });
-					setCanUpdate(true);
 				}
 			);
 		}
@@ -112,7 +101,6 @@ export default function CateringFAQCard(props: PropsInterface) {
 						...formState,
 						bannerImage: `/images/${bannerImageFile.name}`,
 					});
-					setCanUpdate(true);
 				}
 			);
 		}
@@ -122,7 +110,7 @@ export default function CateringFAQCard(props: PropsInterface) {
 		<div className="w-3/4 rounded-xl shadow-lg p-4">
 			<div className="my-3">
 				<h1 className="font-bold text-primary text-2xl text-center">
-					Update Venue
+					Create New Partner
 				</h1>
 			</div>
 			<div className="my-3">
@@ -138,11 +126,9 @@ export default function CateringFAQCard(props: PropsInterface) {
 					type="text"
 					className="bg-gray-300 px-3 py-3 rounded-lg w-full"
 					placeholder="Name"
-					value={formState.name}
 					onChange={(e) => {
 						e.preventDefault();
 						setFormState({ ...formState, name: e.target.value });
-						setCanUpdate(true);
 					}}
 				/>
 			</div>
@@ -154,11 +140,9 @@ export default function CateringFAQCard(props: PropsInterface) {
 					className="bg-gray-300 px-3 py-3 rounded-lg w-full"
 					rows={6}
 					placeholder="Description"
-					value={formState.description}
 					onChange={(e) => {
 						e.preventDefault();
 						setFormState({ ...formState, description: e.target.value });
-						setCanUpdate(true);
 					}}
 				/>
 			</div>
@@ -180,39 +164,21 @@ export default function CateringFAQCard(props: PropsInterface) {
 			/>
 			<div className="w-full my-3 flex justify-center">
 				<button
-					className="bg-green-500 rounded-full font-bold text-white px-3 py-2 text-xl hover:bg-green-300 disabled:opacity-50"
-					disabled={!canUpdate}
+					className="bg-green-500 rounded-full font-bold text-white px-3 py-2 text-xl hover:bg-green-300"
 					onClick={(e) => {
 						e.preventDefault();
-						updateVenue({
+						createVenue({
 							variables: {
-								updateVenueId: formState.id,
-								name: formState.name,
-								image: formState.image,
-								description: formState.description,
-								bannerImage: formState.bannerImage,
+								createVenueName: formState.name,
+								createVenueImage: formState.image,
+								createVenueDescription: formState.description,
+								createVenueBannerImage: formState.bannerImage,
 							},
 							refetchQueries: [GET_VENUE],
 						});
 					}}
 				>
-					{loading ? "...loading" : "Update"}
-				</button>
-			</div>
-			<div className="w-full my-3 flex justify-center">
-				<button
-					className="bg-red-500 rounded-full font-bold text-white px-3 py-2 text-xl hover:bg-red-300 disabled:opacity-50"
-					onClick={(e) => {
-						e.preventDefault();
-						removeVenue({
-							variables: {
-								removeVenueId: formState.id,
-							},
-							refetchQueries: [GET_VENUE],
-						});
-					}}
-				>
-					{loading ? "...loading" : "Delete"}
+					{loading ? "...loading" : "Create"}
 				</button>
 			</div>
 		</div>
