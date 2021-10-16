@@ -114,7 +114,7 @@ export default function GalleryCard(props: PropsInterface) {
 		`);
 
 	return (
-		<div className="bg-white rounded-3xl shadow-lg px-5 py-5">
+		<div className="bg-white rounded-3xl shadow-lg px-5 py-5 mb-3">
 			<div className="ring-2 ring-primary rounded-xl px-5 py-5">
 				<div className="text-center font-bold text-primary text-2xl">
 					Update

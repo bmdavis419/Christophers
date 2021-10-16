@@ -1,6 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import React, { useState } from "react";
-// import SubField from "./SubField";
+import HomeBannerImages from "./HomeBannerImages";
 
 interface PropsInterface {
 	homepageBanner: {
@@ -22,7 +22,7 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 	const [canUpdate, setCanUpdate] = useState(false);
 
 	// create the mutations
-	const [updateHomepageBanner, { loading, error }] = useMutation(gql`
+	const [updateHomepageBanner, { loading }] = useMutation(gql`
 		mutation Mutation(
 			$updateHomepageBannerRightLink: String
 			$updateHomepageBannerRightLinkText: String
@@ -200,7 +200,7 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 						}}
 					/>
 				</div>
-				<div>
+				<div className="mb-5">
 					<label
 						className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 						htmlFor="rightLink"
@@ -223,6 +223,12 @@ export default function CateringHomeBannerCard(props: PropsInterface) {
 						}}
 					/>
 				</div>
+
+				<HomeBannerImages
+					formState={homepageBannerState}
+					setCanUpdate={setCanUpdate}
+					setFormState={setHomepageBannerState}
+				/>
 
 				<div className="w-full flex justify-center mt-5">
 					<button

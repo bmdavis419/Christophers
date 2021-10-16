@@ -96,9 +96,12 @@ import {
 	deleteGalleryImage,
 	updateGalleryImage,
 } from "./mutations/gallery";
+import { siteControls } from "./queries/siteControls";
+import { updateSiteControls } from "./mutations/siteControls";
 
 export const resolvers = {
 	Query: {
+		siteControls,
 		cateringFAQ,
 		restaurantFAQ,
 		about,
@@ -128,6 +131,7 @@ export const resolvers = {
 	},
 	Mutation: {
 		createCateringMenuItem,
+		updateSiteControls,
 		updateCateringMenuItem,
 		removeCateringMenuItem,
 		createCateringCategory,

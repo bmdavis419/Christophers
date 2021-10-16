@@ -23,7 +23,7 @@ export default function IndexHeader(props: PropsInterface) {
 			if (homepageBanner.images) {
 				setI(i >= homepageBanner.images.length - 1 ? 0 : i + 1);
 			}
-		}, 1000);
+		}, 5000);
 		return () => clearInterval(interval);
 	});
 

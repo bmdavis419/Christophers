@@ -1,124 +1,72 @@
 import React, { useState, useEffect } from "react";
-import { gql, useMutation, useQuery } from "@apollo/client";
-import Loading from "./Loading"
-import PartnerCard from "./partner/PartnerCard"
+import { gql, useQuery } from "@apollo/client";
+import Loading from "./Loading";
+import PartnerCard from "./partner/PartnerCard";
+import PartnerCreate from "./partner/PartnerCreate";
 
-export default function Partner() {
+export default function Venue() {
+	const GET_PARTNER = gql`
+		{
+			partners {
+				id
+				name
+				image
+				description
+				bannerImage
+			}
+		}
+	`;
 
-    const GET_PARTNER = gql`
-	{
-		partners {
-            id
-            name
-            image
-            description
-          }
-	}
-`;
-
-    const [createPartner] = useMutation(gql`
-    mutation Mutation($createPartnerName: String!, $createPartnerImage: String!, $createPartnerDescription: String!) {
-        createPartner(name: $createPartnerName, image: $createPartnerImage, description: $createPartnerDescription) {
-          id
-          name
-          image
-          description
-        }
-      }
-    `);
-
-    const { loading, error, data } = useQuery(GET_PARTNER);
-    const [cards, setCards] = useState<any>([]);
-    const [newCard, setNewCard] = useState({
+	const { loading, error, data } = useQuery(GET_PARTNER);
+	const [cards, setCards] = useState<any>([]);
+	const [newCard, setNewCard] = useState({
 		name: "",
 		image: "",
 		description: "",
-    }); 
-    const [canCreate, setCanCreate] = useState({
-		name: false,
-		image: false,
-		description: false,
-    });
-    
-    useEffect(() => {
+		bannerImage: "",
+	});
+
+	useEffect(() => {
 		if (data != undefined) {
 			const temp = [...data.partners];
 			setCards(temp);
 		}
-    }, [data]);
-    
-    // make sure there is data before render
-	if (loading) return <Loading />;
-    if (error) return <div>Error: {error.message}</div>;
-    
-    return (
-        <div>
-            <div className="flex justify-between mb-7 px-4 rouned-xl shadow-lg py-4">
-			<div>
-				<input
-					type="text"
-					className="bg-gray-300 px-3 py-3 rouned-lg"
-					placeholder="Name"
-					onChange={(e) => {
-						setCanCreate({ ...canCreate, name: true });
-						e.preventDefault();
-						setNewCard({ ...newCard, name: e.target.value });
-					}}
-				/>
-                <input
-					type="text"
-					className="bg-gray-300 px-3 py-3 rouned-lg"
-					placeholder="Image"
-					onChange={(e) => {
-						setCanCreate({ ...canCreate, image: true });
-						e.preventDefault();
-						setNewCard({ ...newCard, image: e.target.value });
-					}}
-				/>
-                <input
-					type="text"
-					className="bg-gray-300 px-3 py-3 rouned-lg"
-					placeholder="Description"
-					onChange={(e) => {
-						setCanCreate({ ...canCreate, description: true });
-						e.preventDefault();
-						setNewCard({ ...newCard, description: e.target.value });
-					}}
-				/>
-                
-				<button
-					className="ml-4 bg-green-500 text-white rounded-lg px-2 py-1 hover:bg-green-400 inline-block"
-					disabled={!canCreate}
-					onClick={(e) => {
-						setCanCreate({
-                            name: false,
-                            image: false,
-                            description: false
-						});
+	}, [data]);
 
-						createPartner({
-							variables: {
-								createPartnerName: newCard.name,
-								createPartnerImage: newCard.image,
-								createPartnerDescription: newCard.description,
-							},
-                        });
-					}}
-				>
-					Create new Partner
-				</button>
+	// make sure there is data before render
+	if (loading) return <Loading />;
+	if (error) return <div>Error: {error.message}</div>;
+
+	return (
+		<div className="w-full">
+			<div className="py-5">
+				<h1 className="text-3xl font-bold text-primary text-center">Partner</h1>
 			</div>
+			<div className="w-full flex justify-center">
+				<PartnerCreate
+					formState={newCard}
+					setFormState={setNewCard}
+					GET_VENUE={GET_PARTNER}
+				/>
+			</div>
+			{cards.map(
+				(
+					card: {
+						id: string;
+						name: string;
+						image: string;
+						description: string;
+						bannerImage: string;
+					},
+					idx: number
+				) => {
+					return (
+						<div className="flex w-full justify-center">
+							<PartnerCard venueCard={card} key={idx} GET_VENUE={GET_PARTNER} />
+						</div>
+					);
+				}
+			)}
 		</div>
-        {cards.map((card: {
-				id: string
-                name: string
-                image: string
-                description: string
-			}) => {
-				return (
-					<PartnerCard partnerCard={card} key={card.id}/>
-				)
-			})}
-        </div>
-    )
+	);
 }
