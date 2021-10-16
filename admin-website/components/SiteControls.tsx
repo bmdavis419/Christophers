@@ -7,7 +7,7 @@ import Loading from "./Loading";
 interface SiteControlsInterface {
 	showPartners: boolean;
 	showVenues: boolean;
-	siteAlert: boolean;
+	siteAlert: string;
 }
 
 export default function SiteControls() {
@@ -126,6 +126,10 @@ export default function SiteControls() {
 						id="alert"
 						rows={5}
 						className="w-full bg-gray-300 rounded-lg bg-opacity-50 px-3 py-3"
+						value={siteState.siteAlert}
+						onChange={(e) => {
+							setSiteState({ ...siteState, siteAlert: e.target.value });
+						}}
 					></textarea>
 				</div>
 				<div className="flex justify-center">
