@@ -69,8 +69,11 @@ var homepage_2 = require("./mutations/homepage");
 var cateringMenu_1 = require("./mutations/cateringMenu");
 var about_2 = require("./mutations/about");
 var gallery_2 = require("./mutations/gallery");
+var siteControls_1 = require("./queries/siteControls");
+var siteControls_2 = require("./mutations/siteControls");
 exports.resolvers = {
     Query: {
+        siteControls: siteControls_1.siteControls,
         cateringFAQ: faq_1.cateringFAQ,
         restaurantFAQ: faq_1.restaurantFAQ,
         about: about_1.about,
@@ -100,6 +103,7 @@ exports.resolvers = {
     },
     Mutation: {
         createCateringMenuItem: cateringMenu_1.createCateringMenuItem,
+        updateSiteControls: siteControls_2.updateSiteControls,
         updateCateringMenuItem: cateringMenu_1.updateCateringMenuItem,
         removeCateringMenuItem: cateringMenu_1.removeCateringMenuItem,
         createCateringCategory: cateringCatAndSubcat_1.createCateringCategory,

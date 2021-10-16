@@ -1,5 +1,12 @@
 import { gql } from "apollo-server";
 export const typeDefs = gql`
+	# Site Controls
+	type SiteControls {
+		showVenues: Boolean
+		showPartners: Boolean
+		siteAlert: String
+	}
+
 	# Homepage
 	type HomepageBanner {
 		topText: String
@@ -163,6 +170,7 @@ export const typeDefs = gql`
 	}
 
 	type Query {
+		siteControls: SiteControls
 		homepageBanner: HomepageBanner
 		homepageFeatures: [HomepageFeature]
 		homepageCards: [HomepageCard]
@@ -191,6 +199,13 @@ export const typeDefs = gql`
 		partners: [Partner]
 	}
 	type Mutation {
+		# Site Controls
+		updateSiteControls(
+			showVenues: Boolean
+			showPartners: Boolean
+			siteAlert: String
+		): SiteControls
+
 		# Menu
 		updateMenuItem(
 			id: ID!
