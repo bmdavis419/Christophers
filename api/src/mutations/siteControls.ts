@@ -17,7 +17,7 @@ export const updateSiteControls = async (
 			args.showPartners !== null && {
 				showPartners: args.showPartners,
 			}),
-		...(args.siteAlert && { siteAlert: args.siteAlert }),
+		...(args.siteAlert !== null && { siteAlert: args.siteAlert }),
 	};
 
 	// update and get for return
