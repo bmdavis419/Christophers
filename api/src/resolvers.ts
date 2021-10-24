@@ -90,7 +90,7 @@ import {
 	updateCateringMenuItem,
 	removeCateringMenuItem,
 } from "./mutations/cateringMenu";
-import { updateAbout } from "./mutations/about";
+import { updateAbout, updateCateringAbout } from "./mutations/about";
 import {
 	createGalleryImage,
 	deleteGalleryImage,
@@ -98,9 +98,12 @@ import {
 } from "./mutations/gallery";
 import { siteControls } from "./queries/siteControls";
 import { updateSiteControls } from "./mutations/siteControls";
+import { addUser, removeUser } from "./mutations/users";
+import { users } from "./queries/users";
 
 export const resolvers = {
 	Query: {
+		users,
 		siteControls,
 		cateringFAQ,
 		restaurantFAQ,
@@ -130,6 +133,9 @@ export const resolvers = {
 		partners,
 	},
 	Mutation: {
+		addUser,
+		removeUser,
+		updateCateringAbout,
 		createCateringMenuItem,
 		updateSiteControls,
 		updateCateringMenuItem,

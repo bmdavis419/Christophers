@@ -7,6 +7,15 @@ interface PropsInterface {
 		id: string;
 	};
 	catID: string;
+	categoryState: {
+		name: string;
+		id: string;
+		subcategories: {
+			name: string;
+			id: string;
+		}[];
+	};
+	setCategoryState: Function;
 }
 
 const GET_CATEGORIES = gql`
@@ -23,7 +32,7 @@ const GET_CATEGORIES = gql`
 `;
 
 export default function SubField(props: PropsInterface) {
-	const { subcategory, catID } = props;
+	const { subcategory, catID, categoryState, setCategoryState } = props;
 
 	// state
 	const [subcategoryState, setSubcategoryState] = useState(subcategory);
@@ -96,6 +105,19 @@ export default function SubField(props: PropsInterface) {
 						},
 						refetchQueries: [GET_CATEGORIES, "cateringCategories"],
 					});
+					let arrayCopy = [...categoryState.subcategories];
+					const removeIndex = () => {
+						let idx = 0;
+						let found = false;
+						while (idx < arrayCopy.length && !found) {
+							if (arrayCopy[idx].id === subcategory.id) {
+								found = true;
+							}
+						}
+						return idx;
+					};
+					arrayCopy.splice(removeIndex(), 1);
+					setCategoryState({ ...categoryState, subcategories: arrayCopy });
 				}}
 			>
 				{loadingDeleteSub ? "...deleting" : "Delete"}

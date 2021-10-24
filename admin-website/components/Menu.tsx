@@ -300,7 +300,7 @@ export default function Menu() {
 											variables: {
 												createCategoryName: newCatState,
 											},
-											refetchQueries: [GET_CATEGORIES, "categories"],
+											refetchQueries: [GET_CATEGORIES],
 										});
 									}
 								}}

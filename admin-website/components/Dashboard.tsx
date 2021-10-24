@@ -13,6 +13,8 @@ import Features from "./Features";
 import CateringMenu from "./CateringMenu";
 import Gallery from "./Gallery";
 import SiteControls from "./SiteControls";
+import CateringAbout from "./CateringAbout";
+import Users from "./Users";
 
 export default function Dashboard() {
 	// set the current component
@@ -30,6 +32,8 @@ export default function Dashboard() {
 		<Partner />,
 		<Gallery />,
 		<SiteControls />,
+		<CateringAbout />,
+		<Users />,
 	];
 	const updateIndex = (num: number) => {
 		setPageIndex(num);

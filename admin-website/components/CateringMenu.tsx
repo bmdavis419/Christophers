@@ -235,7 +235,13 @@ export default function CateringMenu() {
 					<div className="w-full">
 						{dataCat &&
 							dataCat.cateringCategories.map((category: any) => {
-								return <CatCard category={category} key={category.id} />;
+								return (
+									<CatCard
+										category={category}
+										key={category.id}
+										GET_CATEGORIES={GET_CATEGORIES}
+									/>
+								);
 							})}
 						<div className="mb-10">
 							<input
@@ -256,7 +262,7 @@ export default function CateringMenu() {
 											variables: {
 												createCategoryName: newCatState,
 											},
-											refetchQueries: [GET_CATEGORIES, "cateringCategories"],
+											refetchQueries: [GET_CATEGORIES],
 										});
 									}
 								}}

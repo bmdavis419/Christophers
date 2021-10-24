@@ -47,6 +47,13 @@ export const typeDefs = gql`
 		content: String
 	}
 
+	# Users
+	type User {
+		id: ID
+		name: String
+		email: String
+	}
+
 	# Catering Homepage
 	type CateringHomepageBanner {
 		topText: String
@@ -170,6 +177,7 @@ export const typeDefs = gql`
 	}
 
 	type Query {
+		users: [User]
 		siteControls: SiteControls
 		homepageBanner: HomepageBanner
 		homepageFeatures: [HomepageFeature]
@@ -206,6 +214,10 @@ export const typeDefs = gql`
 			siteAlert: String
 		): SiteControls
 
+		# User
+		addUser(name: String!, email: String!, password: String!): User
+		removeUser(id: ID!): ID
+
 		# Menu
 		updateMenuItem(
 			id: ID!
@@ -236,6 +248,11 @@ export const typeDefs = gql`
 			subHeading: String!
 			content: String!
 		): About
+		updateCateringAbout(
+			topHeading: String!
+			subHeading: String!
+			content: String!
+		): CateringAbout
 
 		# Catering Menu Items
 		updateCateringMenuItem(
