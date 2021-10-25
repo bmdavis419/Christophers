@@ -158,6 +158,13 @@ export const typeDefs = gql`
 		id: ID
 	}
 
+	# Restaurant Gallery
+	type RestaurantGallery {
+		image: String
+		description: String
+		id: ID
+	}
+
 	# Venue
 	type Venue {
 		id: String
@@ -203,6 +210,7 @@ export const typeDefs = gql`
 		cateringSubcategory(id: ID): CateringSubcategory
 		cateringMenuItem(id: ID): CateringMenuItem
 		galleryImages: [Gallery]
+		restaurantGalleryImages: [RestaurantGallery]
 		venues: [Venue]
 		partners: [Partner]
 	}
@@ -444,5 +452,10 @@ export const typeDefs = gql`
 		createGalleryImage(image: String!, description: String): Gallery
 		updateGalleryImage(image: String, description: String, id: ID!): Gallery
 		deleteGalleryImage(id: ID!): ID
+
+		# Restaurant Gallery
+		createRestaurantGalleryImage(image: String!, description: String): RestaurantGallery
+		updateRestaurantGalleryImage(image: String, description: String, id: ID!): RestaurantGallery
+		deleteRestaurantGalleryImage(id: ID!): ID
 	}
 `;

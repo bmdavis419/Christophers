@@ -12,6 +12,7 @@ import Partner from "./Partner";
 import Features from "./Features";
 import CateringMenu from "./CateringMenu";
 import Gallery from "./Gallery";
+import RestaurantGallery from "./RestaurantGallery"
 import SiteControls from "./SiteControls";
 import CateringAbout from "./CateringAbout";
 import Users from "./Users";
@@ -31,6 +32,7 @@ export default function Dashboard() {
 		<Venue />,
 		<Partner />,
 		<Gallery />,
+		<RestaurantGallery />,
 		<SiteControls />,
 		<CateringAbout />,
 		<Users />,

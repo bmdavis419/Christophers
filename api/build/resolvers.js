@@ -101,6 +101,7 @@ exports.resolvers = {
         cateringSubcategory: menu_1.cateringSubcategory,
         cateringMenuItem: menu_1.cateringMenuItem,
         galleryImages: gallery_1.galleryImages,
+        restaurantGalleryImages: gallery_1.restaurantGalleryImages,
         venues: venue_1.venues,
         partners: partner_1.partners,
     },
@@ -160,6 +161,9 @@ exports.resolvers = {
         createGalleryImage: gallery_2.createGalleryImage,
         deleteGalleryImage: gallery_2.deleteGalleryImage,
         updateGalleryImage: gallery_2.updateGalleryImage,
+        createRestaurantGalleryImage: gallery_2.createRestaurantGalleryImage,
+        deleteRestaurantGalleryImage: gallery_2.deleteRestaurantGalleryImage,
+        updateRestaurantGalleryImage: gallery_2.updateRestaurantGalleryImage,
     },
     Category: {
         subcategories: function (parent) {

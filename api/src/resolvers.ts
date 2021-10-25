@@ -36,7 +36,7 @@ import {
 	removeItemFeature,
 } from "./mutations/feature";
 import { featureCategories } from "./queries/feature";
-import { galleryImages } from "./queries/gallery";
+import { galleryImages, restaurantGalleryImages } from "./queries/gallery";
 import { venues } from "./queries/venue";
 import { partners } from "./queries/partner";
 import {
@@ -95,6 +95,9 @@ import {
 	createGalleryImage,
 	deleteGalleryImage,
 	updateGalleryImage,
+	createRestaurantGalleryImage,
+	deleteRestaurantGalleryImage,
+	updateRestaurantGalleryImage,
 } from "./mutations/gallery";
 import { siteControls } from "./queries/siteControls";
 import { updateSiteControls } from "./mutations/siteControls";
@@ -129,6 +132,7 @@ export const resolvers = {
 		cateringSubcategory,
 		cateringMenuItem,
 		galleryImages,
+		restaurantGalleryImages,
 		venues,
 		partners,
 	},
@@ -188,6 +192,9 @@ export const resolvers = {
 		createGalleryImage,
 		deleteGalleryImage,
 		updateGalleryImage,
+		createRestaurantGalleryImage,
+		deleteRestaurantGalleryImage,
+		updateRestaurantGalleryImage,
 	},
 	Category: {
 		async subcategories(parent: { subcategories: string[] }) {
