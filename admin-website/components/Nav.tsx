@@ -315,7 +315,7 @@ export default function Nav(props: PropsInterface) {
 							Catering About
 						</li>
 						<li
-							className={`navItem ${pageIndex === 13 && "ring-4 ring-white"}`}
+							className={`navItem ${pageIndex === 14 && "ring-4 ring-white"}`}
 							onClick={() => {
 								setPageIndex(14);
 							}}

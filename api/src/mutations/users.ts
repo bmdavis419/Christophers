@@ -30,6 +30,9 @@ export const removeUser = async (_: null, args: { id: string }) => {
 	// get doc ref
 	const docRef = db.collection("User").doc(args.id);
 
+	// remove user
+	await auth.deleteUser(args.id);
+
 	// remove and return id
 	await docRef.delete();
 	return args.id;
