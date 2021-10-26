@@ -71,8 +71,11 @@ var about_2 = require("./mutations/about");
 var gallery_2 = require("./mutations/gallery");
 var siteControls_1 = require("./queries/siteControls");
 var siteControls_2 = require("./mutations/siteControls");
+var users_1 = require("./mutations/users");
+var users_2 = require("./queries/users");
 exports.resolvers = {
     Query: {
+        users: users_2.users,
         siteControls: siteControls_1.siteControls,
         cateringFAQ: faq_1.cateringFAQ,
         restaurantFAQ: faq_1.restaurantFAQ,
@@ -98,10 +101,14 @@ exports.resolvers = {
         cateringSubcategory: menu_1.cateringSubcategory,
         cateringMenuItem: menu_1.cateringMenuItem,
         galleryImages: gallery_1.galleryImages,
+        restaurantGalleryImages: gallery_1.restaurantGalleryImages,
         venues: venue_1.venues,
         partners: partner_1.partners,
     },
     Mutation: {
+        addUser: users_1.addUser,
+        removeUser: users_1.removeUser,
+        updateCateringAbout: about_2.updateCateringAbout,
         createCateringMenuItem: cateringMenu_1.createCateringMenuItem,
         updateSiteControls: siteControls_2.updateSiteControls,
         updateCateringMenuItem: cateringMenu_1.updateCateringMenuItem,
@@ -154,6 +161,9 @@ exports.resolvers = {
         createGalleryImage: gallery_2.createGalleryImage,
         deleteGalleryImage: gallery_2.deleteGalleryImage,
         updateGalleryImage: gallery_2.updateGalleryImage,
+        createRestaurantGalleryImage: gallery_2.createRestaurantGalleryImage,
+        deleteRestaurantGalleryImage: gallery_2.deleteRestaurantGalleryImage,
+        updateRestaurantGalleryImage: gallery_2.updateRestaurantGalleryImage,
     },
     Category: {
         subcategories: function (parent) {

@@ -60,12 +60,13 @@ export default function HomeBannerImages(props: PropsInterface) {
 			</div>
 			<div className="grid grid-cols-3 bg-gray-300 bg-opacity-50 p-5 gap-4 rounded-xl">
 				{formState.images &&
-					formState.images.map((image) => {
+					formState.images.map((image, idx) => {
 						return (
 							<HomeBannerImageCard
 								image={image}
 								removeImage={removeImage}
 								setCanUpdate={setCanUpdate}
+								key={idx}
 							/>
 						);
 					})}

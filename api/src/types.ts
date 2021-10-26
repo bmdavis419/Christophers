@@ -4,6 +4,7 @@ export const typeDefs = gql`
 	type SiteControls {
 		showVenues: Boolean
 		showPartners: Boolean
+		showResGallery: Boolean
 		siteAlert: String
 	}
 
@@ -45,6 +46,13 @@ export const typeDefs = gql`
 		title: String
 		date: String
 		content: String
+	}
+
+	# Users
+	type User {
+		id: ID
+		name: String
+		email: String
 	}
 
 	# Catering Homepage
@@ -151,6 +159,13 @@ export const typeDefs = gql`
 		id: ID
 	}
 
+	# Restaurant Gallery
+	type RestaurantGallery {
+		image: String
+		description: String
+		id: ID
+	}
+
 	# Venue
 	type Venue {
 		id: String
@@ -170,6 +185,7 @@ export const typeDefs = gql`
 	}
 
 	type Query {
+		users: [User]
 		siteControls: SiteControls
 		homepageBanner: HomepageBanner
 		homepageFeatures: [HomepageFeature]
@@ -195,6 +211,7 @@ export const typeDefs = gql`
 		cateringSubcategory(id: ID): CateringSubcategory
 		cateringMenuItem(id: ID): CateringMenuItem
 		galleryImages: [Gallery]
+		restaurantGalleryImages: [RestaurantGallery]
 		venues: [Venue]
 		partners: [Partner]
 	}
@@ -205,6 +222,10 @@ export const typeDefs = gql`
 			showPartners: Boolean
 			siteAlert: String
 		): SiteControls
+
+		# User
+		addUser(name: String!, email: String!, password: String!): User
+		removeUser(id: ID!): ID
 
 		# Menu
 		updateMenuItem(
@@ -236,6 +257,11 @@ export const typeDefs = gql`
 			subHeading: String!
 			content: String!
 		): About
+		updateCateringAbout(
+			topHeading: String!
+			subHeading: String!
+			content: String!
+		): CateringAbout
 
 		# Catering Menu Items
 		updateCateringMenuItem(
@@ -427,5 +453,17 @@ export const typeDefs = gql`
 		createGalleryImage(image: String!, description: String): Gallery
 		updateGalleryImage(image: String, description: String, id: ID!): Gallery
 		deleteGalleryImage(id: ID!): ID
+
+		# Restaurant Gallery
+		createRestaurantGalleryImage(
+			image: String!
+			description: String
+		): RestaurantGallery
+		updateRestaurantGalleryImage(
+			image: String
+			description: String
+			id: ID!
+		): RestaurantGallery
+		deleteRestaurantGalleryImage(id: ID!): ID
 	}
 `;

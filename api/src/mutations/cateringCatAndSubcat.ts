@@ -34,7 +34,7 @@ export const deleteCateringCategory = async (_: null, args: { id: string }) => {
 		if (dataValues.subcategories.length != 0)
 			return new Error("Cannot delete a Category that has Subcategories.");
 	}
-	await db.collection("Category").doc(args.id).delete();
+	await db.collection("CateringCategory").doc(args.id).delete();
 	return args.id;
 };
 
@@ -75,12 +75,6 @@ export const deleteCateringSubcategory = async (
 	_: null,
 	args: { id: string; catID: string }
 ) => {
-	// make sure the subcategory does not have any menu items
-	const data = await db.collection("CateringSubcategory").doc(args.id).get();
-	const dataValues = data.data();
-	if (dataValues && dataValues.menuItems.length != 0)
-		return new Error("Cannot delete a Subcategory that contains Menu Items.");
-
 	await db.collection("CateringSubcategory").doc(args.id).delete();
 	await db
 		.collection("CateringCategory")
