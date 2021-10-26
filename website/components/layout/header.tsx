@@ -1,18 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Disclosure, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
-
-const navigation = [
-	{ name: "About", href: "/about" },
-	{ name: "FAQ", href: "/faq" },
-	{ name: "Contact", href: "/contact" },
-	{ name: "Features", href: "/Features" },
-	{ name: "Menu", href: "/menu" },
-	{ name: "Catering", href: "/catering" },
-];
 
 export default function Header() {
 	// get the site state
@@ -20,9 +11,29 @@ export default function Header() {
 		{
 			siteControls {
 				siteAlert
+				showResGallery
 			}
 		}
 	`);
+
+	const [navigation, setNavigation] = useState([
+		{ name: "About", href: "/about" },
+		{ name: "FAQ", href: "/faq" },
+		{ name: "Contact", href: "/contact" },
+		{ name: "Features", href: "/Features" },
+		{ name: "Menu", href: "/menu" },
+		{ name: "Catering", href: "/catering" },
+	]);
+
+	useEffect(() => {
+		if (data) {
+			if (data.siteControls.showVenues && data.siteControls.showPartners) {
+				const tempNav = [...navigation];
+				tempNav.push({ name: "Gallery", href: "/gallery" });
+				setNavigation([...tempNav]);
+			}
+		}
+	}, [data]);
 
 	return (
 		<>

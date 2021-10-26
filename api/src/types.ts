@@ -4,6 +4,7 @@ export const typeDefs = gql`
 	type SiteControls {
 		showVenues: Boolean
 		showPartners: Boolean
+		showResGallery: Boolean
 		siteAlert: String
 	}
 
@@ -454,8 +455,15 @@ export const typeDefs = gql`
 		deleteGalleryImage(id: ID!): ID
 
 		# Restaurant Gallery
-		createRestaurantGalleryImage(image: String!, description: String): RestaurantGallery
-		updateRestaurantGalleryImage(image: String, description: String, id: ID!): RestaurantGallery
+		createRestaurantGalleryImage(
+			image: String!
+			description: String
+		): RestaurantGallery
+		updateRestaurantGalleryImage(
+			image: String
+			description: String
+			id: ID!
+		): RestaurantGallery
 		deleteRestaurantGalleryImage(id: ID!): ID
 	}
 `;

@@ -7,6 +7,7 @@ import Loading from "./Loading";
 interface SiteControlsInterface {
 	showPartners: boolean;
 	showVenues: boolean;
+	showResGallery: boolean;
 	siteAlert: string;
 }
 
@@ -18,6 +19,7 @@ export default function SiteControls() {
 				showPartners
 				showVenues
 				siteAlert
+				showResGallery
 			}
 		}
 	`;
@@ -31,13 +33,16 @@ export default function SiteControls() {
 			$siteAlert: String
 			$showVenues: Boolean
 			$showPartners: Boolean
+			$showResGallery: Boolean
 		) {
 			updateSiteControls(
 				siteAlert: $siteAlert
 				showVenues: $showVenues
 				showPartners: $showPartners
+				showResGallery: $showResGallery
 			) {
 				showVenues
+				showResGallery
 				showPartners
 				siteAlert
 			}
@@ -111,6 +116,34 @@ export default function SiteControls() {
 								<span
 									className={`${
 										siteState.showPartners ? "translate-x-6" : "translate-x-1"
+									} inline-block w-4 h-4 bg-white rounded-full transform transition ease-in-out duration-200`}
+								/>
+							</Switch>
+						</div>
+					</Switch.Group>
+				</div>
+				<div className="mb-3">
+					<Switch.Group>
+						<div className="flex items-center">
+							<Switch.Label className="mr-4">
+								Enable Restaurant Gallery Page
+							</Switch.Label>
+							<Switch
+								checked={siteState.showResGallery}
+								onChange={() => {
+									setSiteState({
+										...siteState,
+										showResGallery: !siteState.showResGallery,
+									});
+								}}
+								className={`${
+									siteState.showResGallery ? "bg-primary" : "bg-gray-200"
+								} relative inline-flex items-center h-6 rounded-full w-11`}
+							>
+								<span className="sr-only">Enable notifications</span>
+								<span
+									className={`${
+										siteState.showResGallery ? "translate-x-6" : "translate-x-1"
 									} inline-block w-4 h-4 bg-white rounded-full transform transition ease-in-out duration-200`}
 								/>
 							</Switch>

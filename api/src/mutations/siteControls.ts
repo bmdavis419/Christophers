@@ -2,13 +2,22 @@ import { db } from "../firebase/config";
 
 export const updateSiteControls = async (
 	_: null,
-	args: { showVenues: boolean; showPartners: boolean; siteAlert: string }
+	args: {
+		showVenues: boolean;
+		showPartners: boolean;
+		siteAlert: string;
+		showResGallery: boolean;
+	}
 ) => {
 	// get the data ref
 	const dataRef = db.collection("SiteControls").doc("OGClEEb6AfEiEebqoreH");
 
 	// build the update object
 	const updateObject = {
+		...(typeof args.showResGallery !== "undefined" &&
+			args.showResGallery !== null && {
+				showResGallery: args.showResGallery,
+			}),
 		...(typeof args.showVenues !== "undefined" &&
 			args.showVenues !== null && {
 				showVenues: args.showVenues,
