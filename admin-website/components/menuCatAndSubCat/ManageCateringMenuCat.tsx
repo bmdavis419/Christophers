@@ -1,3 +1,4 @@
+import { DocumentNode } from "graphql";
 import React from "react";
 import CatCard from "./CatCard";
 
@@ -10,11 +11,12 @@ interface PropsInterface {
 			id: string;
 		}[];
 	}[];
+	GET_CATEGORIES: DocumentNode;
 }
 
 export default function ManageMenuCat(props: PropsInterface) {
 	// get data from props
-	const { categories } = props;
+	const { categories, GET_CATEGORIES } = props;
 
 	return (
 		<>
@@ -28,7 +30,13 @@ export default function ManageMenuCat(props: PropsInterface) {
 						<div className="w-full">
 							{categories &&
 								categories.map((category) => {
-									return <CatCard category={category} key={category.id} />;
+									return (
+										<CatCard
+											category={category}
+											key={category.id}
+											GET_CATEGORIES={GET_CATEGORIES}
+										/>
+									);
 								})}
 						</div>
 					</div>
