@@ -99,14 +99,26 @@ import {
 	deleteRestaurantGalleryImage,
 	updateRestaurantGalleryImage,
 } from "./mutations/gallery";
+import { cateringContact, resContact, services } from "./queries/Contact";
 import { siteControls } from "./queries/siteControls";
 import { updateSiteControls } from "./mutations/siteControls";
 import { addUser, removeUser } from "./mutations/users";
 import { users } from "./queries/users";
+import {
+	addCateringContact,
+	archiveCateringContact,
+	addResContact,
+	archiveResContact,
+	addService,
+	removeService,
+} from "./mutations/contact";
 
 export const resolvers = {
 	Query: {
 		users,
+		cateringContact,
+		resContact,
+		services,
 		siteControls,
 		cateringFAQ,
 		restaurantFAQ,
@@ -139,6 +151,12 @@ export const resolvers = {
 	Mutation: {
 		addUser,
 		removeUser,
+		addCateringContact,
+		archiveCateringContact,
+		addResContact,
+		archiveResContact,
+		addService,
+		removeService,
 		updateCateringAbout,
 		createCateringMenuItem,
 		updateSiteControls,
