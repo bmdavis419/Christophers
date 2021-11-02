@@ -3,8 +3,8 @@ import Head from "next/head";
 import { GetServerSideProps } from "next";
 import React from "react";
 import client from "../../apollo-client";
-import Header from "../../components/layout/header";
 import sanitize from "sanitize-html";
+import CateringHeader from "../../components/layout/cateringHeader";
 
 interface PropsInterface {
 	about: {
@@ -43,7 +43,7 @@ export default function about(props: PropsInterface) {
 				<title>About Christopher&apos;s Restaurant</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
-			<Header />
+			<CateringHeader />
 			<div>
 				<div className="text-center text-primary font-bold text-3xl md:text-6xl flex justify-center pt-24">
 					<div className="max-w-9/10 md:max-w-1/2">{topHeading}</div>

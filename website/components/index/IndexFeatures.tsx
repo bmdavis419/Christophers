@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 interface PropsInterface {
@@ -63,11 +64,15 @@ export default function IndexFeatures(props: PropsInterface) {
 					{homepageFeatures[index].description}
 				</p>
 				<div className="grid grid-cols-1 2xl:grid-cols-2 gap-2 2xl:gap-16 mb-5">
-					<button className="relative mix-blend normal w-40  m-auto 2xl:text-xl rounded-full py-2 2xl:py-2 bg-primary text-white">
-						{homepageFeatures[index].topLinkText}
+					<button className="relative mix-blend normal w-40  m-auto 2xl:text-xl rounded-full py-2 2xl:py-2 bg-primary text-white hover:bg-secondary">
+						<Link href={homepageFeatures[index].topLink}>
+							{homepageFeatures[index].topLinkText}
+						</Link>
 					</button>
-					<button className="relative mix-blend normal w-40  m-auto 2xl:text-xl rounded-full py-2 2xl:py-2 bg-primary text-white">
-						{homepageFeatures[index].bottomLinkText}
+					<button className="relative mix-blend normal w-40  m-auto 2xl:text-xl rounded-full py-2 2xl:py-2 bg-primary text-white hover:bg-secondary">
+						<Link href={homepageFeatures[index].bottomLink}>
+							{homepageFeatures[index].bottomLinkText}
+						</Link>
 					</button>
 				</div>
 				<div className="relative mix-blend normal flex flex-row self-end mx-auto">
