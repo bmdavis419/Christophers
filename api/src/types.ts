@@ -184,6 +184,39 @@ export const typeDefs = gql`
 		bannerImage: String
 	}
 
+	# Res Contact
+	type ResContact {
+		id: ID
+		firstName: String
+		lastName: String
+		email: String
+		subject: String
+		message: String
+		date: String
+		archived: Boolean
+	}
+
+	# Catering Contact
+	type CateringContact {
+		id: ID
+		firstName: String
+		lastName: String
+		email: String
+		phone: String
+		methodOfContact: String
+		dateOfEvent: String
+		guests: Int
+		venue: Venue
+		service: Service
+		info: String
+		date: String
+		archived: Boolean
+	}
+	type Service {
+		id: ID
+		name: String
+	}
+
 	type Query {
 		users: [User]
 		siteControls: SiteControls
@@ -214,8 +247,38 @@ export const typeDefs = gql`
 		restaurantGalleryImages: [RestaurantGallery]
 		venues: [Venue]
 		partners: [Partner]
+		cateringContact: [CateringContact]
+		resContact: [ResContact]
+		services: [Service]
 	}
 	type Mutation {
+		# Contact
+		addCateringContact(
+			firstName: String
+			lastName: String
+			email: String
+			phone: String
+			methodOfContact: String
+			dateOfEvent: String
+			guests: Int
+			venue: ID
+			service: ID
+			info: String
+			date: String
+		): CateringContact
+		archiveCateringContact(id: ID): ID
+		addResContact(
+			firstName: String
+			lastName: String
+			email: String
+			subject: String
+			message: String
+			date: String
+		): ResContact
+		archiveResContact(id: ID): ID
+		addService(name: String): Service
+		removeService(id: ID): ID
+
 		# Site Controls
 		updateSiteControls(
 			showVenues: Boolean

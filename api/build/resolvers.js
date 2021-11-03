@@ -69,13 +69,18 @@ var homepage_2 = require("./mutations/homepage");
 var cateringMenu_1 = require("./mutations/cateringMenu");
 var about_2 = require("./mutations/about");
 var gallery_2 = require("./mutations/gallery");
+var Contact_1 = require("./queries/Contact");
 var siteControls_1 = require("./queries/siteControls");
 var siteControls_2 = require("./mutations/siteControls");
 var users_1 = require("./mutations/users");
 var users_2 = require("./queries/users");
+var contact_1 = require("./mutations/contact");
 exports.resolvers = {
     Query: {
         users: users_2.users,
+        cateringContact: Contact_1.cateringContact,
+        resContact: Contact_1.resContact,
+        services: Contact_1.services,
         siteControls: siteControls_1.siteControls,
         cateringFAQ: faq_1.cateringFAQ,
         restaurantFAQ: faq_1.restaurantFAQ,
@@ -108,6 +113,12 @@ exports.resolvers = {
     Mutation: {
         addUser: users_1.addUser,
         removeUser: users_1.removeUser,
+        addCateringContact: contact_1.addCateringContact,
+        archiveCateringContact: contact_1.archiveCateringContact,
+        addResContact: contact_1.addResContact,
+        archiveResContact: contact_1.archiveResContact,
+        addService: contact_1.addService,
+        removeService: contact_1.removeService,
         updateCateringAbout: about_2.updateCateringAbout,
         createCateringMenuItem: cateringMenu_1.createCateringMenuItem,
         updateSiteControls: siteControls_2.updateSiteControls,
