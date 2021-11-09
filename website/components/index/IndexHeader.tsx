@@ -52,6 +52,7 @@ export default function IndexHeader(props: PropsInterface) {
 					}`}
 					href={homepageBanner.leftLink}
 					target="_blank"
+					rel="noreferrer"
 				>
 					{" "}
 					{homepageBanner.leftLinkText}
@@ -62,6 +63,7 @@ export default function IndexHeader(props: PropsInterface) {
 					}`}
 					href={homepageBanner.rightLink}
 					target="_blank"
+					rel="noreferrer"
 				>
 					{homepageBanner.rightLinkText}
 				</a>
