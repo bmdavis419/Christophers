@@ -1,6 +1,30 @@
+import { gql, useMutation } from "@apollo/client";
 import React, { useState } from "react";
 export default function ContactForm() {
 	const [buttonColor, setButtonColor] = useState("primary");
+
+	// mutation to send to DB
+	const [addContact, { loading, error }] = useMutation(gql`
+		mutation AddResContact(
+			$firstName: String
+			$lastName: String
+			$email: String
+			$message: String
+			$subject: String
+			$date: String
+		) {
+			addResContact(
+				firstName: $firstName
+				lastName: $lastName
+				email: $email
+				message: $message
+				subject: $subject
+				date: $date
+			) {
+				id
+			}
+		}
+	`);
 
 	const sendMessage = async (event: any) => {
 		event.preventDefault();
@@ -10,9 +34,15 @@ export default function ContactForm() {
 			email: event.target.email.value,
 			subject: event.target.subject.value,
 			message: event.target.message.value,
+			date: new Date(),
 		};
-		console.log(email);
+
+		addContact({ variables: { ...email } });
+
 		setButtonColor("green");
+		alert(
+			"Thank you for contacting us, we will get back with you as soon as we can!"
+		);
 		setTimeout(() => {
 			setButtonColor("primary");
 		}, 2000);
@@ -109,10 +139,9 @@ export default function ContactForm() {
 			<div className="flex flex-wrap mx-3 mb-4">
 				<button
 					type="submit"
-					className={`bg-${buttonColor} text-white py-2 px-4 mx-2 rounded-full hover:bg-secondary opacity-50`}
-					disabled={true}
+					className={`bg-${buttonColor} text-white py-2 px-4 mx-2 rounded-full hover:bg-secondary`}
 				>
-					Coming Soon
+					Send
 				</button>
 			</div>
 		</form>

@@ -1,11 +1,68 @@
-import React, { useState } from "react";
+import { gql, useMutation, useQuery } from "@apollo/client";
+import React, { useEffect, useState } from "react";
 
 export default function ContactForm() {
 	const [buttonColor, setButtonColor] = useState("primary");
 
-	//These arrays will be replaced by props eventually
-	let Venue = ["Venue1", "Venue2", "Venue3"];
-	let Service = ["Service1", "Service2", "Service3"];
+	const { data, loading, error } = useQuery(gql`
+		query ExampleQuery {
+			services {
+				name
+				id
+			}
+			venues {
+				name
+				id
+			}
+		}
+	`);
+
+	// mutation to send to DB
+	const [addContact, { loading: loadingAdd, error: errorAdd }] =
+		useMutation(gql`
+			mutation AddCateringContact(
+				$firstName: String
+				$lastName: String
+				$email: String
+				$methodOfContact: String
+				$phone: String
+				$dateOfEvent: String
+				$venue: ID
+				$guests: Int
+				$service: ID
+				$info: String
+				$date: String
+			) {
+				addCateringContact(
+					firstName: $firstName
+					lastName: $lastName
+					email: $email
+					methodOfContact: $methodOfContact
+					phone: $phone
+					dateOfEvent: $dateOfEvent
+					venue: $venue
+					guests: $guests
+					service: $service
+					info: $info
+					date: $date
+				) {
+					id
+				}
+			}
+		`);
+
+	const [venues, setVenues] = useState<{ name: string; id: string }[]>([]);
+	const [services, setServices] = useState<{ name: string; id: string }[]>([]);
+
+	useEffect(() => {
+		if (data && data.services) {
+			setServices([...data.services]);
+			console.log(data.services);
+		}
+		if (data && data.venues) {
+			setVenues([...data.venues]);
+		}
+	}, [data]);
 
 	const sendMessage = async (event: any) => {
 		event.preventDefault();
@@ -14,18 +71,25 @@ export default function ContactForm() {
 			lastName: event.target.lastName.value,
 			email: event.target.email.value,
 			phone: event.target.phone.value,
-			contactMethod: event.target.contactMethod.value,
-			date: event.target.date.value,
-			guests: event.target.guests.value,
+			methodOfContact: event.target.contactMethod.value,
+			dateOfEvent: event.target.date.value,
+			date: new Date().toString(),
+			guests: parseInt(event.target.guests.value),
 			venue: event.target.venue.value,
 			service: event.target.service.value,
-			additionalInfo: event.target.additionalInfo.value,
+			info: event.target.additionalInfo.value,
 		};
 		console.log(email);
+
+		addContact({ variables: { ...email } });
+
 		setButtonColor("green");
 		setTimeout(() => {
 			setButtonColor("primary");
 		}, 2000);
+		alert(
+			"Thank you for contacting us, we will get back with you as soon as we can!"
+		);
 		event.target.reset();
 	};
 
@@ -154,10 +218,16 @@ export default function ContactForm() {
 					>
 						Preferred Venue
 					</label>
-					{Venue.map((i, idx) => (
+					{venues.map((i, idx) => (
 						<div className="mt-1" key={idx}>
-							<input type="radio" id={i} name="venue" className="m-1" />
-							<label htmlFor={i}>{i}</label>
+							<input
+								type="radio"
+								id={i.id}
+								name="venue"
+								className="m-1"
+								value={i.id}
+							/>
+							<label htmlFor={i.id}>{i.name}</label>
 						</div>
 					))}
 				</div>
@@ -168,10 +238,16 @@ export default function ContactForm() {
 					>
 						Type of Service
 					</label>
-					{Service.map((i, idx) => (
+					{services.map((i, idx) => (
 						<div className="mt-1" key={idx}>
-							<input type="radio" id={i} name="service" className="m-1" />
-							<label htmlFor={i}>{i}</label>
+							<input
+								type="radio"
+								id={i.id}
+								name="service"
+								className="m-1"
+								value={i.id}
+							/>
+							<label htmlFor={i.id}>{i.name}</label>
 						</div>
 					))}
 				</div>
@@ -196,10 +272,9 @@ export default function ContactForm() {
 			</div>
 			<button
 				type="submit"
-				className={`bg-${buttonColor} text-white py-2 px-4 mx-2 rounded-full hover:bg-secondary opacity-50`}
-				disabled={true}
+				className={`bg-${buttonColor} text-white py-2 px-4 mx-2 rounded-full hover:bg-secondary`}
 			>
-				Coming Soon
+				Send
 			</button>
 		</form>
 	);

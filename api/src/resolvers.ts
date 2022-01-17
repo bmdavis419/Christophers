@@ -214,6 +214,18 @@ export const resolvers = {
 		deleteRestaurantGalleryImage,
 		updateRestaurantGalleryImage,
 	},
+	CateringContact: {
+		async venue(parent: { venue: string }) {
+			const docRef = db.collection("Venue").doc(parent.venue);
+			const data = await docRef.get();
+			return { ...data.data(), id: parent.venue };
+		},
+		async service(parent: { service: string }) {
+			const docRef = db.collection("Service").doc(parent.service);
+			const data = await docRef.get();
+			return { ...data.data(), id: parent.service };
+		},
+	},
 	Category: {
 		async subcategories(parent: { subcategories: string[] }) {
 			let returnArr: Object[] = [];

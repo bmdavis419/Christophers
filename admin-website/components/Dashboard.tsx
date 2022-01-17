@@ -12,10 +12,12 @@ import Partner from "./Partner";
 import Features from "./Features";
 import CateringMenu from "./CateringMenu";
 import Gallery from "./Gallery";
-import RestaurantGallery from "./RestaurantGallery"
+import RestaurantGallery from "./RestaurantGallery";
 import SiteControls from "./SiteControls";
 import CateringAbout from "./CateringAbout";
 import Users from "./Users";
+import ResContact from "./ResContact";
+import CateringContact from "./CateringContact";
 
 export default function Dashboard() {
 	// set the current component
@@ -36,6 +38,8 @@ export default function Dashboard() {
 		<SiteControls />,
 		<CateringAbout />,
 		<Users />,
+		<ResContact />,
+		<CateringContact />,
 	];
 	const updateIndex = (num: number) => {
 		setPageIndex(num);

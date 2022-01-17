@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 import Head from "next/head";
 import { GetServerSideProps } from "next";
 import React from "react";
@@ -47,8 +47,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		},
 	};
 };
+
 export default function contact(props: PropsInterface) {
 	const { restaurantInfo } = props;
+
 	return (
 		<>
 			<Head>

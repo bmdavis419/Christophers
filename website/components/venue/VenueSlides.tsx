@@ -23,6 +23,7 @@ export default function VenueSlides(props: PropsInterface) {
 				className={`rounded-full mt-auto m-2 lg:m-3 p-3 xl:p-4 2xl:p-5 bg-${
 					activeVenue == i ? "primary" : "gray-400"
 				}`}
+				key={i}
 			></div>
 		);
 	}
