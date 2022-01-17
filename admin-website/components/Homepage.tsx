@@ -8,6 +8,7 @@ import HomepageFeature from "./homepage/HomepageFeature";
 import { Editor, EditorState, RichUtils } from "draft-js";
 import sanitize from "sanitize-html";
 import { stateToHTML } from "draft-js-export-html";
+import CreateHomepageFeature from "./homepage/CreateHomepageFeature";
 
 export default function Homepage() {
 	const GET_BANNER = gql`
@@ -53,31 +54,11 @@ export default function Homepage() {
 		}
 	`;
 
-	const GET_FEATURES = gql`
-		{
-			homepageFeatures {
-				id
-				title
-				description
-				topLinkText
-				topLink
-				bottomLinkText
-				bottomLink
-				image
-			}
-		}
-	`;
-
 	const {
 		loading: loadCards,
 		error: errorCards,
 		data: dataCards,
 	} = useQuery(GET_CARDS);
-	const {
-		loading: loadFeatures,
-		error: errorFeatures,
-		data: dataFeatures,
-	} = useQuery(GET_FEATURES);
 
 	// create the mutations
 	const [createHomepageCard, { loading: loadingCreateCard }] = useMutation(gql`
@@ -98,36 +79,6 @@ export default function Homepage() {
 			}
 		}
 	`);
-	const [createHomepageFeature, { loading: loadingCreateFeature }] =
-		useMutation(gql`
-			mutation Mutation(
-				$createHomepageFeatureTitle: String!
-				$createHomepageFeatureDescription: String!
-				$createHomepageFeatureTopLinkText: String!
-				$createHomepageFeatureTopLink: String!
-				$createHomepageFeatureBottomLinkText: String!
-				$createHomepageFeatureBottomLink: String!
-				$createHomepageFeatureImage: String!
-			) {
-				createHomepageFeature(
-					title: $createHomepageFeatureTitle
-					description: $createHomepageFeatureDescription
-					topLinkText: $createHomepageFeatureTopLinkText
-					topLink: $createHomepageFeatureTopLink
-					bottomLinkText: $createHomepageFeatureBottomLinkText
-					bottomLink: $createHomepageFeatureBottomLink
-					image: $createHomepageFeatureImage
-				) {
-					title
-					description
-					topLinkText
-					topLink
-					bottomLinkText
-					bottomLink
-					image
-				}
-			}
-		`);
 
 	const {
 		loading: loadBanner,
@@ -141,21 +92,13 @@ export default function Homepage() {
 	} = useQuery(GET_INFO);
 
 	const [cards, setCards] = useState<any>([]);
-	const [features, setFeatures] = useState<any>([]);
+
 	const [newCard, setNewCard] = useState({
 		title: "",
 		date: "",
 		content: "",
 	});
-	const [newFeature, setNewFeature] = useState({
-		title: "",
-		description: "",
-		topLinkText: "",
-		topLink: "",
-		bottomLinkText: "",
-		bottomLink: "",
-		image: "",
-	});
+
 	const [canCreateCard, setCanCreateCard] = useState({
 		title: false,
 		date: false,
@@ -186,19 +129,12 @@ export default function Homepage() {
 			setCards(temp);
 		}
 	}, [dataCards]);
-	useEffect(() => {
-		if (dataFeatures != undefined) {
-			const temp = [...dataFeatures.homepageFeatures];
-			setFeatures(temp);
-		}
-	}, [dataFeatures]);
 
 	// make sure there is data before render
-	if (loadCards || loadBanner || loadInfo || loadFeatures) return <Loading />;
+	if (loadCards || loadBanner || loadInfo) return <Loading />;
 	if (errorBanner) return <div>Error: {errorBanner.message}</div>;
 	if (errorCards) return <div>Error: {errorCards.message}</div>;
 	if (errorInfo) return <div>Error: {errorInfo.message}</div>;
-	if (errorFeatures) return <div>Error: {errorFeatures.message}</div>;
 
 	return (
 		<div className="w-full">
@@ -313,129 +249,7 @@ export default function Homepage() {
 					return <HomepageCard homepageCard={card} key={card.id} />;
 				}
 			)}
-			<div className="flex justify-between mb-7 px-4 rouned-xl shadow-lg py-4">
-				<div className="grid grid-cols-4 gap-4">
-					<input
-						type="text"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						placeholder="Title"
-						onChange={(e) => {
-							setCanCreateFeature({ ...canCreateFeature, title: true });
-							e.preventDefault();
-							setNewFeature({ ...newFeature, title: e.target.value });
-						}}
-					/>
-					<input
-						type="text"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						placeholder="Description"
-						onChange={(e) => {
-							setCanCreateFeature({ ...canCreateFeature, description: true });
-							e.preventDefault();
-							setNewFeature({ ...newFeature, description: e.target.value });
-						}}
-					/>
-					<input
-						type="text"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						placeholder="Top Link Text"
-						onChange={(e) => {
-							setCanCreateFeature({ ...canCreateFeature, topLinkText: true });
-							e.preventDefault();
-							setNewFeature({ ...newFeature, topLinkText: e.target.value });
-						}}
-					/>
-					<input
-						type="text"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						placeholder="Top Link"
-						onChange={(e) => {
-							setCanCreateFeature({ ...canCreateFeature, topLink: true });
-							e.preventDefault();
-							setNewFeature({ ...newFeature, topLink: e.target.value });
-						}}
-					/>
-					<input
-						type="text"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						placeholder="Bottom Link Text"
-						onChange={(e) => {
-							setCanCreateFeature({
-								...canCreateFeature,
-								bottomLinkText: true,
-							});
-							e.preventDefault();
-							setNewFeature({ ...newFeature, bottomLinkText: e.target.value });
-						}}
-					/>
-					<input
-						type="text"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						placeholder="Bottom Link"
-						onChange={(e) => {
-							setCanCreateFeature({ ...canCreateFeature, bottomLink: true });
-							e.preventDefault();
-							setNewFeature({ ...newFeature, bottomLink: e.target.value });
-						}}
-					/>
-					<input
-						type="text"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						placeholder="Image"
-						onChange={(e) => {
-							setCanCreateFeature({ ...canCreateFeature, image: true });
-							e.preventDefault();
-							setNewFeature({ ...newFeature, image: e.target.value });
-						}}
-					/>
-
-					<button
-						className="col-start-1 col-end-2 ml-4 bg-green-500 text-white rounded-lg px-2 py-1 hover:bg-green-400 inline-block"
-						disabled={!canCreateFeature}
-						onClick={(e) => {
-							setCanCreateFeature({
-								title: false,
-								description: false,
-								topLinkText: false,
-								topLink: false,
-								bottomLinkText: false,
-								bottomLink: false,
-								image: false,
-							});
-
-							createHomepageFeature({
-								variables: {
-									createHomepageFeatureTitle: newFeature.title,
-									createHomepageFeatureDescription: newFeature.description,
-									createHomepageFeatureTopLinkText: newFeature.topLinkText,
-									createHomepageFeatureTopLink: newFeature.topLink,
-									createHomepageFeatureBottomLinkText:
-										newFeature.bottomLinkText,
-									createHomepageFeatureBottomLink: newFeature.bottomLink,
-									createHomepageFeatureImage: newFeature.image,
-								},
-								refetchQueries: [GET_FEATURES],
-							});
-						}}
-					>
-						{loadingCreateFeature ? "...loading" : "Create"}
-					</button>
-				</div>
-			</div>
-			{features.map(
-				(feature: {
-					id: string;
-					title: string;
-					description: string;
-					topLinkText: string;
-					topLink: string;
-					bottomLinkText: string;
-					bottomLink: string;
-					image: string;
-				}) => {
-					return <HomepageFeature homepageFeature={feature} key={feature.id} />;
-				}
-			)}
+			<CreateHomepageFeature />
 		</div>
 	);
 }

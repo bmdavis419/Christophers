@@ -176,6 +176,38 @@ exports.resolvers = {
         deleteRestaurantGalleryImage: gallery_2.deleteRestaurantGalleryImage,
         updateRestaurantGalleryImage: gallery_2.updateRestaurantGalleryImage,
     },
+    CateringContact: {
+        venue: function (parent) {
+            return __awaiter(this, void 0, void 0, function () {
+                var docRef, data;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            docRef = config_1.db.collection("Venue").doc(parent.venue);
+                            return [4 /*yield*/, docRef.get()];
+                        case 1:
+                            data = _a.sent();
+                            return [2 /*return*/, __assign(__assign({}, data.data()), { id: parent.venue })];
+                    }
+                });
+            });
+        },
+        service: function (parent) {
+            return __awaiter(this, void 0, void 0, function () {
+                var docRef, data;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            docRef = config_1.db.collection("Service").doc(parent.service);
+                            return [4 /*yield*/, docRef.get()];
+                        case 1:
+                            data = _a.sent();
+                            return [2 /*return*/, __assign(__assign({}, data.data()), { id: parent.service })];
+                    }
+                });
+            });
+        },
+    },
     Category: {
         subcategories: function (parent) {
             return __awaiter(this, void 0, void 0, function () {

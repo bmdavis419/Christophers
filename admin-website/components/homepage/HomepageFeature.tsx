@@ -1,6 +1,8 @@
 import { gql, useMutation } from "@apollo/client";
+import firebase from "firebase";
 import React, { useState } from "react";
-// import SubField from "./SubField";
+import ImageUpload from "../venue/ImageUpload";
+import HomepageFeatureTextbox from "./HomepageFeatureTextbox";
 
 interface PropsInterface {
 	homepageFeature: {
@@ -75,177 +77,95 @@ export default function HomepageFeature(props: PropsInterface) {
 		}
 	`);
 
+	const [imageFile, setImageFile] = useState<null | File>(null);
+	const [uploadProgress, setUploadProgress] = useState("");
+	const [uploadError, setUploadError] = useState("");
+	const uploadImage = (e: any) => {
+		e.preventDefault();
+		const imageStorageRef = firebase.storage().ref().child("images");
+
+		// check for file
+		if (imageFile) {
+			let uploadTask = imageStorageRef.child(imageFile.name).put(imageFile);
+			uploadTask.on(
+				"state_changed",
+				(snapshot) => {
+					// progress
+					const progress = Math.round(
+						(snapshot.bytesTransferred / snapshot.totalBytes) * 100
+					);
+					setUploadProgress(`uploading: ${progress}%`);
+				},
+				(error) => {
+					setUploadError(`error: ${error.message}`);
+				},
+				() => {
+					setHomepageFeatureState({
+						...homepageFeatureState,
+						image: `/images/${imageFile.name}`,
+					});
+				}
+			);
+		}
+	};
+
 	return (
 		<div className="flex justify-between mb-7 px-4 rouned-xl shadow-lg py-4">
 			<div className="grid grid-cols-4 gap-4">
-				<div>
-					<label
-						className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						htmlFor="title"
-					>
-						title
-					</label>
-					<input
-						id="title"
-						type="text"
-						placeholder="title "
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						value={homepageFeatureState.title}
-						onChange={(e) => {
-							e.preventDefault();
-							setCanUpdate(true);
-							setHomepageFeatureState({
-								...homepageFeatureState,
-								title: e.target.value,
-							});
-						}}
-					/>
-				</div>
-				<div>
-					<label
-						className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						htmlFor="description"
-					>
-						description
-					</label>
-					<input
-						id="description"
-						type="text"
-						placeholder="description "
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						value={homepageFeatureState.description}
-						onChange={(e) => {
-							e.preventDefault();
-							setCanUpdate(true);
-							setHomepageFeatureState({
-								...homepageFeatureState,
-								description: e.target.value,
-							});
-						}}
-					/>
-				</div>
-				<div>
-					<label
-						className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						htmlFor="topLinkText"
-					>
-						topLinkText
-					</label>
-					<input
-						id="topLinkText"
-						type="text"
-						placeholder="topLinkText "
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						value={homepageFeatureState.topLinkText}
-						onChange={(e) => {
-							e.preventDefault();
-							setCanUpdate(true);
-							setHomepageFeatureState({
-								...homepageFeatureState,
-								topLinkText: e.target.value,
-							});
-						}}
-					/>
-				</div>
-				<div>
-					<label
-						className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						htmlFor="topLink"
-					>
-						topLink
-					</label>
-					<input
-						id="topLink"
-						type="text"
-						placeholder="topLink "
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						value={homepageFeatureState.topLink}
-						onChange={(e) => {
-							e.preventDefault();
-							setCanUpdate(true);
-							setHomepageFeatureState({
-								...homepageFeatureState,
-								topLink: e.target.value,
-							});
-						}}
-					/>
-				</div>
-				<div>
-					<label
-						className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						htmlFor="bottomLinkText"
-					>
-						bottomLinkText
-					</label>
-					<input
-						id="bottomLinkText"
-						type="text"
-						placeholder="bottomLinkText "
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						value={homepageFeatureState.bottomLinkText}
-						onChange={(e) => {
-							e.preventDefault();
-							setCanUpdate(true);
-							setHomepageFeatureState({
-								...homepageFeatureState,
-								bottomLinkText: e.target.value,
-							});
-						}}
-					/>
-				</div>
-				<div>
-					<label
-						className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						htmlFor="bottomLink"
-					>
-						bottomLink
-					</label>
-					<input
-						id="bottomLink"
-						type="text"
-						placeholder="bottomLink"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						value={homepageFeatureState.bottomLink}
-						onChange={(e) => {
-							e.preventDefault();
-							setCanUpdate(true);
-							setHomepageFeatureState({
-								...homepageFeatureState,
-								bottomLink: e.target.value,
-							});
-						}}
-					/>
-				</div>
-				<div>
-					<label
-						className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						htmlFor="image"
-					>
-						image
-					</label>
-					<input
-						id="image"
-						type="text"
-						placeholder="image"
-						className="bg-gray-300 px-3 py-3 rouned-lg"
-						value={homepageFeatureState.image}
-						onChange={(e) => {
-							e.preventDefault();
-							setCanUpdate(true);
-							setHomepageFeatureState({
-								...homepageFeatureState,
-								image: e.target.value,
-							});
-						}}
-					/>
-				</div>
+				<HomepageFeatureTextbox
+					value={homepageFeatureState.title}
+					dbName="title"
+					displayName="Title"
+					updateFunction={setHomepageFeatureState}
+					updateFunctionData={homepageFeatureState}
+				/>
+				<HomepageFeatureTextbox
+					value={homepageFeatureState.description}
+					dbName="description"
+					displayName="Description"
+					updateFunction={setHomepageFeatureState}
+					updateFunctionData={homepageFeatureState}
+				/>
+				<HomepageFeatureTextbox
+					value={homepageFeatureState.topLinkText}
+					dbName="topLinkText"
+					displayName="Top Link Text"
+					updateFunction={setHomepageFeatureState}
+					updateFunctionData={homepageFeatureState}
+				/>
+				<HomepageFeatureTextbox
+					value={homepageFeatureState.topLink}
+					dbName="topLink"
+					displayName="Top Link"
+					updateFunction={setHomepageFeatureState}
+					updateFunctionData={homepageFeatureState}
+				/>
+				<HomepageFeatureTextbox
+					value={homepageFeatureState.bottomLinkText}
+					dbName="bottomLinkText"
+					displayName="Bottom Link Text"
+					updateFunction={setHomepageFeatureState}
+					updateFunctionData={homepageFeatureState}
+				/>
+				<HomepageFeatureTextbox
+					value={homepageFeatureState.bottomLink}
+					dbName="bottomLinkText"
+					displayName="Bottom Link"
+					updateFunction={setHomepageFeatureState}
+					updateFunctionData={homepageFeatureState}
+				/>
+				<ImageUpload
+					setImageFile={setImageFile}
+					name="Image (1:1 ratio)"
+					uploadError={uploadError}
+					uploadProgress={uploadProgress}
+					image={homepageFeatureState.image}
+					uploadImage={uploadImage}
+				/>
 
 				<button
 					className="col-start-1 col-end-2 ml-4 bg-green-500 text-white rounded-lg px-2 py-1 hover:bg-green-400 inline-block"
-					disabled={!canUpdate}
 					onClick={(e) => {
-						setCanUpdate(false);
-
 						updateHomepageFeature({
 							variables: {
 								updateHomepageFeatureId: homepageFeatureState.id,

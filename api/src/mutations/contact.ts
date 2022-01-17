@@ -1,4 +1,13 @@
 import { db } from "../firebase/config";
+const nodemailer = require("nodemailer");
+
+let transporter = nodemailer.createTransport({
+	service: "gmail",
+	auth: {
+		user: "christopherscontactrescat@gmail.com",
+		pass: "jjWbw456!",
+	},
+});
 
 export const addCateringContact = async (_: null, args: any) => {
 	// add to database
@@ -7,6 +16,23 @@ export const addCateringContact = async (_: null, args: any) => {
 		...args,
 		archived: false,
 	});
+
+	const mailOptions = {
+		from: "Contact <christopherscontactrescat@gmail.com>", // Something like: Jane Doe <janedoe@gmail.com>
+		to: "christopherscontactrescat@gmail.com",
+		subject: "A new contact was made to catering", // email subject
+		html: `<p style="font-size: 16px;">${
+			args.firstName + " " + args.lastName
+		} just contacted catering with the following information: </p>
+		    <br />
+		    <p>Event Date: ${args.dateOfEvent}</p>
+		    <p>Number of Guests: ${args.guests}</p>
+		    <p>Email: ${args.email}</p>
+		    <p>Phone: ${args.phone}</p>
+		`, // email content in HTML
+	};
+
+	await transporter.sendMail(mailOptions);
 
 	// get and return
 	const data = await ref.doc(res.id).get();
@@ -20,6 +46,21 @@ export const addResContact = async (_: null, args: any) => {
 		...args,
 		archived: false,
 	});
+
+	const mailOptions = {
+		from: "Contact <christopherscontactrescat@gmail.com>", // Something like: Jane Doe <janedoe@gmail.com>
+		to: "christopherscontactrescat@gmail.com",
+		subject: "A new contact was made to the restaurant", // email subject
+		html: `<p style="font-size: 16px;">${
+			args.firstName + " " + args.lastName
+		} just contacted the restaurant with the following message: </p>
+		    <br />
+		    <p>Subject: ${args.subject}</p>
+		    <p>Message: ${args.message}</p>
+		`, // email content in HTML
+	};
+
+	await transporter.sendMail(mailOptions);
 
 	// get and return
 	const data = await ref.doc(res.id).get();

@@ -21,6 +21,10 @@ export default function SiteControls() {
 				siteAlert
 				showResGallery
 			}
+			services {
+				id
+				name
+			}
 		}
 	`;
 
@@ -48,16 +52,33 @@ export default function SiteControls() {
 			}
 		}
 	`);
+	const [addService, { loading: loadingAdd }] = useMutation(gql`
+		mutation Mutation($name: String) {
+			addService(name: $name) {
+				id
+				name
+			}
+		}
+	`);
+	const [removeService, { loading: loadingRemove }] = useMutation(gql`
+		mutation Mutation($removeServiceId: ID) {
+			removeService(id: $removeServiceId)
+		}
+	`);
 
 	// state
 	const [siteState, setSiteState] = useState<SiteControlsInterface | null>(
 		null
 	);
+	const [services, setServices] = useState<{ name: string; id: string }[]>([]);
+	const [newService, setNewService] = useState("");
 
 	// fill state
 	useEffect(() => {
 		if (data) {
 			setSiteState({ ...data.siteControls });
+			setServices([...data.services]);
+			console.log(data);
 		}
 	}, [data]);
 
@@ -180,6 +201,56 @@ export default function SiteControls() {
 						}}
 					>
 						{loadingUpdate ? "...loading" : "Update"}
+					</button>
+				</div>
+				<div>
+					<h3 className="text-center text-2xl text-primary my-2">
+						Manage Services
+					</h3>
+					{services &&
+						services.map((service) => {
+							return (
+								<div key={service.id}>
+									{service.name}{" "}
+									<button
+										className="bg-primary px-2 py-2 font-bold hover:bg-secondary text-white"
+										onClick={(e) => {
+											e.preventDefault();
+											removeService({
+												variables: { removeServiceId: service.id },
+												refetchQueries: [GET_SITE_CONTROLS],
+											});
+										}}
+									>
+										{loadingRemove ? "...loading" : "Delete"}
+									</button>
+								</div>
+							);
+						})}
+				</div>
+				<div>
+					<label htmlFor="newService">New Service</label>
+					<input
+						type="text"
+						value={newService}
+						onChange={(e) => {
+							setNewService(e.target.value);
+						}}
+						className="w-full bg-white rounded-lg shadow-inner px-2 py-1"
+					/>
+					<button
+						className="bg-primary px-2 py-2 font-bold hover:bg-secondary text-white mt-2"
+						onClick={(e) => {
+							e.preventDefault();
+							addService({
+								variables: {
+									name: newService,
+								},
+								refetchQueries: [GET_SITE_CONTROLS],
+							});
+						}}
+					>
+						Add Service
 					</button>
 				</div>
 			</div>
