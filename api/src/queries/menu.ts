@@ -8,7 +8,57 @@ export const categories = async () => {
 		const id = doc.id;
 		returnDocs.push({ ...doc.data(), id });
 	});
-	return returnDocs;
+
+	// order the return docs
+	let orderedReturnDocs: any = [];
+
+	// breakfast
+	let breakfastIdx = returnDocs.findIndex((elem: any) => {
+		return elem.name === "Breakfast";
+	});
+	if (breakfastIdx != -1) {
+		let breakfastItem = returnDocs.splice(breakfastIdx, 1);
+		orderedReturnDocs.push(...breakfastItem);
+	}
+
+	// lunch
+	let lunchIdx = returnDocs.findIndex((elem: any) => {
+		return elem.name === "Lunch";
+	});
+	if (lunchIdx != -1) {
+		let item = returnDocs.splice(lunchIdx, 1);
+		orderedReturnDocs.push(...item);
+	}
+
+	// dinner
+	let dinnerIdx = returnDocs.findIndex((elem: any) => {
+		return elem.name === "Dinner";
+	});
+	if (dinnerIdx != -1) {
+		let item = returnDocs.splice(dinnerIdx, 1);
+		orderedReturnDocs.push(...item);
+	}
+
+	// desserts
+	let dessertsIdx = returnDocs.findIndex((elem: any) => {
+		return elem.name === "Dessert";
+	});
+	if (dessertsIdx != -1) {
+		let item = returnDocs.splice(dessertsIdx, 1);
+		orderedReturnDocs.push(...item);
+	}
+
+	// drinks
+	let drinksIdx = returnDocs.findIndex((elem: any) => {
+		return elem.name === "Drinks";
+	});
+	if (drinksIdx != -1) {
+		let item = returnDocs.splice(drinksIdx, 1);
+		orderedReturnDocs.push(...item);
+	}
+
+	orderedReturnDocs.push(...returnDocs);
+	return orderedReturnDocs;
 };
 
 export const subcategories = async () => {
