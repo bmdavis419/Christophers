@@ -370,7 +370,7 @@ exports.resolvers = {
                             });
                             if (!(subIDs.length > 0)) return [3 /*break*/, 2];
                             dataRefs = subIDs.map(function (id) {
-                                return config_1.db.doc("Subcategory/" + id);
+                                return config_1.db.doc("Subcategory/".concat(id));
                             });
                             return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
                         case 1:
@@ -398,7 +398,7 @@ exports.resolvers = {
                             });
                             if (!(catIDs.length > 0)) return [3 /*break*/, 2];
                             dataRefs = catIDs.map(function (id) {
-                                return config_1.db.doc("Category/" + id);
+                                return config_1.db.doc("Category/".concat(id));
                             });
                             return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
                         case 1:
@@ -428,7 +428,7 @@ exports.resolvers = {
                             });
                             if (!(subIDs.length > 0)) return [3 /*break*/, 2];
                             dataRefs = subIDs.map(function (id) {
-                                return config_1.db.doc("CateringSubcategory/" + id);
+                                return config_1.db.doc("CateringSubcategory/".concat(id));
                             });
                             return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
                         case 1:
@@ -456,7 +456,7 @@ exports.resolvers = {
                             });
                             if (!(catIDs.length > 0)) return [3 /*break*/, 2];
                             dataRefs = catIDs.map(function (id) {
-                                return config_1.db.doc("CateringCategory/" + id);
+                                return config_1.db.doc("CateringCategory/".concat(id));
                             });
                             return [4 /*yield*/, config_1.db.getAll.apply(config_1.db, dataRefs)];
                         case 1:

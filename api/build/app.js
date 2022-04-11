@@ -9,5 +9,5 @@ var server = new apollo_server_1.ApolloServer({ typeDefs: types_1.typeDefs, reso
 var port = process.env.PORT || 4000;
 server.listen({ port: port }).then(function (_a) {
     var url = _a.url;
-    console.log("\uD83D\uDE80  Server ready -> " + url);
+    console.log("\uD83D\uDE80  Server ready -> ".concat(url));
 });
