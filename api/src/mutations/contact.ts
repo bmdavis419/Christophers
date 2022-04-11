@@ -32,7 +32,7 @@ export const addCateringContact = async (_: null, args: any) => {
 			<p>Method of Contact: ${args.methodOfContact}</p>
 			<p>Date of Event: ${args.dateOfEvent}</p>
 			<p>Guests: ${args.guests}</p>
-			<p>Information: ${args.info}</p>
+			<p>Sender Information: ${args.info}</p>
 		`, // email content in HTML
   };
 
